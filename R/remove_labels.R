@@ -71,7 +71,7 @@ remove_labels_helper <- function(x, labels) {
     x <- remove_all_labels(x)
   } else {
     # set back labels
-    x <- set_labels(x, labels = compl.lab)
+    attr(x, "labels") <- compl.lab
   }
 
   x

@@ -23,7 +23,6 @@
 #'          set any value of vector \code{label} to \code{""} to remove specific variable
 #'          label attributes from a data frame's variable.
 #' @param value See \code{label}.
-#' @param lab Deprecated. Please use \code{label} instead.
 #' @param attr.string Attribute string for the variable label. \strong{Note:}
 #'          Usually, this argument should be ignored. It is only used internally
 #'          for the \code{\link{write_spss}} and \code{\link{write_stata}} functions.
@@ -90,13 +89,7 @@
 #'   get_label()
 #'
 #' @export
-set_label <- function(x, label, attr.string = NULL, lab) {
-
-  # check deprecated arguments
-  if (!missing(lab)) {
-    message("Argument `lab` is deprecated. Please use `label` instead.")
-    label <- lab
-  }
+set_label <- function(x, label, attr.string = NULL) {
 
   # auto-detect variable label attribute
   if (is.null(attr.string)) attr.string <- getVarLabelAttribute(x)

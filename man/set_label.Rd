@@ -6,7 +6,7 @@
 \alias{var_labels}
 \title{Add variable label(s) to variables}
 \usage{
-set_label(x, label, attr.string = NULL, lab)
+set_label(x, label, attr.string = NULL)
 
 set_label(x, attr.string = NULL) <- value
 
@@ -27,8 +27,6 @@ label attributes from a data frame's variable.}
 \item{attr.string}{Attribute string for the variable label. \strong{Note:}
 Usually, this argument should be ignored. It is only used internally
 for the \code{\link{write_spss}} and \code{\link{write_stata}} functions.}
-
-\item{lab}{Deprecated. Please use \code{label} instead.}
 
 \item{value}{See \code{label}.}
 

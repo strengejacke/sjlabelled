@@ -34,6 +34,21 @@ drop_labels_helper <- function(x, drop.na) {
   # check if tidy labels is empty - then remove everything
   if (isempty(tidy.labels)) tidy.labels <- ""
 
-  # set labels
-  set_labels(x, labels = tidy.labels, drop.na = drop.na)
+  # check if user wants to keep labels for NA values or not.
+  if (!drop.na) {
+    current.na <- get_na(x)
+    if (!is.null(current.na) && length(current.na) > 0)
+      tidy.labels <- c(tidy.labels, current.na)
+  }
+
+  # set back labels
+  if (isempty(tidy.labels)) {
+    attr(x, "labels") <- NULL
+  } else {
+    labs <- names(tidy.labels)
+    names(labs) <- tidy.labels
+    attr(x, "labels") <- labs
+  }
+
+  x
 }

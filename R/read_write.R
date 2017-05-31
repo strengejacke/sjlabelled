@@ -279,6 +279,10 @@ write_sas <- function(x, path, drop.na = FALSE) {
 
 #' @importFrom haven write_sav write_dta write_sas
 write_data <- function(x, path, type, version, drop.na) {
+  # make sure to have tidy labels
+  message("Tidying value labels. Please wait...")
+  x <- tidy_labels(x)
+
   # convert data to labelled
   x <- as_label(x, add.non.labelled = T, drop.na = drop.na)
 

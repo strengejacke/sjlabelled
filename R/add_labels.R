@@ -192,8 +192,10 @@ add_labels_helper <- function(x, value) {
   # add NA
   if (!is.null(current.na)) all.labels <- c(all.labels, current.na)
 
-  # set back labels and return
-  set_labels(x, labels = all.labels)
+  # set back value labels
+  attr(x, "labels") <- all.labels
+
+  x
 }
 
 
