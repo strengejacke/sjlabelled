@@ -168,9 +168,6 @@ zap_unlabelled <- function(x, ...) {
 #'
 #' @return \code{x}, where all \code{tagged_na} values are converted to \code{NA}.
 #'
-#' @seealso \code{\link{set_na}} and \code{\link{get_na}};
-#'          \code{\link{drop_labels}} to drop labels from zero-count values.
-#'
 #' @examples
 #' library(haven)
 #' x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
@@ -209,68 +206,9 @@ zap_na_tags <- function(x, ...) {
 
 
 
-#' @title Convert infiite or NaN values into regular NA
-#' @name zap_inf
-#'
-#' @description Replaces all infinite (\code{Inf} and \code{-Inf}) or \code{NaN}
-#'                values with regular \code{NA}.
-#'
-#' @param x A vector or a data frame.
-#'
-#' @inheritParams add_labels
-#'
-#' @return \code{x}, where all \code{Inf}, \code{-Inf} and \code{NaN} are converted to \code{NA}.
-#'
-#' @examples
-#' x <- c(1, 2, NA, 3, NaN, 4, NA, 5, Inf, -Inf, 6, 7)
-#' zap_inf(x)
-#'
-#' data(efc)
-#' # produce some NA and NaN values
-#' efc$e42dep[1] <- NaN
-#' efc$e42dep[2] <- NA
-#' efc$c12hour[1] <- NaN
-#' efc$c12hour[2] <- NA
-#' efc$e17age[2] <- NaN
-#' efc$e17age[1] <- NA
-#'
-#' # only zap NaN for c12hour
-#' zap_inf(efc$c12hour)
-#'
-#' # only zap NaN for c12hour and e17age, not for e42dep,
-#' # but return complete data framee
-#' zap_inf(efc, c12hour, e17age)
-#'
-#' # zap NaN for complete data frame
-#' zap_inf(efc)
-#'
-#' @importFrom tibble as_tibble
-#' @export
-zap_inf <- function(x, ...) {
-  # evaluate arguments, generate data
-  .dat <- get_dot_data(x, dplyr::quos(...))
-
-  if (is.data.frame(x)) {
-    # iterate variables of data frame
-    for (i in colnames(.dat)) {
-      # convert NaN and Inf to missing
-      x[[i]][is.nan(x[[i]])] <- NA
-      x[[i]][is.infinite(x[[i]])] <- NA
-    }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
-  } else {
-    x[is.nan(x)] <- NA
-    x[is.infinite(x)] <- NA
-  }
-
-  x
-}
-
-
 
 zap_labels_helper <- function(x) {
-  x <- set_na(x, na = get_values(x, drop.na = T))
+  x <- set.na(x, na = get_values(x, drop.na = T))
 
   # auto-detect variable label attribute
   attr.string <- getVarLabelAttribute(x)
@@ -284,7 +222,7 @@ zap_labels_helper <- function(x) {
 
 zap_unlabelled_helper <- function(x) {
   vals <- get_values(x)
-  x <- set_na(x, na = stats::na.omit(unique(x)[!unique(x) %in% vals]))
+  x <- set.na(x, na = stats::na.omit(unique(x)[!unique(x) %in% vals]))
   if (is_labelled(x)) class(x) <- NULL
   x
 }

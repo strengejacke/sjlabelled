@@ -78,7 +78,7 @@ as_labelled_helper <- function(x, add.labels, add.class) {
 
   # reset missings
   xna <- get_na(x)
-  if (!isempty(xna)) x <- set_na(x, na = xna)
+  if (!isempty(xna)) x <- set.na(x, na = xna)
 
   # get former class attributes
   xc <- class(x)

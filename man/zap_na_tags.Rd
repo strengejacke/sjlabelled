@@ -40,7 +40,3 @@ haven::print_tagged_na(x)
 haven::print_tagged_na(zap_na_tags(x))
 
 }
-\seealso{
-\code{\link{set_na}} and \code{\link{get_na}};
-         \code{\link{drop_labels}} to drop labels from zero-count values.
-}

@@ -106,47 +106,64 @@ as_numeric_helper <- function(x, start.at, keep.labels) {
 
   # is character?
   if (is.character(x)) {
+
     # has labels?
     if (!is.null(labels)) {
+
       # sort labels correctly, therefor get "levels"
       lvls <- levels(as.factor(x))
+
       # do we have more labels than values? If yes, drop unused labels
       if (length(labels) > length(lvls)) labels <- labels[names(labels) %in% lvls]
+
       # it might be that we have more levels than labels, in this case
       # drop unused levels - else, ordering won't work
       if (length(lvls) > length(labels)) lvls <- lvls[lvls %in% names(labels)]
+
       # sort labels correctly
       labels <- unname(labels[order(names(labels), lvls)])
     }
+
     # convert to factor
     x <- as.factor(x)
   }
 
   # check if we have numeric factor levels
   if (is.num.fac(x)) {
+
     # retrieve "value labels"
     if (is.null(labels)) labels <- levels(x)
+
     # convert to numeric via as.vector
     new_value <- as.numeric(as.vector((x)))
+
     # new minimum value?
     if (!is.null(start.at) && is.numeric(start.at)) {
+
       # check if lowest value of variable differs from
       # requested minimum conversion value
       val_diff <- start.at - min(new_value, na.rm = T)
+
       # adjust new_value
       new_value <- new_value + val_diff
     }
   } else {
+
     # use non-numeric factor levels as new labels
     labels <- levels(x)
+
     # check start.at value
     if (is.null(start.at)) start.at <- 1
+
     # get amount of categories
     l <- length(levels(x))
+
     # determine highest category value
     end <- start.at + l - 1
+
     # replace labels with numeric values
-    levels(x) <- c(start.at:end)
+    levels(x) <- start.at:end
+
     # convert to numeric
     new_value <- as.numeric(as.character(x))
   }

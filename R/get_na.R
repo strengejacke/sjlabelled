@@ -4,10 +4,6 @@
 #' @description This function retrieves tagged NA values and their associated
 #'                value labels from a labelled vector.
 #'
-#' @seealso \code{\link{get_labels}} to get value labels, or \code{\link{get_values}}
-#'            to get values associated with labels; see \code{\link{set_na}} to
-#'            replace specific values with \code{NA}.
-#'
 #' @param x Variable (vector) with value label attributes, including
 #'          tagged missing values (see \code{\link[haven]{tagged_na}});
 #'          or a data frame or list with such variables.
@@ -42,6 +38,7 @@
 #' get_na(x, as.tag = TRUE)
 #'
 #' # replace only the NA, which is tagged as NA(c)
+#' library(sjmisc)
 #' replace_na(x, value = 2, tagged.na = "c")
 #' get_na(replace_na(x, value = 2, tagged.na = "c"))
 #'
