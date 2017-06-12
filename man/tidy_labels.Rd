@@ -13,7 +13,7 @@ tidy_labels(x, ..., sep = "_", remove = FALSE)
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or dplyr's \code{\link[dplyr]{select_helpers}}.
-See 'Examples' or \href{../doc/design_philosophy.html}{package-vignette}.}
+See 'Examples'.}
 
 \item{sep}{String that will be used to separate the suffixed value from the
 old label when creating the new value label.}

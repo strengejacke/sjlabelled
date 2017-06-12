@@ -13,7 +13,7 @@ as_numeric(x, ..., start.at = NULL, keep.labels = TRUE)
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or dplyr's \code{\link[dplyr]{select_helpers}}.
-See 'Examples' or \href{../doc/design_philosophy.html}{package-vignette}.}
+See 'Examples'.}
 
 \item{start.at}{Starting index, i.e. the lowest numeric value of the variable's
 value range. By default, this argument is \code{NULL}, hence the lowest

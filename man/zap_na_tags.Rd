@@ -14,7 +14,7 @@ values, or a data frame with such vectors.}
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or dplyr's \code{\link[dplyr]{select_helpers}}.
-See 'Examples' or \href{../doc/design_philosophy.html}{package-vignette}.}
+See 'Examples'.}
 }
 \value{
 \code{x}, where all \code{tagged_na} values are converted to \code{NA}.

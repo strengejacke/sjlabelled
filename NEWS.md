@@ -1,3 +1,9 @@
+# sjlabelled 1.0.1
+
+## General
+
+* Removed function 'var_rename()', which is in pkg 'sjmisc'.
+
 # sjlabelled 1.0.0
 
 ## General
