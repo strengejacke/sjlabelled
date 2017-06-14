@@ -4,6 +4,10 @@
 
 * Removed function 'var_rename()', which is in pkg 'sjmisc'.
 
+## Changes to functions
+
+* `as_numeric()` gets a `use.labels`-argument to use value labels as new values if these are numeric.
+
 # sjlabelled 1.0.0
 
 ## General

@@ -4,7 +4,8 @@
 \alias{as_numeric}
 \title{Convert factors to numeric variables}
 \usage{
-as_numeric(x, ..., start.at = NULL, keep.labels = TRUE)
+as_numeric(x, ..., start.at = NULL, keep.labels = TRUE,
+  use.labels = FALSE)
 }
 \arguments{
 \item{x}{A vector or data frame.}
@@ -24,6 +25,9 @@ are not numeric).}
 \item{keep.labels}{Logical, if \code{TRUE}, former factor levels will be added as
 value labels. For numeric factor levels, values labels will be used,
 if present. See 'Examples' and \code{\link{set_labels}} for more details.}
+
+\item{use.labels}{Logical, if \code{TRUE} and \code{x} has numeric value labels,
+these value labels will be set as numeric values.}
 }
 \value{
 A numeric variable with values ranging either from \code{start.at} to
@@ -86,5 +90,12 @@ efc$e17age <- as.factor(efc$e17age)
 
 # convert back "sex" and "age" into numeric
 as_numeric(efc, e16sex, e17age)
+
+x <- factor(c("None", "Little", "Some", "Lots"))
+x <- set_labels(x, labels = c("0.5", "1.3", "1.8", ".2"))
+x
+as_numeric(x)
+as_numeric(x, use.labels = TRUE)
+as_numeric(x, use.labels = TRUE, keep.labels = FALSE)
 
 }
