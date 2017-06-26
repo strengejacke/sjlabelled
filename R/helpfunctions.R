@@ -2,30 +2,37 @@
 #' @export
 magrittr::`%>%`
 
+
 #' @importFrom dplyr quos select
 get_dot_data <- function(x, qs) {
   if (isempty(qs))
     x
   else
-    dplyr::select(x, !!!qs)
+    suppressMessages(dplyr::select(x, !!!qs))
 }
 
 # return names of objects passed as ellipses argument
 dot_names <- function(dots) unname(unlist(lapply(dots, as.character)))
 
+
 is_float <- function(x) is.numeric(x) && !all(x %% 1 == 0, na.rm = T)
 
+
 is_foreign <- function(x) !is.null(x) && x == "value.labels"
+
 
 is_completely_labelled <- function(x) {
   # get label attribute, which may differ depending on the package
   # used for reading the data
   attr.string <- getValLabelAttribute(x)
+
   # if variable has no label attribute, use factor levels as labels
   if (is.null(attr.string)) return(TRUE)
+
   # retrieve named labels
   lab <- attr(x, attr.string, exact = T)
   lab <- lab[!haven::is_tagged_na(lab)]
+
   if (!is.null(lab) && length(lab) > 0) {
     # get values of variable
     valid.vals <- sort(unique(stats::na.omit(as.vector(x))))
@@ -50,13 +57,16 @@ is_completely_labelled <- function(x) {
 # ("variable.label")
 getVarLabelAttribute <- function(x) {
   attr.string <- NULL
+
   # check if x is data frame. if yes, retrieve one "example" variable
   if (is.data.frame(x) || is.list(x)) {
+
     # define length for loop
     if (is.data.frame(x))
       counter <- ncol(x)
     else
       counter <- length(x)
+
     # we need to check all variables until first variable
     # that has any attributes at all - SPSS variables without
     # labels would return NULL, so if -e.g.- first variable
@@ -72,16 +82,14 @@ getVarLabelAttribute <- function(x) {
       }
     }
   }
+
   # check if vector has label attribute
   if (!is.null(attr(x, "label", exact = T))) attr.string <- "label"
   # check if vector has variable label attribute
   if (!is.null(attr(x, "variable.label", exact = T))) attr.string <- "variable.label"
+
   # not found any label yet?
-  if (is.null(attr.string)) {
-    # check value_labels option
-    opt <- getOption("value_labels")
-    if (!is.null(opt)) attr.string <- ifelse(opt == "haven", "label", "variable.label")
-  }
+  if (is.null(attr.string)) attr.string <- "label"
 
   attr.string
 }
@@ -92,6 +100,7 @@ getVarLabelAttribute <- function(x) {
 # ("value.labels")
 getValLabelAttribute <- function(x) {
   attr.string <- NULL
+
   # check if x is data frame. if yes, just retrieve one "example" variable
   if (is.data.frame(x)) {
     # find first variable with labels or value.labels attribute
@@ -111,12 +120,9 @@ getValLabelAttribute <- function(x) {
     # check if vector has value.labels attribute
     if (!is.null(attr(x, "value.labels", exact = T))) attr.string <- "value.labels"
   }
+
   # not found any label yet?
-  if (is.null(attr.string)) {
-    # check value_labels option
-    opt <- getOption("value_labels")
-    if (!is.null(opt)) attr.string <- ifelse(opt == "haven", "label", "variable.label")
-  }
+  if (is.null(attr.string)) attr.string <- "labels"
 
   attr.string
 }
