@@ -61,6 +61,7 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
     for (i in seq_len(ncol(data.spss))) {
       # get variable
       x <- data.spss[[i]]
+
       # has variable ONLY missings?
       if (all(is.na(x))) {
         all_missings <- c(all_missings, i)
@@ -68,27 +69,34 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
         # get NA values
         na.values <- attr(x, "na_values", exact = TRUE)
         na.range <- attr(x, "na_range", exact = TRUE)
+
         # has any NA values?
         if (!is.null(na.values)) {
           # get label attr
           labels <- attr(x, "labels", exact = TRUE)
+
           # create tagged NA
           tna <- haven::tagged_na(as.character(na.values))
+
           # replace values with tagged NA
           for (j in seq_len(length(na.values))) {
             x[x == na.values[j]] <- tna[j]
           }
+
           # do we have any labels?
           if (!is.null(labels)) {
             # get missing labels
             na.val.labels <- names(labels)[labels %in% na.values]
+
             # do we have any labels for missings? then name tagged
             # NA with value labels, else use values as labels
             empty_val_labels <- isempty(na.val.labels)
+
             if (length(na.val.labels) > 0 && !empty_val_labels)
               names(tna) <- na.val.labels
             else
               names(tna) <- na.values
+
             # add/replace value labeld for tagged NA
             labels <- c(labels[!labels %in% na.values], tna)
           } else {
@@ -99,19 +107,23 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
           # set back attribute
           attr(x, "labels") <- labels
         }
+
         # do we have NA range?
         if (!is.null(na.range)) {
           # check if any of the missing range values actually exists in data
           min.range.start <- min(na.range[!is.infinite(na.range)], na.rm = T)
           max.range.end <- max(na.range[!is.infinite(na.range)], na.rm = T)
+
           # we start with range up to highest value
           if (any(na.range == Inf) && min.range.start <= max(x, na.rm = TRUE)) {
             x <- set.na(x, na = sort(stats::na.omit(unique(x[x >= min.range.start]))), as.tag = TRUE)
           }
+
           # we start with range up to highest value
           if (any(na.range == -Inf) && max.range.end >= min(x, na.rm = TRUE)) {
             x <- set.na(x, na = sort(stats::na.omit(unique(x[x <= max.range.end]))), as.tag = TRUE)
           }
+
           # here we have no infinite value range
           if (!any(is.infinite(na.range))) {
             x <- set.na(x, na = sort(stats::na.omit(unique(c(
@@ -119,10 +131,12 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
             )))), as.tag = TRUE)
           }
         }
+
         # finally, copy x back to data frame
         if (!is.null(na.range) || !is.null(na.values)) data.spss[[i]] <- x
       }
     }
+
     # do we have any "all-missing-variables"?
     if (!isempty(all_missings)) {
       message(sprintf("Following %i variables have only missing values:", length(all_missings)))
@@ -130,10 +144,13 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
       cat("\n")
     }
   }
+
   # convert to sjPlot
   data.spss <- unlabel(data.spss)
+
   # convert atomic values to factors
   if (atomic.to.fac) data.spss <- atomic_to_fac(data.spss, getValLabelAttribute(data.spss))
+
   # return data frame
   data.spss
 }

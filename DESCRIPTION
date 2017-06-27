@@ -18,7 +18,7 @@ Depends:
     stats,
     utils
 Imports:
-    dplyr (>= 0.7.0),
+    dplyr (>= 0.7.1),
     haven (>= 1.0.0),
     magrittr,
     purrr (>= 0.2.2.2),
