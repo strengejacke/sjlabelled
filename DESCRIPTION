@@ -24,6 +24,8 @@ Imports:
     purrr (>= 0.2.2.2),
     tibble (>= 1.3.3)
 Suggests:
+    broom,
+    ggplot2,
     Hmisc,
     sjmisc (>= 2.5.0),
     sjPlot,
