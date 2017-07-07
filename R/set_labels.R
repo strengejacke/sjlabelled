@@ -215,12 +215,16 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
     warning("can't add value labels to NULL vectors.", call. = T)
     return(x)
   }
+
   # auto-detect variable label attribute
   attr.string <- getValLabelAttribute(x)
+
   # get labelled / tagged NAs, maybe for later use
   current.na <- get_na(x)
+
   # do we have any label attributes?
   if (is.null(attr.string)) attr.string <- "labels"
+
   # check for null
   if (!is.null(labels)) {
     # if labels is empty string, remove labels attribute

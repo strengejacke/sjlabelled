@@ -36,7 +36,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag) {
   if (sum(is.na(x)) == length(x)) return(x)
 
   # get label attribute
-  attr.string <- getValLabelAttribute(x)
+  attr.string <- getValLabelAttribute(x, def.value = "labels")
 
   # check if value is a named vector
   na.names <- names(value)

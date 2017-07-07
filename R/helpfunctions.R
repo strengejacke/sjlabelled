@@ -98,8 +98,8 @@ getVarLabelAttribute <- function(x) {
 # auto-detect attribute style for value labels.
 # either haven style ("labels") or foreign style
 # ("value.labels")
-getValLabelAttribute <- function(x) {
-  attr.string <- NULL
+getValLabelAttribute <- function(x, def.value = NULL) {
+  attr.string <- def.value
 
   # check if x is data frame. if yes, just retrieve one "example" variable
   if (is.data.frame(x)) {
@@ -121,9 +121,6 @@ getValLabelAttribute <- function(x) {
     if (!is.null(attr(x, "value.labels", exact = T))) attr.string <- "value.labels"
   }
 
-  # not found any label yet?
-  if (is.null(attr.string)) attr.string <- "labels"
-
   attr.string
 }
 
@@ -133,6 +130,11 @@ is.num.fac <- function(x) {
   !anyNA(suppressWarnings(as.numeric(levels(x))))
 }
 
+
+is.num.chr <- function(x) {
+  # check if we have numeric character values only
+  !anyNA(suppressWarnings(as.numeric(x)))
+}
 
 isempty <- function(x, first.only = TRUE) {
   # do we have a valid vector?
