@@ -22,8 +22,6 @@ devtools::install_github("strengejacke/sjlabelled")
 [![downloads](http://cranlogs.r-pkg.org/badges/sjlabelled)](http://cranlogs.r-pkg.org/)
 &#160;&#160;
 [![total](http://cranlogs.r-pkg.org/badges/grand-total/sjlabelled)](http://cranlogs.r-pkg.org/)
-&#160;&#160;
-[![Travis-CI Build Status](https://travis-ci.org/strengejacke/sjlabelled.svg?branch=master)](https://travis-ci.org/strengejacke/sjlabelled)
 
 To install the latest stable release from CRAN, type following command into the R console:
 
