@@ -114,7 +114,7 @@ as_numeric_helper <- function(x, start.at, keep.labels, use.labels) {
   labels <- get_labels(x, attr.only = T, include.values = "n")
 
   # get values, if these should be used after converting
-  values <- as.numeric(labels)
+  values <- get_values(x)
 
   # is character?
   if (is.character(x)) {

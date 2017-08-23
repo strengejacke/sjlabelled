@@ -1,3 +1,9 @@
+# sjlabelled 1.0.2
+
+## General
+
+* Minor fix to avoid warning when using `as_numeric()`.
+
 # sjlabelled 1.0.1
 
 ## General
