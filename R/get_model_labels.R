@@ -1,13 +1,21 @@
 #' @title Retrieve labels of model terms from regression models
 #' @name get_term_labels
 #'
-#' @description This function retrieves tagged NA values and their associated
-#'                value labels from a labelled vector.
+#' @description This function retrieves variable labels from model terms. In case
+#'        of categorical variables, where one variable has multiple dummies,
+#'        variable name and category value is returned.
 #'
 #' @param models One or more fitted regression models. May also be glm's or
 #'        mixed models. Any model with \code{\link[stats]{model.frame}} method
 #'        and which is supported by \pkg{broom}'s \code{\link[broom]{tidy}}
 #'        function should work.
+#' @param mark.cat Logical, if \code{TRUE}, the returned vector has an
+#'        attribute with logical values, which indicate whether a label indicates
+#'        the value from a factor category (attribute value is \code{TRUE}) or
+#'        a term's variable labels (attribute value is \code{FALSE}).
+#' @param case Desired target case. Labels will automatically converted into the
+#'          specified character case. See \code{\link[snakecase]{to_any_case}} for
+#'          more details on this argument.
 #'
 #' @return For \code{get_term_labels()}, a (named) character vector with
 #'         variable labels of all model terms, which can be used, for instance,
@@ -50,9 +58,11 @@
 #' @importFrom stats model.frame
 #' @importFrom dplyr select slice
 #' @export
-get_term_labels <- function(models) {
+get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
   # to be generic, make sure argument is a list
   if (!inherits(models, "list")) models <- list(models)
+
+  # TODO tidyr for non-supported models
 
   # get model terms and model frame
   m <- purrr::map(models, ~ dplyr::slice(broom::tidy(.x, effects = "fixed"), -1))
@@ -71,6 +81,7 @@ get_term_labels <- function(models) {
       get_labels(x)
   }) %>% unlist())
 
+
   # flatten, if we have any elements. in case all predictors
   # were non-factors, list has only NULLs
   lbs2 <- if (!is.null(unlist(lbs2)))
@@ -78,17 +89,36 @@ get_term_labels <- function(models) {
   else
     NULL
 
+  # create logical to indicate which labels come from factors
+  fl1 <- vector(mode = "logical", length = length(lbs1))
+
+  if (!is.null(lbs2)) {
+    fl2 <- vector(mode = "logical", length = length(lbs2))
+    fl2[1:length(fl2)] <- TRUE
+  } else {
+    fl2 <- NULL
+  }
+
+
   # remove duplicated
   lbs <- c(lbs1, lbs2)
-  lbs <- lbs[!duplicated(lbs)]
+  fl <- c(fl1, fl2)
+
+  keep <- !duplicated(lbs)
+
+  lbs <- lbs[keep]
+  fl <- fl[keep]
 
   # set default names for values
   if (is.null(names(lbs))) names(lbs) <- lbs
 
+  # check if attribute is requested
+  if (mark.cat) attr(lbs, "category.value") <- fl
+
   # the vector now contains all possible labels, as named vector.
   # since ggplot uses named vectors as labels for axis-scales, matching
   # of labels is done automatically
-  lbs
+  convert_case(lbs, case)
 }
 
 
@@ -97,7 +127,7 @@ get_term_labels <- function(models) {
 #' @importFrom dplyr pull
 #' @importFrom stats model.frame
 #' @export
-get_dv_labels <- function(models) {
+get_dv_labels <- function(models, case = NULL) {
   # to be generic, make sure argument is a list
   if (!inherits(models, "list")) models <- list(models)
 
@@ -112,5 +142,5 @@ get_dv_labels <- function(models) {
     ~ get_label(.x, def.value = .y)
   )
 
-  lbs
+  convert_case(lbs, case)
 }

@@ -165,3 +165,19 @@ isempty <- function(x, first.only = TRUE) {
   }
   return(is.null(x) || zero_len || is.na(x))
 }
+
+
+
+#' @importFrom snakecase to_any_case
+convert_case <- function(lab, case) {
+  if (!is.null(case) && !is.null(lab))
+    snakecase::to_any_case(
+      lab,
+      case = case,
+      preprocess = "(?<!\\d)\\.",
+      postprocess = " ",
+      protect = "\\d"
+    )
+  else
+    lab
+}

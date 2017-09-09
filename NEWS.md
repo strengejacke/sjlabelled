@@ -4,6 +4,10 @@
 
 * Minor fix to avoid warning when using `as_numeric()`.
 
+## Changes to functions
+
+* `get_label()`, `get_term_labels()` and `get_dv_labels()` get a `case`-argument, to convert labels into any case, using the [snakecase](https://cran.r-project.org/package=snakecase)-package.
+
 # sjlabelled 1.0.1
 
 ## General

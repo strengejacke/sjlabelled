@@ -5,7 +5,7 @@
 \alias{get_dv_labels}
 \title{Retrieve labels of model terms from regression models}
 \usage{
-get_term_labels(models)
+get_term_labels(models, mark.cat = FALSE)
 
 get_dv_labels(models)
 }
@@ -14,6 +14,11 @@ get_dv_labels(models)
 mixed models. Any model with \code{\link[stats]{model.frame}} method
 and which is supported by \pkg{broom}'s \code{\link[broom]{tidy}}
 function should work.}
+
+\item{mark.cat}{Logical, if \code{TRUE}, the returned vector has an
+attribute with logical values, which indicate whether a label indicates
+the value from a factor category (attribute value is \code{TRUE}) or
+a term's variable labels (attribute value is \code{FALSE}).}
 }
 \value{
 For \code{get_term_labels()}, a (named) character vector with
@@ -23,8 +28,9 @@ For \code{get_term_labels()}, a (named) character vector with
         of \code{models}.
 }
 \description{
-This function retrieves tagged NA values and their associated
-               value labels from a labelled vector.
+This function retrieves variable labels from model terms. In case
+       of categorical variables, where one variable has multiple dummies,
+       variable name and category value is returned.
 }
 \details{
 Typically, the variable labels from model terms are returned. However,

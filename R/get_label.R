@@ -20,6 +20,8 @@
 #' @param def.value Optional, a character string which will be returned as label
 #'          if \code{x} has no label attribute. By default, \code{NULL} is returned.
 #'
+#' @inheritParams get_term_labels
+#'
 #' @return A named character vector with all variable labels from the data frame or list;
 #'           or a simple character vector (of length 1) with the variable label, if \code{x} is a variable.
 #'           If \code{x} is a single vector and has no label attribute, the value
@@ -66,7 +68,7 @@
 #' get_label(list(efc$e42dep, efc$e16sex, efc$e15relat))
 #'
 #' @export
-get_label <- function(x, ..., def.value = NULL) {
+get_label <- function(x, ..., def.value = NULL, case = NULL) {
   # evaluate arguments, generate data
   x <- get_dot_data(x, dplyr::quos(...))
   # auto-detect variable label attribute
@@ -90,14 +92,14 @@ get_label <- function(x, ..., def.value = NULL) {
           # name label
           names(label) <- colnames(x)[i]
           # append to return result
-          return(label)
+          return(convert_case(label, case))
         } else if (!is.null(def.value)) {
           # def.value may also apply to data frame arguments,
           # so it can be greater than length one
           if (i <= length(def.value))
-            return(def.value[i])
+            return(convert_case(def.value[i], case))
           else
-            return(def.value)
+            return(convert_case(def.value, case))
         } else {
           return("")
         }
@@ -108,14 +110,14 @@ get_label <- function(x, ..., def.value = NULL) {
     # nothing found? then leave...
     if (is.null(attr.string)) return(NULL)
     # return attribute of all variables
-    return(unlist(lapply(x, attr, attr.string, exact = T)))
+    return(convert_case(unlist(lapply(x, attr, attr.string, exact = T)), case))
   } else {
     # nothing found? then leave...
-    if (is.null(attr.string)) return(def.value)
+    if (is.null(attr.string)) return(convert_case(def.value, case))
     # else return attribute
     retat <- attr(x, attr.string, exact = T)
     # still NULL? than use default return value
     if (is.null(retat)) retat <- def.value
-    return(retat)
+    return(convert_case(retat, case))
   }
 }
