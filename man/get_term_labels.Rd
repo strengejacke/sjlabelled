@@ -5,9 +5,9 @@
 \alias{get_dv_labels}
 \title{Retrieve labels of model terms from regression models}
 \usage{
-get_term_labels(models, mark.cat = FALSE)
+get_term_labels(models, mark.cat = FALSE, case = NULL)
 
-get_dv_labels(models)
+get_dv_labels(models, case = NULL)
 }
 \arguments{
 \item{models}{One or more fitted regression models. May also be glm's or
@@ -19,6 +19,10 @@ function should work.}
 attribute with logical values, which indicate whether a label indicates
 the value from a factor category (attribute value is \code{TRUE}) or
 a term's variable labels (attribute value is \code{FALSE}).}
+
+\item{case}{Desired target case. Labels will automatically converted into the
+specified character case. See \code{\link[snakecase]{to_any_case}} for
+more details on this argument.}
 }
 \value{
 For \code{get_term_labels()}, a (named) character vector with

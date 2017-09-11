@@ -67,6 +67,11 @@
 #' # get labels from multiple variables
 #' get_label(list(efc$e42dep, efc$e16sex, efc$e15relat))
 #'
+#' # use case conversion for human-readable labels
+#' data(iris)
+#' get_label(iris, def.value = colnames(iris))
+#' get_label(iris, def.value = colnames(iris), case = "parsed")
+#'
 #' @export
 get_label <- function(x, ..., def.value = NULL, case = NULL) {
   # evaluate arguments, generate data

@@ -4,7 +4,7 @@
 \alias{get_label}
 \title{Retrieve variable label(s) of labelled data}
 \usage{
-get_label(x, ..., def.value = NULL)
+get_label(x, ..., def.value = NULL, case = NULL)
 }
 \arguments{
 \item{x}{A data frame with variables that have label attributes (e.g.
@@ -20,6 +20,10 @@ Convenient argument to work with pipe-chains (see 'Examples').}
 
 \item{def.value}{Optional, a character string which will be returned as label
 if \code{x} has no label attribute. By default, \code{NULL} is returned.}
+
+\item{case}{Desired target case. Labels will automatically converted into the
+specified character case. See \code{\link[snakecase]{to_any_case}} for
+more details on this argument.}
 }
 \value{
 A named character vector with all variable labels from the data frame or list;
@@ -71,6 +75,11 @@ barplot(table(efc$e42dep),
 
 # get labels from multiple variables
 get_label(list(efc$e42dep, efc$e16sex, efc$e15relat))
+
+# use case conversion for human-readable labels
+data(iris)
+get_label(iris, def.value = colnames(iris))
+get_label(iris, def.value = colnames(iris), case = "parsed")
 
 }
 \seealso{
