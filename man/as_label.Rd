@@ -2,9 +2,13 @@
 % Please edit documentation in R/to_label.R
 \name{as_label}
 \alias{as_label}
+\alias{as_character}
 \title{Convert variable into factor with associated value labels}
 \usage{
 as_label(x, ..., add.non.labelled = FALSE, prefix = FALSE,
+  var.label = NULL, drop.na = TRUE, drop.levels = FALSE)
+
+as_character(x, ..., add.non.labelled = FALSE, prefix = FALSE,
   var.label = NULL, drop.na = TRUE, drop.levels = FALSE)
 }
 \arguments{
@@ -40,15 +44,17 @@ A factor with the associated value labels as factor levels. If \code{x}
           is a data frame, the complete data frame \code{x} will be returned,
           where variables specified in \code{...} are coerced to factors;
           if \code{...} is not specified, applies to all variables in the
-          data frame.
+          data frame. \code{as_character()} returns a character vector.
 }
 \description{
-This function converts (replaces) values of a variable (also of factors
+\code{as_label()} converts (replaces) values of a variable (also of factors
                or character vectors) with their associated value labels. Might
                be helpful for factor variables.
                For instance, if you have a Gender variable with 0/1 value, and associated
                labels are male/female, this function would convert all 0 to male and
                all 1 to female and returns the new variable as factor.
+               \code{as_character()} does the same as \code{as_label()}, but returns
+               a character vector.
 }
 \details{
 See 'Details' in \code{\link{get_na}}.

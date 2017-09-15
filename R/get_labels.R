@@ -207,6 +207,7 @@ get_labels_helper <- function(x, attr.only, include.values, include.non.labelled
     lab <- attr(x, attr.string, exact = T)
     # drop na?
     if (drop.na) lab <- lab[!haven::is_tagged_na(lab)]
+
     # check if we have anything
     if (!is.null(lab) && length(lab) > 0) {
       # sort labels
@@ -259,10 +260,12 @@ get_labels_helper <- function(x, attr.only, include.values, include.non.labelled
           # sort values and labels
           labels <- labels[order(c(orderpart, add_vals))]
           new_vals <- new_vals[order(c(orderpart, add_vals))]
+
           # set back new values
           values <- new_vals
         }
       }
+
       # include associated values?
       if (!is.null(include.values)) {
         # for backwards compatibility, we also accept "TRUE"

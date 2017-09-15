@@ -78,11 +78,13 @@ get_label <- function(x, ..., def.value = NULL, case = NULL) {
   x <- get_dot_data(x, dplyr::quos(...))
   # auto-detect variable label attribute
   attr.string <- getVarLabelAttribute(x)
+
   # do we have a df?
   if (is.data.frame(x)) {
     # if yes, check if we have attached label table
     # from foreign import
     labels <- attr(x, "variable.labels", exact = T)
+
     # if not, get labels from each single vector
     if (is.null(labels)) {
       # iterate df
@@ -92,6 +94,7 @@ get_label <- function(x, ..., def.value = NULL, case = NULL) {
           label <- attr(x[[i]], attr.string, exact = T)
         else
           label <- NULL
+
         # any label?
         if (!is.null(label)) {
           # name label
@@ -119,8 +122,10 @@ get_label <- function(x, ..., def.value = NULL, case = NULL) {
   } else {
     # nothing found? then leave...
     if (is.null(attr.string)) return(convert_case(def.value, case))
+
     # else return attribute
     retat <- attr(x, attr.string, exact = T)
+
     # still NULL? than use default return value
     if (is.null(retat)) retat <- def.value
     return(convert_case(retat, case))

@@ -1,12 +1,14 @@
 #' @title Convert variable into factor with associated value labels
 #' @name as_label
 #'
-#' @description This function converts (replaces) values of a variable (also of factors
+#' @description \code{as_label()} converts (replaces) values of a variable (also of factors
 #'                or character vectors) with their associated value labels. Might
 #'                be helpful for factor variables.
 #'                For instance, if you have a Gender variable with 0/1 value, and associated
 #'                labels are male/female, this function would convert all 0 to male and
 #'                all 1 to female and returns the new variable as factor.
+#'                \code{as_character()} does the same as \code{as_label()}, but returns
+#'                a character vector.
 #'
 #' @param add.non.labelled Logical, if \code{TRUE}, values without associated
 #'          value label will also be converted to labels (as is). See 'Examples'.
@@ -29,7 +31,7 @@
 #'           is a data frame, the complete data frame \code{x} will be returned,
 #'           where variables specified in \code{...} are coerced to factors;
 #'           if \code{...} is not specified, applies to all variables in the
-#'           data frame.
+#'           data frame. \code{as_character()} returns a character vector.
 #'
 #' @note Value label attributes (see \code{\link{get_labels}})
 #'       will be removed when converting variables to factors.
@@ -141,25 +143,30 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
     iv <- "p"
   else
     iv <- 0
+
   # retrieve variable label
   if (is.null(var.label))
     var_lab <- get_label(x)
   else
     var_lab <- var.label
+
   # keep missings?
   if (!drop.na) {
     # get NA
     current.na <- get_na(x)
+
     # any NA?
     if (!is.null(current.na)) {
       # we have to set all NA labels at once, else NA loses tag
       # so we prepare a dummy label-vector, where we copy all different
       # NA labels to `x` afterwards
       dummy_na <- rep("", times = length(x))
+
       # iterare NA
       for (i in seq_len(length(current.na))) {
         dummy_na[haven::na_tag(x) == haven::na_tag(current.na[i])] <- names(current.na)[i]
       }
+
       x[haven::is_tagged_na(x)] <- dummy_na[haven::is_tagged_na(x)]
     }
   } else {
@@ -167,10 +174,12 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
     # those into regular NA's, because else saving would not work
     x[is.na(x)] <- NA
   }
+
   # get value labels
   vl <- get_labels(x, attr.only = TRUE, include.values = iv,
                    include.non.labelled = add.non.labelled,
                    drop.na = drop.na)
+
   # check if we have any labels, else
   # return variable "as is"
   if (!is.null(vl)) {
@@ -181,6 +190,7 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
 
     # convert to numeric
     vn <- suppressWarnings(as.numeric(names(vnn)))
+
     # where some values non-numeric? if yes,
     # use value names as character values
     if (anyNA(vn)) vn <- names(vnn)
@@ -199,10 +209,41 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
       x <- factor(x, levels = unique(vl))
     }
   }
+
   # drop unused levels?
   if (drop.levels) x <- droplevels(x)
+
   # set back variable labels
   if (!is.null(var_lab)) x <- suppressWarnings(set_label(x, label = var_lab))
+
   # return as factor
-  return(x)
+  x
+}
+
+
+#' @rdname as_label
+#' @export
+as_character <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE) {
+  # evaluate arguments, generate data
+  .dat <- get_dot_data(x, dplyr::quos(...))
+
+  # get variable labels
+  vl <- get_label(x)
+
+  if (is.data.frame(x)) {
+
+    # iterate variables of data frame
+    for (i in colnames(.dat)) {
+      x[[i]] <- as.character(as_label_helper(.dat[[i]], add.non.labelled, prefix, var.label, drop.na, drop.levels))
+    }
+    # coerce to tibble
+    x <- tibble::as_tibble(x)
+  } else {
+    x <- as.character(as_label_helper(.dat, add.non.labelled, prefix, var.label, drop.na, drop.levels))
+  }
+
+  # set back variable labels, if any
+  if (!is.null(vl)) x <- set_label(x, vl)
+
+  x
 }
