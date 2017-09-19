@@ -2,8 +2,8 @@ Package: sjlabelled
 Type: Package
 Encoding: UTF-8
 Title: Labelled Data Utility Functions
-Version: 1.0.2.9000
-Date: 2017-09-11
+Version: 1.0.3
+Date: 2017-09-19
 Author: Daniel Lüdecke <d.luedecke@uke.de>
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>
 Description: Collection of functions dealing with labelled data, like reading and 

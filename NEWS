@@ -1,3 +1,8 @@
+Version 1.0.3
+------------------------------------------------------------------------------
+General:
+*  Changed package imports, so `sjlabelled` no longer requires R version 3.3.3 or higher.
+
 Version 1.0.2
 ------------------------------------------------------------------------------
 General:
