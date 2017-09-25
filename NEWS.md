@@ -1,3 +1,9 @@
+# sjlabelled 1.0.4
+
+## Bug fixes
+
+* Fixed bug for `as_label()`, when `x` was a character vector and argument `drop.levels` was `TRUE`.
+
 # sjlabelled 1.0.3
 
 ## General
