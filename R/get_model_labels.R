@@ -123,24 +123,42 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
 
 
 #' @rdname get_term_labels
-#' @importFrom purrr map map2_chr
+#' @importFrom purrr map map2 flatten_chr
 #' @importFrom dplyr pull
 #' @importFrom stats model.frame
 #' @export
 get_dv_labels <- function(models, case = NULL) {
+
   # to be generic, make sure argument is a list
+
   if (!inherits(models, "list")) models <- list(models)
 
+
   # get intercept vectors
+
   intercepts <- purrr::map(models, ~ dplyr::pull(stats::model.frame(.x), var = 1))
   intercepts.names <- purrr::map(models, ~ deparse(stats::formula(.x)[[2L]]))
 
+
   # get all labels
-  lbs <- purrr::map2_chr(
+
+  lbs <- purrr::map2(
     intercepts,
     intercepts.names,
     ~ get_label(.x, def.value = .y)
   )
+
+
+  # flatten list, and check for correct elements
+
+  lbs <- purrr::flatten_chr(lbs)
+
+
+  # There are some formulas that return a rather cryptic
+  # name. In such cases, the variable name might have more
+  # than 1 element, and here we need to set a proper default
+
+  if (length(lbs) > 1) lbs <- "Dependent variable"
 
   convert_case(lbs, case)
 }
