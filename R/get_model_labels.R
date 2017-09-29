@@ -64,21 +64,42 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
 
   # TODO tidyr for non-supported models
 
+
   # get model terms and model frame
+
   m <- purrr::map(models, ~ dplyr::slice(broom::tidy(.x, effects = "fixed"), -1))
   mf <- purrr::map(models, ~ dplyr::select(stats::model.frame(.x), -1))
 
+
   # get all variable labels for predictors
+
   lbs1 <- purrr::map(1:length(m), function(x) {
     terms <- unique(m[[x]]$term)
     get_label(mf[[x]], def.value = terms)
   }) %>% unlist()
 
+
+  # any empty name? if yes, use label as name
+
+  empty <- nchar(names(lbs1))
+
+  if (any(empty == 0)) {
+    empty <- which(empty == 0)
+    names(lbs1)[empty] <- lbs1[empty]
+  }
+
+
   # for categorical predictors, we have one term per
   # value (factor level), so extract these as well
-  lbs2 <- purrr::map(mf, ~ purrr::map(.x, function(x) {
-    if (is.factor(x))
-      get_labels(x)
+
+  lbs2 <- purrr::map(mf, ~ purrr::map2(.x, colnames(.x), function(.x, .y) {
+    if (is.factor(.x)) {
+      l <- get_labels(.x)
+      if (!anyNA(suppressWarnings(as.numeric(l))))
+        paste0(.y, l)
+      else
+        l
+    }
   }) %>% unlist())
 
 
