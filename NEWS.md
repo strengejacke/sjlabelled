@@ -6,6 +6,7 @@
 ## Bug fixes
 
 * Fixed bug for `as_label()`, when `x` was a character vector and argument `drop.levels` was `TRUE`.
+* Fixed issue for *lme* and *gls* objects in `get_term_labels()` and `get_dv_labels()`.
 
 # sjlabelled 1.0.3
 

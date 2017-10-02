@@ -67,7 +67,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
 
   # get model terms and model frame
 
-  m <- purrr::map(models, ~ dplyr::slice(broom::tidy(.x, effects = "fixed"), -1))
+  m <- purrr::map(models, ~ dplyr::slice(tidy_models(.x), -1))
   mf <- purrr::map(models, ~ dplyr::select(get_model_frame(.x), -1))
 
 
@@ -186,14 +186,11 @@ get_dv_labels <- function(models, case = NULL) {
 
 
 
-#' @importFrom nlme getResponse getData getCovariateFormula
+#' @importFrom prediction find_data
 #' @importFrom stats model.frame
 get_model_frame <- function(x) {
   if (inherits(x, c("lme", "gls"))) {
-    y <- nlme::getResponse(x)
-    mf <- cbind(y, nlme::getData(x)[, all.vars(nlme::getCovariateFormula(x))])
-    colnames(mf)[1] <- get_label(y, def.value = "Response")
-    as.data.frame(mf)
+    prediction::find_data(x)
   } else
     stats::model.frame(x)
 }
