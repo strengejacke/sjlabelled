@@ -222,8 +222,25 @@ x <- set_labels(
 x
 ```
 
-You can use `set_labels()` within a pipe-workflow with _dplyr_.
+If you want to set different value labels for a complete data frame, if you provide the labels as a `list`. For each variable in the data frame, provide a list element with value labels as character vector. Note that the length of the list must be equal to the number of variables (columns) in the data frame.
+```{r}
+tmp <- data.frame(
+  a = c(1, 2, 3),
+  b = c(1, 2, 3),
+  c = c(1, 2, 3)
+)
 
+labels <- list(
+  c("one", "two", "three"),
+  c("eins", "zwei", "drei"),
+  c("un", "dos", "tres")
+)
+
+tmp <- set_labels(tmp, labels = labels)
+str(tmp)
+```
+
+You can use `set_labels()` within a pipe-workflow with _dplyr_.
 ```{r echo=FALSE, message=FALSE}
 library(dplyr)
 library(sjmisc) # for frq()
@@ -257,6 +274,20 @@ testit <- function(x) get_label(x, def.value = deparse(substitute(x)))
 testit(dummy)
 ```
 
+If you want human-readable labels, you can use the `case`-argument, which will pass the labels to a string parser in the [snakecase-package](https://cran.r-project.org/package=snakecase).
+
+```{r}
+data(iris)
+
+# returns no labels, because iris-data is not labelled
+get_label(iris)
+
+# returns the column name as default labels, if data is not labelled
+get_label(iris, def.value = colnames(iris))
+
+# labels are parsed in a readable way
+get_label(iris, def.value = colnames(iris), case = "parsed")
+```
 
 ## Setting variable labels
 
