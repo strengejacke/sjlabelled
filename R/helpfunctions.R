@@ -3,6 +3,10 @@
 magrittr::`%>%`
 
 
+# do we have a stan-model?
+is.stan <- function(x) inherits(x, c("stanreg", "stanfit", "brmsfit"))
+
+
 #' @importFrom dplyr quos select
 get_dot_data <- function(x, qs) {
   if (isempty(qs))
@@ -180,29 +184,4 @@ convert_case <- function(lab, case) {
   } else {
     lab
   }
-}
-
-
-#' @importFrom broom tidy
-tidy_models <- function(x) {
-  if (inherits(x, "gls"))
-    tidy_gls_model(x, .95)
-  else
-    broom::tidy(x, effects = "fixed")
-}
-
-
-#' @importFrom nlme intervals
-tidy_gls_model <- function(model, ci.lvl) {
-  # get tidy summary. for lme, this excludes CI,
-  # so we compute them separately
-
-  dat <- as.data.frame(summary(model)$tTable)
-  ci <- as.data.frame(nlme::intervals(model, level = ci.lvl, which = "coef")$coef)
-
-  dat$conf.low <- ci$lower
-  dat$conf.high <- ci$upper
-
-  colnames(dat) <- c("estimate", "std.error", "statistic", "p.value", "conf.low", "conf.high")
-  dat[, c(1:2, 4:6)]
 }

@@ -105,6 +105,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
 
   # flatten, if we have any elements. in case all predictors
   # were non-factors, list has only NULLs
+
   lbs2 <- if (!is.null(unlist(lbs2)))
     purrr::flatten_chr(lbs2)
   else
@@ -130,8 +131,14 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
   lbs <- lbs[keep]
   fl <- fl[keep]
 
+
   # set default names for values
   if (is.null(names(lbs))) names(lbs) <- lbs
+
+  # do we have partial empty names? if yes, fill them
+  en <- which(nchar(names(lbs)) == 0)
+  if (!isempty(en)) names(lbs)[en] <- lbs[en]
+
 
   # check if attribute is requested
   if (mark.cat) attr(lbs, "category.value") <- fl
@@ -179,7 +186,7 @@ get_dv_labels <- function(models, case = NULL) {
   # name. In such cases, the variable name might have more
   # than 1 element, and here we need to set a proper default
 
-  if (length(lbs) > 1) lbs <- "Dependent variable"
+  if (length(lbs) > length(models)) lbs <- "Dependent variable"
 
   convert_case(lbs, case)
 }
@@ -189,7 +196,7 @@ get_dv_labels <- function(models, case = NULL) {
 #' @importFrom prediction find_data
 #' @importFrom stats model.frame
 get_model_frame <- function(x) {
-  if (inherits(x, c("lme", "gls"))) {
+  if (inherits(x, c("lme", "gls", "vgam"))) {
     prediction::find_data(x)
   } else
     stats::model.frame(x)

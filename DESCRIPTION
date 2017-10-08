@@ -2,8 +2,8 @@ Package: sjlabelled
 Type: Package
 Encoding: UTF-8
 Title: Labelled Data Utility Functions
-Version: 1.0.3.9000
-Date: 2017-09-19
+Version: 1.0.4
+Date: 2017-10-06
 Author: Daniel Lüdecke <d.luedecke@uke.de>
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>
 Description: Collection of functions dealing with labelled data, like reading and 
@@ -22,15 +22,18 @@ Imports:
     dplyr (>= 0.7.1),
     haven (>= 1.0.0),
     magrittr,
+    nlme,
     prediction,
     purrr (>= 0.2.2.2),
     snakecase,
     tibble (>= 1.3.3)
 Suggests:
     ggplot2,
+    glmmTMB,
     Hmisc,
     sjmisc (>= 2.6.1),
     sjPlot,
+    survey,
     knitr,
     rmarkdown
 URL: https://github.com/strengejacke/sjlabelled

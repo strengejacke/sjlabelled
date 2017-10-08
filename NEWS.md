@@ -1,6 +1,7 @@
 # sjlabelled 1.0.4
 
 ## Changes to functions
+
 * `get_term_labels()` now includes variable names for factors with numeric factor levels only (and not only return the numeric level as term label).
 
 ## Bug fixes
