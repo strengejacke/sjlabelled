@@ -11,6 +11,8 @@ tidy_models <- function(model) {
     tidy_hurdle_model(model)
   else if (inherits(model, "logistf"))
     tidy_logistf_model(model)
+  else if (inherits(model, "vgam"))
+    tidy_vgam_model(model)
   else
     tidy_generic(model)
 }
@@ -100,4 +102,11 @@ tidy_logistf_model <- function(model) {
     term = model$terms,
     estimate = model$coefficients
   )
+}
+
+
+#' @importFrom stats coef
+#' @importFrom tibble tibble
+tidy_vgam_model <- function(model) {
+  tibble::tibble(term = names(stats::coef(model)))
 }
