@@ -4,6 +4,10 @@
 
 * Remove unnecessary imports.
 
+## Changes to functions
+
+* `get_dv_labels()` now supports `brmsfit`-objects from package `brms`.
+
 # sjlabelled 1.0.4
 
 ## Changes to functions
