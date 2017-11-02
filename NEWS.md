@@ -3,6 +3,7 @@
 ## General
 
 * Remove unnecessary imports.
+* Removed `lbl_df()` due to changes in the internals of `tibble::trunc_mat()`, which was used by `print.lbl_df()`. Additional header information should now be integrated in packages *tibble* resp. * pillar*.
 
 ## Changes to functions
 
