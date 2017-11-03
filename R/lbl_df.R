@@ -37,7 +37,10 @@ lbl_df <- function(x) {
   x
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 #' @importFrom purrr map
 #' @export
 format.lbl_df <- function(x, ..., n = NULL, width = NULL, n_extra = NULL) {
@@ -45,7 +48,10 @@ format.lbl_df <- function(x, ..., n = NULL, width = NULL, n_extra = NULL) {
   NextMethod()
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 #' @importFrom dplyr slice
 #' @export
 head.lbl_df <- function(x, n = 10L, ...) {
@@ -61,6 +67,13 @@ head.lbl_df <- function(x, n = 10L, ...) {
   dplyr::slice(x, !! rows)
 }
 
+<<<<<<< HEAD
+=======
+label_type_sum <- function(x) {
+  class(x) <- c("label_type_sum", class(x))
+  x
+}
+>>>>>>> origin/master
 
 #' @export
 type_sum.label_type_sum <- function(x) {
@@ -71,9 +84,12 @@ type_sum.label_type_sum <- function(x) {
   else
     lab
 }
+<<<<<<< HEAD
 
 
 label_type_sum <- function(x) {
   class(x) <- c("label_type_sum", class(x))
   x
 }
+=======
+>>>>>>> origin/master
