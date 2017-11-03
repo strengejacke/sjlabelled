@@ -25,8 +25,12 @@
 #'   set_label(c("Relationship", "Elder's gender", "Elder's age")) %>%
 #'   lbl_df()
 #'
+#' @importFrom tibble as_tibble
 #' @export
 lbl_df <- function(x) {
+  # add class attribute, if necessary
+  if (!"tbl_df" %in% class(x)) x <- tibble::as_tibble(x)
+
   # add class attribute, if necessary
   if (!"lbl_df" %in% class(x)) class(x) <- c("lbl_df", class(x))
 
@@ -40,6 +44,21 @@ format.lbl_df <- function(x, ..., n = NULL, width = NULL, n_extra = NULL) {
   NextMethod()
 }
 
+#' @importFrom dplyr slice
+#' @export
+head.lbl_df <- function(x, n = 10L, ...) {
+  stopifnot(length(n) == 1L)
+
+  n <- if (n < 0L)
+    max(nrow(x) + n, 0L)
+  else
+    min(n, nrow(x))
+
+  rows <- seq_len(n)
+
+  dplyr::slice(x, !! rows)
+}
+
 label_type_sum <- function(x) {
   class(x) <- c("label_type_sum", class(x))
   x
@@ -47,5 +66,10 @@ label_type_sum <- function(x) {
 
 #' @export
 type_sum.label_type_sum <- function(x) {
-  attr(x, "label")
+  lab <- attr(x, "label")
+
+  if (is.null(lab))
+    "no label"
+  else
+    lab
 }
