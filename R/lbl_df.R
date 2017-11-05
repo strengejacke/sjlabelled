@@ -47,6 +47,7 @@ format.lbl_df <- function(x, ..., n = NULL, width = NULL, n_extra = NULL) {
 
 
 #' @importFrom dplyr slice
+#' @importFrom utils head
 #' @export
 head.lbl_df <- function(x, n = 10L, ...) {
   stopifnot(length(n) == 1L)
@@ -62,6 +63,16 @@ head.lbl_df <- function(x, n = 10L, ...) {
 }
 
 
+
+#' @title Provide a succinct summary of an object
+#' @name type_sum
+#'
+#' @description \code{type_sum.label_type_sum()} is intended for objects of class
+#'    \code{lbl_df} (see \code{\link{lbl_df()}}), to provide information about
+#'    the the variable label when printing tibbles.
+#'
+#' @param x An object to summarize.
+#'
 #' @export
 type_sum.label_type_sum <- function(x) {
   lab <- attr(x, "label")
