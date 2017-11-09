@@ -68,8 +68,8 @@ head.lbl_df <- function(x, n = 10L, ...) {
 #' @name type_sum
 #'
 #' @description \code{type_sum.label_type_sum()} is intended for objects of class
-#'    \code{lbl_df} (see \code{\link{lbl_df()}}), to provide information about
-#'    the the variable label when printing tibbles.
+#'    \code{\link{lbl_df}}, to provide information about the the variable
+#'    label when printing tibbles.
 #'
 #' @param x An object to summarize.
 #'
