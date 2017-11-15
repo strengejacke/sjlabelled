@@ -2,7 +2,7 @@
 
 ## Changes to functions
 
-* `get_dv_labels()` now supports `clm`-objects from package `ordinal`.
+* `get_dv_labels()` now supports `clm`-objects from package *ordinal* and `polr`-objects from package *MASS*.
 
 # sjlabelled 1.0.5
 

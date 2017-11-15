@@ -11,7 +11,7 @@ tidy_models <- function(model) {
     tidy_hurdle_model(model)
   else if (inherits(model, "logistf"))
     tidy_logistf_model(model)
-  else if (inherits(model, "clm"))
+  else if (inherits(model, c("clm", "polr")))
     tidy_clm_model(model)
   else if (inherits(model, "vgam"))
     tidy_vgam_model(model)
@@ -107,7 +107,6 @@ tidy_logistf_model <- function(model) {
 }
 
 
-#' @importFrom stats qnorm
 #' @importFrom tibble rownames_to_column
 #' @importFrom rlang .data
 #' @importFrom dplyr select
@@ -119,7 +118,7 @@ tidy_clm_model <- function(model) {
     tibble::rownames_to_column(var = "term")
 
   # proper column names
-  colnames(est) <- c("term", "estimate", "std.error", "statistic", "p.value")
+  colnames(est)[1:2] <- c("term", "estimate")
 
   dplyr::select(est, .data$term, .data$estimate)
 }
