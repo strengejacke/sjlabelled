@@ -11,6 +11,8 @@ tidy_models <- function(model) {
     tidy_hurdle_model(model)
   else if (inherits(model, "logistf"))
     tidy_logistf_model(model)
+  else if (inherits(model, "clm"))
+    tidy_clm_model(model)
   else if (inherits(model, "vgam"))
     tidy_vgam_model(model)
   else
@@ -102,6 +104,24 @@ tidy_logistf_model <- function(model) {
     term = model$terms,
     estimate = model$coefficients
   )
+}
+
+
+#' @importFrom stats qnorm
+#' @importFrom tibble rownames_to_column
+#' @importFrom rlang .data
+#' @importFrom dplyr select
+tidy_clm_model <- function(model) {
+  # get estimates, as data frame
+  smry <- summary(model)
+  est <- smry$coefficients %>%
+    as.data.frame() %>%
+    tibble::rownames_to_column(var = "term")
+
+  # proper column names
+  colnames(est) <- c("term", "estimate", "std.error", "statistic", "p.value")
+
+  dplyr::select(est, .data$term, .data$estimate)
 }
 
 

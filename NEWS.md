@@ -1,3 +1,9 @@
+# sjlabelled 1.0.6
+
+## Changes to functions
+
+* `get_dv_labels()` now supports `clm`-objects from package `ordinal`.
+
 # sjlabelled 1.0.5
 
 ## General
