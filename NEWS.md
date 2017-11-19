@@ -3,6 +3,7 @@
 ## Changes to functions
 
 * `get_dv_labels()` now supports `clm`-objects from package *ordinal* and `polr`-objects from package *MASS*.
+* `get_dv_labels()` and `get_term_labels()` get a `...`-argument to pass down further arguments to `snakecase::to_any_case()`.
 
 # sjlabelled 1.0.5
 

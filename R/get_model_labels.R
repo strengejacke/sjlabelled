@@ -16,6 +16,8 @@
 #' @param case Desired target case. Labels will automatically converted into the
 #'          specified character case. See \code{\link[snakecase]{to_any_case}} for
 #'          more details on this argument.
+#' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
+#'        like \code{preprocess}, \code{postprocess} or \code{protect}.
 #'
 #' @return For \code{get_term_labels()}, a (named) character vector with
 #'         variable labels of all model terms, which can be used, for instance,
@@ -58,7 +60,7 @@
 #' @importFrom stats model.frame
 #' @importFrom dplyr select slice
 #' @export
-get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
+get_term_labels <- function(models, mark.cat = FALSE, case = NULL, ...) {
   # to be generic, make sure argument is a list
   if (!inherits(models, "list")) models <- list(models)
 
@@ -146,7 +148,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
   # the vector now contains all possible labels, as named vector.
   # since ggplot uses named vectors as labels for axis-scales, matching
   # of labels is done automatically
-  convert_case(lbs, case)
+  convert_case(lbs, case, ...)
 }
 
 
@@ -155,7 +157,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL) {
 #' @importFrom dplyr pull
 #' @importFrom stats model.frame
 #' @export
-get_dv_labels <- function(models, case = NULL) {
+get_dv_labels <- function(models, case = NULL, ...) {
 
   # to be generic, make sure argument is a list
 
@@ -194,7 +196,7 @@ get_dv_labels <- function(models, case = NULL) {
 
   if (length(lbs) > length(models)) lbs <- "Dependent variable"
 
-  convert_case(lbs, case)
+  convert_case(lbs, case, ...)
 }
 
 
