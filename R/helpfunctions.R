@@ -187,9 +187,9 @@ convert_case <- function(lab, case, ...) {
 
     add.args <- lapply(match.call(expand.dots = F)$`...`, function(x) x)
 
-    if ("preprocess" %in% names(add.args)) prep <- add.args[["preprocess"]]
-    if ("postprocess" %in% names(add.args)) posp <- add.args[["postprocess"]]
-    if ("protect" %in% names(add.args)) prot <- add.args[["protect"]]
+    if ("preprocess" %in% names(add.args)) prep <- eval(add.args[["preprocess"]])
+    if ("postprocess" %in% names(add.args)) posp <- eval(add.args[["postprocess"]])
+    if ("protect" %in% names(add.args)) prot <- eval(add.args[["protect"]])
 
 
     # convert
