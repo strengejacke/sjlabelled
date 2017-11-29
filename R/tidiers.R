@@ -24,7 +24,14 @@ tidy_models <- function(model) {
 #' @importFrom broom tidy
 tidy_generic <- function(model) {
   # tidy the model
-  broom::tidy(model, conf.int = FALSE, effects = "fixed")
+  tryCatch(
+    {
+      broom::tidy(model, conf.int = FALSE, effects = "fixed")
+    },
+    error = function(x) { NULL },
+    warning = function(x) { NULL },
+    finally = function(x) { NULL }
+  )
 }
 
 

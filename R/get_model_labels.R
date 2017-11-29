@@ -57,7 +57,7 @@
 #'
 #' @importFrom purrr map flatten_chr
 #' @importFrom broom tidy
-#' @importFrom stats model.frame
+#' @importFrom stats model.frame coef
 #' @importFrom dplyr select slice
 #' @export
 get_term_labels <- function(models, mark.cat = FALSE, case = NULL, ...) {
@@ -76,8 +76,12 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, ...) {
   # get all variable labels for predictors
 
   lbs1 <- purrr::map(1:length(m), function(x) {
-    terms <- unique(m[[x]]$term)
-    get_label(mf[[x]], def.value = terms)
+    if (is.null(m[[x]])) {
+      names(stats::coef(models[[x]]))[-1]
+    } else {
+      terms <- unique(m[[x]]$term)
+      get_label(mf[[x]], def.value = terms)
+    }
   }) %>% unlist()
 
 
