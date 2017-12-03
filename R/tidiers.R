@@ -15,6 +15,8 @@ tidy_models <- function(model) {
     tidy_clm_model(model)
   else if (inherits(model, "vgam"))
     tidy_vgam_model(model)
+  else if (inherits(model, "Zelig-relogit"))
+    tidy_zelig_model(model)
   else
     tidy_generic(model)
 }
@@ -135,4 +137,13 @@ tidy_clm_model <- function(model) {
 #' @importFrom tibble tibble
 tidy_vgam_model <- function(model) {
   tibble::tibble(term = names(stats::coef(model)))
+}
+
+#' @importFrom rlang .data
+#' @importFrom stats coef qnorm
+tidy_zelig_model <- function(model) {
+  if (!requireNamespace("Zelig"))
+    stop("Package `Zelig` required. Please install", call. = F)
+
+  tibble::tibble(term = names(Zelig::coef(model)))
 }

@@ -34,7 +34,8 @@ Suggests:
     sjPlot,
     survey,
     knitr,
-    rmarkdown
+    rmarkdown,
+    Zelig
 URL: https://github.com/strengejacke/sjlabelled
 BugReports: https://github.com/strengejacke/sjlabelled/issues
 RoxygenNote: 6.0.1

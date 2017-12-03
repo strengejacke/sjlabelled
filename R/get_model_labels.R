@@ -208,8 +208,10 @@ get_dv_labels <- function(models, case = NULL, ...) {
 #' @importFrom prediction find_data
 #' @importFrom stats model.frame
 get_model_frame <- function(x) {
-  if (inherits(x, c("lme", "gls", "vgam"))) {
-    prediction::find_data(x)
-  } else
-    stats::model.frame(x)
+  if (inherits(x, c("lme", "vgam", "gee", "gls")))
+    fitfram <- prediction::find_data(x)
+  else if (inherits(x, "Zelig-relogit"))
+    fitfram <- x$zelig.out$z.out[[1]]$data
+  else
+    fitfram <- stats::model.frame(x)
 }
