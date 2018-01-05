@@ -4,7 +4,7 @@
 \alias{convert_case}
 \title{Generic case conversion for labels}
 \usage{
-convert_case(lab, case, ...)
+convert_case(lab, case = NULL, ...)
 }
 \arguments{
 \item{lab}{Character vector that should be case converted.}
