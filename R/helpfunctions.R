@@ -180,7 +180,6 @@ convert_case <- function(lab, case, ...) {
 
     prep <- "(?<!\\d)\\."
     posp <- " "
-    prot <- "\\d"
 
 
     # check additional arguments
@@ -189,7 +188,6 @@ convert_case <- function(lab, case, ...) {
 
     if ("preprocess" %in% names(add.args)) prep <- eval(add.args[["preprocess"]])
     if ("postprocess" %in% names(add.args)) posp <- eval(add.args[["postprocess"]])
-    if ("protect" %in% names(add.args)) prot <- eval(add.args[["protect"]])
 
 
     # convert
@@ -198,8 +196,7 @@ convert_case <- function(lab, case, ...) {
       lab,
       case = case,
       preprocess = prep,
-      postprocess = posp,
-      protect = prot
+      postprocess = posp
     )
 
   } else {

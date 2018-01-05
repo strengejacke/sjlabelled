@@ -17,7 +17,7 @@
 #'          specified character case. See \code{\link[snakecase]{to_any_case}} for
 #'          more details on this argument.
 #' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
-#'        like \code{preprocess}, \code{postprocess} or \code{protect}.
+#'        like \code{preprocess} or \code{postprocess}.
 #'
 #' @return For \code{get_term_labels()}, a (named) character vector with
 #'         variable labels of all model terms, which can be used, for instance,
