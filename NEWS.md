@@ -4,6 +4,7 @@
 
 * `get_dv_labels()` and `get_term_labels()` now support `clm`-objects from package *ordinal*,  `polr`-objects from package *MASS* and `Zelig-relogit`-objects from package *Zelig*.
 * `get_dv_labels()` and `get_term_labels()` get a `...`-argument to pass down further arguments to `snakecase::to_any_case()`.
+* `convert_case()` is now exported, for usage in other packages as well.
 * Remove `protect`-argument from internal case conversion (affects `get_term_labels()` and `get_dv_labels()`), in preparation for forthcoming *snakecase*-package update.
 
 # sjlabelled 1.0.5

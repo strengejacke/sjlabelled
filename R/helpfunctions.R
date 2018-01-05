@@ -168,38 +168,3 @@ isempty <- function(x, first.only = TRUE) {
   }
   return(is.null(x) || zero_len || is.na(x))
 }
-
-
-
-#' @importFrom snakecase to_any_case
-convert_case <- function(lab, case, ...) {
-
-  if (!is.null(case) && !is.null(lab)) {
-
-    # set defaults
-
-    prep <- "(?<!\\d)\\."
-    posp <- " "
-
-
-    # check additional arguments
-
-    add.args <- lapply(match.call(expand.dots = F)$`...`, function(x) x)
-
-    if ("preprocess" %in% names(add.args)) prep <- eval(add.args[["preprocess"]])
-    if ("postprocess" %in% names(add.args)) posp <- eval(add.args[["postprocess"]])
-
-
-    # convert
-
-    snakecase::to_any_case(
-      lab,
-      case = case,
-      preprocess = prep,
-      postprocess = posp
-    )
-
-  } else {
-    lab
-  }
-}
