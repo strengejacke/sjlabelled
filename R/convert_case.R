@@ -2,7 +2,8 @@
 #' @name convert_case
 #'
 #' @description This function wraps \code{to_any_case()} from the \pkg{snakecase}
-#'   package with certain defaults, used for instance to convert cases in
+#'   package with certain defaults for the \code{preprocess} and
+#'   \code{postprocess} arguments, used for instance to convert cases in
 #'   \code{\link{get_term_labels}}.
 #'
 #' @param lab Character vector that should be case converted.
@@ -13,6 +14,11 @@
 #'        like \code{preprocess} or \code{postprocess}.
 #'
 #' @return \code{lab}, with converted case.
+#'
+#' @details When calling \code{to_any_case()} from \pkg{snakecase}, the
+#'   \code{preprocess} argument is set to \code{"(?<!\\\\d)\\\\."}, and the
+#'   \code{postprocess} to \code{" "}. This gives feasible results from variable
+#'   labels for plot annotations.
 #'
 #' @examples
 #' data(iris)
