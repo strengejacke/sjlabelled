@@ -21,7 +21,7 @@
 #'
 #' @importFrom snakecase to_any_case
 #' @export
-convert_case <- function(lab, case, ...) {
+convert_case <- function(lab, case = NULL, ...) {
 
   if (!is.null(case) && !is.null(lab)) {
 
