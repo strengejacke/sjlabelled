@@ -2,8 +2,8 @@ Package: sjlabelled
 Type: Package
 Encoding: UTF-8
 Title: Labelled Data Utility Functions
-Version: 1.0.5.9000
-Date: 2017-11-09
+Version: 1.0.6
+Date: 2018-01-11
 Author: Daniel Lüdecke <d.luedecke@uke.de>
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>
 Description: Collection of functions dealing with labelled data, like reading and 
@@ -23,7 +23,8 @@ Imports:
     magrittr,
     prediction,
     purrr (>= 0.2.2.2),
-    snakecase,
+    rlang,
+    snakecase (>= 0.7.1),
     tibble (>= 1.3.3),
     utils
 Suggests:

@@ -139,7 +139,6 @@ tidy_vgam_model <- function(model) {
   tibble::tibble(term = names(stats::coef(model)))
 }
 
-#' @importFrom rlang .data
 #' @importFrom stats coef qnorm
 tidy_zelig_model <- function(model) {
   if (!requireNamespace("Zelig"))
