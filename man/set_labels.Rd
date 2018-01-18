@@ -13,7 +13,8 @@ set_labels(x, ..., labels, force.labels = FALSE, force.values = TRUE,
 \item{...}{Optional, unquoted names of variables that should be selected for
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
-You may also use functions like \code{:} or dplyr's \code{\link[dplyr]{select_helpers}}.
+You may also use functions like \code{:} or tidyselect's
+\code{\link[tidyselect]{select_helpers}}.
 See 'Examples'.}
 
 \item{labels}{(Named) character vector of labels that will be added to \code{x} as

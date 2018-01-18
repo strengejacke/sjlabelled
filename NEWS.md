@@ -1,3 +1,9 @@
+# sjlabelled 1.0.7
+
+## General
+
+* Cross refences from `dplyr::select_helpers` were updated to `tidyselect::select_helpers`.
+
 # sjlabelled 1.0.6
 
 ## Changes to functions

@@ -9,11 +9,6 @@
 #'            value labels).
 #'
 #' @param x A vector or data frame.
-#' @param ... Optional, unquoted names of variables that should be selected for
-#'          further processing. Required, if \code{x} is a data frame (and no
-#'          vector) and only selected variables from \code{x} should be processed.
-#'          You may also use functions like \code{:} or dplyr's \code{\link[dplyr]{select_helpers}}.
-#'          See 'Examples'.
 #' @param labels \describe{
 #'          \item{For \code{add_labels()}}{A named (numeric) vector of labels
 #'          that will be added to \code{x} as label attribute.}
@@ -23,6 +18,8 @@
 #'          removed; or a \code{\link[haven]{tagged_na}} to remove the labels
 #'          from specific NA values.}
 #'          }
+#'
+#' @inheritParams as_factor
 #'
 #' @return \code{x} with additional or removed value labels. If \code{x}
 #'           is a data frame, the complete data frame \code{x} will be returned,
