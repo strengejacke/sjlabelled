@@ -24,7 +24,7 @@ Imports:
     prediction,
     purrr (>= 0.2.2.2),
     rlang,
-    snakecase (>= 0.7.1),
+    snakecase (>= 0.8.1),
     tibble (>= 1.3.3),
     utils
 Suggests:

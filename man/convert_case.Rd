@@ -14,21 +14,21 @@ specified character case. See \code{\link[snakecase]{to_any_case}} for
 more details on this argument.}
 
 \item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
-like \code{preprocess} or \code{postprocess}.}
+like \code{sep_in} or \code{sep_out}.}
 }
 \value{
 \code{lab}, with converted case.
 }
 \description{
 This function wraps \code{to_any_case()} from the \pkg{snakecase}
-  package with certain defaults for the \code{preprocess} and
-  \code{postprocess} arguments, used for instance to convert cases in
+  package with certain defaults for the \code{sep_in} and
+  \code{sep_out} arguments, used for instance to convert cases in
   \code{\link{get_term_labels}}.
 }
 \details{
 When calling \code{to_any_case()} from \pkg{snakecase}, the
-  \code{preprocess} argument is set to \code{"(?<!\\\\d)\\\\."}, and the
-  \code{postprocess} to \code{" "}. This gives feasible results from variable
+  \code{sep_in} argument is set to \code{"(?<!\\\\d)\\\\."}, and the
+  \code{sep_out} to \code{" "}. This gives feasible results from variable
   labels for plot annotations.
 }
 \examples{
