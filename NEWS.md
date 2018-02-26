@@ -1,3 +1,9 @@
+# sjlabelled 1.0.8
+
+## General
+
+* Removed `lbl_df()`, because printing tibbles now depends on pkg _pillar_ and was revised substantially, so maintainace of `lbl_df()` is too extensive.
+
 # sjlabelled 1.0.7
 
 ## General
