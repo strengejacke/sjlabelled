@@ -1,3 +1,9 @@
+# sjlabelled 1.0.9
+
+## General
+
+* Removed `set_note()` and `get_note()`, because there is already an R base function for this purpose: `comment()`.
+
 # sjlabelled 1.0.8
 
 ## General
