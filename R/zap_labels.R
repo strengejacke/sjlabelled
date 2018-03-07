@@ -210,11 +210,8 @@ zap_na_tags <- function(x, ...) {
 zap_labels_helper <- function(x) {
   x <- set.na(x, na = get_values(x, drop.na = T))
 
-  # auto-detect variable label attribute
-  attr.string <- getVarLabelAttribute(x)
-
   # remove label attributes
-  if (!is.null(attr.string)) attr(x, attr.string) <- NULL
+  attr(x, "label") <- NULL
   if (is_labelled(x)) class(x) <- NULL
 
   x
@@ -232,6 +229,15 @@ zap_na_tags_helper <- function(x) {
   if (sum(is.na(x)) == length(x)) return(x)
   # convert all NA, including tagged NA, into regular NA
   x[is.na(x)] <- NA
-  # "remove" labels from tagged NA values
-  set_labels(x, labels = get_labels(x, attr.only = T, include.values = "n", drop.na = T))
+
+  # get labels, w/o labelled NA
+  labs <- get_labels(x, attr.only = T, include.values = "n", drop.na = T)
+
+  # if no labels left, clear attribute
+  if (is.null(labs)) {
+    attr(x, "labels") <- NULL
+    return(x)
+  } else {
+    set_labels(x, labels = labs)
+  }
 }

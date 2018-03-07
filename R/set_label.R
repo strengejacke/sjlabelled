@@ -91,8 +91,6 @@
 #' @export
 set_label <- function(x, label, attr.string = NULL) {
 
-  # auto-detect variable label attribute
-  if (is.null(attr.string)) attr.string <- getVarLabelAttribute(x)
   # still nothing found? then leave...
   if (is.null(attr.string)) attr.string <- "label"
 

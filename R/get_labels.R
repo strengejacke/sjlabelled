@@ -180,15 +180,12 @@ get_labels.default <- function(x, attr.only = FALSE, include.values = NULL,
 # See 'get_labels'
 #' @importFrom haven is_tagged_na na_tag
 get_labels_helper <- function(x, attr.only, include.values, include.non.labelled, drop.na, drop.unused) {
-  labels <- NULL
+
+  labels <- attr(x, "labels", exact = TRUE)
   add_vals <- NULL
 
-  # get label attribute, which may differ depending on the package
-  # used for reading the data
-  attr.string <- getValLabelAttribute(x)
-
   # if variable has no label attribute, use factor levels as labels
-  if (is.null(attr.string)) {
+  if (is.null(labels)) {
     # only use factor level if explicitly chosen by user
     if (!attr.only) {
       # get levels of vector
@@ -203,26 +200,24 @@ get_labels_helper <- function(x, attr.only, include.values, include.non.labelled
       }
     }
   } else {
-    # retrieve named labels
-    lab <- attr(x, attr.string, exact = T)
     # drop na?
-    if (drop.na) lab <- lab[!haven::is_tagged_na(lab)]
+    if (drop.na) labels <- labels[!haven::is_tagged_na(labels)]
 
     # check if we have anything
-    if (!is.null(lab) && length(lab) > 0) {
+    if (!is.null(labels) && length(labels) > 0) {
       # sort labels
-      lab <- lab[order(lab)]
+      labels <- labels[order(labels)]
 
       # retrieve values associated with labels. for character vectors
       # or factors with character levels, these values are character values,
       # else, they are numeric values
       if (is.character(x) || (is.factor(x) && !is.num.fac(x)))
-        values <- unname(lab)
+        values <- unname(labels)
       else
-        values <- as.numeric(unname(lab))
+        values <- as.numeric(unname(labels))
 
       # retrieve label values in correct order
-      labels <- names(lab)
+      labels <- names(labels)
 
       # do we have any tagged NAs? If so, get tagged NAs
       # and annotate them properly
@@ -285,9 +280,6 @@ get_labels_helper <- function(x, attr.only, include.values, include.non.labelled
       }
     }
   }
-
-  # foreign? then reverse order
-  if (is_foreign(attr.string)) labels <- rev(labels)
 
   # drop unused labels with no values in data
   if (drop.unused) {

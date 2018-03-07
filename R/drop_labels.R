@@ -19,8 +19,9 @@ drop_labels <- function(x, ..., drop.na = TRUE) {
 }
 
 drop_labels_helper <- function(x, drop.na) {
-  # get labels
-  tidy.labels <- get_labels(x, attr.only = T, include.values = "n", include.non.labelled = F, drop.na = T)
+  # retrieve named labels
+  tidy.labels <- attr(x, "labels", exact = T)
+  tidy.labels <- tidy.labels[!haven::is_tagged_na(tidy.labels)]
 
   # return x, if no attribute
   if (is.null(tidy.labels)) return(x)

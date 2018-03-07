@@ -216,20 +216,14 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
     return(x)
   }
 
-  # auto-detect variable label attribute
-  attr.string <- getValLabelAttribute(x)
-
   # get labelled / tagged NAs, maybe for later use
   current.na <- get_na(x)
-
-  # do we have any label attributes?
-  if (is.null(attr.string)) attr.string <- "labels"
 
   # check for null
   if (!is.null(labels)) {
     # if labels is empty string, remove labels attribute
     if (length(labels) == 1 && nchar(labels, keepNA = F) == 0) {
-      attr(x, attr.string) <- NULL
+      attr(x, "labels") <- NULL
 
       # set labels for character vectors here!
     } else if (is.character(x)) {
@@ -242,7 +236,7 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
           warning("`labels` must be a named vector.", call. = T)
         } else {
           names(dummy.labels) <- unname(labels)
-          attr(x, attr.string) <- dummy.labels
+          attr(x, "labels") <- dummy.labels
         }
       } else {
         warning("Character vectors can only get labels of same type.", call. = T)
@@ -296,13 +290,13 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
         if (anyNA(suppressWarnings(as.numeric(labels)))) {
           # here we have also non-numeric labels, so we set
           # names as character string
-          attr(x, attr.string) <- labels
+          attr(x, "labels") <- labels
         } else {
           # we have only numeric labels, so we set them
           # as numeric values
-          attr(x, attr.string) <- as.numeric(labels)
+          attr(x, "labels") <- as.numeric(labels)
         }
-        names(attr(x, attr.string)) <- as.character(names(labels))
+        names(attr(x, "labels")) <- as.character(names(labels))
         # check for valid length of labels
         # if amount of labels and values are equal,
         # we assume matching labels
@@ -312,14 +306,14 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
         # only has numeric character values. If yes, add values
         # as numeric labels-attribute
         if (is.numeric(values) || !anyNA(suppressWarnings(as.numeric(values))))
-          attr(x, attr.string) <- as.numeric(values)
+          attr(x, "labels") <- as.numeric(values)
         else
-          attr(x, attr.string) <- as.character(values)
+          attr(x, "labels") <- as.character(values)
 
         # do we have an ordered factor?
         if (is.ordered(x)) labels <- labels[order(levels(x))]
 
-        names(attr(x, attr.string)) <- labels
+        names(attr(x, "labels")) <- labels
         # check for valid length of labels
         # here, we have a smaller value range (i.e. less values)
         # than amount of labels
@@ -327,14 +321,14 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
         # do we want to force to set labels, even if we have more labels
         # than values in variable?
         if (force.labels) {
-          attr(x, attr.string) <- as.numeric(seq_len(lablen))
-          names(attr(x, attr.string)) <- labels
+          attr(x, "labels") <- as.numeric(seq_len(lablen))
+          names(attr(x, "labels")) <- labels
         } else {
           # we have more labels than values, so just take as many
           # labes as values are present
           message(sprintf("More labels than values of \"%s\". Using first %i labels.", name.string, valrange))
-          attr(x, attr.string) <- as.numeric(minval:maxval)
-          names(attr(x, attr.string)) <- labels[seq_len(valrange)]
+          attr(x, "labels") <- as.numeric(minval:maxval)
+          names(attr(x, "labels")) <- labels[seq_len(valrange)]
         }
         # value range is larger than amount of labels. we may
         # have not continuous value range, e.g. "-2" as filter and
@@ -356,23 +350,23 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
           }
 
           # set attributes
-          attr(x, attr.string) <- as.numeric(seq_len(valrange))
-          names(attr(x, attr.string)) <- labels
+          attr(x, "labels") <- as.numeric(seq_len(valrange))
+          names(attr(x, "labels")) <- labels
         } else {
           # tell user about modification
           message(sprintf("\"%s\" has more values than \"labels\", hence not all values are labelled.", name.string))
           # drop values with no associated labels
-          attr(x, attr.string) <- as.numeric(seq_len(length(labels)))
-          names(attr(x, attr.string)) <- labels
+          attr(x, "labels") <- as.numeric(seq_len(length(labels)))
+          names(attr(x, "labels")) <- labels
         }
       } else {
-        attr(x, attr.string) <- as.numeric(minval:maxval)
-        names(attr(x, attr.string)) <- labels
+        attr(x, "labels") <- as.numeric(minval:maxval)
+        names(attr(x, "labels")) <- labels
       }
     }
     # keep NA's?
     if (!drop.na && !is.null(current.na) && length(current.na) > 0)
-      attr(x, attr.string) <- c(attr(x, attr.string, exact = T), current.na)
+      attr(x, "labels") <- c(attr(x, "labels", exact = T), current.na)
   }
 
   x
@@ -411,7 +405,9 @@ get_value_range <- function(x) {
   # determine value range
   valrange <- maxval - minval + 1
   # return all
-  return(list(minval = minval,
-              maxval = maxval,
-              valrange = valrange))
+  list(
+    minval = minval,
+    maxval = maxval,
+    valrange = valrange
+  )
 }

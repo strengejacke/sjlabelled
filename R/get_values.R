@@ -68,17 +68,17 @@ get_values.default <- function(x, sort.val = TRUE, drop.na = FALSE) {
 }
 
 get_values_helper <- function(x, sort.val = TRUE, drop.na = FALSE) {
-  # haven or foreign?
-  attr.string <- getValLabelAttribute(x)
+  # get labels
+  labels <- attr(x, "labels", exact = T)
 
   # nothing found? then leave...
-  if (is.null(attr.string)) return(NULL)
+  if (is.null(labels)) return(NULL)
 
   # get values
   if (is.character(x) || (is.factor(x) && !is.num.fac(x)))
-    values <- unname(attr(x, attr.string, exact = T))
+    values <- unname(labels)
   else
-    values <- as.numeric(unname(attr(x, attr.string, exact = T)))
+    values <- as.numeric(unname(labels))
 
   # do we have any tagged NAs?
   if (any(haven::is_tagged_na(values)) && !drop.na) {
@@ -90,9 +90,6 @@ get_values_helper <- function(x, sort.val = TRUE, drop.na = FALSE) {
 
   # remove missing value codes?
   if (drop.na) values <- values[!is.na(values)]
-
-  # foreign? then reverse order
-  if (is_foreign(attr.string)) values <- rev(values)
 
   # return sorted
   values

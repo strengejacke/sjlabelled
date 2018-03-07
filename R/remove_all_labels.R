@@ -41,17 +41,9 @@ remove_all_labels.default <- function(x) {
 }
 
 remove_all_labels_helper <- function(x) {
-  # find label-attribute string
-  attr.string <- getValLabelAttribute(x)
-
   # remove attributes
-  if (!is.null(attr.string)) attr(x, attr.string) <- NULL
-
-  # find label-attribute string
-  attr.string <- getVarLabelAttribute(x)
-
-  # remove attributes
-  if (!is.null(attr.string)) attr(x, attr.string) <- NULL
+  attr(x, "label") <- NULL
+  attr(x, "labels") <- NULL
 
   # unclass, if labelled. labelled class may throw
   # errors / warnings, when not havin label attributes

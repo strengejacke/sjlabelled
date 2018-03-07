@@ -149,7 +149,7 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
   data.spss <- unlabel(data.spss)
 
   # convert atomic values to factors
-  if (atomic.to.fac) data.spss <- atomic_to_fac(data.spss, getValLabelAttribute(data.spss))
+  if (atomic.to.fac) data.spss <- atomic_to_fac(data.spss, "labels")
 
   # return data frame
   data.spss
@@ -220,7 +220,7 @@ read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, enc = NULL) {
   data <- unlabel(data)
 
   # convert atomic values to factors
-  if (atomic.to.fac) data <- atomic_to_fac(data, getValLabelAttribute(data))
+  if (atomic.to.fac) data <- atomic_to_fac(data, "labels")
 
   # return data frame
   data
@@ -248,7 +248,7 @@ read_stata <- function(path, atomic.to.fac = FALSE, enc = NULL) {
   data <- unlabel(data)
 
   # convert atomic values to factors
-  if (atomic.to.fac) data <- atomic_to_fac(data, getValLabelAttribute(data))
+  if (atomic.to.fac) data <- atomic_to_fac(data, "labels")
 
   # return data frame
   data

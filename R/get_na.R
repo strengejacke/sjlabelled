@@ -70,14 +70,8 @@ get_na.default <- function(x, as.tag = FALSE) {
 }
 
 get_na_helper <- function(x, as.tag) {
-  # haven or foreign?
-  attr.string <- getValLabelAttribute(x)
-
-  # have any attribute?
-  if (is.null(attr.string)) return(NULL)
-
   # get values
-  values <- attr(x, attr.string, exact = T)
+  values <- attr(x, "labels", exact = T)
 
   # any labelled?
   if (is.null(values)) return(NULL)
