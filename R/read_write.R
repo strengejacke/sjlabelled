@@ -149,7 +149,7 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
   data.spss <- unlabel(data.spss)
 
   # convert atomic values to factors
-  if (atomic.to.fac) data.spss <- atomic_to_fac(data.spss, "labels")
+  if (atomic.to.fac) data.spss <- atomic_to_fac(data.spss)
 
   # return data frame
   data.spss
@@ -159,41 +159,38 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
 # converts atomic numeric vectors into factors with
 # numerical factor levels
 #' @importFrom utils txtProgressBar setTxtProgressBar
-atomic_to_fac <- function(data.spss, attr.string) {
-  # check for valid attr.string
-  if (!is.null(attr.string)) {
-    # create progress bar
-    pb <- utils::txtProgressBar(min = 0, max = ncol(data.spss), style = 3)
-    # tell user...
-    message("Converting atomic to factors. Please wait...\n")
-    # iterate all columns
-    for (i in seq_len(ncol(data.spss))) {
-      # copy column to vector
-      x <- data.spss[[i]]
-      # capture value labels attribute first
-      labs <- attr(x, attr.string, exact = T)
-      # and save variable label, if any
-      lab <- attr(x, "label", exact = T)
-      # is atomic, which was factor in SPSS?
-      if (is.atomic(x) && !is.null(labs)) {
-        # so we have value labels (only typical for factors, not
-        # continuous variables) and a variable of type "atomic" (SPSS
-        # continuous variables would be imported as numeric) - this
-        # indicates we have a factor variable. now we convert to
-        # factor
-        x <- as.factor(x)
-        # set back labels attribute
-        attr(x, attr.string) <- labs
-        # any variable label?
-        if (!is.null(lab)) attr(x, "label") <- lab
-        # copy vector back to data frame
-        data.spss[[i]] <- x
-      }
-      # update progress bar
-      utils::setTxtProgressBar(pb, i)
+atomic_to_fac <- function(data.spss) {
+  # create progress bar
+  pb <- utils::txtProgressBar(min = 0, max = ncol(data.spss), style = 3)
+  # tell user...
+  message("Converting atomic to factors. Please wait...\n")
+  # iterate all columns
+  for (i in seq_len(ncol(data.spss))) {
+    # copy column to vector
+    x <- data.spss[[i]]
+    # capture value labels attribute first
+    labs <- attr(x, "labels", exact = T)
+    # and save variable label, if any
+    lab <- attr(x, "label", exact = T)
+    # is atomic, which was factor in SPSS?
+    if (is.atomic(x) && !is.null(labs)) {
+      # so we have value labels (only typical for factors, not
+      # continuous variables) and a variable of type "atomic" (SPSS
+      # continuous variables would be imported as numeric) - this
+      # indicates we have a factor variable. now we convert to
+      # factor
+      x <- as.factor(x)
+      # set back labels attribute
+      attr(x, "labels") <- labs
+      # any variable label?
+      if (!is.null(lab)) attr(x, "label") <- lab
+      # copy vector back to data frame
+      data.spss[[i]] <- x
     }
-    close(pb)
+    # update progress bar
+    utils::setTxtProgressBar(pb, i)
   }
+  close(pb)
 
   data.spss
 }
@@ -220,7 +217,7 @@ read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, enc = NULL) {
   data <- unlabel(data)
 
   # convert atomic values to factors
-  if (atomic.to.fac) data <- atomic_to_fac(data, "labels")
+  if (atomic.to.fac) data <- atomic_to_fac(data)
 
   # return data frame
   data
@@ -248,7 +245,7 @@ read_stata <- function(path, atomic.to.fac = FALSE, enc = NULL) {
   data <- unlabel(data)
 
   # convert atomic values to factors
-  if (atomic.to.fac) data <- atomic_to_fac(data, "labels")
+  if (atomic.to.fac) data <- atomic_to_fac(data)
 
   # return data frame
   data
