@@ -23,9 +23,6 @@
 #'          set any value of vector \code{label} to \code{""} to remove specific variable
 #'          label attributes from a data frame's variable.
 #' @param value See \code{label}.
-#' @param attr.string Attribute string for the variable label. \strong{Note:}
-#'          Usually, this argument should be ignored. It is only used internally
-#'          for the \code{\link{write_spss}} and \code{\link{write_stata}} functions.
 #'
 #' @return \code{x}, with variable label attribute(s), which contains the
 #'           variable name(s); or with removed label-attribute if
@@ -89,10 +86,7 @@
 #'   get_label()
 #'
 #' @export
-set_label <- function(x, label, attr.string = NULL) {
-
-  # still nothing found? then leave...
-  if (is.null(attr.string)) attr.string <- "label"
+set_label <- function(x, label) {
 
   # do we have all necessary arguments?
   if (!is.null(label) && !is.null(x)) {
@@ -118,22 +112,22 @@ set_label <- function(x, label, attr.string = NULL) {
           if (isempty(label[i])) {
             # empty label value means, remove
             # the label attribute
-            attr(x[[i]], attr.string) <- NULL
+            attr(x[[i]], "label") <- NULL
           } else {
             # set variable label
-            attr(x[[i]], attr.string) <- label[i]
+            attr(x[[i]], "label") <- label[i]
             # set names attribute. equals variable name
-            if (is.data.frame(x)) names(attr(x[[i]], attr.string)) <- cnames[i]
+            if (is.data.frame(x)) names(attr(x[[i]], "label")) <- cnames[i]
           }
         }
       }
     } else {
       if (isempty(label))
         # empty label, so remove label attribute
-        attr(x, attr.string) <- NULL
+        attr(x, "label") <- NULL
       else
         # set label attribute
-        attr(x, attr.string) <- label
+        attr(x, "label") <- label
     }
   }
   x
@@ -142,12 +136,12 @@ set_label <- function(x, label, attr.string = NULL) {
 
 #' @rdname set_label
 #' @export
-`set_label<-` <- function(x, attr.string = NULL, value) {
+`set_label<-` <- function(x, value) {
   UseMethod("set_label<-")
 }
 
 #' @export
-`set_label<-.default` <- function(x, attr.string = NULL, value) {
-  x <- set_label(x, value, attr.string)
+`set_label<-.default` <- function(x, value) {
+  x <- set_label(x, value)
   x
 }

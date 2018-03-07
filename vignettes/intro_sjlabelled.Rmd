@@ -13,12 +13,9 @@ vignette: >
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-Basically, this package covers two domains of functionality:
+This package provides functions to read and write data between R and other statistical software packages like _SPSS_, _SAS_ or _Stata_ and to work with labelled data; this includes easy ways to get and set label attributes, to convert labelled vectors into factors (and vice versa), or to deal with multiple declared missing values etc.
 
-  * Reading and writing data between R and other statistical software packages like _SPSS_, _SAS_ or _Stata_ and working with labelled data; this includes easy ways to get and set label attributes, to convert labelled vectors into factors (and vice versa), or to deal with multiple declared missing values etc.
-  * Data transformation tasks like recoding, dichotomizing or grouping variables, setting and replacing missing values. The data transformation functions also support labelled data.
-
-This vignette focusses on the first bullet point and gives an overview of functions to work with labelled data.
+This vignette gives an overview of functions to work with labelled data.
 
 # Labelled Data
 
@@ -53,44 +50,9 @@ as_factor(x)
 is.na(as_factor(x))
 ```
 
-
-## Labelled Data in Hmisc
-
-The **Hmisc**-package only supports variable labels. As additional information, it can also store a unit measure.
-
-```{r message=FALSE}
-library(Hmisc)
-x <- c(1, 2, 3, 4)
-label(x) <- "Variable label"
-units(x) <- "cm"
-str(x)
-```
-
-## Labelled Data in foreign
-
-The **foreign**-package stores value labels as `value.labels` attribute, while variable labels are stored as attribute of the data frame returned by the `read.spss()`-method.
-
-```{r eval=FALSE}
-library(foreign)
-efc <- read.spss("sample_dataset.sav", 
-                 to.data.frame = TRUE, 
-                 use.value.labels = FALSE, 
-                 reencode = "UTF-8")
-str(efc$e16sex)
-
-#> $e16sex  : atomic  2 2 2 2 2 2 1 2 2 2 ...
-#>  ..- attr(*, "value.labels")= Named chr  "2" "1"
-#>  .. ..- attr(*, "names")= chr  "female" "male"
-
-attr(efc, "variable.labels")['e16sex']
-
-#>            e16sex 
-#>  "elder's gender" 
-```
-
 ## Labelled Data in sjlabelled
 
-**sjlabelled** supports both label attributes in **haven**-style (`label` and `labels`) and **foreign**-style (`value.labels` and `variable.label`). You're not restricted to the `labelled` class for vectors when working with **sjlabelled** and labelled data. Hence, you can have vectors of common R classes and still use information like variable or value labels.
+**sjlabelled** supports label attributes in **haven**-style (`label` and `labels`). You're not restricted to the `labelled` class for vectors when working with **sjlabelled** and labelled data. Hence, you can have vectors of common R classes and still use information like variable or value labels.
 
 ```{r message=FALSE}
 library(sjlabelled)

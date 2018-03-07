@@ -23,7 +23,7 @@ In software like SPSS, it is common to have value and variable labels as variabl
 factor(c("low", "high", "mid", "high", "low"))
 ```
 
-Reading SPSS-data (from haven, foreign or sjlabelled), keeps the numeric values for variables and adds the value and variable labels as attributes. See following example from the sample-dataset efc, which is part of the **sjlabelled**-package:
+Reading SPSS-data with **haven** or **sjlabelled** keeps the numeric values for variables and adds the value and variable labels as attributes. See following example from the sample-dataset efc, which is part of the **sjlabelled**-package:
 
 ```{r}
 library(sjlabelled)
