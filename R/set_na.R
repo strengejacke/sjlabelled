@@ -55,7 +55,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag) {
     # now get values for this vector
     if (!isempty(val.match) && !isempty(names(val.match))) {
       # should be numeric, else we might have a factor
-      na.values <- suppressWarnings(as.numeric(names(val.match)))
+      na.values <- suppressWarnings(as.numeric(val.match))
       # if we have no NA, coercing to numeric worked. Now get these
       # NA values and remove value labels from vector
       if (!anyNA(na.values)) {
@@ -110,9 +110,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag) {
   removers <- which(get_values(x) %in% value)
 
   if (!is.null(removers) && !isempty(removers, first.only = T)) {
-    vl <- as.numeric(names(val.lab))
-    names(vl) <- unname(val.lab)
-    attr(x, "labels") <- vl[-removers]
+    attr(x, "labels") <- val.lab[-removers]
   }
 
   # if we have a factor, check if we have unused levels now due to NA
