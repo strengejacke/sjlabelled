@@ -51,7 +51,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag) {
   # find value of associated label then
   if (is.character(value)) {
     # get value labels that match the values which should be set to NA
-    val.match <- val.lab[val.lab %in% value]
+    val.match <- val.lab[names(val.lab) %in% value]
     # now get values for this vector
     if (!isempty(val.match) && !isempty(names(val.match))) {
       # should be numeric, else we might have a factor
