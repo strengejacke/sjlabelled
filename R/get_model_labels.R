@@ -79,8 +79,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, ...) {
     if (is.null(m[[x]])) {
       names(stats::coef(models[[x]]))[-1]
     } else {
-      terms <- unique(m[[x]]$term)
-      get_label(mf[[x]], def.value = terms)
+      get_label(mf[[x]], def.value = colnames(mf[[x]]))
     }
   }) %>% unlist()
 
