@@ -31,9 +31,8 @@
 #'
 #'
 #' @examples
-#' # ------------------------
-#' # zap_labels()
-#' # ------------------------
+#' # zap_labels() ----
+#'
 #' data(efc)
 #' str(efc$e42dep)
 #'
@@ -65,9 +64,9 @@
 #'   ) %>%
 #'   zap_labels()
 #'
-#' # ------------------------
-#' # drop_labels()
-#' # ------------------------
+#'
+#' # drop_labels() ----
+#'
 #' library(sjmisc)
 #' rp <- rec_pattern(1, 100)
 #' rp
@@ -95,14 +94,16 @@
 #' drop_labels(x)
 #' zap_na_tags(drop_labels(x))
 #'
-#' # ------------------------
-#' # fill_labels()
-#' # ------------------------
+#'
+#' # fill_labels() ----
+#'
 #' # create labelled integer, with tagged missings
 #' library(haven)
-#' x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
-#'               c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
-#'                 "Refused" = tagged_na("a"), "Not home" = tagged_na("z")))
+#' x <- labelled(
+#'   c(1:3, tagged_na("a", "c", "z"), 4:1),
+#'   c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
+#'     "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
+#'   )
 #' # get current values and labels
 #' x
 #' get_labels(x)
@@ -170,9 +171,11 @@ zap_unlabelled <- function(x, ...) {
 #'
 #' @examples
 #' library(haven)
-#' x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
-#'               c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
-#'                 "Refused" = tagged_na("a"), "Not home" = tagged_na("z")))
+#' x <- labelled(
+#'   c(1:3, tagged_na("a", "c", "z"), 4:1),
+#'   c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
+#'     "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
+#' )
 #' # get current NA values
 #' x
 #' get_na(x)
