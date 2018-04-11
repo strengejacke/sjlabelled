@@ -8,6 +8,7 @@
 ## Bug fixes
 
 * Fix issues with retrieving incorrect labels from `get_term_labels()` for models that used unlabelled data in combination with other contrasts than the default option.
+* `get_dv_labels()` no longer returns `"NULL"` for multivariate-response-models fitted with _brms_.
 
 # sjlabelled 1.0.8
 

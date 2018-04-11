@@ -172,10 +172,14 @@ get_dv_labels <- function(models, case = NULL, ...) {
   intercepts <- purrr::map(models, ~ dplyr::pull(get_model_frame(.x), var = 1))
   intercepts.names <-
     purrr::map(models, function(x) {
-      if (inherits(x, "brmsfit"))
-        deparse(stats::formula(x)$formula[[2L]])
-      else
+      if (inherits(x, "brmsfit")) {
+        if (is.null(stats::formula(x)$formula) && !is.null(stats::formula(x)$response))
+          paste(names(stats::formula(x)[[1]]), collapse = ", ")
+        else
+          deparse(stats::formula(x)$formula[[2L]])
+      } else {
         deparse(stats::formula(x)[[2L]])
+      }
     })
 
 
