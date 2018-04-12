@@ -16,6 +16,9 @@
 #' @param case Desired target case. Labels will automatically converted into the
 #'          specified character case. See \code{\link[snakecase]{to_any_case}} for
 #'          more details on this argument.
+#' @param prefix Indicates whether the value labels of categorical variables
+#'          should be prefixed, e.g. with the variable name or label. See
+#'          'Examples',
 #' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 #'        like \code{preprocess} or \code{postprocess}.
 #'
@@ -44,6 +47,12 @@
 #' fit <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
 #' get_term_labels(fit)
 #'
+#' # prefix value of categorical variables with variable name
+#' get_term_labels(fit, prefix = "varname")
+#'
+#' # prefix value of categorical variables with value label
+#' get_term_labels(fit, prefix = "label")
+#'
 #' # get label of dv
 #' get_dv_labels(fit)
 #'
@@ -60,7 +69,10 @@
 #' @importFrom stats model.frame coef
 #' @importFrom dplyr select slice
 #' @export
-get_term_labels <- function(models, mark.cat = FALSE, case = NULL, ...) {
+get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("none", "varname", "label"), ...) {
+
+  prefix <- match.arg(prefix)
+
   # to be generic, make sure argument is a list
   if (!inherits(models, "list")) models <- list(models)
 
@@ -148,10 +160,35 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, ...) {
   # check if attribute is requested
   if (mark.cat) attr(lbs, "category.value") <- fl
 
+  # prefix labels
+  if (prefix != "none")
+    lbs <- prepare.labels(lbs, catval = fl, style = prefix)
+
+
   # the vector now contains all possible labels, as named vector.
   # since ggplot uses named vectors as labels for axis-scales, matching
   # of labels is done automatically
   convert_case(lbs, case, ...)
+}
+
+
+prepare.labels <- function(x, catval, style = c("varname", "label")) {
+  x_var <- names(x[!catval])
+  x_val <- names(x[catval])
+
+  for (i in x_var) {
+    pos <- tidyselect::starts_with(i, vars = x_val)
+
+    if (!isempty(pos) && length(pos) > 0) {
+      match.vals <- x_val[pos]
+      if (style == "label")
+        x[match.vals] <- sprintf("%s: %s", x[i], x[match.vals])
+      else
+        x[match.vals] <- sprintf("%s: %s", i, x[match.vals])
+    }
+  }
+
+  x
 }
 
 

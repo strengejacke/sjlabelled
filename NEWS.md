@@ -5,6 +5,10 @@
 * Removed `set_note()` and `get_note()`, because there is already an R base function for this purpose: `comment()`.
 * Improved performance of functions, at the cost of removing support for the _foreign_ package. _sjlabelled_ now only supports labelled data from package _haven_.
 
+## Changes to functions
+
+* `get_term_labels()` gets a `prefix`-argument to prefix the returned labels of categorical variable either with the related variable name or label.
+
 ## Bug fixes
 
 * Fix issues with retrieving incorrect labels from `get_term_labels()` for models that used unlabelled data in combination with other contrasts than the default option.

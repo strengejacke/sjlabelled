@@ -5,7 +5,8 @@
 \alias{get_dv_labels}
 \title{Retrieve labels of model terms from regression models}
 \usage{
-get_term_labels(models, mark.cat = FALSE, case = NULL, ...)
+get_term_labels(models, mark.cat = FALSE, case = NULL, prefix = c("none",
+  "varname", "label"), ...)
 
 get_dv_labels(models, case = NULL, ...)
 }
@@ -23,6 +24,10 @@ a term's variable labels (attribute value is \code{FALSE}).}
 \item{case}{Desired target case. Labels will automatically converted into the
 specified character case. See \code{\link[snakecase]{to_any_case}} for
 more details on this argument.}
+
+\item{prefix}{Indicates whether the value labels of categorical variables
+should be prefixed, e.g. with the variable name or label. See
+'Examples',}
 
 \item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 like \code{preprocess} or \code{postprocess}.}
@@ -58,6 +63,12 @@ library(sjmisc)
 efc$c172code <- to_factor(efc$c172code)
 fit <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
 get_term_labels(fit)
+
+# prefix value of categorical variables with variable name
+get_term_labels(fit, prefix = "varname")
+
+# prefix value of categorical variables with value label
+get_term_labels(fit, prefix = "label")
 
 # get label of dv
 get_dv_labels(fit)
