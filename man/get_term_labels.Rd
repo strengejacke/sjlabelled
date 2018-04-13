@@ -26,8 +26,8 @@ specified character case. See \code{\link[snakecase]{to_any_case}} for
 more details on this argument.}
 
 \item{prefix}{Indicates whether the value labels of categorical variables
-should be prefixed, e.g. with the variable name or label. See
-'Examples',}
+should be prefixed, e.g. with the variable name or variable label.
+May be abbreviated. See 'Examples',}
 
 \item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 like \code{preprocess} or \code{postprocess}.}
