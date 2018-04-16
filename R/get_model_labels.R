@@ -210,7 +210,9 @@ get_dv_labels <- function(models, case = NULL, ...) {
   intercepts.names <-
     purrr::map(models, function(x) {
       if (inherits(x, "brmsfit")) {
-        if (is.null(stats::formula(x)$formula) && !is.null(stats::formula(x)$response))
+        if (is.null(stats::formula(x)$formula) && !is.null(stats::formula(x)$responses))
+          ## TODO directly use stats::formula(x)$responses
+          ## TODO probably create one item for each response
           paste(names(stats::formula(x)[[1]]), collapse = ", ")
         else
           deparse(stats::formula(x)$formula[[2L]])
