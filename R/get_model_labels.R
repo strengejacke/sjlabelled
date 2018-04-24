@@ -172,6 +172,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 }
 
 
+#' @importFrom tidyselect starts_with
 prepare.labels <- function(x, catval, style = c("varname", "label")) {
   x_var <- names(x[!catval])
   x_val <- names(x[catval])
@@ -211,9 +212,8 @@ get_dv_labels <- function(models, case = NULL, ...) {
     purrr::map(models, function(x) {
       if (inherits(x, "brmsfit")) {
         if (is.null(stats::formula(x)$formula) && !is.null(stats::formula(x)$responses))
-          ## TODO directly use stats::formula(x)$responses
           ## TODO probably create one item for each response
-          paste(names(stats::formula(x)[[1]]), collapse = ", ")
+          paste(stats::formula(x)$responses, collapse = ", ")
         else
           deparse(stats::formula(x)$formula[[2L]])
       } else {

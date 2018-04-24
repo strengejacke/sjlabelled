@@ -2,7 +2,7 @@
 
 ## General
 
-* Removed `set_note()` and `get_note()`, because there is already an R base function for this purpose: `comment()`.
+* Deprecated `set_note()` and `get_note()`, because there is already an R base function for this purpose: `comment()`.
 * Improved performance of functions, at the cost of removing support for the _foreign_ package. _sjlabelled_ now only supports labelled data from package _haven_.
 
 ## Changes to functions
