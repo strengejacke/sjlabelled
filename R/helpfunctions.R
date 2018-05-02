@@ -28,8 +28,10 @@ is.num.fac <- function(x) {
 }
 
 
-is.num.chr <- function(x) {
+#' @importFrom stats na.omit
+is.num.chr <- function(x, na.rm = FALSE) {
   # check if we have numeric character values only
+  if (na.rm) x <- stats::na.omit(x)
   !anyNA(suppressWarnings(as.numeric(x)))
 }
 

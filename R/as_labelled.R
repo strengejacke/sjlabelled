@@ -80,6 +80,25 @@ as_labelled_helper <- function(x, add.labels, add.class) {
   xna <- get_na(x)
   if (!isempty(xna)) x <- set.na(x, na = xna)
 
+  # is type of labels same as type of vector? typically, character
+  # vectors can have numeric labels or vice versa, numeric vectors
+  # have "numeric" labels as character strings. in this case,
+  # harmonize types of vector and labels, so haven doesn't complain
+
+  lt <- as.vector(attr(x, "labels", exact = TRUE))
+  if (!is.null(lt) && typeof(lt) != typeof(x)) {
+    lab.at <- attr(x, "labels", exact = TRUE)
+    nlab <- names(lab.at)
+    if (is.num.chr(lt, na.rm = TRUE)) {
+      lab.at <- as.numeric(lab.at)
+      names(lab.at) <- nlab
+    } else {
+      lab.at <- as.character(lab.at)
+      names(lab.at) <- nlab
+    }
+    attr(x, "labels") <- lab.at
+  }
+
   # get former class attributes
   xc <- class(x)
   if (add.class)

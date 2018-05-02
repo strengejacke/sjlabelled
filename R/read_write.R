@@ -286,6 +286,8 @@ write_sas <- function(x, path, drop.na = FALSE) {
 }
 
 
+#' @importFrom purrr map
+#' @importFrom tibble as_tibble
 #' @importFrom haven write_sav write_dta write_sas
 write_data <- function(x, path, type, version, drop.na) {
   # make sure to have tidy labels
@@ -293,7 +295,8 @@ write_data <- function(x, path, type, version, drop.na) {
   x <- tidy_labels(x)
 
   # convert data to labelled
-  x <- as_label(x, add.non.labelled = T, drop.na = drop.na)
+  # x <- as_label(x, add.non.labelled = T, drop.na = drop.na)
+  x <- as_labelled(x, add.labels = TRUE)
 
   # check for correct column names
   for (i in seq_len(ncol(x))) {

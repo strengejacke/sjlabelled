@@ -1,3 +1,13 @@
+# sjlabelled 1.0.11
+
+## General
+
+* `as_labelled()` now corrects inconsistent types between labels and variable values.
+
+## Bug fixes
+
+* `write_*()`-functions should now properly set labels for negative values.
+
 # sjlabelled 1.0.9
 
 ## General
