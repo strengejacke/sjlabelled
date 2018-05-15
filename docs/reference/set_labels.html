@@ -221,27 +221,27 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>40</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; # x &lt;integer&gt; 
-#&gt; # total N=40  valid N=40  mean=2.73  sd=1.04
+#&gt; # total N=40  valid N=40  mean=2.60  sd=1.03
 #&gt;  
 #&gt;   val frq raw.prc valid.prc cum.prc
-#&gt;     1   7    17.5      17.5    17.5
-#&gt;     2   7    17.5      17.5    35.0
-#&gt;     3  16    40.0      40.0    75.0
-#&gt;     4  10    25.0      25.0   100.0
-#&gt;  &lt;NA&gt;   0     0.0        NA      NA
+#&gt;     1   8      20        20      20
+#&gt;     2   8      20        20      40
+#&gt;     3  16      40        40      80
+#&gt;     4   8      20        20     100
+#&gt;  &lt;NA&gt;   0       0        NA      NA
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='no'>dummy</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span>))
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; # x &lt;integer&gt; 
-#&gt; # total N=40  valid N=40  mean=2.73  sd=1.04
+#&gt; # total N=40  valid N=40  mean=2.60  sd=1.03
 #&gt;  
 #&gt;  val    label frq raw.prc valid.prc cum.prc
-#&gt;    1 very low   7    17.5      17.5    17.5
-#&gt;    2      low   7    17.5      17.5    35.0
-#&gt;    3      mid  16    40.0      40.0    75.0
-#&gt;    4       hi  10    25.0      25.0   100.0
-#&gt;   NA       NA   0     0.0        NA      NA
+#&gt;    1 very low   8      20        20      20
+#&gt;    2      low   8      20        20      40
+#&gt;    3      mid  16      40        40      80
+#&gt;    4       hi   8      20        20     100
+#&gt;   NA       NA   0       0        NA      NA
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='co'># assign labels with named vector</span>
@@ -249,13 +249,13 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='no'>dummy</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"very low"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"very high"</span> <span class='kw'>=</span> <span class='fl'>4</span>))
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; # x &lt;integer&gt; 
-#&gt; # total N=40  valid N=40  mean=2.48  sd=1.24
+#&gt; # total N=40  valid N=40  mean=2.52  sd=1.28
 #&gt;  
 #&gt;  val     label frq raw.prc valid.prc cum.prc
 #&gt;    1  very low  14    35.0      35.0    35.0
 #&gt;    2         2   4    10.0      10.0    45.0
-#&gt;    3         3  11    27.5      27.5    72.5
-#&gt;    4 very high  11    27.5      27.5   100.0
+#&gt;    3         3   9    22.5      22.5    67.5
+#&gt;    4 very high  13    32.5      32.5   100.0
 #&gt;   NA        NA   0     0.0        NA      NA
 #&gt; 
 #&gt; </div><div class='input'>

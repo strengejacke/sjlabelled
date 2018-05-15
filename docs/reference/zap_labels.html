@@ -211,11 +211,10 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;   ..- attr(*, "names")= chr [1:2] "independent" "severe dependency"</div><div class='input'>
 <span class='co'># zap all labelled values</span>
 <span class='fu'>table</span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; 
-#&gt;   1   2   3   4 
-#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'>str</span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
-#&gt;  - attr(*, "label")= chr "elder's dependency"
-#&gt;  - attr(*, "labels")= Named num [1:2] 1 4
-#&gt;   ..- attr(*, "names")= chr [1:2] "independent" "severe dependency"</div><div class='input'>
+#&gt;   2   3 
+#&gt; 225 306 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; numeric(0)</div><div class='input'><span class='fu'>str</span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt;  num [1:908] 3 3 3 NA NA NA NA NA NA NA ...
+#&gt;  - attr(*, "labels")= Named num(0) 
+#&gt;   ..- attr(*, "names")= chr(0) </div><div class='input'>
 <span class='co'># zap all unlabelled values</span>
 <span class='fu'>table</span>(<span class='fu'>zap_unlabelled</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; 
 #&gt;   1   4 
@@ -234,16 +233,16 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
   <span class='fu'>zap_labels</span>()</div><div class='output co'>#&gt; # A tibble: 908 x 2
 #&gt;    c172code e42dep
 #&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1        2      3
-#&gt;  2        2      3
-#&gt;  3        1      3
-#&gt;  4        2      4
-#&gt;  5        2      4
-#&gt;  6        2      4
-#&gt;  7        2      4
-#&gt;  8        2      4
-#&gt;  9       NA      4
-#&gt; 10        2      4
+#&gt;  1       NA      3
+#&gt;  2       NA      3
+#&gt;  3       NA      3
+#&gt;  4       NA     NA
+#&gt;  5       NA     NA
+#&gt;  6       NA     NA
+#&gt;  7       NA     NA
+#&gt;  8       NA     NA
+#&gt;  9       NA     NA
+#&gt; 10       NA     NA
 #&gt; # ... with 898 more rows</div><div class='input'>
 
 <span class='co'># drop_labels() ----</span>
