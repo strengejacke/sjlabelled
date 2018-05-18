@@ -1,5 +1,7 @@
 # sjlabelled - Labelled Data Utility Functions <img src="man/figures/logo.png" align="right" />
 
+[![DOI](https://zenodo.org/badge/92868296.svg)](https://zenodo.org/badge/latestdoi/92868296)
+
 This package contains utility functions that are useful when working with labelled data (especially intended for people coming from 'SPSS', 'SAS' or 'Stata' and/or who are new to R).
 
 Basically, this package covers reading and writing data between other statistical packages (like 'SPSS') and R, based on the haven and foreign packages; hence, this package also includes functions to make working with labelled data easier. This includes easy ways to get, set or change value and variable label attributes, to convert labelled vectors into factors or numeric (and vice versa), or to deal with multiple declared missing values.
@@ -32,3 +34,6 @@ install.packages("sjlabelled")
 ## Citation
 
 In case you want / have to cite my package, please use `citation('sjlabelled')` for citation information. 
+
+[![DOI](https://zenodo.org/badge/92868296.svg)](https://zenodo.org/badge/latestdoi/92868296)
+
