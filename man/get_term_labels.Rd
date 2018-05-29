@@ -8,7 +8,7 @@
 get_term_labels(models, mark.cat = FALSE, case = NULL, prefix = c("none",
   "varname", "label"), ...)
 
-get_dv_labels(models, case = NULL, ...)
+get_dv_labels(models, case = NULL, multi.resp = FALSE, ...)
 }
 \arguments{
 \item{models}{One or more fitted regression models. May also be glm's or
@@ -31,6 +31,10 @@ May be abbreviated. See 'Examples',}
 
 \item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 like \code{preprocess} or \code{postprocess}.}
+
+\item{multi.resp}{Logical, if \code{TRUE} and \code{models} is a multivariate
+response model from a \code{brmsfit} object, then the labels for each
+dependent variable (multiple responses) are returned.}
 }
 \value{
 For \code{get_term_labels()}, a (named) character vector with

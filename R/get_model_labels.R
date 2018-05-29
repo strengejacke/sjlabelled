@@ -19,6 +19,9 @@
 #' @param prefix Indicates whether the value labels of categorical variables
 #'          should be prefixed, e.g. with the variable name or variable label.
 #'          May be abbreviated. See 'Examples',
+#' @param multi.resp Logical, if \code{TRUE} and \code{models} is a multivariate
+#'          response model from a \code{brmsfit} object, then the labels for each
+#'          dependent variable (multiple responses) are returned.
 #' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 #'        like \code{preprocess} or \code{postprocess}.
 #'
@@ -195,10 +198,11 @@ prepare.labels <- function(x, catval, style = c("varname", "label")) {
 
 #' @rdname get_term_labels
 #' @importFrom purrr map map2 flatten_chr
-#' @importFrom dplyr pull
+#' @importFrom dplyr pull select
 #' @importFrom stats model.frame
+#' @importFrom tibble has_name
 #' @export
-get_dv_labels <- function(models, case = NULL, ...) {
+get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, ...) {
 
   # to be generic, make sure argument is a list
 
@@ -207,13 +211,14 @@ get_dv_labels <- function(models, case = NULL, ...) {
 
   # get intercept vectors
 
-  intercepts <- purrr::map(models, ~ dplyr::pull(get_model_frame(.x), var = 1))
   intercepts.names <-
     purrr::map(models, function(x) {
       if (inherits(x, "brmsfit")) {
         if (is.null(stats::formula(x)$formula) && !is.null(stats::formula(x)$responses))
-          ## TODO probably create one item for each response
-          paste(stats::formula(x)$responses, collapse = ", ")
+          if (multi.resp)
+            stats::formula(x)$responses
+          else
+            paste(stats::formula(x)$responses, collapse = ", ")
         else
           deparse(stats::formula(x)$formula[[2L]])
       } else {
@@ -222,10 +227,23 @@ get_dv_labels <- function(models, case = NULL, ...) {
     })
 
 
+  mf <- purrr::map2(
+    models,
+    intercepts.names,
+    function(x, y) {
+      m <- get_model_frame(x)
+      y <- y[tibble::has_name(m, y)]
+      if (length(y) > 0)
+        dplyr::select(m, !! y)
+      else
+        m[[1]]
+    }
+  )
+
   # get all labels
 
   lbs <- purrr::map2(
-    intercepts,
+    mf,
     intercepts.names,
     ~ get_label(.x, def.value = .y)
   )
@@ -240,7 +258,7 @@ get_dv_labels <- function(models, case = NULL, ...) {
   # name. In such cases, the variable name might have more
   # than 1 element, and here we need to set a proper default
 
-  if (length(lbs) > length(models)) lbs <- "Dependent variable"
+  if (!multi.resp && length(lbs) > length(models)) lbs <- "Dependent variable"
 
   convert_case(lbs, case, ...)
 }

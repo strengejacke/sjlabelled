@@ -4,6 +4,10 @@
 
 * `as_labelled()` now corrects inconsistent types between labels and variable values.
 
+## Changes to functions
+
+* `get_dv_labels()` gets a `multi.resp`-argument to return each label of a multivariate response model (only for _brmsfit_ objects).
+
 ## Bug fixes
 
 * `write_*()`-functions should now properly set labels for negative values.
