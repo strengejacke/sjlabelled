@@ -74,46 +74,52 @@
 #'
 #' @export
 get_label <- function(x, ..., def.value = NULL, case = NULL) {
+  UseMethod("get_label")
+}
+
+
+#' @export
+get_label.data.frame <- function(x, ..., def.value = NULL, case = NULL) {
   # evaluate arguments, generate data
   x <- get_dot_data(x, dplyr::quos(...))
 
-  # do we have a df?
-  if (is.data.frame(x)) {
-    # iterate df
-    labels <- sapply(seq_along(x), function(i) {
+  sapply(seq_along(x), function(i) {
+    # get label
+    label <- attr(x[[i]], "label", exact = T)
 
-      # get label
-      label <- attr(x[[i]], "label", exact = T)
-
-      # any label?
-      if (!is.null(label)) {
-        # name label
-        names(label) <- colnames(x)[i]
-        # append to return result
-        return(convert_case(label, case))
-      } else if (!is.null(def.value)) {
+    # any label?
+    if (is.null(label)) {
+      if (!is.null(def.value)) {
         # def.value may also apply to data frame arguments,
         # so it can be greater than length one
         if (i <= length(def.value))
-          return(convert_case(def.value[i], case))
+          label <- def.value[i]
         else
-          return(convert_case(def.value, case))
+          label <- def.value
       } else {
-        return("")
+        label <- ""
       }
-    })
-  } else if (is.list(x)) {
-    # return attribute of all variables
-    labels <- convert_case(unlist(lapply(x, attr, "label", exact = T)), case)
-  } else {
-    # nothing found? then leave...
-    labels <- attr(x, "label", exact = T)
+    }
 
-    if (is.null(labels))
-      labels <- convert_case(def.value, case)
-    else
-      labels <- convert_case(labels, case)
-  }
+    names(label) <- colnames(x)[i]
+    # append to return result
+    convert_case(label, case)
+  })
+}
 
-  labels
+
+#' @export
+get_label.list <- function(x, def.value = NULL, case = NULL) {
+  convert_case(unlist(lapply(x, attr, "label", exact = T)), case)
+}
+
+
+#' @export
+get_label.default <- function(x, def.value = NULL, case = NULL) {
+  labels <- attr(x, "label", exact = T)
+
+  if (is.null(labels))
+    convert_case(def.value, case)
+  else
+    convert_case(labels, case)
 }
