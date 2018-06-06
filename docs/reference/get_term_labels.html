@@ -38,6 +38,7 @@
 <meta name="twitter:card" content="summary" />
 
 
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -62,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
       </span>
     </div>
 
@@ -132,7 +133,7 @@
     <pre class="usage"><span class='fu'>get_term_labels</span>(<span class='no'>models</span>, <span class='kw'>mark.cat</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>case</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"none"</span>,
   <span class='st'>"varname"</span>, <span class='st'>"label"</span>), <span class='no'>...</span>)
 
-<span class='fu'>get_dv_labels</span>(<span class='no'>models</span>, <span class='kw'>case</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>get_dv_labels</span>(<span class='no'>models</span>, <span class='kw'>case</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>multi.resp</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,6 +168,12 @@ May be abbreviated. See 'Examples',</p></td>
       <th>...</th>
       <td><p>Further arguments passed down to <code><a href='http://www.rdocumentation.org/packages/snakecase/topics/to_any_case'>to_any_case</a></code>,
 like <code>preprocess</code> or <code>postprocess</code>.</p></td>
+    </tr>
+    <tr>
+      <th>multi.resp</th>
+      <td><p>Logical, if <code>TRUE</code> and <code>models</code> is a multivariate
+response model from a <code>brmsfit</code> object, then the labels for each
+dependent variable (multiple responses) are returned.</p></td>
     </tr>
     </table>
     
@@ -249,7 +256,8 @@ like <code>preprocess</code> or <code>postprocess</code>.</p></td>
 #&gt;                                                     c172code3 
 #&gt;         "carer's level of education: high level of education" </div><div class='input'>
 <span class='co'># get label of dv</span>
-<span class='fu'>get_dv_labels</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; [1] "Total score BARTHEL INDEX"</div><div class='input'>
+<span class='fu'>get_dv_labels</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt;                    barthtot 
+#&gt; "Total score BARTHEL INDEX" </div><div class='input'>
 <span class='co'># create "labelled" plot</span>
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='fu'>library</span>(<span class='no'>broom</span>)

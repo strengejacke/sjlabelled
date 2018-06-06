@@ -27,8 +27,6 @@
 #'           If \code{x} is a single vector and has no label attribute, the value
 #'           of \code{def.value} will be returned (which is by default \code{NULL}).
 #'
-#' @details See 'Details' in \code{\link{get_labels}}.
-#'
 #' @note \code{\link{var_labels}} is an alternative way to set variable labels,
 #'       which follows the philosophy of tidyvers API design (data as first argument,
 #'       dots as value pairs indicating variables)
@@ -109,13 +107,13 @@ get_label.data.frame <- function(x, ..., def.value = NULL, case = NULL) {
 
 
 #' @export
-get_label.list <- function(x, def.value = NULL, case = NULL) {
+get_label.list <- function(x, ..., def.value = NULL, case = NULL) {
   convert_case(unlist(lapply(x, attr, "label", exact = T)), case)
 }
 
 
 #' @export
-get_label.default <- function(x, def.value = NULL, case = NULL) {
+get_label.default <- function(x, ..., def.value = NULL, case = NULL) {
   labels <- attr(x, "label", exact = T)
 
   if (is.null(labels))

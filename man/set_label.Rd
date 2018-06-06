@@ -41,12 +41,6 @@ This function adds variable labels as attribute
                is intended for use within pipe-workflows and has a tidyverse-consistent
                syntax (see 'Examples').
 }
-\details{
-See 'Details' in \code{\link{get_labels}}
-}
-\note{
-See 'Note' in \code{\link{get_labels}}
-}
 \examples{
 # manually set value and variable labels
 dummy <- sample(1:4, 40, replace = TRUE)

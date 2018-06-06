@@ -116,12 +116,17 @@ tidy_logistf_model <- function(model) {
 }
 
 
-#' @importFrom tibble rownames_to_column
+#' @importFrom tibble rownames_to_column has_name
 #' @importFrom rlang .data
 #' @importFrom dplyr select
 tidy_clm_model <- function(model) {
+  if (!tibble::has_name(model, "coefficients")) {
+    smry <- summary(model)
+  } else {
+    smry <- model
+  }
+
   # get estimates, as data frame
-  smry <- summary(model)
   est <- smry$coefficients %>%
     as.data.frame() %>%
     tibble::rownames_to_column(var = "term")

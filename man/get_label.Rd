@@ -34,9 +34,6 @@ A named character vector with all variable labels from the data frame or list;
 \description{
 This function returns the variable labels of labelled data.
 }
-\details{
-See 'Details' in \code{\link{get_labels}}.
-}
 \note{
 \code{\link{var_labels}} is an alternative way to set variable labels,
       which follows the philosophy of tidyvers API design (data as first argument,

@@ -31,18 +31,19 @@
 <meta property="og:title" content="Drop, add or convert (non-)labelled values — drop_labels" />
 
 <meta property="og:description" content="For (partially) labelled vectors, zap_labels() will replace
-               all values that have a value label attribute by NA;
+               all values that have a value label attribute with NA;
                zap_unlabelled(), as counterpart, will replace all values
-               that don't have a value label attribute by NA.
+               that don't have a value label attribute with NA.
                 
-               drop_labels() drops all value labels for unused values that have
-               no cases (counts) in a vector. fill_labels() is the
+               drop_labels() drops all value labels for unused values,
+               i.e. values that are not present in a vector. fill_labels() is the
                counterpart to drop_labels() and adds value labels to
                a partially labelled vector, i.e. if not all values are
                labelled, non-labelled values get labels." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -69,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
       </span>
     </div>
 
@@ -131,12 +132,12 @@
     <div class="ref-description">
     
     <p>For (partially) labelled vectors, <code>zap_labels()</code> will replace
-               all values that have a value label attribute by <code>NA</code>;
+               all values that have a value label attribute with <code>NA</code>;
                <code>zap_unlabelled()</code>, as counterpart, will replace all values
-               that <em>don't</em> have a value label attribute by <code>NA</code>.
+               that <em>don't</em> have a value label attribute with <code>NA</code>.
                <br /> <br />
-               <code>drop_labels()</code> drops all value labels for unused values that have
-               no cases (counts) in a vector. <code>fill_labels()</code> is the
+               <code>drop_labels()</code> drops all value labels for unused values,
+               i.e. values that are not present in a vector. <code>fill_labels()</code> is the
                counterpart to <code>drop_labels()</code> and adds value labels to
                a partially labelled vector, i.e. if not all values are
                labelled, non-labelled values get labels.</p>
@@ -211,10 +212,11 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;   ..- attr(*, "names")= chr [1:2] "independent" "severe dependency"</div><div class='input'>
 <span class='co'># zap all labelled values</span>
 <span class='fu'>table</span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; 
-#&gt;   2   3 
-#&gt; 225 306 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; numeric(0)</div><div class='input'><span class='fu'>str</span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt;  num [1:908] 3 3 3 NA NA NA NA NA NA NA ...
-#&gt;  - attr(*, "labels")= Named num(0) 
-#&gt;   ..- attr(*, "names")= chr(0) </div><div class='input'>
+#&gt;   1   2   3   4 
+#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'>str</span>(<span class='fu'>zap_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
+#&gt;  - attr(*, "label")= chr "elder's dependency"
+#&gt;  - attr(*, "labels")= Named num [1:2] 1 4
+#&gt;   ..- attr(*, "names")= chr [1:2] "independent" "severe dependency"</div><div class='input'>
 <span class='co'># zap all unlabelled values</span>
 <span class='fu'>table</span>(<span class='fu'>zap_unlabelled</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; 
 #&gt;   1   4 
@@ -233,16 +235,16 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
   <span class='fu'>zap_labels</span>()</div><div class='output co'>#&gt; # A tibble: 908 x 2
 #&gt;    c172code e42dep
 #&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1       NA      3
-#&gt;  2       NA      3
-#&gt;  3       NA      3
-#&gt;  4       NA     NA
-#&gt;  5       NA     NA
-#&gt;  6       NA     NA
-#&gt;  7       NA     NA
-#&gt;  8       NA     NA
-#&gt;  9       NA     NA
-#&gt; 10       NA     NA
+#&gt;  1        2      3
+#&gt;  2        2      3
+#&gt;  3        1      3
+#&gt;  4        2      4
+#&gt;  5        2      4
+#&gt;  6        2      4
+#&gt;  7        2      4
+#&gt;  8        2      4
+#&gt;  9       NA      4
+#&gt; 10        2      4
 #&gt; # ... with 898 more rows</div><div class='input'>
 
 <span class='co'># drop_labels() ----</span>

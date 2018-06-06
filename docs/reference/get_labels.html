@@ -36,6 +36,7 @@
 <meta name="twitter:card" content="summary" />
 
 
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -60,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
       </span>
     </div>
 
@@ -182,43 +183,6 @@ the return value.</p></td>
           labels, if <code>x</code> is a variable;
           or <code>NULL</code> if no value label attribute was found.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This package can add (and read) value and variable labels either in <a href='https://CRAN.R-project.org/package=foreign'><span class="pkg">foreign</span></a>
-           package style (attributes are named <em>value.labels</em> and <em>variable.label</em>)
-           or in <a href='https://CRAN.R-project.org/package=haven'><span class="pkg">haven</span></a> package style (attributes are named <em>labels</em> and
-           <em>label</em>). By default, the <span class="pkg">haven</span> package style is used.
-           <br /> <br />
-           Working with labelled data is a key feature of the <a href='https://CRAN.R-project.org/package=sjPlot'><span class="pkg">sjPlot</span></a> package,
-           which accesses these attributes to automatically read label attributes
-           for labelling axis categories and titles or table rows and columns
-           in graphical or tabular outputs.
-           <br /> <br />
-           When working with labelled data, you can, e.g., use
-           <code><a href='get_label.html'>get_label</a></code> or <code>get_labels</code>
-           to get a vector of value and variable labels, which can then be
-           used with other functions like <code>barplot</code> etc.
-           See 'Examples'. Furthermore, value and variable labels are used
-           when saving data, e.g. to SPSS (see <code><a href='write_spss.html'>write_spss</a></code>),
-           which means that the written SPSS file contains proper labels
-           for each variable.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>This function works with vectors that have value and variable
-       label attributes (as provided, for instance, by <code><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></code>
-       objects). Adding label attributes is automatically done when importing data sets
-       with the <code><a href='read_spss.html'>read_spss</a></code>, <code><a href='read_spss.html'>read_sas</a></code> or <code><a href='read_spss.html'>read_stata</a></code>
-       functions. Labels can also manually be added using the <code><a href='set_labels.html'>set_labels</a></code>
-       and <code><a href='set_label.html'>set_label</a></code> functions. If vectors <em>do not</em> have
-       label attributes, either factor-levels or the numeric values
-       of the vector are returned as labels.
-       <br /> <br />
-       Most functions of the <a href='https://CRAN.R-project.org/package=sjPlot'><span class="pkg">sjPlot</span></a> package make use of value and variable
-       labels to automatically label axes, legend or title labels in plots
-       (<code>sjp.</code>-functions) respectively column or row headers in table
-       outputs (<code>sjt.</code>-functions).</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>See vignette <a href='../doc/intro_sjlabelled.html'>Labelled Data and the sjlabelled-Package</a>
@@ -320,10 +284,6 @@ the return value.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

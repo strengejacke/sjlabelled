@@ -40,6 +40,7 @@
 <meta name="twitter:card" content="summary" />
 
 
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -64,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
       </span>
     </div>
 
@@ -178,12 +179,12 @@ value label, but will become the value label itself). The
 )
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
 #&gt; # x &lt;integer&gt; 
-#&gt; # total N=20  valid N=20  mean=3.20  sd=1.44
+#&gt; # total N=20  valid N=20  mean=3.40  sd=1.23
 #&gt;  
 #&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   4      20        20      20
-#&gt;    2    ..   2      10        10      30
-#&gt;    3    ..   4      20        20      50
+#&gt;    1   low   2      10        10      10
+#&gt;    2    ..   2      10        10      20
+#&gt;    3    ..   6      30        30      50
 #&gt;    4    ..   6      30        30      80
 #&gt;    5  high   4      20        20     100
 #&gt;   NA    NA   0       0        NA      NA
@@ -192,12 +193,12 @@ value label, but will become the value label itself). The
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='no'>x</span>)
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; 
 #&gt; # x &lt;integer&gt; 
-#&gt; # total N=20  valid N=20  mean=3.20  sd=1.44
+#&gt; # total N=20  valid N=20  mean=3.40  sd=1.23
 #&gt;  
 #&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   4      20        20      20
-#&gt;    2  .._2   2      10        10      30
-#&gt;    3  .._3   4      20        20      50
+#&gt;    1   low   2      10        10      10
+#&gt;    2  .._2   2      10        10      20
+#&gt;    3  .._3   6      30        30      50
 #&gt;    4  .._4   6      30        30      80
 #&gt;    5  high   4      20        20     100
 #&gt;   NA    NA   0       0        NA      NA
@@ -206,12 +207,12 @@ value label, but will become the value label itself). The
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"."</span>)
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; 
 #&gt; # x &lt;integer&gt; 
-#&gt; # total N=20  valid N=20  mean=3.20  sd=1.44
+#&gt; # total N=20  valid N=20  mean=3.40  sd=1.23
 #&gt;  
 #&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   4      20        20      20
-#&gt;    2  ...2   2      10        10      30
-#&gt;    3  ...3   4      20        20      50
+#&gt;    1   low   2      10        10      10
+#&gt;    2  ...2   2      10        10      20
+#&gt;    3  ...3   6      30        30      50
 #&gt;    4  ...4   6      30        30      80
 #&gt;    5  high   4      20        20     100
 #&gt;   NA    NA   0       0        NA      NA
@@ -220,12 +221,12 @@ value label, but will become the value label itself). The
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='no'>x</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; 
 #&gt; # x &lt;integer&gt; 
-#&gt; # total N=20  valid N=20  mean=3.20  sd=1.44
+#&gt; # total N=20  valid N=20  mean=3.40  sd=1.23
 #&gt;  
 #&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   4      20        20      20
-#&gt;    2     2   2      10        10      30
-#&gt;    3     3   4      20        20      50
+#&gt;    1   low   2      10        10      10
+#&gt;    2     2   2      10        10      20
+#&gt;    3     3   6      30        30      50
 #&gt;    4     4   6      30        30      80
 #&gt;    5  high   4      20        20     100
 #&gt;   NA    NA   0       0        NA      NA

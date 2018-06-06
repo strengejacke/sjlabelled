@@ -27,10 +27,3 @@ with their value labels. See 'Examples' and \code{\link{get_na}}.}
 These functions write the content of a data frame to an SPSS, SAS or
                Stata-file.
 }
-\note{
-You don't need to take care whether variables have been imported with
-        the \code{read_*} function from this package or from \pkg{haven}
-        or even the \pkg{foreign} package, or if you have imported data and
-        created new variables. These functions do all necessary data preparation
-        to write a properly labelled data file.
-}

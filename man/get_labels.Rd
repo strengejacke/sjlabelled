@@ -16,13 +16,13 @@ with values label attributes. If \code{x} has no label attributes,
 factor levels are returned. See 'Examples'.}
 
 \item{attr.only}{Logical, if \code{TRUE}, labels are only searched for
-in the the vector's \code{\link{attributes}}; else, if \code{attr.only = FALSE}
+in the the vector's \code{attributes}; else, if \code{attr.only = FALSE}
 and \code{x} has no label attributes, factor levels or string values
 are returned. See 'Examples'.}
 
 \item{include.values}{String, indicating whether the values associated with the
 value labels are returned as well. If \code{include.values = "as.name"}
-(or \code{include.values = "n"}), values are set as \code{\link{names}}
+(or \code{include.values = "n"}), values are set as \code{names}
 attribute of the returned object. If \code{include.values = "as.prefix"}
 (or \code{include.values = "p"}), values are included as prefix
 to each label. See 'Examples'.}
@@ -46,41 +46,6 @@ Either a list with all value labels from all variables if \code{x}
 }
 \description{
 This function returns the value labels of labelled data.
-}
-\details{
-This package can add (and read) value and variable labels either in \CRANpkg{foreign}
-           package style (attributes are named \emph{value.labels} and \emph{variable.label})
-           or in \CRANpkg{haven} package style (attributes are named \emph{labels} and
-           \emph{label}). By default, the \pkg{haven} package style is used.
-           \cr \cr
-           Working with labelled data is a key feature of the \CRANpkg{sjPlot} package,
-           which accesses these attributes to automatically read label attributes
-           for labelling axis categories and titles or table rows and columns
-           in graphical or tabular outputs.
-           \cr \cr
-           When working with labelled data, you can, e.g., use
-           \code{\link{get_label}} or \code{\link{get_labels}}
-           to get a vector of value and variable labels, which can then be
-           used with other functions like \code{\link{barplot}} etc.
-           See 'Examples'. Furthermore, value and variable labels are used
-           when saving data, e.g. to SPSS (see \code{\link{write_spss}}),
-           which means that the written SPSS file contains proper labels
-           for each variable.
-}
-\note{
-This function works with vectors that have value and variable
-       label attributes (as provided, for instance, by \code{\link[haven]{labelled}}
-       objects). Adding label attributes is automatically done when importing data sets
-       with the \code{\link{read_spss}}, \code{\link{read_sas}} or \code{\link{read_stata}}
-       functions. Labels can also manually be added using the \code{\link{set_labels}}
-       and \code{\link{set_label}} functions. If vectors \emph{do not} have
-       label attributes, either factor-levels or the numeric values
-       of the vector are returned as labels.
-       \cr \cr
-       Most functions of the \CRANpkg{sjPlot} package make use of value and variable
-       labels to automatically label axes, legend or title labels in plots
-       (\code{sjp.}-functions) respectively column or row headers in table
-       outputs (\code{sjt.}-functions).
 }
 \examples{
 # import SPSS data set

@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <h1>Working with Labelled Data</h1>
                         <h4 class="author">Daniel Lüdecke</h4>
             
-            <h4 class="date">2018-05-16</h4>
+            <h4 class="date">2018-06-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/master/vignettes/labelleddata.Rmd"><code>vignettes/labelleddata.Rmd</code></a></small>
       <div class="hidden name"><code>labelleddata.Rmd</code></div>
@@ -100,25 +100,25 @@
 <h1 class="hasAnchor">
 <a href="#labelled-data" class="anchor"></a>Labelled Data</h1>
 <p>In software like SPSS, it is common to have value and variable labels as variable attributes. Variable values, even if categorical, are mostly numeric. In R, however, you may use labels as values directly:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"mid"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>))
-<span class="co">#&gt; [1] low  high mid  high low </span>
-<span class="co">#&gt; Levels: high low mid</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"mid"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>))</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; [1] low  high mid  high low </span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Levels: high low mid</span></a></code></pre></div>
 <p>Reading SPSS-data with <strong>haven</strong> or <strong>sjlabelled</strong> keeps the numeric values for variables and adds the value and variable labels as attributes. See following example from the sample-dataset efc, which is part of the <strong>sjlabelled</strong>-package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjlabelled)
-<span class="kw">data</span>(efc)
-<span class="kw">str</span>(efc<span class="op">$</span>e42dep)
-<span class="co">#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...</span>
-<span class="co">#&gt;  - attr(*, "label")= chr "elder's dependency"</span>
-<span class="co">#&gt;  - attr(*, "labels")= Named num [1:4] 1 2 3 4</span>
-<span class="co">#&gt;   ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(sjlabelled)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">data</span>(efc)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">str</span>(efc<span class="op">$</span>e42dep)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  - attr(*, "label")= chr "elder's dependency"</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  - attr(*, "labels")= Named num [1:4] 1 2 3 4</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;   ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"</span></a></code></pre></div>
 <p>While all plotting and table functions of the <a href="https://cran.r-project.org/package=sjPlot">sjPlot-package</a> make use of these attributes, many packages and/or functions do not consider these attributes, e.g. R base graphics:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sjlabelled)
-<span class="kw">data</span>(efc)
-<span class="kw">barplot</span>(
-  <span class="kw">table</span>(efc<span class="op">$</span>e42dep, efc<span class="op">$</span>e16sex), 
-  <span class="dt">beside =</span> T, 
-  <span class="dt">legend.text =</span> T
-)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(sjlabelled)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">data</span>(efc)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">barplot</span>(</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="kw">table</span>(efc<span class="op">$</span>e42dep, efc<span class="op">$</span>e16sex), </a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="dt">beside =</span> T, </a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  <span class="dt">legend.text =</span> T</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">)</a></code></pre></div>
 <p><img src="labelleddata_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
 <p>As you can see in the above figure, the plot has neither axis nor legend labels.</p>
 </div>
@@ -126,12 +126,12 @@
 <h1 class="hasAnchor">
 <a href="#adding-value-labels-as-factor-values" class="anchor"></a>Adding value labels as factor values</h1>
 <p><code><a href="../reference/as_label.html">as_label()</a></code> is a sjlabelled-function that converts a numeric variable into a factor and sets attribute-value-labels as factor levels. When using factors with valued levels, the bar plot will be labelled.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(
-  <span class="kw">table</span>(<span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e42dep),
-        <span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e16sex)), 
-  <span class="dt">beside =</span> T, 
-  <span class="dt">legend.text =</span> T
-)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">barplot</span>(</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="kw">table</span>(<span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e42dep),</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">        <span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e16sex)), </a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="dt">beside =</span> T, </a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="dt">legend.text =</span> T</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">)</a></code></pre></div>
 <p><img src="labelleddata_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 </div>
 <div id="getting-and-setting-value-and-variable-labels" class="section level1">
@@ -149,13 +149,13 @@
 <code><a href="../reference/set_labels.html">set_labels()</a></code> to set value labels (add them as vector attribute)</li>
 </ul>
 <p>With this function, you can easily add titles to plots dynamically, i.e. depending on the variable that is plotted.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(
-  <span class="kw">table</span>(<span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e42dep),
-        <span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e16sex)), 
-  <span class="dt">beside =</span> T, 
-  <span class="dt">legend.text =</span> T,
-  <span class="dt">main =</span> <span class="kw"><a href="../reference/get_label.html">get_label</a></span>(efc<span class="op">$</span>e42dep)
-)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">barplot</span>(</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="kw">table</span>(<span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e42dep),</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">        <span class="kw"><a href="../reference/as_label.html">as_label</a></span>(efc<span class="op">$</span>e16sex)), </a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="dt">beside =</span> T, </a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  <span class="dt">legend.text =</span> T,</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="dt">main =</span> <span class="kw"><a href="../reference/get_label.html">get_label</a></span>(efc<span class="op">$</span>e42dep)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">)</a></code></pre></div>
 <p><img src="labelleddata_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 </div>
 <div id="restore-labels-from-subsetted-data" class="section level1">
@@ -166,44 +166,44 @@
 <div id="losing-labels-during-subset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#losing-labels-during-subset" class="anchor"></a>Losing labels during subset</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">efc.sub &lt;-<span class="st"> </span><span class="kw">subset</span>(efc, <span class="dt">subset =</span> e16sex <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">8</span>))
-<span class="kw">str</span>(efc.sub)
-<span class="co">#&gt; 'data.frame':    296 obs. of  5 variables:</span>
-<span class="co">#&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...</span>
-<span class="co">#&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...</span>
-<span class="co">#&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...</span>
-<span class="co">#&gt;  $ c83cop2: num  2 4 2 2 2 2 1 3 2 2 ...</span>
-<span class="co">#&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">efc.sub &lt;-<span class="st"> </span><span class="kw">subset</span>(efc, <span class="dt">subset =</span> e16sex <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">str</span>(efc.sub)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; 'data.frame':    296 obs. of  5 variables:</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  $ c83cop2: num  2 4 2 2 2 2 1 3 2 2 ...</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</span></a></code></pre></div>
 </div>
 <div id="add-back-labels" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-back-labels" class="anchor"></a>Add back labels</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">efc.sub &lt;-<span class="st"> </span><span class="kw"><a href="../reference/copy_labels.html">copy_labels</a></span>(efc.sub, efc)
-<span class="kw">str</span>(efc.sub)
-<span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    296 obs. of  5 variables:</span>
-<span class="co">#&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "elder' age"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "e17age"</span>
-<span class="co">#&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "elder's dependency"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "e42dep"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr  "independent" "slightly dependent" "moderately dependent" "severely dependent"</span>
-<span class="co">#&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "do you feel you cope well as caregiver?"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "c82cop1"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr  "never" "sometimes" "often" "always"</span>
-<span class="co">#&gt;  $ c83cop2: num  2 4 2 2 2 2 1 3 2 2 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "do you find caregiving too demanding?"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "c83cop2"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr  "Never" "Sometimes" "Often" "Always"</span>
-<span class="co">#&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "does caregiving cause difficulties in your relationship with your friends?"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "c84cop3"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr  "Never" "Sometimes" "Often" "Always"</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">efc.sub &lt;-<span class="st"> </span><span class="kw"><a href="../reference/copy_labels.html">copy_labels</a></span>(efc.sub, efc)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">str</span>(efc.sub)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    296 obs. of  5 variables:</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;   ..- attr(*, "label")= Named chr "elder' age"</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;   .. ..- attr(*, "names")= chr "e17age"</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;   ..- attr(*, "label")= Named chr "elder's dependency"</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;   .. ..- attr(*, "names")= chr "e42dep"</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;   .. ..- attr(*, "names")= chr  "independent" "slightly dependent" "moderately dependent" "severely dependent"</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;   ..- attr(*, "label")= Named chr "do you feel you cope well as caregiver?"</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt;   .. ..- attr(*, "names")= chr "c82cop1"</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt;   .. ..- attr(*, "names")= chr  "never" "sometimes" "often" "always"</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt;  $ c83cop2: num  2 4 2 2 2 2 1 3 2 2 ...</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt;   ..- attr(*, "label")= Named chr "do you find caregiving too demanding?"</span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co">#&gt;   .. ..- attr(*, "names")= chr "c83cop2"</span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span></a>
+<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="co">#&gt;   .. ..- attr(*, "names")= chr  "Never" "Sometimes" "Often" "Always"</span></a>
+<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">#&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</span></a>
+<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt;   ..- attr(*, "label")= Named chr "does caregiving cause difficulties in your relationship with your friends?"</span></a>
+<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">#&gt;   .. ..- attr(*, "names")= chr "c84cop3"</span></a>
+<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span></a>
+<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt;   .. ..- attr(*, "names")= chr  "Never" "Sometimes" "Often" "Always"</span></a></code></pre></div>
 </div>
 </div>
 <div id="conclusion" class="section level1">

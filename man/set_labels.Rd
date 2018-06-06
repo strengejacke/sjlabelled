@@ -23,7 +23,7 @@ See 'Examples'.}
   \item if \code{labels} is \strong{not} a \emph{named vector}, its length must equal the value range of \code{x}, i.e. if \code{x} has values from 1 to 3, \code{labels} should have a length of 3;
   \item if length of \code{labels} is intended to differ from length of unique values of \code{x}, a warning is given. You can still add missing labels with the \code{force.labels} or \code{force.values} arguments; see 'Note'.
   \item if \code{labels} \strong{is} a \emph{named vector}, value labels will be set accordingly, even if \code{x} has a different length of unique values. See 'Note' and 'Examples'.
-  \item if \code{x} is a data frame, \code{labels} may also be a \code{\link{list}} of (named) character vectors;
+  \item if \code{x} is a data frame, \code{labels} may also be a \code{list} of (named) character vectors;
   \item if \code{labels} is a \code{list}, it must have the same length as number of columns of \code{x};
   \item if \code{labels} is a vector and \code{x} is a data frame, \code{labels} will be applied to each column of \code{x}.
   }
@@ -57,9 +57,6 @@ This function adds labels as attribute (named \code{"labels"})
                data frame or a list-object. A use-case is, for instance, the
                \CRANpkg{sjPlot}-package, which supports labelled data and automatically
                assigns labels to axes or legends in plots or to be used in tables.
-}
-\details{
-See 'Details' in \code{\link{get_labels}}.
 }
 \note{
 \itemize{

@@ -28,10 +28,6 @@
 #'           variable name(s); or with removed label-attribute if
 #'           \code{label = ""}.
 #'
-#' @details See 'Details' in \code{\link{get_labels}}
-#'
-#' @note See 'Note' in \code{\link{get_labels}}
-#'
 #' @examples
 #' # manually set value and variable labels
 #' dummy <- sample(1:4, 40, replace = TRUE)

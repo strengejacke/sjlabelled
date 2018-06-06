@@ -6,4 +6,4 @@ bibentry(bibtype="manual",
          author = person("Daniel", "Lüdecke"),
          year = year,
          url = "https://CRAN.R-project.org/package=sjlabelled",
-         doi = "10.5281/zenodo.1249216")
+         doi = "10.5281/zenodo.1249215")

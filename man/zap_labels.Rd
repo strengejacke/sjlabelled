@@ -45,12 +45,12 @@ See \code{\link{get_na}} for more details on tagged NA values.}
 }
 \description{
 For (partially) labelled vectors, \code{zap_labels()} will replace
-               all values that have a value label attribute by \code{NA};
+               all values that have a value label attribute with \code{NA};
                \code{zap_unlabelled()}, as counterpart, will replace all values
-               that \emph{don't} have a value label attribute by \code{NA}.
+               that \emph{don't} have a value label attribute with \code{NA}.
                \cr \cr
-               \code{drop_labels()} drops all value labels for unused values that have
-               no cases (counts) in a vector. \code{fill_labels()} is the
+               \code{drop_labels()} drops all value labels for unused values,
+               i.e. values that are not present in a vector. \code{fill_labels()} is the
                counterpart to \code{drop_labels()} and adds value labels to
                a partially labelled vector, i.e. if not all values are
                labelled, non-labelled values get labels.

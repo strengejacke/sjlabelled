@@ -29,7 +29,7 @@ This function retrieves the values associated with value labels
 \details{
 \code{\link[haven]{labelled}} vectors are numeric by default (when imported with read-functions
            like \code{\link{read_spss}}) and have variable and value labels attributes.
-           The value labels are associated with those values from the labelled vector.
+           The value labels are associated with the values from the labelled vector.
            This function returns the values associated with the vector's value labels,
            which may differ from actual values in the vector (e.g. if not all
            values have a related label).

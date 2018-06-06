@@ -37,6 +37,7 @@
 <meta name="twitter:card" content="summary" />
 
 
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -61,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
       </span>
     </div>
 
@@ -180,8 +181,10 @@ get value labels.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>sjmisc</span>)
-<span class='fu'>data</span>(<span class='no'>efc</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>sjmisc</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘sjmisc’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:sjlabelled’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    is_float</span></div><div class='input'><span class='fu'>data</span>(<span class='no'>efc</span>)
 <span class='co'># normal factor conversion, loses value attributes</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.factor</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)
 <span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
@@ -197,17 +200,16 @@ get value labels.</p></td>
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='co'># factor conversion, which keeps value attributes</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_factor</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)
-<span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
-#&gt; # elder's dependency (x) &lt;categorical&gt; 
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_factor</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("as_factor"): no applicable method for 'as_factor' applied to an object of class "c('double', 'numeric')"</span></div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
+#&gt; # x &lt;categorical&gt; 
 #&gt; # total N=908  valid N=901  mean=2.94  sd=0.94
 #&gt;  
-#&gt;  val                label frq raw.prc valid.prc cum.prc
-#&gt;    1          independent  66    7.27      7.33    7.33
-#&gt;    2   slightly dependent 225   24.78     24.97   32.30
-#&gt;    3 moderately dependent 306   33.70     33.96   66.26
-#&gt;    4   severely dependent 304   33.48     33.74  100.00
-#&gt;   NA                   NA   7    0.77        NA      NA
+#&gt;   val frq raw.prc valid.prc cum.prc
+#&gt;     1  66    7.27      7.33    7.33
+#&gt;     2 225   24.78     24.97   32.30
+#&gt;     3 306   33.70     33.96   66.26
+#&gt;     4 304   33.48     33.74  100.00
+#&gt;  &lt;NA&gt;   7    0.77        NA      NA
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='co'># create parially labelled vector</span>
@@ -220,185 +222,250 @@ get value labels.</p></td>
  ))
 
 <span class='co'># only copy existing value labels</span>
-<span class='fu'>as_factor</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   [1] 3    3    3    4    4    4    4    4    4    4    4    3    4    3    3   
-#&gt;  [16] 3    1    3    3    4    4    3    4    4    3    4    4    2    3    4   
-#&gt;  [31] 4    4    3    4    4    4    4    2    4    3    3    4    4    4    4   
-#&gt;  [46] 4    4    4    3    4    4    4    4    4    4    4    4    4    3    4   
-#&gt;  [61] 4    4    4    3    3    3    4    3    4    4    4    4    4    4    4   
-#&gt;  [76] 4    4    3    3    4    2    3    4    3    4    4    4    4    4    4   
-#&gt;  [91] 3    1    2    3    4    3    &lt;NA&gt; 4    3    4    3    3    3    4    4   
-#&gt; [106] 3    3    2    3    4    4    3    4    4    4    2    2    3    4    4   
-#&gt; [121] 3    4    4    4    3    4    1    4    2    4    3    3    4    4    3   
-#&gt; [136] 3    4    2    4    3    2    4    4    3    4    4    4    4    4    3   
-#&gt; [151] 4    4    4    4    4    3    3    4    3    3    3    3    4    4    3   
-#&gt; [166] 4    4    4    3    4    3    3    3    3    4    4    3    4    4    4   
-#&gt; [181] 4    3    3    4    4    4    4    4    2    3    3    4    2    4    3   
-#&gt; [196] 3    2    4    2    3    3    4    3    4    3    3    4    4    3    3   
-#&gt; [211] 3    4    4    4    2    3    4    4    4    2    3    4    4    3    4   
-#&gt; [226] 3    4    3    3    3    3    3    4    3    4    4    3    2    3    2   
-#&gt; [241] 1    3    3    2    2    3    1    2    3    2    3    3    3    4    1   
-#&gt; [256] 3    3    4    2    2    2    4    4    3    3    4    3    3    3    3   
-#&gt; [271] 2    3    2    2    3    3    3    3    2    3    3    2    2    2    3   
-#&gt; [286] 3    4    4    4    4    2    2    3    4    3    2    3    3    2    2   
-#&gt; [301] 4    4    3    2    2    3    4    2    3    1    3    3    3    4    3   
-#&gt; [316] 3    4    4    3    2    3    3    2    4    2    3    3    3    1    1   
-#&gt; [331] 2    4    4    4    3    2    2    3    3    2    2    2    2    2    3   
-#&gt; [346] 4    3    4    1    2    4    2    2    2    3    3    4    3    3    2   
-#&gt; [361] 3    3    2    3    2    1    1    2    2    2    2    4    4    1    2   
-#&gt; [376] 2    2    3    4    4    4    3    3    4    3    2    2    4    3    4   
-#&gt; [391] 4    3    1    3    2    4    2    2    4    2    4    4    4    2    1   
-#&gt; [406] 2    4    2    4    3    4    1    1    2    2    3    2    4    4    3   
-#&gt; [421] 4    3    4    3    4    4    2    4    4    4    1    3    2    2    3   
-#&gt; [436] 2    3    4    4    3    3    2    3    3    2    4    3    4    3    3   
-#&gt; [451] 3    2    3    3    3    4    2    4    3    3    3    2    4    3    4   
-#&gt; [466] 4    4    1    3    2    4    1    1    1    1    1    4    2    1    3   
-#&gt; [481] 4    3    4    2    3    3    3    1    1    3    2    3    4    2    3   
-#&gt; [496] 2    2    3    3    2    4    4    3    4    4    4    3    3    3    3   
-#&gt; [511] 2    3    2    2    3    3    4    4    4    2    2    4    3    2    2   
-#&gt; [526] 3    1    2    3    2    4    1    4    3    2    2    3    4    3    4   
-#&gt; [541] 4    2    3    2    3    3    2    4    3    2    3    2    2    3    3   
-#&gt; [556] 3    4    4    4    2    4    2    4    2    3    1    2    3    4    4   
-#&gt; [571] 4    4    4    4    4    3    4    2    4    3    4    3    3    3    2   
-#&gt; [586] 2    3    4    4    4    1    4    4    3    4    4    4    2    4    4   
-#&gt; [601] 3    4    3    2    2    2    2    1    2    2    4    4    4    4    4   
-#&gt; [616] 4    3    3    3    3    3    1    3    3    4    3    4    4    2    3   
-#&gt; [631] 3    4    2    3    4    3    3    3    2    3    3    3    3    2    2   
-#&gt; [646] 3    2    4    2    2    2    4    4    4    1    4    3    2    3    3   
-#&gt; [661] 2    2    2    3    1    3    1    2    2    3    3    2    3    4    4   
-#&gt; [676] 1    4    4    1    3    1    2    2    4    3    1    3    3    2    4   
-#&gt; [691] 4    3    4    3    4    4    3    4    3    4    3    2    1    2    2   
-#&gt; [706] 4    2    2    3    1    2    4    3    4    4    4    4    2    1    4   
-#&gt; [721] 2    2    3    4    3    2    4    2    3    3    3    4    2    4    2   
-#&gt; [736] 3    2    3    2    1    4    3    3    3    4    2    2    2    3    3   
-#&gt; [751] 4    4    4    4    4    1    2    4    4    2    2    3    2    2    2   
-#&gt; [766] 2    3    3    1    2    1    1    2    3    2    1    3    3    2    2   
-#&gt; [781] 2    2    3    3    3    3    4    2    4    1    1    1    2    4    2   
-#&gt; [796] 2    2    2    1    3    2    4    3    4    2    3    4    3    4    3   
-#&gt; [811] 3    3    2    3    2    2    3    1    1    3    1    2    2    3    2   
-#&gt; [826] 2    2    3    2    4    1    3    1    3    1    2    1    2    2    3   
-#&gt; [841] 4    2    2    2    1    2    2    2    2    2    2    4    3    1    4   
-#&gt; [856] 2    3    3    2    2    2    3    1    2    3    3    2    2    2    1   
-#&gt; [871] 2    2    2    3    2    2    4    3    4    2    3    1    2    3    3   
-#&gt; [886] 2    4    3    3    2    2    3    3    3    4    2    4    3    3    4   
-#&gt; [901] 1    2    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt; attr(,"labels")
-#&gt;       independent severe dependency     missing value 
-#&gt;                 1                 4                 9 
-#&gt; attr(,"label")
-#&gt; [1] elder's dependency
-#&gt; Levels: 1 2 3 4</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>), <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[4] severe dependency" "[9] missing value"    </div><div class='input'>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("as_factor"): no applicable method for 'as_factor' applied to an object of class "c('double', 'numeric')"</span></div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>), <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("as_factor"): no applicable method for 'as_factor' applied to an object of class "c('double', 'numeric')"</span></div><div class='input'>
 <span class='co'># also add labels to non-labelled values</span>
-<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   [1] 3    3    3    4    4    4    4    4    4    4    4    3    4    3    3   
-#&gt;  [16] 3    1    3    3    4    4    3    4    4    3    4    4    2    3    4   
-#&gt;  [31] 4    4    3    4    4    4    4    2    4    3    3    4    4    4    4   
-#&gt;  [46] 4    4    4    3    4    4    4    4    4    4    4    4    4    3    4   
-#&gt;  [61] 4    4    4    3    3    3    4    3    4    4    4    4    4    4    4   
-#&gt;  [76] 4    4    3    3    4    2    3    4    3    4    4    4    4    4    4   
-#&gt;  [91] 3    1    2    3    4    3    &lt;NA&gt; 4    3    4    3    3    3    4    4   
-#&gt; [106] 3    3    2    3    4    4    3    4    4    4    2    2    3    4    4   
-#&gt; [121] 3    4    4    4    3    4    1    4    2    4    3    3    4    4    3   
-#&gt; [136] 3    4    2    4    3    2    4    4    3    4    4    4    4    4    3   
-#&gt; [151] 4    4    4    4    4    3    3    4    3    3    3    3    4    4    3   
-#&gt; [166] 4    4    4    3    4    3    3    3    3    4    4    3    4    4    4   
-#&gt; [181] 4    3    3    4    4    4    4    4    2    3    3    4    2    4    3   
-#&gt; [196] 3    2    4    2    3    3    4    3    4    3    3    4    4    3    3   
-#&gt; [211] 3    4    4    4    2    3    4    4    4    2    3    4    4    3    4   
-#&gt; [226] 3    4    3    3    3    3    3    4    3    4    4    3    2    3    2   
-#&gt; [241] 1    3    3    2    2    3    1    2    3    2    3    3    3    4    1   
-#&gt; [256] 3    3    4    2    2    2    4    4    3    3    4    3    3    3    3   
-#&gt; [271] 2    3    2    2    3    3    3    3    2    3    3    2    2    2    3   
-#&gt; [286] 3    4    4    4    4    2    2    3    4    3    2    3    3    2    2   
-#&gt; [301] 4    4    3    2    2    3    4    2    3    1    3    3    3    4    3   
-#&gt; [316] 3    4    4    3    2    3    3    2    4    2    3    3    3    1    1   
-#&gt; [331] 2    4    4    4    3    2    2    3    3    2    2    2    2    2    3   
-#&gt; [346] 4    3    4    1    2    4    2    2    2    3    3    4    3    3    2   
-#&gt; [361] 3    3    2    3    2    1    1    2    2    2    2    4    4    1    2   
-#&gt; [376] 2    2    3    4    4    4    3    3    4    3    2    2    4    3    4   
-#&gt; [391] 4    3    1    3    2    4    2    2    4    2    4    4    4    2    1   
-#&gt; [406] 2    4    2    4    3    4    1    1    2    2    3    2    4    4    3   
-#&gt; [421] 4    3    4    3    4    4    2    4    4    4    1    3    2    2    3   
-#&gt; [436] 2    3    4    4    3    3    2    3    3    2    4    3    4    3    3   
-#&gt; [451] 3    2    3    3    3    4    2    4    3    3    3    2    4    3    4   
-#&gt; [466] 4    4    1    3    2    4    1    1    1    1    1    4    2    1    3   
-#&gt; [481] 4    3    4    2    3    3    3    1    1    3    2    3    4    2    3   
-#&gt; [496] 2    2    3    3    2    4    4    3    4    4    4    3    3    3    3   
-#&gt; [511] 2    3    2    2    3    3    4    4    4    2    2    4    3    2    2   
-#&gt; [526] 3    1    2    3    2    4    1    4    3    2    2    3    4    3    4   
-#&gt; [541] 4    2    3    2    3    3    2    4    3    2    3    2    2    3    3   
-#&gt; [556] 3    4    4    4    2    4    2    4    2    3    1    2    3    4    4   
-#&gt; [571] 4    4    4    4    4    3    4    2    4    3    4    3    3    3    2   
-#&gt; [586] 2    3    4    4    4    1    4    4    3    4    4    4    2    4    4   
-#&gt; [601] 3    4    3    2    2    2    2    1    2    2    4    4    4    4    4   
-#&gt; [616] 4    3    3    3    3    3    1    3    3    4    3    4    4    2    3   
-#&gt; [631] 3    4    2    3    4    3    3    3    2    3    3    3    3    2    2   
-#&gt; [646] 3    2    4    2    2    2    4    4    4    1    4    3    2    3    3   
-#&gt; [661] 2    2    2    3    1    3    1    2    2    3    3    2    3    4    4   
-#&gt; [676] 1    4    4    1    3    1    2    2    4    3    1    3    3    2    4   
-#&gt; [691] 4    3    4    3    4    4    3    4    3    4    3    2    1    2    2   
-#&gt; [706] 4    2    2    3    1    2    4    3    4    4    4    4    2    1    4   
-#&gt; [721] 2    2    3    4    3    2    4    2    3    3    3    4    2    4    2   
-#&gt; [736] 3    2    3    2    1    4    3    3    3    4    2    2    2    3    3   
-#&gt; [751] 4    4    4    4    4    1    2    4    4    2    2    3    2    2    2   
-#&gt; [766] 2    3    3    1    2    1    1    2    3    2    1    3    3    2    2   
-#&gt; [781] 2    2    3    3    3    3    4    2    4    1    1    1    2    4    2   
-#&gt; [796] 2    2    2    1    3    2    4    3    4    2    3    4    3    4    3   
-#&gt; [811] 3    3    2    3    2    2    3    1    1    3    1    2    2    3    2   
-#&gt; [826] 2    2    3    2    4    1    3    1    3    1    2    1    2    2    3   
-#&gt; [841] 4    2    2    2    1    2    2    2    2    2    2    4    3    1    4   
-#&gt; [856] 2    3    3    2    2    2    3    1    2    3    3    2    2    2    1   
-#&gt; [871] 2    2    2    3    2    2    4    3    4    2    3    1    2    3    3   
-#&gt; [886] 2    4    3    3    2    2    3    3    3    4    2    4    3    3    4   
-#&gt; [901] 1    2    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt; attr(,"labels")
-#&gt;       independent                 2                 3 severe dependency 
-#&gt;                 1                 2                 3                 4 
-#&gt;     missing value 
-#&gt;                 9 
-#&gt; attr(,"label")
-#&gt; [1] elder's dependency
-#&gt; Levels: 1 2 3 4</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] 2"                 "[3] 3"                
-#&gt; [4] "[4] severe dependency" "[9] missing value"    </div><div class='input'>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("as_factor"): no applicable method for 'as_factor' applied to an object of class "c('double', 'numeric')"</span></div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("as_factor"): no applicable method for 'as_factor' applied to an object of class "c('double', 'numeric')"</span></div><div class='input'>
 
 <span class='co'># easily coerce specific variables in a data frame to factor</span>
 <span class='co'># and keep other variables, with their class preserved</span>
-<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>)</div><div class='output co'>#&gt; # A tibble: 908 x 26
-#&gt;    c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4
-#&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1      16        2 2          83 3            3       2       2       2
-#&gt;  2     148        2 2          88 3            3       3       3       3
-#&gt;  3      70        1 2          82 3            2       2       1       4
-#&gt;  4     168        1 2          67 4            4       1       3       1
-#&gt;  5     168        2 2          84 4            3       2       1       2
-#&gt;  6      16        2 2          85 4            2       2       3       3
-#&gt;  7     161        1 1          74 4            4       2       4       1
-#&gt;  8     110        4 2          87 4            3       2       2       1
-#&gt;  9      28        2 2          79 4            3       2       3       2
-#&gt; 10      40        2 2          83 4            3       2       1       2
-#&gt; # ... with 898 more rows, and 17 more variables: c86cop5 &lt;dbl&gt;, c87cop6 &lt;dbl&gt;,
-#&gt; #   c88cop7 &lt;dbl&gt;, c89cop8 &lt;dbl&gt;, c90cop9 &lt;dbl&gt;, c160age &lt;dbl&gt;, c161sex &lt;dbl&gt;,
-#&gt; #   c172code &lt;fct&gt;, c175empl &lt;dbl&gt;, barthtot &lt;dbl&gt;, neg_c_7 &lt;dbl&gt;,
-#&gt; #   pos_v_4 &lt;dbl&gt;, quol_5 &lt;dbl&gt;, resttotn &lt;dbl&gt;, tot_sc_e &lt;dbl&gt;, n4pstu &lt;dbl&gt;,
-#&gt; #   nur_pst &lt;dbl&gt;</div><div class='input'>
+<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>)</div><div class='output co'>#&gt;     c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4
+#&gt; 1        16        2      2     83      3       3       2       2       2
+#&gt; 2       148        2      2     88      3       3       3       3       3
+#&gt; 3        70        1      2     82      3       2       2       1       4
+#&gt; 4       168        1      2     67      4       4       1       3       1
+#&gt; 5       168        2      2     84      4       3       2       1       2
+#&gt; 6        16        2      2     85      4       2       2       3       3
+#&gt; 7       161        1      1     74      4       4       2       4       1
+#&gt; 8       110        4      2     87      4       3       2       2       1
+#&gt; 9        28        2      2     79      4       3       2       3       2
+#&gt; 10       40        2      2     83      4       3       2       1       2
+#&gt; 11      100        1      1     68      4       3       4       4       4
+#&gt; 12       25        8      2     97      3       3       3       3       1
+#&gt; 13       25        2      2     80      4       3       2       2       2
+#&gt; 14       24        1      2     75      3       3       2       4       4
+#&gt; 15       56        2      2     82      3       2       3       3       3
+#&gt; 16       20        2      2     89      3       4       2       1       3
+#&gt; 17       25        1      1     80      1       3       2       1       2
+#&gt; 18      126        1      1     72      3       4       2       1       2
+#&gt; 19      168        2      1     94      3       3       2       1       2
+#&gt; 20      118        1      1     79      4       3       2       4       2
+#&gt; 21      150        2      2     89      4       3       2       3       2
+#&gt; 22       50        1      1     67      3       4       1       2       1
+#&gt; 23       18        2      2     94      4       3       1       1       1
+#&gt; 24      168        2      2     83      4       3       2       2       4
+#&gt; 25       15        2      2     85      3       3       2       1       2
+#&gt; 26      168        1      1     80      4       2       3       4       4
+#&gt; 27       12        2      2     88      4       2       3       3      NA
+#&gt; 28        7        1      1     76      2       2       2       2       2
+#&gt; 29       35        2      2     84      3       3       2       2       2
+#&gt; 30      168        2      2     95      4       2       2       1       2
+#&gt; 31      150        2      1     88      4       3       2       4       4
+#&gt; 32      168        1      1     87      4       3       1       3       1
+#&gt; 33      168        4      2     89      3       3       2       2       3
+#&gt; 34      119        1      1     80      4       2       2       4       4
+#&gt; 35      168        1      2     75      4       3       2       1       2
+#&gt; 36      168        1      1     82      4       3       2       1       2
+#&gt; 37      168        1      1     69      4       3       4       3       2
+#&gt; 38       28        2      2     91      2       3       1       1       2
+#&gt;     c86cop5 c87cop6 c88cop7 c89cop8 c90cop9 c160age c161sex c172code c175empl
+#&gt; 1         1       1       2       3       3      56       2        2        1
+#&gt; 2         4       1       3       2       2      54       2        2        1
+#&gt; 3         1       1       1       4       3      80       1        1        0
+#&gt; 4         1       1       1       2       4      69       1        2        0
+#&gt; 5         2       2       1       4       4      47       2        2        0
+#&gt; 6         3       2       2       1       1      56       1        2        1
+#&gt; 7         1       2       4       1       4      61       2        2        0
+#&gt; 8         1       1       2       3       3      67       2        2        0
+#&gt; 9         2       1       3       1       3      59       2       NA        0
+#&gt; 10        1       1       1       1       3      49       2        2        0
+#&gt; 11        4       4       4       1       1      66       2        2        0
+#&gt; 12        3       1       4       3       1      47       2        2        1
+#&gt; 13        2       1       2       4       4      58       2        3        0
+#&gt; 14        1       1       2       4       4      75       1        1        0
+#&gt; 15        2       2       1       1       1      49       2        3        1
+#&gt; 16        3       1       2       1       3      56       2        2        0
+#&gt; 17        1       1       2       4       4      75       2        2        0
+#&gt; 18        1       1       2       3       3      70       2        2        0
+#&gt; 19        2       1       3       1       4      52       1        3        1
+#&gt; 20        1       3       3       2       2      48       2        3        1
+#&gt; 21        1       1       1       1       3      58       2        2        1
+#&gt; 22        1       1       1       2       2      65       2        2        0
+#&gt; 23        1       1       1       2       4      49       2        2        1
+#&gt; 24        1       1       2       3       4      60       2        2        0
+#&gt; 25        1       1       2       3       3      55       2        2        0
+#&gt; 26        3       1       4       1       4      62       2        2        0
+#&gt; 27        1       1       4       2       2      68       2        3        0
+#&gt; 28        1       1       1       3       2      76       2        2        0
+#&gt; 29        4       1       2       2       1      58       2        2        0
+#&gt; 30        1       1       1       2       4      65       2        1        0
+#&gt; 31        4       4       4       1       3      63       1        2        1
+#&gt; 32        1       1       1       1       4      79       2        1        0
+#&gt; 33        1       1       3       1       1      65       2        2        0
+#&gt; 34        2       1       4       2       3      74       2        2        0
+#&gt; 35        1       1       1       3       4      76       1        2        0
+#&gt; 36        1       1       1       4       4      73       2        1        0
+#&gt; 37        1       1       4       1       1      67       2        2        0
+#&gt; 38        1       1       1       4       4      62       2        2        0
+#&gt;     barthtot neg_c_7 pos_v_4 quol_5 resttotn tot_sc_e n4pstu nur_pst
+#&gt; 1         75      12      12     14        0        4      0      NA
+#&gt; 2         75      20      11     10        4        0      0      NA
+#&gt; 3         35      11      13      7        0        1      2       2
+#&gt; 4          0      10      15     12        2        0      3       3
+#&gt; 5         25      12      15     19        2        1      2       2
+#&gt; 6         60      19       9      8        1        3      2       2
+#&gt; 7          5      15      13     20        0        0      3       3
+#&gt; 8         35      11      14     20        0        1      1       1
+#&gt; 9         15      15      13      8        0        2      3       3
+#&gt; 10         0      10      13     15        1        1      3       3
+#&gt; 11        25      28       9      1        1        1      3       3
+#&gt; 12        85      18       8     19        1        1      1       1
+#&gt; 13        15      13      14     12        0        3      3       3
+#&gt; 14        70      18      14      8        0        0      1       1
+#&gt; 15        NA      16       9      8        3        3      0      NA
+#&gt; 16         0      13      14      6        0        2      0      NA
+#&gt; 17        95      11      15     16        0        2      0      NA
+#&gt; 18        55      11      13     14        0        0      2       2
+#&gt; 19        55      13      13     15        3        1      1       1
+#&gt; 20        45      17      12     10        0        7      2       2
+#&gt; 21         0      11      11     15        1        1      4       3
+#&gt; 22        70       9      12     21        0        0      1       1
+#&gt; 23        20       8      15     18        1        0      2       2
+#&gt; 24         0      14      15     15        1        1      3       3
+#&gt; 25        95      11      14     16        0        2      1       1
+#&gt; 26        10      23      12      0        1        1      2       2
+#&gt; 27        75      NA      10     10        0        5      2       2
+#&gt; 28        90      11       9     14        0        2      0      NA
+#&gt; 29        60      15      11      4        0        2      2       2
+#&gt; 30        20      11      NA     15        0        0      3       3
+#&gt; 31        NA      25      13      9        1        2      3       3
+#&gt; 32        50       9      12     18        0        1      2       2
+#&gt; 33        75      15       9     12        0        1      1       1
+#&gt; 34        50      20      12      1        0        7      3       3
+#&gt; 35        30       9      15      4        0        4      3       3
+#&gt; 36         0      10      14     13        0        1      3       3
+#&gt; 37        30      19       9      4        0        6      3       3
+#&gt; 38        90       8      14     16        1        1      0      NA
+#&gt;  [ reached getOption("max.print") -- omitted 870 rows ]</div><div class='input'>
 <span class='co'># use select-helpers from dplyr-package</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select_helpers.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>)</div><div class='output co'>#&gt; # A tibble: 908 x 26
-#&gt;    c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4
-#&gt;      &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;  
-#&gt;  1      16        2      2     83      3 3       2       2       2      
-#&gt;  2     148        2      2     88      3 3       3       3       3      
-#&gt;  3      70        1      2     82      3 2       2       1       4      
-#&gt;  4     168        1      2     67      4 4       1       3       1      
-#&gt;  5     168        2      2     84      4 3       2       1       2      
-#&gt;  6      16        2      2     85      4 2       2       3       3      
-#&gt;  7     161        1      1     74      4 4       2       4       1      
-#&gt;  8     110        4      2     87      4 3       2       2       1      
-#&gt;  9      28        2      2     79      4 3       2       3       2      
-#&gt; 10      40        2      2     83      4 3       2       1       2      
-#&gt; # ... with 898 more rows, and 17 more variables: c86cop5 &lt;fct&gt;, c87cop6 &lt;fct&gt;,
-#&gt; #   c88cop7 &lt;fct&gt;, c89cop8 &lt;fct&gt;, c90cop9 &lt;fct&gt;, c160age &lt;dbl&gt;, c161sex &lt;fct&gt;,
-#&gt; #   c172code &lt;fct&gt;, c175empl &lt;fct&gt;, barthtot &lt;dbl&gt;, neg_c_7 &lt;dbl&gt;,
-#&gt; #   pos_v_4 &lt;dbl&gt;, quol_5 &lt;dbl&gt;, resttotn &lt;dbl&gt;, tot_sc_e &lt;dbl&gt;, n4pstu &lt;dbl&gt;,
-#&gt; #   nur_pst &lt;dbl&gt;</div><div class='input'>
+<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>)</div><div class='output co'>#&gt;     c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4
+#&gt; 1        16        2      2     83      3       3       2       2       2
+#&gt; 2       148        2      2     88      3       3       3       3       3
+#&gt; 3        70        1      2     82      3       2       2       1       4
+#&gt; 4       168        1      2     67      4       4       1       3       1
+#&gt; 5       168        2      2     84      4       3       2       1       2
+#&gt; 6        16        2      2     85      4       2       2       3       3
+#&gt; 7       161        1      1     74      4       4       2       4       1
+#&gt; 8       110        4      2     87      4       3       2       2       1
+#&gt; 9        28        2      2     79      4       3       2       3       2
+#&gt; 10       40        2      2     83      4       3       2       1       2
+#&gt; 11      100        1      1     68      4       3       4       4       4
+#&gt; 12       25        8      2     97      3       3       3       3       1
+#&gt; 13       25        2      2     80      4       3       2       2       2
+#&gt; 14       24        1      2     75      3       3       2       4       4
+#&gt; 15       56        2      2     82      3       2       3       3       3
+#&gt; 16       20        2      2     89      3       4       2       1       3
+#&gt; 17       25        1      1     80      1       3       2       1       2
+#&gt; 18      126        1      1     72      3       4       2       1       2
+#&gt; 19      168        2      1     94      3       3       2       1       2
+#&gt; 20      118        1      1     79      4       3       2       4       2
+#&gt; 21      150        2      2     89      4       3       2       3       2
+#&gt; 22       50        1      1     67      3       4       1       2       1
+#&gt; 23       18        2      2     94      4       3       1       1       1
+#&gt; 24      168        2      2     83      4       3       2       2       4
+#&gt; 25       15        2      2     85      3       3       2       1       2
+#&gt; 26      168        1      1     80      4       2       3       4       4
+#&gt; 27       12        2      2     88      4       2       3       3      NA
+#&gt; 28        7        1      1     76      2       2       2       2       2
+#&gt; 29       35        2      2     84      3       3       2       2       2
+#&gt; 30      168        2      2     95      4       2       2       1       2
+#&gt; 31      150        2      1     88      4       3       2       4       4
+#&gt; 32      168        1      1     87      4       3       1       3       1
+#&gt; 33      168        4      2     89      3       3       2       2       3
+#&gt; 34      119        1      1     80      4       2       2       4       4
+#&gt; 35      168        1      2     75      4       3       2       1       2
+#&gt; 36      168        1      1     82      4       3       2       1       2
+#&gt; 37      168        1      1     69      4       3       4       3       2
+#&gt; 38       28        2      2     91      2       3       1       1       2
+#&gt;     c86cop5 c87cop6 c88cop7 c89cop8 c90cop9 c160age c161sex c172code c175empl
+#&gt; 1         1       1       2       3       3      56       2        2        1
+#&gt; 2         4       1       3       2       2      54       2        2        1
+#&gt; 3         1       1       1       4       3      80       1        1        0
+#&gt; 4         1       1       1       2       4      69       1        2        0
+#&gt; 5         2       2       1       4       4      47       2        2        0
+#&gt; 6         3       2       2       1       1      56       1        2        1
+#&gt; 7         1       2       4       1       4      61       2        2        0
+#&gt; 8         1       1       2       3       3      67       2        2        0
+#&gt; 9         2       1       3       1       3      59       2       NA        0
+#&gt; 10        1       1       1       1       3      49       2        2        0
+#&gt; 11        4       4       4       1       1      66       2        2        0
+#&gt; 12        3       1       4       3       1      47       2        2        1
+#&gt; 13        2       1       2       4       4      58       2        3        0
+#&gt; 14        1       1       2       4       4      75       1        1        0
+#&gt; 15        2       2       1       1       1      49       2        3        1
+#&gt; 16        3       1       2       1       3      56       2        2        0
+#&gt; 17        1       1       2       4       4      75       2        2        0
+#&gt; 18        1       1       2       3       3      70       2        2        0
+#&gt; 19        2       1       3       1       4      52       1        3        1
+#&gt; 20        1       3       3       2       2      48       2        3        1
+#&gt; 21        1       1       1       1       3      58       2        2        1
+#&gt; 22        1       1       1       2       2      65       2        2        0
+#&gt; 23        1       1       1       2       4      49       2        2        1
+#&gt; 24        1       1       2       3       4      60       2        2        0
+#&gt; 25        1       1       2       3       3      55       2        2        0
+#&gt; 26        3       1       4       1       4      62       2        2        0
+#&gt; 27        1       1       4       2       2      68       2        3        0
+#&gt; 28        1       1       1       3       2      76       2        2        0
+#&gt; 29        4       1       2       2       1      58       2        2        0
+#&gt; 30        1       1       1       2       4      65       2        1        0
+#&gt; 31        4       4       4       1       3      63       1        2        1
+#&gt; 32        1       1       1       1       4      79       2        1        0
+#&gt; 33        1       1       3       1       1      65       2        2        0
+#&gt; 34        2       1       4       2       3      74       2        2        0
+#&gt; 35        1       1       1       3       4      76       1        2        0
+#&gt; 36        1       1       1       4       4      73       2        1        0
+#&gt; 37        1       1       4       1       1      67       2        2        0
+#&gt; 38        1       1       1       4       4      62       2        2        0
+#&gt;     barthtot neg_c_7 pos_v_4 quol_5 resttotn tot_sc_e n4pstu nur_pst
+#&gt; 1         75      12      12     14        0        4      0      NA
+#&gt; 2         75      20      11     10        4        0      0      NA
+#&gt; 3         35      11      13      7        0        1      2       2
+#&gt; 4          0      10      15     12        2        0      3       3
+#&gt; 5         25      12      15     19        2        1      2       2
+#&gt; 6         60      19       9      8        1        3      2       2
+#&gt; 7          5      15      13     20        0        0      3       3
+#&gt; 8         35      11      14     20        0        1      1       1
+#&gt; 9         15      15      13      8        0        2      3       3
+#&gt; 10         0      10      13     15        1        1      3       3
+#&gt; 11        25      28       9      1        1        1      3       3
+#&gt; 12        85      18       8     19        1        1      1       1
+#&gt; 13        15      13      14     12        0        3      3       3
+#&gt; 14        70      18      14      8        0        0      1       1
+#&gt; 15        NA      16       9      8        3        3      0      NA
+#&gt; 16         0      13      14      6        0        2      0      NA
+#&gt; 17        95      11      15     16        0        2      0      NA
+#&gt; 18        55      11      13     14        0        0      2       2
+#&gt; 19        55      13      13     15        3        1      1       1
+#&gt; 20        45      17      12     10        0        7      2       2
+#&gt; 21         0      11      11     15        1        1      4       3
+#&gt; 22        70       9      12     21        0        0      1       1
+#&gt; 23        20       8      15     18        1        0      2       2
+#&gt; 24         0      14      15     15        1        1      3       3
+#&gt; 25        95      11      14     16        0        2      1       1
+#&gt; 26        10      23      12      0        1        1      2       2
+#&gt; 27        75      NA      10     10        0        5      2       2
+#&gt; 28        90      11       9     14        0        2      0      NA
+#&gt; 29        60      15      11      4        0        2      2       2
+#&gt; 30        20      11      NA     15        0        0      3       3
+#&gt; 31        NA      25      13      9        1        2      3       3
+#&gt; 32        50       9      12     18        0        1      2       2
+#&gt; 33        75      15       9     12        0        1      1       1
+#&gt; 34        50      20      12      1        0        7      3       3
+#&gt; 35        30       9      15      4        0        4      3       3
+#&gt; 36         0      10      14     13        0        1      3       3
+#&gt; 37        30      19       9      4        0        6      3       3
+#&gt; 38        90       8      14     16        1        1      0      NA
+#&gt;  [ reached getOption("max.print") -- omitted 870 rows ]</div><div class='input'>
 
 </div></pre>
   </div>

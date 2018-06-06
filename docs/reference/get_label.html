@@ -36,6 +36,7 @@
 <meta name="twitter:card" content="summary" />
 
 
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -60,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.10</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
       </span>
     </div>
 
@@ -165,10 +166,6 @@ more details on this argument.</p></td>
           If <code>x</code> is a single vector and has no label attribute, the value
           of <code>def.value</code> will be returned (which is by default <code>NULL</code>).</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>See 'Details' in <code><a href='get_labels.html'>get_labels</a></code>.</p>
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p><code><a href='set_label.html'>var_labels</a></code> is an alternative way to set variable labels,
@@ -204,7 +201,8 @@ more details on this argument.</p></td>
 <span class='no'>efc</span> <span class='kw'>%&gt;%</span> <span class='fu'>get_label</span>(<span class='no'>e42dep</span>, <span class='no'>e16sex</span>)</div><div class='output co'>#&gt;               e42dep               e16sex 
 #&gt; "elder's dependency"     "elder's gender" </div><div class='input'>
 <span class='co'># set default values</span>
-<span class='fu'>get_label</span>(<span class='no'>mtcars</span>, <span class='no'>mpg</span>, <span class='no'>cyl</span>, <span class='kw'>def.value</span> <span class='kw'>=</span> <span class='st'>"no var labels"</span>)</div><div class='output co'>#&gt; [1] "no var labels" "no var labels"</div><div class='input'>
+<span class='fu'>get_label</span>(<span class='no'>mtcars</span>, <span class='no'>mpg</span>, <span class='no'>cyl</span>, <span class='kw'>def.value</span> <span class='kw'>=</span> <span class='st'>"no var labels"</span>)</div><div class='output co'>#&gt;             mpg             cyl 
+#&gt; "no var labels" "no var labels" </div><div class='input'>
 <span class='co'># simple barplot</span>
 <span class='fu'>barplot</span>(<span class='fu'>table</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>))</div><div class='img'><img src='get_label-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># get value labels to annotate barplot</span>
 <span class='fu'>barplot</span>(<span class='fu'>table</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>),
@@ -214,7 +212,9 @@ more details on this argument.</p></td>
 <span class='fu'>get_label</span>(<span class='fu'>list</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='no'>efc</span>$<span class='no'>e16sex</span>, <span class='no'>efc</span>$<span class='no'>e15relat</span>))</div><div class='output co'>#&gt; [1] "elder's dependency"    "elder's gender"        "relationship to elder"</div><div class='input'>
 <span class='co'># use case conversion for human-readable labels</span>
 <span class='fu'>data</span>(<span class='no'>iris</span>)
-<span class='fu'>get_label</span>(<span class='no'>iris</span>, <span class='kw'>def.value</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>iris</span>))</div><div class='output co'>#&gt; [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </div><div class='input'><span class='fu'>get_label</span>(<span class='no'>iris</span>, <span class='kw'>def.value</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>iris</span>), <span class='kw'>case</span> <span class='kw'>=</span> <span class='st'>"parsed"</span>)</div><div class='output co'>#&gt; [1] "Sepal Length" "Sepal Width"  "Petal Length" "Petal Width"  "Species"     </div><div class='input'>
+<span class='fu'>get_label</span>(<span class='no'>iris</span>, <span class='kw'>def.value</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>iris</span>))</div><div class='output co'>#&gt;   Sepal.Length    Sepal.Width   Petal.Length    Petal.Width        Species 
+#&gt; "Sepal.Length"  "Sepal.Width" "Petal.Length"  "Petal.Width"      "Species" </div><div class='input'><span class='fu'>get_label</span>(<span class='no'>iris</span>, <span class='kw'>def.value</span> <span class='kw'>=</span> <span class='fu'>colnames</span>(<span class='no'>iris</span>), <span class='kw'>case</span> <span class='kw'>=</span> <span class='st'>"parsed"</span>)</div><div class='output co'>#&gt;   Sepal.Length    Sepal.Width   Petal.Length    Petal.Width        Species 
+#&gt; "Sepal Length"  "Sepal Width" "Petal Length"  "Petal Width"      "Species" </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -223,8 +223,6 @@ more details on this argument.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
 
       <li><a href="#note">Note</a></li>
 

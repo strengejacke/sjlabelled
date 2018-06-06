@@ -16,7 +16,7 @@ read_stata(path, atomic.to.fac = FALSE, enc = NULL)
 \item{path}{File path to the data file.}
 
 \item{atomic.to.fac}{Logical, if \code{TRUE}, categorical variables imported
-from the dataset (which are imported as \code{\link{atomic}}) will be
+from the dataset (which are imported as \code{atomic}) will be
 converted to factors.}
 
 \item{tag.na}{Logical, if \code{TRUE}, missing values are imported
