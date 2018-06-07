@@ -1,6 +1,6 @@
 # sjlabelled - Labelled Data Utility Functions <img src="man/figures/logo.png" align="right" />
 
-[![DOI](https://zenodo.org/badge/92868296.svg)](https://zenodo.org/badge/latestdoi/92868296)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1249215.svg)](https://doi.org/10.5281/zenodo.1249215)
 
 This package contains utility functions that are useful when working with labelled data (especially intended for people coming from 'SPSS', 'SAS' or 'Stata' and/or who are new to R).
 
@@ -35,5 +35,5 @@ install.packages("sjlabelled")
 
 In case you want / have to cite my package, please use `citation('sjlabelled')` for citation information. 
 
-[![DOI](https://zenodo.org/badge/92868296.svg)](https://zenodo.org/badge/latestdoi/92868296)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1249215.svg)](https://doi.org/10.5281/zenodo.1249215)
 
