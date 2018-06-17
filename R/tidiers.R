@@ -11,7 +11,7 @@ tidy_models <- function(model) {
     tidy_hurdle_model(model)
   else if (inherits(model, "logistf"))
     tidy_logistf_model(model)
-  else if (inherits(model, c("clm", "polr")))
+  else if (inherits(model, c("clm", "clmm", "polr")))
     tidy_clm_model(model)
   else if (inherits(model, "vgam"))
     tidy_vgam_model(model)

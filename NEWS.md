@@ -1,3 +1,9 @@
+# sjlabelled 1.0.12
+
+## General
+
+* `get_dv_labels()` and `get_term_labels()` now support _clmm_-objects (package *ordinal*).
+
 # sjlabelled 1.0.11
 
 ## General
