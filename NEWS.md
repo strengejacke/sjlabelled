@@ -3,6 +3,7 @@
 ## General
 
 * `get_dv_labels()` and `get_term_labels()` now support _clmm_-objects (package *ordinal*).
+* `read_spss()` gets a `enc`-argument for character encoding, which is now supported since haven 1.1.2.
 
 # sjlabelled 1.0.11
 

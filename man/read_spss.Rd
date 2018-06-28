@@ -6,7 +6,7 @@
 \alias{read_stata}
 \title{Import data from other statistical software packages}
 \usage{
-read_spss(path, atomic.to.fac = FALSE, tag.na = FALSE)
+read_spss(path, atomic.to.fac = FALSE, tag.na = FALSE, enc = NULL)
 
 read_sas(path, path.cat = NULL, atomic.to.fac = FALSE, enc = NULL)
 
@@ -23,11 +23,11 @@ converted to factors.}
 as \code{\link[haven]{tagged_na}} values; else, missing values are
 converted to regular \code{NA} (default behaviour).}
 
-\item{path.cat}{Optional, the file path to the SAS catalog file.}
-
 \item{enc}{The character encoding used for the file. This defaults to the encoding
 specified in the file, or UTF-8. Use this argument to override the default
 encoding stored in the file.}
+
+\item{path.cat}{Optional, the file path to the SAS catalog file.}
 }
 \value{
 A data frame containing the imported, labelled data. Retrieve value labels with

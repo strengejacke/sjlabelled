@@ -48,11 +48,11 @@
 #' # retrieve value labels
 #' mydat.val <- get_labels(mydat)}
 #'
-#' @importFrom haven read_spss read_sas read_dta
+#' @importFrom haven read_sav read_sas read_dta
 #' @export
-read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE) {
+read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE, enc = NULL) {
   # read data file
-  data.spss <- haven::read_spss(file = path, user_na = tag.na)
+  data.spss <- haven::read_sav(file = path, encoding = enc, user_na = tag.na)
   # prepare tagged NA?
   if (tag.na) {
     # remember all-NA values

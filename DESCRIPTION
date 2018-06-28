@@ -2,7 +2,7 @@ Package: sjlabelled
 Type: Package
 Encoding: UTF-8
 Title: Labelled Data Utility Functions
-Version: 1.0.11
+Version: 1.0.11.9000
 Date: 2018-06-06
 Authors@R: person("Daniel", "Lüdecke", role = c("aut", "cre"), email = "d.luedecke@uke.de", comment = c(ORCID = "0000-0002-8895-3206"))
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>
@@ -19,7 +19,7 @@ Depends:
 Imports:
     broom,
     dplyr (>= 0.7.1),
-    haven (>= 1.0.0),
+    haven (>= 1.1.2),
     magrittr,
     prediction,
     purrr (>= 0.2.2.2),
