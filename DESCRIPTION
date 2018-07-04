@@ -17,7 +17,7 @@ Depends:
     R (>= 3.2),
     stats
 Imports:
-    broom,
+    broom (>= 0.4.5),
     dplyr (>= 0.7.1),
     haven (>= 1.1.2),
     magrittr,
@@ -32,7 +32,7 @@ Suggests:
     ggplot2,
     glmmTMB,
     Hmisc,
-    sjmisc (>= 2.6.1),
+    sjmisc,
     sjPlot,
     survey,
     knitr,
