@@ -5,6 +5,7 @@
 * `get_dv_labels()` and `get_term_labels()` now support _clmm_-objects (package *ordinal*).
 * `read_spss()` gets a `enc`-argument for character encoding, which is now supported since haven 1.1.2.
 * `get_term_labels()` now returns `NULL` for unsupported models, instead of giving an error.
+* `get_dv_labels()` now returns a default string for unsupported models, instead of giving an error.
 
 # sjlabelled 1.0.11
 
