@@ -320,7 +320,9 @@ get_model_frame <- function(x) {
   else if (inherits(x, "Zelig-relogit"))
     fitfram <- x$zelig.out$z.out[[1]]$data
   else if (inherits(x, "stanmvreg"))
-    fitfram <- purrr::reduce(stats::model.frame(x), ~ dplyr::full_join(.x, .y))
+    fitfram <- suppressMessages(
+      purrr::reduce(stats::model.frame(x), ~ dplyr::full_join(.x, .y))
+    )
   else
     fitfram <- stats::model.frame(x)
 
