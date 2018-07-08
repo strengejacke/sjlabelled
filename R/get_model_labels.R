@@ -69,12 +69,22 @@
 #'
 #' @importFrom purrr map flatten_chr
 #' @importFrom broom tidy
-#' @importFrom stats model.frame coef
+#' @importFrom stats model.frame coef terms
 #' @importFrom dplyr select slice
 #' @export
 get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("none", "varname", "label"), ...) {
 
   prefix <- match.arg(prefix)
+
+  ## TODO better handling for stanmvreg
+
+  if (inherits(models, "stanmvreg")) {
+    return(
+      stats::terms(models) %>%
+        purrr::map(~ attr(.x, "term.labels")) %>%
+        purrr::flatten_chr()
+    )
+  }
 
   # to be generic, make sure argument is a list
   if (!inherits(models, "list")) models <- list(models)
@@ -235,6 +245,11 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, ...) {
             paste(stats::formula(x)$responses, collapse = ", ")
         else
           deparse(stats::formula(x)$formula[[2L]])
+      } else if (inherits(x, "stanmvreg")) {
+        if (multi.resp)
+          purrr::map_chr(stats::formula(x), ~ deparse(.x[[2L]]))
+        else
+          paste(purrr::map_chr(stats::formula(x), ~ deparse(.x[[2L]])), collapse = ", ")
       } else {
         deparse(stats::formula(x)[[2L]])
       }
@@ -293,7 +308,8 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, ...) {
 }
 
 
-
+#' @importFrom purrr reduce
+#' @importFrom dplyr full_join
 #' @importFrom prediction find_data
 #' @importFrom stats model.frame
 get_model_frame <- function(x) {
@@ -303,6 +319,8 @@ get_model_frame <- function(x) {
     fitfram <- x$data
   else if (inherits(x, "Zelig-relogit"))
     fitfram <- x$zelig.out$z.out[[1]]$data
+  else if (inherits(x, "stanmvreg"))
+    fitfram <- purrr::reduce(stats::model.frame(x), ~ dplyr::full_join(.x, .y))
   else
     fitfram <- stats::model.frame(x)
 
