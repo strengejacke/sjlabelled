@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -65,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.11</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.12</span>
       </span>
     </div>
 
@@ -172,7 +174,7 @@ use <code>NULL</code>, if value and variable labels from <code>df_new</code> sho
 #&gt;  $ c83cop2: num  2 4 2 2 2 2 1 3 2 2 ...
 #&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</div><div class='input'>
 <span class='no'>efc.sub</span> <span class='kw'>&lt;-</span> <span class='fu'>copy_labels</span>(<span class='no'>efc.sub</span>, <span class='no'>efc</span>)
-<span class='fu'>str</span>(<span class='no'>efc.sub</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	296 obs. of  5 variables:
+<span class='fu'>str</span>(<span class='no'>efc.sub</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;   ..- attr(*, "label")= Named chr "elder' age"
 #&gt;   .. ..- attr(*, "names")= chr "e17age"
@@ -196,7 +198,7 @@ use <code>NULL</code>, if value and variable labels from <code>df_new</code> sho
 #&gt;   .. ..- attr(*, "names")= chr "c84cop3"
 #&gt;   ..- attr(*, "labels")= Named num  1 2 3 4
 #&gt;   .. ..- attr(*, "names")= chr  "Never" "Sometimes" "Often" "Always"</div><div class='input'>
-<span class='no'>efc.sub</span> <span class='kw'>&lt;-</span> <span class='fu'>copy_labels</span>(<span class='no'>efc.sub</span>)</div><div class='output co'>#&gt; <span class='message'>Removing all variable and value labels from data frame.</span></div><div class='input'><span class='fu'>str</span>(<span class='no'>efc.sub</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	296 obs. of  5 variables:
+<span class='no'>efc.sub</span> <span class='kw'>&lt;-</span> <span class='fu'>copy_labels</span>(<span class='no'>efc.sub</span>)</div><div class='output co'>#&gt; <span class='message'>Removing all variable and value labels from data frame.</span></div><div class='input'><span class='fu'>str</span>(<span class='no'>efc.sub</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...
 #&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...
