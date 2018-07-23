@@ -1,3 +1,9 @@
+# sjlabelled 1.0.13
+
+## General
+
+* Removed defuncted functions.
+
 # sjlabelled 1.0.12
 
 ## General
