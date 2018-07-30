@@ -40,5 +40,5 @@ Suggests:
     Zelig
 URL: https://github.com/strengejacke/sjlabelled, https://strengejacke.github.io/sjlabelled
 BugReports: https://github.com/strengejacke/sjlabelled/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 VignetteBuilder: knitr
