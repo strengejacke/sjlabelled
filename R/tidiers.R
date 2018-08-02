@@ -15,6 +15,8 @@ tidy_models <- function(model) {
     tidy_clm_model(model)
   else if (inherits(model, "vgam"))
     tidy_vgam_model(model)
+  else if (inherits(model, "lmerModLmerTest"))
+    tidy_lmerTest_model(model)
   else if (inherits(model, "Zelig-relogit"))
     tidy_zelig_model(model)
   else
@@ -29,6 +31,27 @@ tidy_generic <- function(model) {
   tryCatch(
     {
       broom::tidy(model, conf.int = FALSE, effects = "fixed")
+    },
+    error = function(x) { NULL },
+    warning = function(x) { NULL },
+    finally = function(x) { NULL }
+  )
+}
+
+
+#' @importFrom tibble rownames_to_column
+#' @importFrom dplyr select
+tidy_lmerTest_model <- function(model) {
+  # tidy the model
+  tryCatch(
+    {
+      x <- summary(model)$coef %>%
+        as.data.frame() %>%
+        tibble::rownames_to_column(var = "term") %>%
+        dplyr::select(1, 2, 3, 5)
+
+      colnames(x) <- c("term", "estimate", "std.error", "statistic")
+      x
     },
     error = function(x) { NULL },
     warning = function(x) { NULL },

@@ -4,6 +4,10 @@
 
 * Removed defuncted functions.
 
+## Bug fixes
+
+* Due to changes in the _broom_ and _lmerTest_ packages, tidiers did no longer work for `lmerModLmerTest` objects.
+
 # sjlabelled 1.0.12
 
 ## General
