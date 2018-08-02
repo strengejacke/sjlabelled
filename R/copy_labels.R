@@ -42,30 +42,16 @@ copy_labels <- function(df_new, df_origin = NULL) {
     if (is.data.frame(df_new) && is.data.frame(df_origin)) {
       # retrieve variables of subsetted data frame
       cn <- colnames(df_new)
+      # get matching colnames, because
+      # we only copy attributes from variables that also
+      # exist in the new data frame (of course)
+      cn <- cn[cn %in% colnames(df_origin)]
 
-      # check for valid colnames, i.e. if all column
-      # names really match the original column names.
-      if (sum(cn %in% colnames(df_origin) == F) > 0) {
-        # if not, return only matching colnames, because
-        # we only copy attributes from variables that also
-        # exist in the new data frame (of course)
-        cn <- cn[cn %in% colnames(df_origin)]
+      for (i in cn) {
+        # copy variable and value labels
+        attr(df_new[[i]], "label") <- attr(df_origin[[i]], "label", exact = TRUE)
+        attr(df_new[[i]], "labels") <- attr(df_origin[[i]], "labels", exact = TRUE)
       }
-
-      # get var-labels of original data frame, and select only those
-      # labels from variables that appear in the new (subsetted) data frame
-      df_new <- set_label(df_new, label = get_label(df_origin[, cn]))
-
-      # same for value labels
-      df_new <- suppressMessages(set_labels(
-        df_new,
-        labels = get_labels(
-          df_origin[, cn],
-          attr.only = TRUE,
-          include.values = "n",
-          include.non.labelled = FALSE
-        )
-      ))
     } else {
       warning("both `df_origin` and `df_new` must be of class `data.frame`.", call. = F)
     }

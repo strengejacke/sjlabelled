@@ -4,6 +4,10 @@
 
 * Removed defuncted functions.
 
+## Changes to functions
+
+* `copy_labels()` now also copy labels even if columns in subsetted and original data frame do not completely match.
+
 ## Bug fixes
 
 * Due to changes in the _broom_ and _lmerTest_ packages, tidiers did no longer work for `lmerModLmerTest` objects.
