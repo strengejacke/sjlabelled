@@ -29,8 +29,8 @@ remove_labels_helper <- function(x, labels) {
   # get current labels of `x`
   current.labels <- get_labels(x,
                                attr.only = T,
-                               include.values = "n",
-                               include.non.labelled = F)
+                               values = "n",
+                               non.labelled = F)
 
   # get current NA values
   current.na <- get_na(x)

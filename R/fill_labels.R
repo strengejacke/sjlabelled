@@ -20,12 +20,12 @@ fill_labels <- function(x, ...) {
 
 fill_labels_helper <- function(x) {
   # get current labels
-  current.values <- get_labels(x, attr.only = T, include.non.labelled = F)
+  current.values <- get_labels(x, attr.only = T, non.labelled = F)
   # get all labels, including non-labelled values
   all.values <- get_labels(x,
                            attr.only = T,
-                           include.values = "n",
-                           include.non.labelled = T)
+                           values = "n",
+                           non.labelled = T)
   # have any values?
   if (!is.null(all.values)) {
     # set back all labels, if amount of all labels differ

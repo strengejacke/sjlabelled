@@ -4,8 +4,9 @@
 \alias{get_labels}
 \title{Retrieve value labels of labelled data}
 \usage{
-get_labels(x, attr.only = FALSE, include.values = NULL,
-  include.non.labelled = FALSE, drop.na = TRUE, drop.unused = FALSE)
+get_labels(x, attr.only = FALSE, values = NULL, non.labelled = FALSE,
+  drop.na = TRUE, drop.unused = FALSE, include.values = NULL,
+  include.non.labelled = NULL)
 }
 \arguments{
 \item{x}{A data frame with variables that have value label attributes (e.g.
@@ -20,14 +21,14 @@ in the the vector's \code{attributes}; else, if \code{attr.only = FALSE}
 and \code{x} has no label attributes, factor levels or string values
 are returned. See 'Examples'.}
 
-\item{include.values}{String, indicating whether the values associated with the
-value labels are returned as well. If \code{include.values = "as.name"}
-(or \code{include.values = "n"}), values are set as \code{names}
-attribute of the returned object. If \code{include.values = "as.prefix"}
-(or \code{include.values = "p"}), values are included as prefix
+\item{values, include.values}{String, indicating whether the values associated with the
+value labels are returned as well. If \code{values = "as.name"}
+(or \code{values = "n"}), values are set as \code{names}
+attribute of the returned object. If \code{values = "as.prefix"}
+(or \code{values = "p"}), values are included as prefix
 to each label. See 'Examples'.}
 
-\item{include.non.labelled}{Logical, if \code{TRUE}, values without labels will
+\item{non.labelled, include.non.labelled}{Logical, if \code{TRUE}, values without labels will
 also be included in the returned labels (see \code{\link{fill_labels}}).}
 
 \item{drop.na}{Logical, whether labels of tagged NA values (see \code{\link[haven]{tagged_na}})
@@ -68,10 +69,10 @@ barplot(table(efc$e42dep),
         main = get_label(efc$e42dep))
 
 # include associated values
-get_labels(efc$e42dep, include.values = "as.name")
+get_labels(efc$e42dep, values = "as.name")
 
 # include associated values
-get_labels(efc$e42dep, include.values = "as.prefix")
+get_labels(efc$e42dep, values = "as.prefix")
 
 # get labels from multiple variables
 get_labels(list(efc$e42dep, efc$e16sex, efc$e15relat))
@@ -99,7 +100,7 @@ x <- set_labels(x, labels = c("yes", "maybe", "no"), force.values = FALSE)
 # get labels for labelled values only
 get_labels(x)
 # get labels for all values
-get_labels(x, include.non.labelled = TRUE)
+get_labels(x, non.labelled = TRUE)
 
 
 # get labels, including tagged NA values
@@ -109,7 +110,7 @@ x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
                 "Refused" = tagged_na("a"), "Not home" = tagged_na("z")))
 # get current NA values
 x
-get_labels(x, include.values = "n", drop.na = FALSE)
+get_labels(x, values = "n", drop.na = FALSE)
 
 
 # create vector with unused labels
@@ -120,7 +121,7 @@ efc$e42dep <- set_labels(
 )
 get_labels(efc$e42dep)
 get_labels(efc$e42dep, drop.unused = TRUE)
-get_labels(efc$e42dep, include.non.labelled = TRUE, drop.unused = TRUE)
+get_labels(efc$e42dep, non.labelled = TRUE, drop.unused = TRUE)
 
 }
 \seealso{

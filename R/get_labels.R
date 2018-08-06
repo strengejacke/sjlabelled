@@ -15,17 +15,17 @@
 #'          (vector) with value label attributes; or a \code{list} of variables
 #'          with values label attributes. If \code{x} has no label attributes,
 #'          factor levels are returned. See 'Examples'.
-#' @param include.values String, indicating whether the values associated with the
-#'          value labels are returned as well. If \code{include.values = "as.name"}
-#'          (or \code{include.values = "n"}), values are set as \code{names}
-#'          attribute of the returned object. If \code{include.values = "as.prefix"}
-#'          (or \code{include.values = "p"}), values are included as prefix
+#' @param values,include.values String, indicating whether the values associated with the
+#'          value labels are returned as well. If \code{values = "as.name"}
+#'          (or \code{values = "n"}), values are set as \code{names}
+#'          attribute of the returned object. If \code{values = "as.prefix"}
+#'          (or \code{values = "p"}), values are included as prefix
 #'          to each label. See 'Examples'.
 #' @param attr.only Logical, if \code{TRUE}, labels are only searched for
 #'          in the the vector's \code{attributes}; else, if \code{attr.only = FALSE}
 #'          and \code{x} has no label attributes, factor levels or string values
 #'          are returned. See 'Examples'.
-#' @param include.non.labelled Logical, if \code{TRUE}, values without labels will
+#' @param non.labelled,include.non.labelled Logical, if \code{TRUE}, values without labels will
 #'          also be included in the returned labels (see \code{\link{fill_labels}}).
 #' @param drop.na Logical, whether labels of tagged NA values (see \code{\link[haven]{tagged_na}})
 #'          should be included in the return value or not. By default, labelled
@@ -59,10 +59,10 @@
 #'         main = get_label(efc$e42dep))
 #'
 #' # include associated values
-#' get_labels(efc$e42dep, include.values = "as.name")
+#' get_labels(efc$e42dep, values = "as.name")
 #'
 #' # include associated values
-#' get_labels(efc$e42dep, include.values = "as.prefix")
+#' get_labels(efc$e42dep, values = "as.prefix")
 #'
 #' # get labels from multiple variables
 #' get_labels(list(efc$e42dep, efc$e16sex, efc$e15relat))
@@ -90,7 +90,7 @@
 #' # get labels for labelled values only
 #' get_labels(x)
 #' # get labels for all values
-#' get_labels(x, include.non.labelled = TRUE)
+#' get_labels(x, non.labelled = TRUE)
 #'
 #'
 #' # get labels, including tagged NA values
@@ -100,7 +100,7 @@
 #'                 "Refused" = tagged_na("a"), "Not home" = tagged_na("z")))
 #' # get current NA values
 #' x
-#' get_labels(x, include.values = "n", drop.na = FALSE)
+#' get_labels(x, values = "n", drop.na = FALSE)
 #'
 #'
 #' # create vector with unused labels
@@ -111,35 +111,57 @@
 #' )
 #' get_labels(efc$e42dep)
 #' get_labels(efc$e42dep, drop.unused = TRUE)
-#' get_labels(efc$e42dep, include.non.labelled = TRUE, drop.unused = TRUE)
+#' get_labels(efc$e42dep, non.labelled = TRUE, drop.unused = TRUE)
 #'
 #' @export
-get_labels <- function(x, attr.only = FALSE, include.values = NULL,
-                       include.non.labelled = FALSE, drop.na = TRUE, drop.unused = FALSE) {
+get_labels <- function(x, attr.only = FALSE, values = NULL,
+                       non.labelled = FALSE, drop.na = TRUE, drop.unused = FALSE, include.values = NULL, include.non.labelled = NULL) {
   UseMethod("get_labels")
 }
 
 #' @export
-get_labels.data.frame <- function(x, attr.only = FALSE, include.values = NULL,
-                                  include.non.labelled = FALSE, drop.na = TRUE,
-                                  drop.unused = FALSE) {
-  lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = include.values,
-         include.non.labelled = include.non.labelled, drop.na = drop.na, drop.unused = drop.unused)
+get_labels.data.frame <- function(x, attr.only = FALSE, values = NULL,
+                                  non.labelled = FALSE, drop.na = TRUE,
+                                  drop.unused = FALSE,
+                                  include.values = NULL, include.non.labelled = NULL) {
+
+  ## TODO remove later
+
+  if (!missing(include.values)) values <- include.values
+  if (!missing(include.non.labelled)) non.labelled <- include.non.labelled
+
+  lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = values,
+         include.non.labelled = non.labelled, drop.na = drop.na, drop.unused = drop.unused)
 }
 
 #' @export
-get_labels.list <- function(x, attr.only = FALSE, include.values = NULL,
-                            include.non.labelled = FALSE, drop.na = TRUE, drop.unused = FALSE) {
-  lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = include.values,
-         include.non.labelled = include.non.labelled, drop.na = drop.na, drop.unused = drop.unused)
+get_labels.list <- function(x, attr.only = FALSE, values = NULL,
+                            non.labelled = FALSE, drop.na = TRUE,
+                            drop.unused = FALSE,
+                            include.values = NULL, include.non.labelled = NULL) {
+
+  ## TODO remove later
+
+  if (!missing(include.values)) values <- include.values
+  if (!missing(include.non.labelled)) non.labelled <- include.non.labelled
+
+  lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = values,
+         include.non.labelled = non.labelled, drop.na = drop.na, drop.unused = drop.unused)
 }
 
 #' @export
-get_labels.default <- function(x, attr.only = FALSE, include.values = NULL,
-                               include.non.labelled = FALSE, drop.na = TRUE,
-                               drop.unused = FALSE) {
-  get_labels_helper(x, attr.only = attr.only, include.values = include.values,
-                    include.non.labelled = include.non.labelled, drop.na = drop.na,
+get_labels.default <- function(x, attr.only = FALSE, values = NULL,
+                               non.labelled = FALSE, drop.na = TRUE,
+                               drop.unused = FALSE,
+                               include.values = NULL, include.non.labelled = NULL) {
+
+  ## TODO remove later
+
+  if (!missing(include.values)) values <- include.values
+  if (!missing(include.non.labelled)) non.labelled <- include.non.labelled
+
+  get_labels_helper(x, attr.only = attr.only, include.values = values,
+                    include.non.labelled = non.labelled, drop.na = drop.na,
                     drop.unused = drop.unused)
 }
 

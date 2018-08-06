@@ -55,9 +55,7 @@ These functions add, replace or remove value labels to or from variables.
          \code{replace_labels()} is an alias for \code{add_labels()}.
 }
 \examples{
-# ----------------------
 # add_labels()
-# ----------------------
 data(efc)
 get_labels(efc$e42dep)
 
@@ -74,14 +72,14 @@ x <- efc \%>\%
 get_labels(x)
 
 x <- add_labels(efc$e42dep, labels = c(`nothing` = 5, `zero value` = 0))
-get_labels(x, include.values = "p")
+get_labels(x, values = "p")
 
 # replace old value labels
 x <- add_labels(
   efc$e42dep,
   labels = c(`not so dependent` = 4, `lorem ipsum` = 5)
 )
-get_labels(x, include.values = "p")
+get_labels(x, values = "p")
 
 # replace specific missing value (tagged NA)
 library(haven)
@@ -95,14 +93,13 @@ x
 replace_labels(x, labels = c("Second" = tagged_na("c")))
 
 
-# ----------------------
 # remove_labels()
-# ----------------------
+
 x <- remove_labels(efc$e42dep, labels = 2)
-get_labels(x, include.values = "p")
+get_labels(x, values = "p")
 
 x <- remove_labels(efc$e42dep, labels = "independent")
-get_labels(x, include.values = "p")
+get_labels(x, values = "p")
 
 library(haven)
 x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),

@@ -56,11 +56,11 @@
 #'
 #' # only copy existing value labels
 #' as_factor(x)
-#' get_labels(as_factor(x), include.values = "p")
+#' get_labels(as_factor(x), values = "p")
 #'
 #' # also add labels to non-labelled values
 #' as_factor(x, add.non.labelled = TRUE)
-#' get_labels(as_factor(x, add.non.labelled = TRUE), include.values = "p")
+#' get_labels(as_factor(x, add.non.labelled = TRUE), values = "p")
 #'
 #'
 #' # easily coerce specific variables in a data frame to factor
@@ -102,12 +102,12 @@ to_fac_helper <- function(x, add.non.labelled) {
     get_labels(
       x,
       attr.only = TRUE,
-      include.values = "n",
-      include.non.labelled = add.non.labelled
+      values = "n",
+      non.labelled = add.non.labelled
     )
 
   # retrieve variable labels
-  varlab <- get_label(x)
+  varlab <- attr(x, "label", exact = T)
 
   # switch value and names attribute, since get_labels
   # returns the values as names, and the value labels
@@ -138,7 +138,7 @@ to_fac_helper <- function(x, add.non.labelled) {
     )
 
   # set back variable labels
-  x <- set_label(x, label = varlab)
+  attr(x, "label") <- varlab
 
   x
 }

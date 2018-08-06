@@ -111,7 +111,7 @@ as_numeric_helper <- function(x, start.at, keep.labels, use.labels) {
   varlab <- get_label(x)
 
   # get labels
-  labels <- get_labels(x, attr.only = T, include.values = "n")
+  labels <- get_labels(x, attr.only = T, values = "n")
 
   # get values, if these should be used after converting
   values <- get_values(x)

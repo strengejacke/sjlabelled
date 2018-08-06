@@ -68,11 +68,11 @@ x <- set_labels(
 
 # only copy existing value labels
 as_factor(x)
-get_labels(as_factor(x), include.values = "p")
+get_labels(as_factor(x), values = "p")
 
 # also add labels to non-labelled values
 as_factor(x, add.non.labelled = TRUE)
-get_labels(as_factor(x, add.non.labelled = TRUE), include.values = "p")
+get_labels(as_factor(x, add.non.labelled = TRUE), values = "p")
 
 
 # easily coerce specific variables in a data frame to factor

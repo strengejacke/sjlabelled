@@ -62,7 +62,7 @@ tidy_labels_helper <- function(x, sep, remove) {
     get_labels(
       x,
       attr.only = TRUE,
-      include.values = FALSE,
+      values = FALSE,
       drop.unused = TRUE,
       drop.na = TRUE
     )

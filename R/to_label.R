@@ -176,16 +176,16 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
   }
 
   # get value labels
-  vl <- get_labels(x, attr.only = TRUE, include.values = iv,
-                   include.non.labelled = add.non.labelled,
+  vl <- get_labels(x, attr.only = TRUE, values = iv,
+                   non.labelled = add.non.labelled,
                    drop.na = drop.na)
 
   # check if we have any labels, else
   # return variable "as is"
   if (!is.null(vl)) {
     # get associated values for value labels
-    vnn <- get_labels(x, attr.only = TRUE, include.values = "n",
-                      include.non.labelled = add.non.labelled,
+    vnn <- get_labels(x, attr.only = TRUE, values = "n",
+                      non.labelled = add.non.labelled,
                       drop.na = drop.na)
 
     # convert to numeric

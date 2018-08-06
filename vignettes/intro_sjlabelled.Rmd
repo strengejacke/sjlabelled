@@ -70,9 +70,9 @@ The `get_labels()`-method is a generic method to return value labels of a vector
 get_labels(efc$e42dep)
 ```
 
-You can prefix the value labels with the associated values or return them as named vector with the `include.values` argument.
+You can prefix the value labels with the associated values or return them as named vector with the `values` argument.
 ```{r}
-get_labels(efc$e42dep, include.values = "p")
+get_labels(efc$e42dep, values = "p")
 ```
 
 `get_labels()` also returns "labels" of factors, even if the factor has no label attributes.
@@ -98,15 +98,15 @@ x <- labelled(
 get_labels(x)
 ```
 
-... however, you can add non-labelled values to the return value as well, using the `include.non.labelled` argument.
+... however, you can add non-labelled values to the return value as well, using the `non.labelled` argument.
 ```{r}
-get_labels(x, include.non.labelled = TRUE)
+get_labels(x, non.labelled = TRUE)
 ```
 
 Tagged missing values can also be included in the output, using the `drop.na` argument.
 
 ```{r}
-get_labels(x, include.values = "n", drop.na = FALSE)
+get_labels(x, values = "n", drop.na = FALSE)
 ```
 
 
@@ -357,7 +357,7 @@ get_na(efc$c84cop3, as.tag = TRUE)
 dummy <- replace_na(efc$c84cop3, value = 2)
 
 # labels of former tagged NA's are preserved
-get_labels(dummy, drop.na = FALSE, include.values = "p")
+get_labels(dummy, drop.na = FALSE, values = "p")
 get_na(dummy, as.tag = TRUE)
 
 # No more NA values
@@ -369,7 +369,7 @@ frq(dummy)
 dummy <- replace_na(efc$c84cop3, value = 2, na.label = "restored NA", tagged.na = "2")
 
 # Only one tagged NA remains
-get_labels(dummy, drop.na = FALSE, include.values = "p")
+get_labels(dummy, drop.na = FALSE, values = "p")
 get_na(dummy, as.tag = TRUE)
 
 # Some NA values remain

@@ -7,6 +7,8 @@
 ## Changes to functions
 
 * `copy_labels()` now also copy labels even if columns in subsetted and original data frame do not completely match.
+* Arguments `include.non.labelled` and `include.values` in `get_labels()` are renamed to shorter versions `non.labelled` and `values`. `include.non.labelled` and `include.values` will become softly deprecated.
+
 
 ## Bug fixes
 

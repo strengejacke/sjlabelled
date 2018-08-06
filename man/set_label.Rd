@@ -58,9 +58,11 @@ sjp.frq(dummy, title = NULL)}
 
 
 # Set variable labels for data frame
-dummy <- data.frame(a = sample(1:4, 10, replace = TRUE),
-                    b = sample(1:4, 10, replace = TRUE),
-                    c = sample(1:4, 10, replace = TRUE))
+dummy <- data.frame(
+  a = sample(1:4, 10, replace = TRUE),
+  b = sample(1:4, 10, replace = TRUE),
+  c = sample(1:4, 10, replace = TRUE)
+)
 dummy <- set_label(dummy, c("Variable A", "Variable B", "Variable C"))
 str(dummy)
 
@@ -86,9 +88,11 @@ get_label(dummies)
 # use 'var_labels()' to set labels within a pipe-workflow, and
 # when you need "tidyverse-consistent" api.
 # Set variable labels for data frame
-dummy <- data.frame(a = sample(1:4, 10, replace = TRUE),
-                    b = sample(1:4, 10, replace = TRUE),
-                    c = sample(1:4, 10, replace = TRUE))
+dummy <- data.frame(
+  a = sample(1:4, 10, replace = TRUE),
+  b = sample(1:4, 10, replace = TRUE),
+  c = sample(1:4, 10, replace = TRUE)
+)
 
 dummy \%>\%
   var_labels(a = "First variable", c = "third variable") \%>\%
