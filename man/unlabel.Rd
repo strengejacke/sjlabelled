@@ -4,24 +4,27 @@
 \alias{unlabel}
 \title{Convert labelled vectors into normal classes}
 \usage{
-unlabel(x)
+unlabel(x, verbose = TRUE)
 }
 \arguments{
 \item{x}{A data frame, which contains \code{\link[haven]{labelled}} class
 vectors or a single vector of class \code{labelled}.}
+
+\item{verbose}{Logical, if \code{TRUE}, a progress bar is displayed that indicates
+the progress of converting the imported data.}
 }
 \value{
 A data frame or single vector (depending on \code{x}) with common object classes.
 }
 \description{
 This function converts \code{\link[haven]{labelled}} class vectors
-               into a generic data format, which means that simply all \code{\link[haven]{labelled}}
-               class attributes will be removed, so all vectors / variables will most
-               likely become \code{\link{atomic}}.
+   into a generic data format, which means that simply all \code{\link[haven]{labelled}}
+   class attributes will be removed, so all vectors / variables will most
+   likely become \code{\link{atomic}}.
 }
 \note{
 This function is currently only used to avoid possible compatibility issues
-        with \code{\link[haven]{labelled}} class vectors. Some known issues with
-        \code{\link[haven]{labelled}} class vectors have already been fixed, so
-        it might be that this function will become redundant in the future.
+   with \code{\link[haven]{labelled}} class vectors. Some known issues with
+   \code{\link[haven]{labelled}} class vectors have already been fixed, so
+   it might be that this function will become redundant in the future.
 }

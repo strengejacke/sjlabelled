@@ -8,15 +8,17 @@
 #'
 #' @param path File path to the data file.
 #' @param atomic.to.fac Logical, if \code{TRUE}, categorical variables imported
-#'   from the dataset (which are imported as \code{atomic}) will be
-#'   converted to factors.
+#'    from the dataset (which are imported as \code{atomic}) will be
+#'    converted to factors.
 #' @param tag.na Logical, if \code{TRUE}, missing values are imported
-#'          as \code{\link[haven]{tagged_na}} values; else, missing values are
-#'          converted to regular \code{NA} (default behaviour).
+#'    as \code{\link[haven]{tagged_na}} values; else, missing values are
+#'    converted to regular \code{NA} (default behaviour).
 #' @param path.cat Optional, the file path to the SAS catalog file.
 #' @param enc The character encoding used for the file. This defaults to the encoding
-#'          specified in the file, or UTF-8. Use this argument to override the default
-#'          encoding stored in the file.
+#'    specified in the file, or UTF-8. Use this argument to override the default
+#'    encoding stored in the file.
+#' @param verbose Logical, if \code{TRUE}, a progress bar is displayed that indicates
+#'    the progress of converting the imported data.
 #'
 #' @return A data frame containing the imported, labelled data. Retrieve value labels with
 #'   \code{\link{get_labels}} and variable labels with \code{\link{get_label}}.
@@ -50,7 +52,7 @@
 #'
 #' @importFrom haven read_sav read_sas read_dta
 #' @export
-read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE, enc = NULL) {
+read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE, enc = NULL, verbose = TRUE) {
   # read data file
   data.spss <- haven::read_sav(file = path, encoding = enc, user_na = tag.na)
   # prepare tagged NA?
@@ -146,7 +148,7 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE, enc = NULL) {
   }
 
   # convert to sjPlot
-  data.spss <- unlabel(data.spss)
+  data.spss <- unlabel(data.spss, verbose = verbose)
 
   # convert atomic values to factors
   if (atomic.to.fac) data.spss <- atomic_to_fac(data.spss)
@@ -193,7 +195,7 @@ atomic_to_fac <- function(data.spss) {
 
 #' @rdname read_spss
 #' @export
-read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, enc = NULL) {
+read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, enc = NULL, verbose = TRUE) {
   # read data file
   data <- haven::read_sas(data_file = path, catalog_file = path.cat, encoding = enc)
 
@@ -209,7 +211,7 @@ read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, enc = NULL) {
   }
 
   # convert to sjPlot
-  data <- unlabel(data)
+  data <- unlabel(data, verbose = verbose)
 
   # convert atomic values to factors
   if (atomic.to.fac) data <- atomic_to_fac(data)
@@ -221,7 +223,7 @@ read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, enc = NULL) {
 
 #' @rdname read_spss
 #' @export
-read_stata <- function(path, atomic.to.fac = FALSE, enc = NULL) {
+read_stata <- function(path, atomic.to.fac = FALSE, enc = NULL, verbose = TRUE) {
   # read data file
   data <- haven::read_dta(file = path, encoding = enc)
 
@@ -237,7 +239,7 @@ read_stata <- function(path, atomic.to.fac = FALSE, enc = NULL) {
   }
 
   # convert to sjPlot
-  data <- unlabel(data)
+  data <- unlabel(data, verbose = verbose)
 
   # convert atomic values to factors
   if (atomic.to.fac) data <- atomic_to_fac(data)
