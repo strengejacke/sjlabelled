@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.12</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.13</span>
       </span>
     </div>
 
@@ -200,9 +200,11 @@ which should be labelled, and the value is the new variable label.</p></td>
 <span class='co'># }</span><div class='input'>
 
 <span class='co'># Set variable labels for data frame</span>
-<span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-                    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-                    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+<span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+  <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+  <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+  <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+)
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>set_label</span>(<span class='no'>dummy</span>, <span class='fu'>c</span>(<span class='st'>"Variable A"</span>, <span class='st'>"Variable B"</span>, <span class='st'>"Variable C"</span>))
 <span class='fu'>str</span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 'data.frame':	10 obs. of  3 variables:
 #&gt;  $ a: int  3 3 1 4 4 4 4 2 2 2
@@ -241,9 +243,11 @@ which should be labelled, and the value is the new variable label.</p></td>
 <span class='co'># use 'var_labels()' to set labels within a pipe-workflow, and</span>
 <span class='co'># when you need "tidyverse-consistent" api.</span>
 <span class='co'># Set variable labels for data frame</span>
-<span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-                    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-                    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+<span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+  <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+  <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+  <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>10</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+)
 
 <span class='no'>dummy</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>var_labels</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='st'>"First variable"</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='st'>"third variable"</span>) <span class='kw'>%&gt;%</span>

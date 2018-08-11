@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.12</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.13</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <h1>Working with Labelled Data</h1>
                         <h4 class="author">Daniel Lüdecke</h4>
             
-            <h4 class="date">2018-07-08</h4>
+            <h4 class="date">2018-08-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/master/vignettes/labelleddata.Rmd"><code>vignettes/labelleddata.Rmd</code></a></small>
       <div class="hidden name"><code>labelleddata.Rmd</code></div>
@@ -180,28 +180,23 @@
 <a href="#add-back-labels" class="anchor"></a>Add back labels</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">efc.sub &lt;-<span class="st"> </span><span class="kw"><a href="../reference/copy_labels.html">copy_labels</a></span>(efc.sub, efc)
 <span class="kw">str</span>(efc.sub)
-<span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    296 obs. of  5 variables:</span>
+<span class="co">#&gt; 'data.frame':    296 obs. of  5 variables:</span>
 <span class="co">#&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "elder' age"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "e17age"</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "elder' age"</span>
 <span class="co">#&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "elder's dependency"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "e42dep"</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "elder's dependency"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
 <span class="co">#&gt;   .. ..- attr(*, "names")= chr  "independent" "slightly dependent" "moderately dependent" "severely dependent"</span>
 <span class="co">#&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "do you feel you cope well as caregiver?"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "c82cop1"</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "do you feel you cope well as caregiver?"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
 <span class="co">#&gt;   .. ..- attr(*, "names")= chr  "never" "sometimes" "often" "always"</span>
 <span class="co">#&gt;  $ c83cop2: num  2 4 2 2 2 2 1 3 2 2 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "do you find caregiving too demanding?"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "c83cop2"</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "do you find caregiving too demanding?"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
 <span class="co">#&gt;   .. ..- attr(*, "names")= chr  "Never" "Sometimes" "Often" "Always"</span>
 <span class="co">#&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</span>
-<span class="co">#&gt;   ..- attr(*, "label")= Named chr "does caregiving cause difficulties in your relationship with your friends?"</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr "c84cop3"</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "does caregiving cause difficulties in your relationship with your friends?"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4</span>
 <span class="co">#&gt;   .. ..- attr(*, "names")= chr  "Never" "Sometimes" "Often" "Always"</span></code></pre></div>
 </div>

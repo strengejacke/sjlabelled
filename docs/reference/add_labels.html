@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.12</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.13</span>
       </span>
     </div>
 
@@ -194,9 +194,7 @@ from specific NA values.</p></dd>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># ----------------------</span>
-<span class='co'># add_labels()</span>
-<span class='co'># ----------------------</span>
+    <pre class="examples"><div class='input'><span class='co'># add_labels()</span>
 <span class='fu'>data</span>(<span class='no'>efc</span>)
 <span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
 #&gt; [4] "severely dependent"  </div><div class='input'>
@@ -226,14 +224,14 @@ from specific NA values.</p></dd>
 #&gt; [1] "Male"   "Female"
 #&gt; </div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>add_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>`nothing`</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>`zero value`</span> <span class='kw'>=</span> <span class='fl'>0</span>))
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[0] zero value"           "[1] independent"         
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[0] zero value"           "[1] independent"         
 #&gt; [3] "[2] slightly dependent"   "[3] moderately dependent"
 #&gt; [5] "[4] severely dependent"   "[5] nothing"             </div><div class='input'>
 <span class='co'># replace old value labels</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>add_labels</span>(
   <span class='no'>efc</span>$<span class='no'>e42dep</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>`not so dependent`</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>`lorem ipsum`</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-)</div><div class='output co'>#&gt; <span class='message'>label 'severely dependent' was replaced with new value label.</span></div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"          "[2] slightly dependent"  
+)</div><div class='output co'>#&gt; <span class='message'>label 'severely dependent' was replaced with new value label.</span></div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"          "[2] slightly dependent"  
 #&gt; [3] "[3] moderately dependent" "[4] not so dependent"    
 #&gt; [5] "[5] lorem ipsum"         </div><div class='input'>
 <span class='co'># replace specific missing value (tagged NA)</span>
@@ -266,14 +264,13 @@ from specific NA values.</p></dd>
 #&gt;  NA(a)      Refused
 #&gt;  NA(z)     Not home</div><div class='input'>
 
-<span class='co'># ----------------------</span>
 <span class='co'># remove_labels()</span>
-<span class='co'># ----------------------</span>
+
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"          "[3] moderately dependent"
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"          "[3] moderately dependent"
 #&gt; [3] "[4] severely dependent"  </div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='st'>"independent"</span>)
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[2] slightly dependent"   "[3] moderately dependent"
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[2] slightly dependent"   "[3] moderately dependent"
 #&gt; [3] "[4] severely dependent"  </div><div class='input'>
 <span class='fu'>library</span>(<span class='no'>haven</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></span>(<span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>),

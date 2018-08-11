@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.12</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.13</span>
       </span>
     </div>
 
@@ -128,8 +128,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_labels</span>(<span class='no'>x</span>, <span class='kw'>attr.only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>include.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_labels</span>(<span class='no'>x</span>, <span class='kw'>attr.only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>include.non.labelled</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,16 +152,16 @@ and <code>x</code> has no label attributes, factor levels or string values
 are returned. See 'Examples'.</p></td>
     </tr>
     <tr>
-      <th>include.values</th>
+      <th>values, include.values</th>
       <td><p>String, indicating whether the values associated with the
-value labels are returned as well. If <code>include.values = "as.name"</code>
-(or <code>include.values = "n"</code>), values are set as <code>names</code>
-attribute of the returned object. If <code>include.values = "as.prefix"</code>
-(or <code>include.values = "p"</code>), values are included as prefix
+value labels are returned as well. If <code>values = "as.name"</code>
+(or <code>values = "n"</code>), values are set as <code>names</code>
+attribute of the returned object. If <code>values = "as.prefix"</code>
+(or <code>values = "p"</code>), values are included as prefix
 to each label. See 'Examples'.</p></td>
     </tr>
     <tr>
-      <th>include.non.labelled</th>
+      <th>non.labelled, include.non.labelled</th>
       <td><p>Logical, if <code>TRUE</code>, values without labels will
 also be included in the returned labels (see <code><a href='zap_labels.html'>fill_labels</a></code>).</p></td>
     </tr>
@@ -213,12 +214,12 @@ the return value.</p></td>
         <span class='kw'>names.arg</span> <span class='kw'>=</span> <span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>),
         <span class='kw'>main</span> <span class='kw'>=</span> <span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>))</div><div class='img'><img src='get_labels-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># include associated values</span>
-<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"as.name"</span>)</div><div class='output co'>#&gt;                      1                      2                      3 
+<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"as.name"</span>)</div><div class='output co'>#&gt;                      1                      2                      3 
 #&gt;          "independent"   "slightly dependent" "moderately dependent" 
 #&gt;                      4 
 #&gt;   "severely dependent" </div><div class='input'>
 <span class='co'># include associated values</span>
-<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"as.prefix"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"          "[2] slightly dependent"  
+<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"as.prefix"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"          "[2] slightly dependent"  
 #&gt; [3] "[3] moderately dependent" "[4] severely dependent"  </div><div class='input'>
 <span class='co'># get labels from multiple variables</span>
 <span class='fu'>get_labels</span>(<span class='fu'>list</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='no'>efc</span>$<span class='no'>e16sex</span>, <span class='no'>efc</span>$<span class='no'>e15relat</span>))</div><div class='output co'>#&gt; [[1]]
@@ -251,7 +252,7 @@ the return value.</p></td>
 <span class='co'># add less labels than values</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='no'>x</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>), <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'><span class='co'># get labels for labelled values only</span>
 <span class='fu'>get_labels</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "yes"   "maybe" "no"   </div><div class='input'><span class='co'># get labels for all values</span>
-<span class='fu'>get_labels</span>(<span class='no'>x</span>, <span class='kw'>include.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "yes"   "maybe" "no"    "4"    </div><div class='input'>
+<span class='fu'>get_labels</span>(<span class='no'>x</span>, <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "yes"   "maybe" "no"    "4"    </div><div class='input'>
 
 <span class='co'># get labels, including tagged NA values</span>
 <span class='fu'>library</span>(<span class='no'>haven</span>)
@@ -268,7 +269,7 @@ the return value.</p></td>
 #&gt;      4 Disagreement
 #&gt;  NA(c)        First
 #&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>x</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;              1              4          NA(c)          NA(a)          NA(z) 
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>x</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"n"</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;              1              4          NA(c)          NA(a)          NA(z) 
 #&gt;    "Agreement" "Disagreement"        "First"      "Refused"     "Not home" </div><div class='input'>
 
 <span class='co'># create vector with unused labels</span>
@@ -277,7 +278,7 @@ the return value.</p></td>
   <span class='no'>efc</span>$<span class='no'>e42dep</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"independent"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"dependent"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"not used"</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 )
-<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"   "not used"   </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"  </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>include.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "2"           "3"           "dependent"  </div><div class='input'>
+<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"   "not used"   </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"  </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "2"           "3"           "dependent"  </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.12</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.13</span>
       </span>
     </div>
 
@@ -314,9 +314,11 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;     1     2     3 </div><div class='input'>
 
 <span class='fu'>library</span>(<span class='no'>haven</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></span>(<span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>),
-              <span class='fu'>c</span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"c"</span>),
-                <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"z"</span>)))
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></span>(
+  <span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>),
+  <span class='fu'>c</span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"c"</span>),
+    <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"z"</span>))
+)
 <span class='co'># get current NA values</span>
 <span class='no'>x</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
@@ -356,7 +358,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
              <span class='kw'>`severe dependency`</span> <span class='kw'>=</span> <span class='fl'>2</span>,
              <span class='kw'>`missing value`</span> <span class='kw'>=</span> <span class='fl'>9</span>)
   )
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[9] missing value"    </div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>include.values</span> <span class='kw'>=</span> <span class='st'>"p"</span>, <span class='kw'>include.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[3] 3"                
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[9] missing value"    </div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>, <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[3] 3"                
 #&gt; [4] "[4] 4"                 "[9] missing value"    </div><div class='input'>
 <span class='co'># labels can also be set for tagged NA value</span>
 <span class='co'># create numeric vector</span>

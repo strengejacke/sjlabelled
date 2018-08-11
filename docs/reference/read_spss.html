@@ -64,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.12</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.13</span>
       </span>
     </div>
 
@@ -130,11 +130,13 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_spss</span>(<span class='no'>path</span>, <span class='kw'>atomic.to.fac</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tag.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>enc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>read_spss</span>(<span class='no'>path</span>, <span class='kw'>atomic.to.fac</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tag.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>enc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>read_sas</span>(<span class='no'>path</span>, <span class='kw'>path.cat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>atomic.to.fac</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>enc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>read_sas</span>(<span class='no'>path</span>, <span class='kw'>path.cat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>atomic.to.fac</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>enc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>read_stata</span>(<span class='no'>path</span>, <span class='kw'>atomic.to.fac</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>enc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>read_stata</span>(<span class='no'>path</span>, <span class='kw'>atomic.to.fac</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>enc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,6 +162,11 @@ converted to regular <code>NA</code> (default behaviour).</p></td>
       <td><p>The character encoding used for the file. This defaults to the encoding
 specified in the file, or UTF-8. Use this argument to override the default
 encoding stored in the file.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical, if <code>TRUE</code>, a progress bar is displayed that indicates
+the progress of converting the imported data.</p></td>
     </tr>
     <tr>
       <th>path.cat</th>
