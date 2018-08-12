@@ -186,9 +186,6 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
   if (!isempty(en)) names(lbs)[en] <- lbs[en]
 
 
-  # check if attribute is requested
-  if (mark.cat) attr(lbs, "category.value") <- fl
-
   # prefix labels
   if (prefix != "none")
     lbs <- prepare.labels(lbs, catval = fl, style = prefix)
@@ -197,7 +194,12 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
   # the vector now contains all possible labels, as named vector.
   # since ggplot uses named vectors as labels for axis-scales, matching
   # of labels is done automatically
-  convert_case(lbs, case, ...)
+  lbs <- convert_case(lbs, case, ...)
+
+  # check if attribute is requested
+  if (mark.cat) attr(lbs, "category.value") <- fl
+
+  lbs
 }
 
 
