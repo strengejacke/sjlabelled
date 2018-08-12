@@ -127,8 +127,16 @@ get_labels.data.frame <- function(x, attr.only = FALSE, values = NULL,
 
   ## TODO remove later
 
-  if (!missing(include.values)) values <- include.values
-  if (!missing(include.non.labelled)) non.labelled <- include.non.labelled
+  if (!missing(include.values)) {
+    message("Argument `include.values` is deprecated. Please use `values` instead.")
+    values <- include.values
+  }
+
+  if (!missing(include.non.labelled)) {
+    message("Argument `include.non.labelled` is deprecated. Please use `non.labelled` instead.")
+    non.labelled <- include.non.labelled
+  }
+
 
   lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = values,
          include.non.labelled = non.labelled, drop.na = drop.na, drop.unused = drop.unused)
@@ -142,8 +150,16 @@ get_labels.list <- function(x, attr.only = FALSE, values = NULL,
 
   ## TODO remove later
 
-  if (!missing(include.values)) values <- include.values
-  if (!missing(include.non.labelled)) non.labelled <- include.non.labelled
+  if (!missing(include.values)) {
+    message("Argument `include.values` is deprecated. Please use `values` instead.")
+    values <- include.values
+  }
+
+  if (!missing(include.non.labelled)) {
+    message("Argument `include.non.labelled` is deprecated. Please use `non.labelled` instead.")
+    non.labelled <- include.non.labelled
+  }
+
 
   lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = values,
          include.non.labelled = non.labelled, drop.na = drop.na, drop.unused = drop.unused)
@@ -157,8 +173,16 @@ get_labels.default <- function(x, attr.only = FALSE, values = NULL,
 
   ## TODO remove later
 
-  if (!missing(include.values)) values <- include.values
-  if (!missing(include.non.labelled)) non.labelled <- include.non.labelled
+  if (!missing(include.values)) {
+    message("Argument `include.values` is deprecated. Please use `values` instead.")
+    values <- include.values
+  }
+
+  if (!missing(include.non.labelled)) {
+    message("Argument `include.non.labelled` is deprecated. Please use `non.labelled` instead.")
+    non.labelled <- include.non.labelled
+  }
+
 
   get_labels_helper(x, attr.only = attr.only, include.values = values,
                     include.non.labelled = non.labelled, drop.na = drop.na,
