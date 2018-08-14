@@ -203,13 +203,12 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 }
 
 
-#' @importFrom tidyselect starts_with
 prepare.labels <- function(x, catval, style = c("varname", "label")) {
   x_var <- names(x[!catval])
   x_val <- names(x[catval])
 
   for (i in x_var) {
-    pos <- tidyselect::starts_with(i, vars = x_val)
+    pos <- string_starts_with(pattern = i, x = x_val)
 
     if (!isempty(pos) && length(pos) > 0) {
       match.vals <- x_val[pos]
@@ -228,7 +227,6 @@ prepare.labels <- function(x, catval, style = c("varname", "label")) {
 #' @importFrom purrr map map2 flatten_chr
 #' @importFrom dplyr pull select
 #' @importFrom stats model.frame
-#' @importFrom tibble has_name
 #' @export
 get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...) {
 
@@ -270,7 +268,7 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, .
         m <- get_model_frame(x)
         if (mv && inherits(x, "brmsfit"))
           colnames(m) <- gsub(pattern = "_", replacement = "", x = colnames(m), fixed = TRUE)
-        y <- y[tibble::has_name(m, y)]
+        y <- y[obj_has_name(m, y)]
         if (length(y) > 0)
           dplyr::select(m, !! y)
         else

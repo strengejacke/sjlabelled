@@ -124,8 +124,6 @@ zap_labels <- function(x, ...) {
     for (i in colnames(.dat)) {
       x[[i]] <- zap_labels_helper(.dat[[i]])
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- zap_labels_helper(.dat)
   }
@@ -146,8 +144,6 @@ zap_unlabelled <- function(x, ...) {
     for (i in colnames(.dat)) {
       x[[i]] <- zap_unlabelled_helper(.dat[[i]])
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- zap_unlabelled_helper(.dat)
   }
@@ -198,8 +194,6 @@ zap_na_tags <- function(x, ...) {
     for (i in colnames(.dat)) {
       x[[i]] <- zap_na_tags_helper(.dat[[i]])
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- zap_na_tags_helper(.dat)
   }

@@ -9,8 +9,6 @@ fill_labels <- function(x, ...) {
     for (i in colnames(.dat)) {
       x[[i]] <- fill_labels_helper(.dat[[i]])
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- fill_labels_helper(.dat)
   }

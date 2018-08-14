@@ -91,8 +91,6 @@ as_numeric <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels =
     for (i in colnames(.dat)) {
       x[[i]] <- as_numeric_helper(.dat[[i]], start.at, keep.labels, use.labels)
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- as_numeric_helper(.dat, start.at, keep.labels, use.labels)
   }

@@ -283,7 +283,6 @@ write_sas <- function(x, path, drop.na = FALSE) {
 
 
 #' @importFrom purrr map
-#' @importFrom tibble as_tibble
 #' @importFrom haven write_sav write_dta write_sas
 write_data <- function(x, path, type, version, drop.na) {
   # make sure to have tidy labels

@@ -1,3 +1,9 @@
+# sjlabelled 1.0.14
+
+## General
+
+* Reduce package dependencies.
+
 # sjlabelled 1.0.13
 
 ## General

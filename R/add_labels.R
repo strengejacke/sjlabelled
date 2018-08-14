@@ -94,7 +94,6 @@
 #' get_na(x)
 #' get_na(remove_labels(x, labels = tagged_na("c")))
 #'
-#' @importFrom tibble as_tibble
 #' @importFrom dplyr quos
 #' @export
 add_labels <- function(x, ..., labels) {
@@ -111,8 +110,6 @@ add_labels <- function(x, ..., labels) {
     for (i in colnames(.dat)) {
       x[[i]] <- add_labels_helper(.dat[[i]], value = labels)
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- add_labels_helper(.dat, value = labels)
   }

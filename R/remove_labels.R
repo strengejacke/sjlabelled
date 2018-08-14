@@ -14,8 +14,6 @@ remove_labels <- function(x, ..., labels) {
     for (i in colnames(.dat)) {
       x[[i]] <- remove_labels_helper(.dat[[i]], labels)
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- remove_labels_helper(.dat, labels)
   }

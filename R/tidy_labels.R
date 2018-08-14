@@ -45,8 +45,6 @@ tidy_labels <- function(x, ..., sep = "_", remove = FALSE) {
     for (i in colnames(.dat)) {
       x[[i]] <- tidy_labels_helper(x = .dat[[i]], sep = sep, remove = remove)
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- tidy_labels_helper(x = .dat, sep = sep, remove = remove)
   }

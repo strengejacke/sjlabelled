@@ -9,8 +9,6 @@ drop_labels <- function(x, ..., drop.na = TRUE) {
     for (i in colnames(.dat)) {
       x[[i]] <- drop_labels_helper(.dat[[i]], drop.na = drop.na)
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- drop_labels_helper(.dat, drop.na = drop.na)
   }

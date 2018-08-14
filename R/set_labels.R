@@ -188,8 +188,6 @@ set_labels <- function(x, ...,
         )
       }
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- set_labels_helper(
       x = .dat,

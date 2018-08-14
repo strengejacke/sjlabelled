@@ -15,8 +15,6 @@ set.na <- function(x, ..., na, drop.levels = TRUE, as.tag = FALSE) {
         as.tag = as.tag
       )
     }
-    # coerce to tibble
-    x <- tibble::as_tibble(x)
   } else {
     x <- set_na_helper(
       x = .dat,

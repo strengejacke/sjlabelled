@@ -19,7 +19,6 @@
 #'    it might be that this function will become redundant in the future.
 #'
 #' @importFrom utils txtProgressBar setTxtProgressBar
-#' @importFrom tibble as_tibble
 #' @export
 unlabel <- function(x, verbose = TRUE) {
   # check if complete data frame or only single
@@ -44,7 +43,7 @@ unlabel <- function(x, verbose = TRUE) {
     if (!is.null(pb)) close(pb)
 
     # remove redundant class attributes
-    x <- tibble::as_tibble(x)
+    x <- as.data.frame(x)
   } else {
     # remove labelled class
     if (is_labelled(x)) x <- unclass(x)
