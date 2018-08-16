@@ -67,7 +67,7 @@ tidy_svynb_model <- function(model) {
   # keep original value, not rounded
   est <- stats::coef(model)
 
-  data.frame(
+  data_frame(
     term = substring(names(est), 5),
     estimate = est
   )
@@ -94,14 +94,14 @@ tidy_glmmTMB_model <- function(model) {
 
   est <- glmmTMB::fixef(model)
 
-  cond <- data.frame(
+  cond <- data_frame(
     term = names(est[[1]]),
     estimate = est[[1]],
     wrap.facet = "Conditional Model"
   )
 
   if (length(est[[2]]) > 0) {
-    zi <- data.frame(
+    zi <- data_frame(
       term = names(est[[1]]),
       estimate = est[[2]],
       wrap.facet = "Zero-Inflated Model"
@@ -128,7 +128,8 @@ tidy_hurdle_model <- function(model) {
 tidy_logistf_model <- function(model) {
   data.frame(
     term = model$terms,
-    estimate = model$coefficients
+    estimate = model$coefficients,
+    stringsAsFactors = FALSE
   )
 }
 
@@ -156,7 +157,7 @@ tidy_clm_model <- function(model) {
 
 #' @importFrom stats coef
 tidy_vgam_model <- function(model) {
-  data.frame(term = names(stats::coef(model)))
+  data_frame(term = names(stats::coef(model)))
 }
 
 #' @importFrom stats coef qnorm
@@ -164,5 +165,5 @@ tidy_zelig_model <- function(model) {
   if (!requireNamespace("Zelig"))
     stop("Package `Zelig` required. Please install", call. = F)
 
-  data.frame(term = names(Zelig::coef(model)))
+  data_frame(term = names(Zelig::coef(model)))
 }
