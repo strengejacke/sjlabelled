@@ -4,6 +4,10 @@
 
 * Reduce package dependencies.
 
+## Bug fixes
+
+* Fix bug in `var_labels()`, where non-existing may lead to wrong labelling.
+
 # sjlabelled 1.0.13
 
 ## General

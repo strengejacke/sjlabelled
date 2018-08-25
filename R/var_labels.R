@@ -22,6 +22,7 @@ var_labels <- function(x, ...) {
     call. = F)
     # remove invalid names
     vars <- vars[-non.vars]
+    labels <- labels[-non.vars]
   }
 
   # set label for all variables
