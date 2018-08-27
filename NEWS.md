@@ -6,7 +6,7 @@
 
 ## Bug fixes
 
-* Fix bug in `var_labels()`, where non-existing may lead to wrong labelling.
+* Fix bug in `var_labels()`, where non-existing columns may lead to wrong labelling.
 
 # sjlabelled 1.0.13
 
