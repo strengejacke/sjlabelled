@@ -93,25 +93,13 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 
 
   # get model terms and model frame
-
-  m <- tryCatch(
-    {purrr::map(models, ~ dplyr::slice(tidy_models(.x), -1))},
-    error = function(x) { NULL },
-    warning = function(x) { NULL },
-    finally = function(x) { NULL }
-  )
-
-  mf <- tryCatch(
-    {purrr::map(models, ~ dplyr::select(get_model_frame(.x), -1))},
-    error = function(x) { NULL },
-    warning = function(x) { NULL },
-    finally = function(x) { NULL }
-  )
-
+  m <- try(purrr::map(models, ~ dplyr::slice(tidy_models(.x), -1)), silent = TRUE)
+  mf <- try(purrr::map(models, ~ dplyr::select(get_model_frame(.x), -1)), silent = TRUE)
 
   # return NULL on error
-
-  if (is.null(m) || is.null(mf)) return(NULL)
+  if (inherits(m, "try-error") || inherits(mf, "try-error")) {
+    return(NULL)
+  }
 
 
   # get all variable labels for predictors
