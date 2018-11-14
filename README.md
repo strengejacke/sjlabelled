@@ -13,8 +13,8 @@ Basically, this package covers reading and writing data between other statistica
 To install the latest development snapshot (see latest changes below), type following commands into the R console:
 
 ```r
-library(devtools)
-devtools::install_github("strengejacke/sjlabelled")
+library(githubinstall)
+githubinstall::githubinstall("sjlabelled")
 ```
 
 ### Officiale, stable release
