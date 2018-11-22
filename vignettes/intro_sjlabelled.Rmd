@@ -23,19 +23,23 @@ _Labelled data_ (or labelled vectors) is a common data structure in other statis
 
 Labelled data not only extends **R**'s capabilities to deal with proper value _and_ variable labels, but also facilitates the representation of different types of missing values, like in other statistical software packages. Typically, in R, multiple declared missings cannot be represented in a similar way, like in 'SPSS' or 'SAS', with the regular missing values. However, the **haven**-package introduced `tagged_na` values, which can do this. Tagged NA's work exactly like regular R missing values except that they store one additional byte of information: a tag, which is usually a letter ("a" to "z") or also may be a character number ("0" to "9"). This allows to indicate different missings.
 
-Functions of **sjlabelled** do not necessarily require vectors of class `labelled`. The `labelled` class, implemented by the packages **haven** and **labelled**, may cause troubles with other packages, thus it's only intended as being an intermediate data structure that should be converted to common R classes. However, coercing a `labelled` vector to other classes (like factor or numeric) typically means that meta information like value and variable label attributes are lost. Actually, there is no need to drop these attributes for non-`labelled`-class vectors. Functions like `lm()` simply copy these attributes to the data that is included in the returned object. Packages like **sjPlot** support labelled data for easily annotated data visualization. **sjlabelled** supports working with _labelled data_ and offers functions to benefit from these features.
+Functions of **sjlabelled** do not necessarily require vectors of class `labelled` or `haven_labelled`. The `labelled` class, implemented by the packages **haven** and **labelled**, may cause troubles with other packages, thus it's only intended as being an intermediate data structure that should be converted to common R classes. However, coercing a `labelled` vector to other classes (like factor or numeric) typically means that meta information like value and variable label attributes are lost. Actually, there is no need to drop these attributes for non-`labelled`-class vectors. Functions like `lm()` simply copy these attributes to the data that is included in the returned object. Packages like **sjPlot** support labelled data for easily annotated data visualization. **sjlabelled** supports working with _labelled data_ and offers functions to benefit from these features.
+
+**Note:** Since package-version 2.0 of the **haven**-package, the `labelled`-class attribute was changed to `haven_labelled`, to avoid interferences with the **Hmisc**-package.
 
 ## Labelled Data in haven and labelled
 
-The **labelled**-package is intended to support `labelled` metadata structures, thus the data structure of labelled vectors in **haven** and **labelled** is the same.
+The **labelled**-package is intended to support `labelled` / `haven_labelled` metadata structures, thus the data structure of labelled vectors in **haven** and **labelled** is the same.
 
-Labelled data in this format stores information about value labels, variable names and multiple defined missing values. However, _variable names_ are only part of this information if data was imported with one of **haven**'s read-functions. Adding a variable label attribute is (at least up to version 1.0.0) not possible via the `labelled`-constructor method.
+Labelled data in this format stores information about value labels, variable names and multiple defined missing values. However, _variable names_ are only part of this information if data was imported with one of **haven**'s read-functions. Adding a variable label attribute is (at least up to version 1.0.0) not possible via the `labelled()`-constructor method.
 
 ```{r}
 library(haven)
-x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
-              c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
-                "Refused" = tagged_na("a"), "Not home" = tagged_na("z")))
+x <- labelled(
+  c(1:3, tagged_na("a", "c", "z"), 4:1),
+  c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
+    "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
+  )
 
 print(x)
 ```

@@ -5,8 +5,7 @@
 \title{Retrieve value labels of labelled data}
 \usage{
 get_labels(x, attr.only = FALSE, values = NULL, non.labelled = FALSE,
-  drop.na = TRUE, drop.unused = FALSE, include.values = NULL,
-  include.non.labelled = NULL)
+  drop.na = TRUE, drop.unused = FALSE)
 }
 \arguments{
 \item{x}{A data frame with variables that have value label attributes (e.g.
@@ -21,14 +20,14 @@ in the the vector's \code{attributes}; else, if \code{attr.only = FALSE}
 and \code{x} has no label attributes, factor levels or string values
 are returned. See 'Examples'.}
 
-\item{values, include.values}{String, indicating whether the values associated with the
+\item{values}{String, indicating whether the values associated with the
 value labels are returned as well. If \code{values = "as.name"}
 (or \code{values = "n"}), values are set as \code{names}
 attribute of the returned object. If \code{values = "as.prefix"}
 (or \code{values = "p"}), values are included as prefix
 to each label. See 'Examples'.}
 
-\item{non.labelled, include.non.labelled}{Logical, if \code{TRUE}, values without labels will
+\item{non.labelled}{Logical, if \code{TRUE}, values without labels will
 also be included in the returned labels (see \code{\link{fill_labels}}).}
 
 \item{drop.na}{Logical, whether labels of tagged NA values (see \code{\link[haven]{tagged_na}})

@@ -49,7 +49,7 @@ drop_labels_helper <- function(x, drop.na) {
     # if labels, e.g. due to taggend NA, are no longer of same
     # type as labelled vector, remove labelled class attribute -
     # else, haven will throw errors
-    if (inherits(x, "labelled") && typeof(x) != typeof(tidy.labels))
+    if (inherits(x, c("labelled", "haven_labelled")) && typeof(x) != typeof(tidy.labels))
       x <- unclass(x)
   }
 

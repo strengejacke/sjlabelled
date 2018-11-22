@@ -102,9 +102,9 @@ as_labelled_helper <- function(x, add.labels, add.class) {
   # get former class attributes
   xc <- class(x)
   if (add.class)
-    class(x) <- c(xc, "labelled")
+    class(x) <- c(xc, "haven_labelled")
   else
-    class(x) <- "labelled"
+    class(x) <- "haven_labelled"
 
   x
 }

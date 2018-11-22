@@ -2,8 +2,8 @@ Package: sjlabelled
 Type: Package
 Encoding: UTF-8
 Title: Labelled Data Utility Functions
-Version: 1.0.14
-Date: 2018-09-12
+Version: 1.0.15
+Date: 2018-11-22
 Authors@R: person("Daniel", "Lüdecke", role = c("aut", "cre"), email = "d.luedecke@uke.de", comment = c(ORCID = "0000-0002-8895-3206"))
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>
 Description: Collection of functions dealing with labelled data, like reading and 
@@ -36,7 +36,7 @@ Suggests:
     knitr,
     rmarkdown,
     Zelig
-URL: https://github.com/strengejacke/sjlabelled, https://strengejacke.github.io/sjlabelled
+URL: https://strengejacke.github.io/sjlabelled
 BugReports: https://github.com/strengejacke/sjlabelled/issues
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr

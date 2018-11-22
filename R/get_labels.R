@@ -15,7 +15,7 @@
 #'          (vector) with value label attributes; or a \code{list} of variables
 #'          with values label attributes. If \code{x} has no label attributes,
 #'          factor levels are returned. See 'Examples'.
-#' @param values,include.values String, indicating whether the values associated with the
+#' @param values String, indicating whether the values associated with the
 #'          value labels are returned as well. If \code{values = "as.name"}
 #'          (or \code{values = "n"}), values are set as \code{names}
 #'          attribute of the returned object. If \code{values = "as.prefix"}
@@ -25,7 +25,7 @@
 #'          in the the vector's \code{attributes}; else, if \code{attr.only = FALSE}
 #'          and \code{x} has no label attributes, factor levels or string values
 #'          are returned. See 'Examples'.
-#' @param non.labelled,include.non.labelled Logical, if \code{TRUE}, values without labels will
+#' @param non.labelled Logical, if \code{TRUE}, values without labels will
 #'          also be included in the returned labels (see \code{\link{fill_labels}}).
 #' @param drop.na Logical, whether labels of tagged NA values (see \code{\link[haven]{tagged_na}})
 #'          should be included in the return value or not. By default, labelled
@@ -115,28 +115,14 @@
 #'
 #' @export
 get_labels <- function(x, attr.only = FALSE, values = NULL,
-                       non.labelled = FALSE, drop.na = TRUE, drop.unused = FALSE, include.values = NULL, include.non.labelled = NULL) {
+                       non.labelled = FALSE, drop.na = TRUE, drop.unused = FALSE) {
   UseMethod("get_labels")
 }
 
 #' @export
 get_labels.data.frame <- function(x, attr.only = FALSE, values = NULL,
                                   non.labelled = FALSE, drop.na = TRUE,
-                                  drop.unused = FALSE,
-                                  include.values = NULL, include.non.labelled = NULL) {
-
-  ## TODO remove later
-
-  if (!missing(include.values)) {
-    message("Argument `include.values` is deprecated. Please use `values` instead.")
-    values <- include.values
-  }
-
-  if (!missing(include.non.labelled)) {
-    message("Argument `include.non.labelled` is deprecated. Please use `non.labelled` instead.")
-    non.labelled <- include.non.labelled
-  }
-
+                                  drop.unused = FALSE) {
 
   lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = values,
          include.non.labelled = non.labelled, drop.na = drop.na, drop.unused = drop.unused)
@@ -145,21 +131,7 @@ get_labels.data.frame <- function(x, attr.only = FALSE, values = NULL,
 #' @export
 get_labels.list <- function(x, attr.only = FALSE, values = NULL,
                             non.labelled = FALSE, drop.na = TRUE,
-                            drop.unused = FALSE,
-                            include.values = NULL, include.non.labelled = NULL) {
-
-  ## TODO remove later
-
-  if (!missing(include.values)) {
-    message("Argument `include.values` is deprecated. Please use `values` instead.")
-    values <- include.values
-  }
-
-  if (!missing(include.non.labelled)) {
-    message("Argument `include.non.labelled` is deprecated. Please use `non.labelled` instead.")
-    non.labelled <- include.non.labelled
-  }
-
+                            drop.unused = FALSE) {
 
   lapply(x, FUN = get_labels_helper, attr.only = attr.only, include.values = values,
          include.non.labelled = non.labelled, drop.na = drop.na, drop.unused = drop.unused)
@@ -168,21 +140,7 @@ get_labels.list <- function(x, attr.only = FALSE, values = NULL,
 #' @export
 get_labels.default <- function(x, attr.only = FALSE, values = NULL,
                                non.labelled = FALSE, drop.na = TRUE,
-                               drop.unused = FALSE,
-                               include.values = NULL, include.non.labelled = NULL) {
-
-  ## TODO remove later
-
-  if (!missing(include.values)) {
-    message("Argument `include.values` is deprecated. Please use `values` instead.")
-    values <- include.values
-  }
-
-  if (!missing(include.non.labelled)) {
-    message("Argument `include.non.labelled` is deprecated. Please use `non.labelled` instead.")
-    non.labelled <- include.non.labelled
-  }
-
+                               drop.unused = FALSE) {
 
   get_labels_helper(x, attr.only = attr.only, include.values = values,
                     include.non.labelled = non.labelled, drop.na = drop.na,

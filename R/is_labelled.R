@@ -7,4 +7,4 @@
 #'           \code{FALSE} otherwise.
 #'
 #' @export
-is_labelled <- function(x) inherits(x, "labelled")
+is_labelled <- function(x) inherits(x, c("labelled", "haven_labelled"))

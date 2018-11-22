@@ -136,6 +136,9 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
     }
   }) %>% unlist())
 
+  fixed.names <- purrr::map(mf, ~ purrr::map2(.x, colnames(.x), function(.x, .y) {
+    if (is.factor(.x)) paste0(.y, levels(.x))
+  }) %>% unlist())
 
   # flatten, if we have any elements. in case all predictors
   # were non-factors, list has only NULLs
@@ -144,6 +147,13 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
     purrr::flatten_chr(lbs2)
   else
     NULL
+
+  fixed.names <- if (!is.null(unlist(fixed.names)))
+    purrr::flatten_chr(fixed.names)
+  else
+    NULL
+
+  names(lbs2) <- unname(fixed.names)
 
   # create logical to indicate which labels come from factors
   fl1 <- vector(mode = "logical", length = length(lbs1))
@@ -160,7 +170,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
   lbs <- c(lbs1, lbs2)
   fl <- c(fl1, fl2)
 
-  keep <- !duplicated(lbs)
+  keep <- !(duplicated(lbs) & duplicated(names(lbs)))
 
   lbs <- lbs[keep]
   fl <- fl[keep]

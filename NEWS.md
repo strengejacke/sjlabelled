@@ -1,3 +1,13 @@
+# sjlabelled 1.0.15
+
+## General
+
+* Update code to the new class-attribute `haven_labelled` from the **haven**-package.
+
+## Bug fixes
+
+* Fix issue in `get_term_labels()` that returned wrong object names for factors where factor levels did start with "1".
+
 # sjlabelled 1.0.14
 
 ## General
