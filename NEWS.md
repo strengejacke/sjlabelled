@@ -1,12 +1,14 @@
+# sjlabelled 1.0.16
+
+## Changes to functions
+
+* `var_labels()` now supports quasi-quotation (see Examples).
+
 # sjlabelled 1.0.15
 
 ## General
 
 * Update code to the new class-attribute `haven_labelled` from the **haven**-package.
-
-## Changes to functions
-
-* `var_labels()` now supports quasi-quotation (see Examples).
 
 ## Bug fixes
 
