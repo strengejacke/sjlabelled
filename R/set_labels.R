@@ -2,10 +2,13 @@
 #' @name set_labels
 #'
 #' @description This function adds labels as attribute (named \code{"labels"})
-#'                to a variable or vector \code{x}, resp. to a set of variables in a
-#'                data frame or a list-object. A use-case is, for instance, the
-#'                \CRANpkg{sjPlot}-package, which supports labelled data and automatically
-#'                assigns labels to axes or legends in plots or to be used in tables.
+#'    to a variable or vector \code{x}, resp. to a set of variables in a
+#'    data frame or a list-object. A use-case is, for instance, the
+#'    \CRANpkg{sjPlot}-package, which supports labelled data and automatically
+#'    assigns labels to axes or legends in plots or to be used in tables.
+#'    \code{val_labels()} is intended for use within pipe-workflows and has a
+#'    tidyverse-consistent syntax, including support for quasi-quotation
+#'    (see 'Examples').
 #'
 #' @seealso See vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}
 #'            for more details; \code{\link{set_label}} to manually set variable labels or
@@ -35,6 +38,14 @@
 #'          (see \code{\link[haven]{tagged_na}}) should be removed (\code{drop.na = TRUE},
 #'          the default) or preserved (\code{drop.na = FALSE}).
 #'          See \code{\link{get_na}} for more details on tagged NA values.
+#' @param ... For \code{set_labels()}, Optional, unquoted names of variables that should be selected for
+#'          further processing. Required, if \code{x} is a data frame (and no
+#'          vector) and only selected variables from \code{x} should be processed.
+#'          You may also use functions like \code{:} or tidyselect's
+#'          \code{\link[tidyselect]{select_helpers}}. \cr \cr For \code{val_labels()},
+#'          pairs of named vectors, where the name equals the variable name, which
+#'          should be labelled, and the value is the new variable label. \code{val_labels()}
+#'          also supports quasi-quotation (see 'Examples').
 #'
 #' @inheritParams add_labels
 #'
@@ -141,12 +152,32 @@
 #' )
 #'
 #' # and set same value labels for two of three variables
-#' dummies <- set_labels(
+#' test <- set_labels(
 #'   dummies, dummy1, dummy2,
 #'   labels = c("very low", "low", "mid", "hi")
 #' )
 #' # see result...
-#' get_labels(dummies)
+#' get_labels(test)
+#'
+#' # using quasi-quotation
+#' library(rlang)
+#' x1 <- "dummy1"
+#' x2 <- c("so low", "rather low", "mid", "very hi")
+#'
+#' dummies %>%
+#'   val_labels(
+#'     !!x1 := c("really low", "low", "a bit mid", "hi"),
+#'     dummy3 = !!x2
+#'   ) %>%
+#'   get_labels()
+#'
+#' # ... and named vectors to explicetly set value labels
+#' x2 <- c("so low" = 4, "rather low" = 3, "mid" = 2, "very hi" = 1)
+#' dummies %>%
+#'   val_labels(
+#'     !!x1 := c("really low" = 1, "low" = 3, "a bit mid" = 2, "hi" = 4),
+#'     dummy3 = !!x2
+#'   ) %>% get_labels(values = "p")
 #'
 #' @export
 set_labels <- function(x, ...,

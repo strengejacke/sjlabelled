@@ -1,5 +1,9 @@
 # sjlabelled 1.0.16
 
+## New functions
+
+* `val_labels()` as counterpart to `var_labels()`, to set value labels, with support for quasi-quotation (see Examples).
+
 ## Changes to functions
 
 * `var_labels()` now supports quasi-quotation (see Examples).
