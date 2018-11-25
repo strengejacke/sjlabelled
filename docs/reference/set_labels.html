@@ -33,10 +33,13 @@
 <meta property="og:title" content="Add value labels to variables — set_labels" />
 
 <meta property="og:description" content="This function adds labels as attribute (named &quot;labels&quot;)
-               to a variable or vector x, resp. to a set of variables in a
-               data frame or a list-object. A use-case is, for instance, the
-               sjPlot-package, which supports labelled data and automatically
-               assigns labels to axes or legends in plots or to be used in tables." />
+   to a variable or vector x, resp. to a set of variables in a
+   data frame or a list-object. A use-case is, for instance, the
+   sjPlot-package, which supports labelled data and automatically
+   assigns labels to axes or legends in plots or to be used in tables.
+   val_labels() is intended for use within pipe-workflows and has a
+   tidyverse-consistent syntax, including support for quasi-quotation
+   (see 'Examples')." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -126,14 +129,20 @@
     <div class="ref-description">
     
     <p>This function adds labels as attribute (named <code>"labels"</code>)
-               to a variable or vector <code>x</code>, resp. to a set of variables in a
-               data frame or a list-object. A use-case is, for instance, the
-               <a href='https://CRAN.R-project.org/package=sjPlot'><span class="pkg">sjPlot</span></a>-package, which supports labelled data and automatically
-               assigns labels to axes or legends in plots or to be used in tables.</p>
+   to a variable or vector <code>x</code>, resp. to a set of variables in a
+   data frame or a list-object. A use-case is, for instance, the
+   <a href='https://CRAN.R-project.org/package=sjPlot'><span class="pkg">sjPlot</span></a>-package, which supports labelled data and automatically
+   assigns labels to axes or legends in plots or to be used in tables.
+   <code>val_labels()</code> is intended for use within pipe-workflows and has a
+   tidyverse-consistent syntax, including support for quasi-quotation
+   (see 'Examples').</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>set_labels</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='no'>labels</span>, <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'>val_labels</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -145,12 +154,14 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Optional, unquoted names of variables that should be selected for
+      <td><p>For <code>set_labels()</code>, Optional, unquoted names of variables that should be selected for
 further processing. Required, if <code>x</code> is a data frame (and no
 vector) and only selected variables from <code>x</code> should be processed.
 You may also use functions like <code>:</code> or tidyselect's
-<code><a href='https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers'>select_helpers</a></code>.
-See 'Examples'.</p></td>
+<code><a href='https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers'>select_helpers</a></code>. <br /> <br /> For <code>val_labels()</code>,
+pairs of named vectors, where the name equals the variable name, which
+should be labelled, and the value is the new variable label. <code>val_labels()</code>
+also supports quasi-quotation (see 'Examples').</p></td>
     </tr>
     <tr>
       <th>labels</th>
@@ -217,26 +228,26 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>40</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; <span style='color: #0000BB;'># x &lt;integer&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=40  valid N=40  mean=2.65  sd=1.05
+#&gt; </span><span style='color: #0000BB;'># total N=40  valid N=40  mean=2.23  sd=1.03
 #&gt; </span><span> 
 #&gt;   val frq raw.prc valid.prc cum.prc
-#&gt;     1   8    20.0      20.0    20.0
-#&gt;     2   7    17.5      17.5    37.5
-#&gt;     3  16    40.0      40.0    77.5
-#&gt;     4   9    22.5      22.5   100.0
+#&gt;     1  12    30.0      30.0    30.0
+#&gt;     2  12    30.0      30.0    60.0
+#&gt;     3  11    27.5      27.5    87.5
+#&gt;     4   5    12.5      12.5   100.0
 #&gt;  &lt;NA&gt;   0     0.0        NA      NA
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='no'>dummy</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span>))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #0000BB;'># x &lt;integer&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=40  valid N=40  mean=2.65  sd=1.05
+#&gt; </span><span style='color: #0000BB;'># total N=40  valid N=40  mean=2.23  sd=1.03
 #&gt; </span><span> 
 #&gt;  val    label frq raw.prc valid.prc cum.prc
-#&gt;    1 very low   8    20.0      20.0    20.0
-#&gt;    2      low   7    17.5      17.5    37.5
-#&gt;    3      mid  16    40.0      40.0    77.5
-#&gt;    4       hi   9    22.5      22.5   100.0
+#&gt;    1 very low  12    30.0      30.0    30.0
+#&gt;    2      low  12    30.0      30.0    60.0
+#&gt;    3      mid  11    27.5      27.5    87.5
+#&gt;    4       hi   5    12.5      12.5   100.0
 #&gt;   NA       NA   0     0.0        NA      NA
 #&gt; 
 #&gt; </div><div class='input'>
@@ -245,14 +256,14 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='no'>dummy</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"very low"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"very high"</span> <span class='kw'>=</span> <span class='fl'>4</span>))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #0000BB;'># x &lt;integer&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=40  valid N=40  mean=2.50  sd=1.26
+#&gt; </span><span style='color: #0000BB;'># total N=40  valid N=40  mean=2.50  sd=1.01
 #&gt; </span><span> 
 #&gt;  val     label frq raw.prc valid.prc cum.prc
-#&gt;    1  very low  14      35        35      35
-#&gt;    2         2   4      10        10      45
-#&gt;    3         3  10      25        25      70
-#&gt;    4 very high  12      30        30     100
-#&gt;   NA        NA   0       0        NA      NA
+#&gt;    1  very low   7    17.5      17.5    17.5
+#&gt;    2         2  14    35.0      35.0    52.5
+#&gt;    3         3  11    27.5      27.5    80.0
+#&gt;    4 very high   8    20.0      20.0   100.0
+#&gt;   NA        NA   0     0.0        NA      NA
 #&gt; 
 #&gt; </div><div class='input'>
 <span class='co'># force using all labels, even if not all labels</span>
@@ -310,8 +321,10 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;   One   Two Three 
 #&gt;     1     2     3 </div><div class='input'>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>haven</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></span>(
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>haven</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘haven’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:sjlabelled’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    as_factor, read_sas, read_spss, read_stata, write_sas, zap_labels</span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></span>(
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>),
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"c"</span>),
     <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"z"</span>))
@@ -376,12 +389,12 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 )
 
 <span class='co'># and set same value labels for two of three variables</span>
-<span class='no'>dummies</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(
+<span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(
   <span class='no'>dummies</span>, <span class='no'>dummy1</span>, <span class='no'>dummy2</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span>)
 )
 <span class='co'># see result...</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>dummies</span>)</div><div class='output co'>#&gt; $dummy1
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>test</span>)</div><div class='output co'>#&gt; $dummy1
 #&gt; [1] "very low" "low"      "mid"      "hi"      
 #&gt; 
 #&gt; $dummy2
@@ -389,6 +402,44 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; 
 #&gt; $dummy3
 #&gt; NULL
+#&gt; </div><div class='input'>
+<span class='co'># using quasi-quotation</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>rlang</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘rlang’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:sjmisc’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    is_empty</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:sjlabelled’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    as_character</span></div><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='st'>"dummy1"</span>
+<span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"so low"</span>, <span class='st'>"rather low"</span>, <span class='st'>"mid"</span>, <span class='st'>"very hi"</span>)
+
+<span class='no'>dummies</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>val_labels</span>(
+    !!<span class='no'>x1</span> <span class='kw'>:=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"really low"</span>, <span class='st'>"low"</span>, <span class='st'>"a bit mid"</span>, <span class='st'>"hi"</span>),
+    <span class='kw'>dummy3</span> <span class='kw'>=</span> !!<span class='no'>x2</span>
+  ) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='get_labels.html'>get_labels</a></span>()</div><div class='output co'>#&gt; $dummy1
+#&gt; [1] "really low" "low"        "a bit mid"  "hi"        
+#&gt; 
+#&gt; $dummy2
+#&gt; NULL
+#&gt; 
+#&gt; $dummy3
+#&gt; [1] "so low"     "rather low" "mid"        "very hi"   
+#&gt; </div><div class='input'>
+<span class='co'># ... and named vectors to explicetly set value labels</span>
+<span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"so low"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"rather low"</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"mid"</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='st'>"very hi"</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='no'>dummies</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>val_labels</span>(
+    !!<span class='no'>x1</span> <span class='kw'>:=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"really low"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"low"</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>"a bit mid"</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='st'>"hi"</span> <span class='kw'>=</span> <span class='fl'>4</span>),
+    <span class='kw'>dummy3</span> <span class='kw'>=</span> !!<span class='no'>x2</span>
+  ) <span class='kw'>%&gt;%</span> <span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; $dummy1
+#&gt; [1] "[1] really low" "[2] a bit mid"  "[3] low"        "[4] hi"        
+#&gt; 
+#&gt; $dummy2
+#&gt; NULL
+#&gt; 
+#&gt; $dummy3
+#&gt; [1] "[1] very hi"    "[2] mid"        "[3] rather low" "[4] so low"    
 #&gt; </div><div class='input'>
 </div></span></pre>
   </div>
