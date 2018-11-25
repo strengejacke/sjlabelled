@@ -4,6 +4,10 @@
 
 * Update code to the new class-attribute `haven_labelled` from the **haven**-package.
 
+## Changes to functions
+
+* `var_labels()` now supports quasi-quotation (see Examples).
+
 ## Bug fixes
 
 * Fix issue in `get_term_labels()` that returned wrong object names for factors where factor levels did start with "1".

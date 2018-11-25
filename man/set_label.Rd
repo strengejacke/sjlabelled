@@ -39,7 +39,7 @@ This function adds variable labels as attribute
                (named \code{"label"}) to the variable \code{x}, resp. to a
                set of variables in a data frame or a list-object. \code{var_labels()}
                is intended for use within pipe-workflows and has a tidyverse-consistent
-               syntax (see 'Examples').
+               syntax, including support for quasi-quotation (see 'Examples').
 }
 \examples{
 # manually set value and variable labels
@@ -96,6 +96,20 @@ dummy <- data.frame(
 
 dummy \%>\%
   var_labels(a = "First variable", c = "third variable") \%>\%
+  get_label()
+
+# with quasi-quotation
+library(rlang)
+v1 <- "First variable"
+v2 <- "Third variable"
+dummy \%>\%
+  var_labels(a = !!v1, c = !!v2) \%>\%
+  get_label()
+
+x1 <- "a"
+x2 <- "c"
+dummy \%>\%
+  var_labels(!!x1 := !!v1, !!x2 := !!v2) \%>\%
   get_label()
 
 }

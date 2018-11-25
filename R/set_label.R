@@ -5,7 +5,7 @@
 #'                (named \code{"label"}) to the variable \code{x}, resp. to a
 #'                set of variables in a data frame or a list-object. \code{var_labels()}
 #'                is intended for use within pipe-workflows and has a tidyverse-consistent
-#'                syntax (see 'Examples').
+#'                syntax, including support for quasi-quotation (see 'Examples').
 #'
 #' @seealso See vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}
 #'            for more details; \code{\link{set_labels}} to manually set value labels or \code{\link{get_label}}
@@ -85,9 +85,22 @@
 #'   var_labels(a = "First variable", c = "third variable") %>%
 #'   get_label()
 #'
+#' # with quasi-quotation
+#' library(rlang)
+#' v1 <- "First variable"
+#' v2 <- "Third variable"
+#' dummy %>%
+#'   var_labels(a = !!v1, c = !!v2) %>%
+#'   get_label()
+#'
+#' x1 <- "a"
+#' x2 <- "c"
+#' dummy %>%
+#'   var_labels(!!x1 := !!v1, !!x2 := !!v2) %>%
+#'   get_label()
+#'
 #' @export
 set_label <- function(x, label) {
-
   # do we have all necessary arguments?
   if (!is.null(label) && !is.null(x)) {
     # if we have a data frame, we need a variable label

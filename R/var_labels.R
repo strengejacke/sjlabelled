@@ -1,13 +1,19 @@
+#' @importFrom rlang ensyms as_string
 #' @rdname set_label
 #' @export
 var_labels <- function(x, ...) {
   # get dots
   .dots <- match.call(expand.dots = FALSE)$`...`
 
+  if (inherits(.dots, "pairlist"))
+    .dots <- lapply(rlang::ensyms(...), rlang::as_string) %>% unlist()
+  else
+    .dots <- unlist(.dots)
+
   # select variables
-  vars <- names(unlist(.dots))
+  vars <- names(.dots)
   # get new labels
-  labels <- unname(unlist(.dots))
+  labels <- unname(.dots)
 
   # non-matching column names
   non.vars <- which(!(vars %in% colnames(x)))
