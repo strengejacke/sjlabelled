@@ -1,4 +1,5 @@
-#' @importFrom rlang ensyms as_string
+#' @importFrom rlang enexprs
+#' @importFrom purrr map_at
 #' @rdname set_labels
 #' @export
 val_labels <- function(x, ..., force.labels = FALSE, force.values = TRUE, drop.na = TRUE) {
