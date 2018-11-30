@@ -1,5 +1,9 @@
 # sjlabelled 1.0.16
 
+## General
+
+* Started adding test-units.
+
 ## New functions
 
 * `val_labels()` as counterpart to `var_labels()`, to set value labels, with support for quasi-quotation (see Examples).
