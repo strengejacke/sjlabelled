@@ -17,8 +17,8 @@ Depends:
     R (>= 3.2),
     stats
 Imports:
-    broom (>= 0.4.5),
     dplyr,
+    generics,
     haven (>= 1.1.2),
     magrittr,
     prediction,
