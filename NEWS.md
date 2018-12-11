@@ -3,6 +3,7 @@
 ## General
 
 * Started adding test-units.
+* Replaced package dependency **broom** with **generics**.
 
 ## New functions
 
