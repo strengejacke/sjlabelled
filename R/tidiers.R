@@ -25,12 +25,12 @@ tidy_models <- function(model) {
 
 
 
-#' @importFrom generics tidy
+#' @importFrom broom tidy
 tidy_generic <- function(model) {
   # tidy the model
   tryCatch(
     {
-      generics::tidy(model, conf.int = FALSE, effects = "fixed")
+      broom::tidy(model, conf.int = FALSE, effects = "fixed")
     },
     error = function(x) { NULL },
     warning = function(x) { NULL },
@@ -74,9 +74,9 @@ tidy_svynb_model <- function(model) {
 }
 
 
-#' @importFrom generics tidy
+#' @importFrom broom tidy
 tidy_cox_model <- function(model) {
-  generics::tidy(model)
+  broom::tidy(model)
 }
 
 
