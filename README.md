@@ -14,7 +14,7 @@ To install the latest development snapshot (see latest changes below), type foll
 
 ```r
 library(devtools)
-devtools::install_github("sjlabelled")
+devtools::install_github("strengejacke/sjlabelled")
 ```
 
 ### Officiale, stable release
