@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.15.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.16</span>
       </span>
     </div>
 
@@ -118,8 +118,24 @@
 
     <div id="sjlabelled-1-0-16" class="section level1">
 <h1 class="page-header">
-<a href="#sjlabelled-1-0-16" class="anchor"></a>sjlabelled 1.0.16<small> Unreleased </small>
+<a href="#sjlabelled-1-0-16" class="anchor"></a>sjlabelled 1.0.16<small> 2019-01-10 </small>
 </h1>
+<div id="general" class="section level2">
+<h2 class="hasAnchor">
+<a href="#general" class="anchor"></a>General</h2>
+<ul>
+<li>Started adding test-units.</li>
+<li>Minor code revisions to avoid errors during CRAN check for current devel-versions of R.</li>
+</ul>
+</div>
+<div id="new-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h2>
+<ul>
+<li>
+<code><a href="../reference/set_labels.html">val_labels()</a></code> as counterpart to <code><a href="../reference/set_label.html">var_labels()</a></code>, to set value labels, with support for quasi-quotation (see Examples).</li>
+</ul>
+</div>
 <div id="changes-to-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#changes-to-functions" class="anchor"></a>Changes to functions</h2>
@@ -133,9 +149,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-15" class="anchor"></a>sjlabelled 1.0.15<small> 2018-11-22 </small>
 </h1>
-<div id="general" class="section level2">
+<div id="general-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general" class="anchor"></a>General</h2>
+<a href="#general-1" class="anchor"></a>General</h2>
 <ul>
 <li>Update code to the new class-attribute <code>haven_labelled</code> from the <strong>haven</strong>-package.</li>
 </ul>
@@ -152,9 +168,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-14" class="anchor"></a>sjlabelled 1.0.14<small> 2018-09-12 </small>
 </h1>
-<div id="general-1" class="section level2">
+<div id="general-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-1" class="anchor"></a>General</h2>
+<a href="#general-2" class="anchor"></a>General</h2>
 <ul>
 <li>Reduce package dependencies.</li>
 </ul>
@@ -171,9 +187,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-13" class="anchor"></a>sjlabelled 1.0.13<small> 2018-08-11 </small>
 </h1>
-<div id="general-2" class="section level2">
+<div id="general-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-2" class="anchor"></a>General</h2>
+<a href="#general-3" class="anchor"></a>General</h2>
 <ul>
 <li>Removed defuncted functions.</li>
 </ul>
@@ -200,9 +216,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-12" class="anchor"></a>sjlabelled 1.0.12<small> 2018-07-08 </small>
 </h1>
-<div id="general-3" class="section level2">
+<div id="general-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-3" class="anchor"></a>General</h2>
+<a href="#general-4" class="anchor"></a>General</h2>
 <ul>
 <li>
 <code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> now support <em>clmm</em>-objects (package <strong>ordinal</strong>) and <em>stanmvreg</em>-objects (package <strong>rstanarm</strong>).</li>
@@ -219,9 +235,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-11" class="anchor"></a>sjlabelled 1.0.11<small> 2018-06-06 </small>
 </h1>
-<div id="general-4" class="section level2">
+<div id="general-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-4" class="anchor"></a>General</h2>
+<a href="#general-5" class="anchor"></a>General</h2>
 <ul>
 <li>
 <code><a href="../reference/as_labelled.html">as_labelled()</a></code> now corrects inconsistent types between labels and variable values.</li>
@@ -250,9 +266,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-9" class="anchor"></a>sjlabelled 1.0.9<small> 2018-04-24 </small>
 </h1>
-<div id="general-5" class="section level2">
+<div id="general-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-5" class="anchor"></a>General</h2>
+<a href="#general-6" class="anchor"></a>General</h2>
 <ul>
 <li>Deprecated <code>set_note()</code> and <code>get_note()</code>, because there is already an R base function for this purpose: <code><a href="https://www.rdocumentation.org/packages/base/topics/comment">comment()</a></code>.</li>
 <li>Improved performance of functions, at the cost of removing support for the <em>foreign</em> package. <em>sjlabelled</em> now only supports labelled data from package <em>haven</em>.</li>
@@ -280,9 +296,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-8" class="anchor"></a>sjlabelled 1.0.8<small> 2018-02-26 </small>
 </h1>
-<div id="general-6" class="section level2">
+<div id="general-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-6" class="anchor"></a>General</h2>
+<a href="#general-7" class="anchor"></a>General</h2>
 <ul>
 <li>Removed <code>lbl_df()</code>, because printing tibbles now depends on pkg <em>pillar</em> and was revised substantially, so maintainace of <code>lbl_df()</code> is too extensive.</li>
 </ul>
@@ -292,11 +308,11 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-7" class="anchor"></a>sjlabelled 1.0.7<small> 2018-01-31 </small>
 </h1>
-<div id="general-7" class="section level2">
+<div id="general-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-7" class="anchor"></a>General</h2>
+<a href="#general-8" class="anchor"></a>General</h2>
 <ul>
-<li>Cross references from <code><a href="http://dplyr.tidyverse.org/reference/reexports.html">dplyr::select_helpers</a></code> were updated to <code><a href="https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers">tidyselect::select_helpers</a></code>.</li>
+<li>Cross references from <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::select_helpers</a></code> were updated to <code><a href="https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers">tidyselect::select_helpers</a></code>.</li>
 <li>Replace deprecated arguments in <code><a href="../reference/convert_case.html">convert_case()</a></code> from call to package <em>snakecase</em>
 </li>
 </ul>
@@ -324,17 +340,17 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-5" class="anchor"></a>sjlabelled 1.0.5<small> 2017-11-09 </small>
 </h1>
-<div id="general-8" class="section level2">
+<div id="general-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-8" class="anchor"></a>General</h2>
+<a href="#general-9" class="anchor"></a>General</h2>
 <ul>
 <li>Remove unnecessary imports.</li>
-<li>Revised <code>lbl_df()</code> due to changes in the internals of <code><a href="https://www.rdocumentation.org/packages/tibble/topics/formatting">tibble::trunc_mat()</a></code>.</li>
+<li>Revised <code>lbl_df()</code> due to changes in the internals of <code><a href="https://tibble.tidyverse.org/reference/formatting.html">tibble::trunc_mat()</a></code>.</li>
 </ul>
 </div>
-<div id="new-functions" class="section level2">
+<div id="new-functions-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h2>
+<a href="#new-functions-1" class="anchor"></a>New functions</h2>
 <ul>
 <li>
 <code><a href="../reference/as_factor.html">as_factor()</a></code> to convert labelled vectors into factors, preserving labels.</li>
@@ -374,9 +390,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-3" class="anchor"></a>sjlabelled 1.0.3<small> 2017-09-19 </small>
 </h1>
-<div id="general-9" class="section level2">
+<div id="general-10" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-9" class="anchor"></a>General</h2>
+<a href="#general-10" class="anchor"></a>General</h2>
 <ul>
 <li>Changed package imports, so <code>sjlabelled</code> no longer requires R version 3.3.3 or higher.</li>
 </ul>
@@ -386,9 +402,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-2" class="anchor"></a>sjlabelled 1.0.2<small> 2017-09-11 </small>
 </h1>
-<div id="general-10" class="section level2">
+<div id="general-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-10" class="anchor"></a>General</h2>
+<a href="#general-11" class="anchor"></a>General</h2>
 <ul>
 <li>Minor fix to avoid warning when using <code><a href="../reference/as_numeric.html">as_numeric()</a></code>.</li>
 </ul>
@@ -406,16 +422,16 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-1" class="anchor"></a>sjlabelled 1.0.1<small> 2017-07-07 </small>
 </h1>
-<div id="general-11" class="section level2">
+<div id="general-12" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-11" class="anchor"></a>General</h2>
+<a href="#general-12" class="anchor"></a>General</h2>
 <ul>
 <li>Removed function ‘var_rename()’, which is in pkg ‘sjmisc’.</li>
 </ul>
 </div>
-<div id="new-functions-1" class="section level2">
+<div id="new-functions-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions-1" class="anchor"></a>New functions</h2>
+<a href="#new-functions-2" class="anchor"></a>New functions</h2>
 <ul>
 <li>
 <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> to retrieve term labels from regression models.</li>
@@ -434,9 +450,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-1-0-0" class="anchor"></a>sjlabelled 1.0.0<small> 2017-06-12 </small>
 </h1>
-<div id="general-12" class="section level2">
+<div id="general-13" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-12" class="anchor"></a>General</h2>
+<a href="#general-13" class="anchor"></a>General</h2>
 <ul>
 <li>Initial release. All labelled data utility functions from package <em>sjmisc</em> have been moved to this package, which is now dedicated to tools for working with labelled data.</li>
 </ul>
@@ -476,7 +492,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

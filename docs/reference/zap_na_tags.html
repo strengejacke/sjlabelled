@@ -66,7 +66,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.15.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.16</span>
       </span>
     </div>
 
@@ -122,7 +122,7 @@
 
     <div class="ref-description">
     
-    <p>Replaces all <code><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></code> values with
+    <p>Replaces all <code><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></code> values with
                regular <code>NA</code>.</p>
     
     </div>
@@ -134,7 +134,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A <code><a href='https://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></code> vector with <code>tagged_na</code>
+      <td><p>A <code><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></code> vector with <code>tagged_na</code>
 values, or a data frame with such vectors.</p></td>
     </tr>
     <tr>
@@ -155,10 +155,10 @@ See 'Examples'.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>haven</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/labelled'>labelled</a></span>(
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>),
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"c"</span>),
-    <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"z"</span>))
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"c"</span>),
+    <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>))
 )
 <span class='co'># get current NA values</span>
 <span class='no'>x</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
@@ -179,8 +179,8 @@ See 'Examples'.</p></td>
 #&gt;      1    Agreement
 #&gt;      4 Disagreement</div><div class='input'><span class='fu'><a href='get_na.html'>get_na</a></span>(<span class='fu'>zap_na_tags</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; NULL</div><div class='input'>
 <span class='co'># also works with non-labelled vector that have tagged NA values</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>tagged_na</a></span>(<span class='st'>"z"</span>), <span class='fl'>NA</span>)
-<span class='kw pkg'>haven</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>print_tagged_na</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1]     1     2     3     4     5 NA(a) NA(z)    NA</div><div class='input'><span class='kw pkg'>haven</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/haven/topics/tagged_na'>print_tagged_na</a></span>(<span class='fu'>zap_na_tags</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1]  1  2  3  4  5 NA NA NA</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>), <span class='fl'>NA</span>)
+<span class='kw pkg'>haven</span><span class='kw ns'>::</span><span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>print_tagged_na</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1]     1     2     3     4     5 NA(a) NA(z)    NA</div><div class='input'><span class='kw pkg'>haven</span><span class='kw ns'>::</span><span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>print_tagged_na</a></span>(<span class='fu'>zap_na_tags</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1]  1  2  3  4  5 NA NA NA</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -202,7 +202,7 @@ See 'Examples'.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

@@ -66,7 +66,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.15.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.16</span>
       </span>
     </div>
 
@@ -194,7 +194,6 @@ get value labels.</p></td>
 #&gt;     3 306   33.70     33.96   66.26
 #&gt;     4 304   33.48     33.74  100.00
 #&gt;  &lt;NA&gt;   7    0.77        NA      NA
-#&gt; 
 #&gt; </div><div class='input'>
 <span class='co'># factor conversion, which keeps value attributes</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_factor</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("as_factor"): no applicable method for 'as_factor' applied to an object of class "c('double', 'numeric')"</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
@@ -207,7 +206,6 @@ get value labels.</p></td>
 #&gt;     3 306   33.70     33.96   66.26
 #&gt;     4 304   33.48     33.74  100.00
 #&gt;  &lt;NA&gt;   7    0.77        NA      NA
-#&gt; 
 #&gt; </div><div class='input'>
 <span class='co'># create parially labelled vector</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(
@@ -2954,7 +2952,7 @@ get value labels.</p></td>
 #&gt; 908       NA      NA      NA     NA        0        0      0      NA</div><div class='input'>
 <span class='co'># use select-helpers from dplyr-package</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>)</div><div class='output co'>#&gt;     c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4
+<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>)</div><div class='output co'>#&gt;     c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4
 #&gt; 1        16        2      2     83      3       3       2       2       2
 #&gt; 2       148        2      2     88      3       3       3       3       3
 #&gt; 3        70        1      2     82      3       2       2       1       4
@@ -5707,7 +5705,7 @@ get value labels.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>
