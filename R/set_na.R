@@ -1,6 +1,6 @@
 set.na <- function(x, ..., na, drop.levels = TRUE, as.tag = FALSE) {
   # check for valid value
-  if (is.null(na) || is.na(na)) return(x)
+  if (is.null(na) || all(is.na(na))) return(x)
 
   # evaluate arguments, generate data
   .dat <- get_dot_data(x, dplyr::quos(...))

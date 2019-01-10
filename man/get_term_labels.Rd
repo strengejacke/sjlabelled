@@ -78,12 +78,4 @@ get_term_labels(fit, prefix = "label")
 # get label of dv
 get_dv_labels(fit)
 
-# create "labelled" plot
-library(ggplot2)
-library(broom)
-ggplot(tidy(fit)[-1, ], aes(x = term, y = estimate)) +
-  geom_point() +
-  coord_flip() +
-  scale_x_discrete(labels = get_term_labels(fit))
-
 }

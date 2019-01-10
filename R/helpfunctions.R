@@ -11,10 +11,10 @@ data_frame <- function(...) {
 # do we have a stan-model?
 is.stan <- function(x) inherits(x, c("stanreg", "stanfit", "brmsfit"))
 
-
+#' @importFrom rlang is_empty
 #' @importFrom dplyr quos select
 get_dot_data <- function(x, qs) {
-  if (isempty(qs))
+  if (rlang::is_empty(qs))
     x
   else
     suppressMessages(dplyr::select(x, !!!qs))
@@ -40,6 +40,8 @@ is.num.chr <- function(x, na.rm = FALSE) {
   !anyNA(suppressWarnings(as.numeric(x)))
 }
 
+
+#' @importFrom purrr compact
 isempty <- function(x, first.only = TRUE) {
   # do we have a valid vector?
   if (!is.null(x)) {
@@ -63,9 +65,13 @@ isempty <- function(x, first.only = TRUE) {
         return(unname(zero_len))
       }
       # we have a non-character vector here. check for length
+    } else if (is.list(x)) {
+      x <- purrr::compact(x)
+      zero_len <- length(x) == 0
     } else {
       zero_len <- length(x) == 0
     }
   }
-  return(is.null(x) || zero_len || is.na(x))
+
+  any(is.null(x) || zero_len || all(is.na(x)))
 }

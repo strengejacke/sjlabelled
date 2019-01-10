@@ -3,6 +3,7 @@
 ## General
 
 * Started adding test-units.
+* Minor code revisions to avoid errors during CRAN check for current devel-versions of R.
 
 ## New functions
 
