@@ -13,6 +13,10 @@
 
 * `var_labels()` now supports quasi-quotation (see Examples).
 
+## Bug fixes
+
+* Fixed bug with argument `use.labels` in `as_numeric()`.
+
 # sjlabelled 1.0.15
 
 ## General

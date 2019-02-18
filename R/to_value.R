@@ -75,7 +75,9 @@
 #' as_numeric(efc, e16sex, e17age)
 #'
 #' x <- factor(c("None", "Little", "Some", "Lots"))
-#' x <- set_labels(x, labels = c("0.5", "1.3", "1.8", ".2"))
+#' x <- set_labels(x,
+#'   labels = c(None = "0.5", Little = "1.3", Some = "1.8", Lots = ".2")
+#' )
 #' x
 #' as_numeric(x)
 #' as_numeric(x, use.labels = TRUE)
@@ -110,9 +112,6 @@ as_numeric_helper <- function(x, start.at, keep.labels, use.labels) {
 
   # get labels
   labels <- get_labels(x, attr.only = T, values = "n")
-
-  # get values, if these should be used after converting
-  values <- get_values(x)
 
   # is character?
   if (is.character(x)) {
@@ -166,7 +165,7 @@ as_numeric_helper <- function(x, start.at, keep.labels, use.labels) {
     # numeric and 'use.labels = TRUE', value labels as used
     # as values
     if (use.labels) {
-      levels(x) <- values
+      levels(x) <- get_values(x)
     } else {
       # check start.at value
       if (is.null(start.at)) start.at <- 1
