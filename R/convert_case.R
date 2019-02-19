@@ -25,9 +25,13 @@
 #' convert_case(colnames(iris))
 #' convert_case(colnames(iris), case = "snake")
 #'
-#' @importFrom snakecase to_any_case
 #' @export
 convert_case <- function(lab, case = NULL, ...) {
+
+  if (!requireNamespace("snakecase", quietly = TRUE)) {
+    message("Package `snakecase` needs to be installed for case-conversion.")
+    return(lab)
+  }
 
   if (!is.null(case) && !is.null(lab)) {
 

@@ -2,7 +2,7 @@ Package: sjlabelled
 Type: Package
 Encoding: UTF-8
 Title: Labelled Data Utility Functions
-Version: 1.0.16
+Version: 1.0.16.9000
 Date: 2019-01-10
 Authors@R: person("Daniel", "Lüdecke", role = c("aut", "cre"), email = "d.luedecke@uke.de", comment = c(ORCID = "0000-0002-8895-3206"))
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>
@@ -17,14 +17,12 @@ Depends:
     R (>= 3.2),
     stats
 Imports:
-    broom,
     dplyr,
     haven (>= 1.1.2),
+    insight,
     magrittr,
-    prediction,
     purrr,
     rlang,
-    snakecase,
     utils
 Suggests:
     glmmTMB,
@@ -34,6 +32,7 @@ Suggests:
     survey,
     knitr,
     rmarkdown,
+    snakecase,
     Zelig,
     testthat
 URL: https://strengejacke.github.io/sjlabelled

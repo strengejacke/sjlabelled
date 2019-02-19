@@ -1,3 +1,13 @@
+# sjlabelled 1.0.17
+
+## General
+
+* Reduce package dependencies.
+
+## Bug fixes
+
+* Fixed bug with argument `use.labels` in `as_numeric()`.
+
 # sjlabelled 1.0.16
 
 ## General
@@ -12,10 +22,6 @@
 ## Changes to functions
 
 * `var_labels()` now supports quasi-quotation (see Examples).
-
-## Bug fixes
-
-* Fixed bug with argument `use.labels` in `as_numeric()`.
 
 # sjlabelled 1.0.15
 
