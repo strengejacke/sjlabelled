@@ -4,6 +4,10 @@
 
 * Reduce package dependencies.
 
+## Changes to functions
+
+* `as_label()` gets a `keep.labels`-argument.
+
 ## Bug fixes
 
 * Fixed bug with argument `use.labels` in `as_numeric()`.
