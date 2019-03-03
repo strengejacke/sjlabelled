@@ -118,24 +118,34 @@
 #' as_label(efc, e42dep, e16sex, c172code)
 #'
 #' @export
-as_label <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE) {
+as_label <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = TRUE) {
+  UseMethod("as_label")
+}
+
+
+#' @export
+as_label.default <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = TRUE) {
+  .dat <- get_dot_data(x, dplyr::quos(...))
+  as_label_helper(.dat, add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels)
+}
+
+
+#' @export
+as_label.data.frame <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = TRUE) {
   # evaluate arguments, generate data
   .dat <- get_dot_data(x, dplyr::quos(...))
 
-  if (is.data.frame(x)) {
-    # iterate variables of data frame
-    for (i in colnames(.dat)) {
-      x[[i]] <- as_label_helper(.dat[[i]], add.non.labelled, prefix, var.label, drop.na, drop.levels)
-    }
-  } else {
-    x <- as_label_helper(.dat, add.non.labelled, prefix, var.label, drop.na, drop.levels)
+  # iterate variables of data frame
+  for (i in colnames(.dat)) {
+    x[[i]] <- as_label_helper(.dat[[i]], add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels)
   }
 
   x
 }
 
+
 #' @importFrom haven na_tag is_tagged_na
-as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, drop.levels) {
+as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels) {
   # prefix labels?
   if (prefix)
     iv <- "p"
@@ -147,6 +157,9 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
     var_lab <- get_label(x)
   else
     var_lab <- var.label
+
+  # get labels
+  labels <- NULL
 
   # keep missings?
   if (!drop.na) {
@@ -182,9 +195,13 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
   # return variable "as is"
   if (!is.null(vl)) {
     # get associated values for value labels
-    vnn <- get_labels(x, attr.only = TRUE, values = "n",
-                      non.labelled = add.non.labelled,
-                      drop.na = drop.na)
+    vnn <- labels <- get_labels(
+      x,
+      attr.only = TRUE,
+      values = "n",
+      non.labelled = add.non.labelled,
+      drop.na = drop.na
+    )
 
     # convert to numeric
     vn <- suppressWarnings(as.numeric(names(vnn)))
@@ -214,6 +231,11 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
   # set back variable labels
   if (!is.null(var_lab)) x <- suppressWarnings(set_label(x, label = var_lab))
 
+  # check if we should set back former variable and value labels
+  if (keep.labels) {
+    x <- set_labels(x, labels = labels, force.labels = T)
+  }
+
   # return as factor
   x
 }
@@ -232,10 +254,10 @@ as_character <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.l
 
     # iterate variables of data frame
     for (i in colnames(.dat)) {
-      x[[i]] <- as.character(as_label_helper(.dat[[i]], add.non.labelled, prefix, var.label, drop.na, drop.levels))
+      x[[i]] <- as.character(as_label_helper(.dat[[i]], add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels = FALSE))
     }
   } else {
-    x <- as.character(as_label_helper(.dat, add.non.labelled, prefix, var.label, drop.na, drop.levels))
+    x <- as.character(as_label_helper(.dat, add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels = FALSE))
   }
 
   # set back variable labels, if any

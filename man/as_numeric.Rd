@@ -28,7 +28,9 @@ value labels. For numeric factor levels, values labels will be used,
 if present. See 'Examples' and \code{\link{set_labels}} for more details.}
 
 \item{use.labels}{Logical, if \code{TRUE} and \code{x} has numeric value labels,
-these value labels will be set as numeric values.}
+the values defined in the labels (right-hand side of \code{labels}, for instance
+\code{labels = c(null = 0, one = 1)}) will be set as numeric values (instead
+of consecutive factor level numbers). See 'Examples'.}
 }
 \value{
 A numeric variable with values ranging either from \code{start.at} to

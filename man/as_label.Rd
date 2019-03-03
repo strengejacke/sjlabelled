@@ -6,7 +6,8 @@
 \title{Convert variable into factor with associated value labels}
 \usage{
 as_label(x, ..., add.non.labelled = FALSE, prefix = FALSE,
-  var.label = NULL, drop.na = TRUE, drop.levels = FALSE)
+  var.label = NULL, drop.na = TRUE, drop.levels = FALSE,
+  keep.labels = TRUE)
 
 as_character(x, ..., add.non.labelled = FALSE, prefix = FALSE,
   var.label = NULL, drop.na = TRUE, drop.levels = FALSE)
