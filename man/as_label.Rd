@@ -40,6 +40,8 @@ with their value labels. See 'Examples' and \code{\link{get_na}}.}
 \item{drop.levels}{Logical, if \code{TRUE}, unused factor levels will be
 dropped (i.e. \code{\link{droplevels}} will be applied before returning
 the result).}
+
+\item{keep.labels}{Logical, if \code{TRUE}, value labels are preserved.}
 }
 \value{
 A factor with the associated value labels as factor levels. If \code{x}

@@ -24,6 +24,7 @@
 #' @param drop.levels Logical, if \code{TRUE}, unused factor levels will be
 #'          dropped (i.e. \code{\link{droplevels}} will be applied before returning
 #'          the result).
+#' @param keep.labels Logical, if \code{TRUE}, value labels are preserved.
 #'
 #' @inheritParams add_labels
 #'
@@ -232,7 +233,7 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
   if (!is.null(var_lab)) x <- suppressWarnings(set_label(x, label = var_lab))
 
   # check if we should set back former variable and value labels
-  if (keep.labels) {
+  if (keep.labels && !prefix) {
     x <- set_labels(x, labels = labels, force.labels = T)
   }
 
