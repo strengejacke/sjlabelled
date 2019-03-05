@@ -7,7 +7,7 @@
 \usage{
 as_label(x, ..., add.non.labelled = FALSE, prefix = FALSE,
   var.label = NULL, drop.na = TRUE, drop.levels = FALSE,
-  keep.labels = TRUE)
+  keep.labels = FALSE)
 
 as_character(x, ..., add.non.labelled = FALSE, prefix = FALSE,
   var.label = NULL, drop.na = TRUE, drop.levels = FALSE)
