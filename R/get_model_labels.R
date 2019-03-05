@@ -85,7 +85,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 
 
   # get model terms and model frame
-  m <- try(purrr::map(models, ~ insight::find_parameters(.x)[["conditional"]]), silent = TRUE)
+  m <- try(purrr::map(models, ~ insight::find_predictors(.x)), silent = TRUE)
   mf <- try(purrr::map(models, ~ dplyr::select(insight::get_data(.x), -1)), silent = TRUE)
 
   # return NULL on error
