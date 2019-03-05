@@ -60,7 +60,8 @@ isempty <- function(x, first.only = TRUE) {
       })
       # return result for multiple elements of character vector
       if (first.only) {
-        return(unname(zero_len)[1])
+        zero_len <- isTRUE(zero_len[1])
+        if (length(x) > 0) x <- x[!is.na(x)][1]
       } else {
         return(unname(zero_len))
       }
