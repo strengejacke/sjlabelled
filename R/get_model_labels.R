@@ -68,24 +68,11 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 
   prefix <- match.arg(prefix)
 
-  ## TODO better handling for stanmvreg
-
-  if (inherits(models, "stanmvreg")) {
-    return(
-      stats::terms(models) %>%
-        purrr::map(~ attr(.x, "term.labels")) %>%
-        purrr::flatten_chr()
-    )
-  }
-
   # to be generic, make sure argument is a list
   if (!inherits(models, "list")) models <- list(models)
 
-  # TODO tidyr for non-supported models
-
-
   # get model terms and model frame
-  m <- try(purrr::map(models, ~ insight::find_predictors(.x)), silent = TRUE)
+  m <- try(purrr::map(models, ~ insight::find_predictors(.x, flatten = TRUE)), silent = TRUE)
   mf <- try(purrr::map(models, ~ dplyr::select(insight::get_data(.x), -1)), silent = TRUE)
 
   # return NULL on error
