@@ -187,7 +187,7 @@ set_labels <- function(x, ...,
                        drop.na = TRUE) {
 
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
 
   # special handling for data frames
   if (is.data.frame(x)) {

@@ -4,6 +4,10 @@
 
 * Reduce package dependencies.
 
+## New functions
+
+* `set_na()` to define (labelled) `NA`-values in a vector.
+
 ## Changes to functions
 
 * `as_label()` gets a `keep.labels`-argument.

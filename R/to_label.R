@@ -126,7 +126,7 @@ as_label <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label
 
 #' @export
 as_label.default <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = FALSE) {
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
   as_label_helper(.dat, add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels)
 }
 
@@ -134,7 +134,7 @@ as_label.default <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, v
 #' @export
 as_label.data.frame <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = FALSE) {
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
 
   # iterate variables of data frame
   for (i in colnames(.dat)) {
@@ -246,7 +246,7 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
 #' @export
 as_character <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE) {
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
 
   # get variable labels
   vl <- get_label(x)

@@ -93,7 +93,7 @@ as_numeric <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels =
 
 #' @export
 as_numeric.default <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
   as_numeric_helper(.dat, start.at, keep.labels, use.labels)
 }
 
@@ -101,7 +101,7 @@ as_numeric.default <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.
 #' @export
 as_numeric.data.frame <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
 
   # iterate variables of data frame
   for (i in colnames(.dat)) {

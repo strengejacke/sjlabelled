@@ -2,7 +2,7 @@
 #' @export
 fill_labels <- function(x, ...) {
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
 
   if (is.data.frame(x)) {
     # iterate variables of data frame

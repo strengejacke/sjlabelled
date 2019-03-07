@@ -12,7 +12,7 @@ data_frame <- function(...) {
 is.stan <- function(x) inherits(x, c("stanreg", "stanfit", "brmsfit"))
 
 #' @importFrom rlang is_empty
-#' @importFrom dplyr quos select
+#' @importFrom dplyr select
 get_dot_data <- function(x, qs) {
   if (rlang::is_empty(qs))
     x

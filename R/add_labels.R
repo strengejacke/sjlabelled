@@ -94,7 +94,7 @@
 #' get_na(x)
 #' get_na(remove_labels(x, labels = tagged_na("c")))
 #'
-#' @importFrom dplyr quos
+#' @importFrom rlang quos
 #' @export
 add_labels <- function(x, ..., labels) {
 
@@ -103,7 +103,7 @@ add_labels <- function(x, ..., labels) {
   if (is.null(names(labels))) stop("`labels` must be a named vector.", call. = F)
 
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, dplyr::quos(...))
+  .dat <- get_dot_data(x, rlang::quos(...))
 
   if (is.data.frame(x)) {
     # iterate variables of data frame

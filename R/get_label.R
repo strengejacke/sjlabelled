@@ -79,7 +79,7 @@ get_label <- function(x, ..., def.value = NULL, case = NULL) {
 #' @export
 get_label.data.frame <- function(x, ..., def.value = NULL, case = NULL) {
   # evaluate arguments, generate data
-  x <- get_dot_data(x, dplyr::quos(...))
+  x <- get_dot_data(x, rlang::quos(...))
 
   sapply(seq_along(x), function(i) {
     # get label
