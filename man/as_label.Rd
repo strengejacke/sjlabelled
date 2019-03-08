@@ -41,7 +41,9 @@ with their value labels. See 'Examples' and \code{\link{get_na}}.}
 dropped (i.e. \code{\link{droplevels}} will be applied before returning
 the result).}
 
-\item{keep.labels}{Logical, if \code{TRUE}, value labels are preserved.}
+\item{keep.labels}{Logical, if \code{TRUE}, value labels are preserved This
+allows users to quickly convert back factors to numeric vectors with
+\code{as_numeric()}.}
 }
 \value{
 A factor with the associated value labels as factor levels. If \code{x}
@@ -52,13 +54,13 @@ A factor with the associated value labels as factor levels. If \code{x}
 }
 \description{
 \code{as_label()} converts (replaces) values of a variable (also of factors
-               or character vectors) with their associated value labels. Might
-               be helpful for factor variables.
-               For instance, if you have a Gender variable with 0/1 value, and associated
-               labels are male/female, this function would convert all 0 to male and
-               all 1 to female and returns the new variable as factor.
-               \code{as_character()} does the same as \code{as_label()}, but returns
-               a character vector.
+   or character vectors) with their associated value labels. Might
+   be helpful for factor variables.
+   For instance, if you have a Gender variable with 0/1 value, and associated
+   labels are male/female, this function would convert all 0 to male and
+   all 1 to female and returns the new variable as factor.
+   \code{as_character()} does the same as \code{as_label()}, but returns
+   a character vector.
 }
 \details{
 See 'Details' in \code{\link{get_na}}.
@@ -83,6 +85,7 @@ head(as_label(efc$e42dep))
 # structure of numeric values won't be changed
 # by this function, it only applies to labelled vectors
 # (typically categorical or factor variables)
+
 str(efc$e17age)
 str(as_label(efc$e17age))
 
@@ -99,25 +102,34 @@ as_label(x, prefix = TRUE)
 # create vector
 x <- c(1, 2, 3, 2, 4, NA)
 # add less labels than values
-x <- set_labels(x,
-                labels = c("yes", "maybe", "no"),
-                force.labels = FALSE,
-                force.values = FALSE)
+x <- set_labels(
+  x,
+  labels = c("yes", "maybe", "no"),
+  force.labels = FALSE,
+  force.values = FALSE
+)
+
 # convert to label w/o non-labelled values
 as_label(x)
+
 # convert to label, including non-labelled values
 as_label(x, add.non.labelled = TRUE)
 
 
 # create labelled integer, with missing flag
 library(haven)
-x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1, 2:3),
-              c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
-                "Refused" = tagged_na("a"), "Not home" = tagged_na("z")))
+x <- labelled(
+  c(1:3, tagged_na("a", "c", "z"), 4:1, 2:3),
+  c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
+    "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
+)
+
 # to labelled factor, with missing labels
 as_label(x, drop.na = FALSE)
+
 # to labelled factor, missings removed
 as_label(x, drop.na = TRUE)
+
 # keep missings, and use non-labelled values as well
 as_label(x, add.non.labelled = TRUE, drop.na = FALSE)
 
@@ -140,6 +152,23 @@ as_label(x, drop.levels = TRUE)
 
 # change variable label
 as_label(x, var.label = "New variable label!", drop.levels = TRUE)
+
+
+# convert to numeric and back again, preserving label attributes
+# *and* values in numeric vector
+x <- c(0, 1, 0, 4)
+x <- set_labels(x, labels = c(`null` = 0, `one` = 1, `four` = 4))
+
+# to factor
+as_label(x)
+
+# to factor, back to numeric - values are 1, 2 and 3,
+# instead of original 0, 1 and 4
+as_numeric(as_label(x))
+
+# preserve label-attributes when converting to factor, use these attributes
+# to restore original numeric values when converting back to numeric
+as_numeric(as_label(x, keep.labels = TRUE), use.labels = TRUE)
 
 
 # easily coerce specific variables in a data frame to factor

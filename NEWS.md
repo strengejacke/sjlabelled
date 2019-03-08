@@ -3,14 +3,15 @@
 ## General
 
 * Reduce package dependencies.
+* New package-vignette on quasiquotation.
 
 ## New functions
 
-* `set_na()` to define (labelled) `NA`-values in a vector.
+* Re-implement `set_na()`, to define (labelled) `NA`-values in a vector.
 
 ## Changes to functions
 
-* `as_label()` gets a `keep.labels`-argument.
+* `as_label()` gets a `keep.labels`-argument. With this, users can easily convert vector to factors and vice versa, preserving label-attributes.
 
 ## Bug fixes
 

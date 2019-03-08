@@ -1,0 +1,153 @@
+---
+title: "Using quasiquotation to add variable and value labels"
+author: "Daniel Lüdecke"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using quasiquotation to add variable and value labels}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Labelling data is typically a task for end-users and is applied in own scripts or functions rather than in packages. However, sometimes it can be useful for both end-users and package developers to have a flexible way to add variable and value labels to their data. In such cases, [quasiquotation](https://adv-r.hadley.nz/quasiquotation.html) is helpful.
+
+This vignette demonstrate how to use quasiquotation in _sjlabelled_ to label your data.
+
+## Adding value labels to variables using quasiquotation
+
+Usually, `set_labels()` can be used to add value labels to variables. The syntax of this function is easy to use, and `set_labels()` allows to add value labels to multiple variables at once, if these variables share the same value labels.
+
+In the following examples, we will use the `frq()` function, that shows an extra **label**-column containing _value labels_, if the data is labelled. If the data has _no_ value labels, this column is not shown in the output. 
+
+```{r message=FALSE, warning=FALSE}
+library(sjlabelled)
+library(sjmisc) # for frq()-function
+library(rlang)
+
+# unlabelled data
+dummies <- data.frame(
+  dummy1 = sample(1:3, 40, replace = TRUE),
+  dummy2 = sample(1:3, 40, replace = TRUE),
+  dummy3 = sample(1:3, 40, replace = TRUE)
+)
+
+# set labels for all variables in the data frame
+test <- set_labels(dummies, labels = c("low", "mid", "hi"))
+
+attr(test$dummy1, "labels")
+
+frq(test, dummy1)
+
+# and set same value labels for two of three variables
+test <- set_labels(
+  dummies, dummy1, dummy2,
+  labels = c("low", "mid", "hi")
+)
+
+frq(test)
+```
+
+`val_labels()` does the same job as `set_labels()`, but in a different way. While `set_labels()` requires variables to be specified in the  `...`-argument, and labels in the `labels`-argument, `val_labels()` requires both to be specified in the `...`.
+
+`val_labels()` requires _named_ vectors as argument, with the _left-hand side_ being the name of the variable that should be labelled, and the _right-hand side_ containing the labels for the values.
+
+```{r message=FALSE, warning=FALSE}
+test <- val_labels(dummies, dummy1 = c("low", "mid", "hi"))
+attr(test$dummy1, "labels")
+
+# remaining variables are not labelled
+frq(test)
+```
+
+Unlike `set_labels()`, `val_labels()` allows the user to add _different_ value labels to different variables in one function call. Another advantage, or difference, of `val_labels()` is it's flexibility in defining variable names and value labels by using quasiquotation.
+
+### Add labels that are stored in a vector
+
+To use quasiquotation, we need the **rlang** package to be installed and loaded. Now we can have labels in a character vector, and use `!!` to unquote this vector.
+
+```{r message=FALSE, warning=FALSE}
+labels <- c("low_quote", "mid_quote", "hi_quote")
+test <- val_labels(dummies, dummy1 = !! labels)
+attr(test$dummy1, "labels")
+```
+
+### Define variable names that are stored in a vector
+
+The same can be done with the names of _variables_ that should get new value labels. We then need `!!` to unquote the variable name and `:=` as assignment.
+
+```{r message=FALSE, warning=FALSE}
+variable <- "dummy2"
+test <- val_labels(dummies, !! variable := c("lo_var", "mid_var", "high_var"))
+
+# no value labels
+attr(test$dummy1, "labels")
+
+# value labels
+attr(test$dummy2, "labels")
+```
+
+### Both variable names and value labels are stored in a vector
+
+Finally, we can combine the above approaches to be flexible regarding both variable names and value labels.
+
+```{r message=FALSE, warning=FALSE}
+variable <- "dummy3"
+labels <- c("low", "mid", "hi")
+test <- val_labels(dummies, !! variable := !! labels)
+attr(test$dummy3, "labels")
+```
+
+## Adding variable labels using quasiquotation
+
+`set_label()` is the equivalent to `set_labels()` to add variable labels to a variable. The equivalent to `val_labels()` is `var_labels()`, which works in the same way as `val_labels()`. In case of _variable_ labels, a `label`-attribute is added to a vector or factor (instead of a `labels`-attribute, which is used for _value_ labels).
+
+The following examples show how to use `var_labels()` to add variable labels to the data. We demonstrate this function without further explanation, because it is actually very similar to `val_labels()`.
+
+
+```{r message=FALSE, warning=FALSE}
+dummy <- data.frame(
+  a = sample(1:4, 10, replace = TRUE),
+  b = sample(1:4, 10, replace = TRUE),
+  c = sample(1:4, 10, replace = TRUE)
+)
+
+# simple usage
+test <- var_labels(dummy, a = "first variable", c = "third variable")
+
+attr(test$a, "label")
+attr(test$b, "label")
+attr(test$c, "label")
+
+# quasiquotation for labels
+v1 <- "First variable"
+v2 <- "Second variable"
+test <- var_labels(dummy, a = !! v1, b = !! v2)
+
+attr(test$a, "label")
+attr(test$b, "label")
+attr(test$c, "label")
+
+# quasiquotation for variable names
+x1 <- "a"
+x2 <- "c"
+test <- var_labels(dummy, !! x1 := "First", !! x2 := "Second")
+
+attr(test$a, "label")
+attr(test$b, "label")
+attr(test$c, "label")
+
+# quasiquotation for both variable names and labels
+test <- var_labels(dummy, !! x1 := !! v1, !! x2 := !! v2)
+
+attr(test$a, "label")
+attr(test$b, "label")
+attr(test$c, "label")
+```
+
+## Conclusion
+
+As we have demonstrated, `var_labels()` and `val_labels()` are one of the most flexible and easy-to-use ways to add value and variable labels to our data. Another advantage is the consistent design of all functions in **sjlabelled**, which allows seamless integration into pipe-workflows.
