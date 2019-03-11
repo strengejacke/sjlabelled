@@ -33,13 +33,13 @@
 <meta property="og:title" content="Convert variable into factor with associated value labels — as_label" />
 
 <meta property="og:description" content="as_label() converts (replaces) values of a variable (also of factors
-               or character vectors) with their associated value labels. Might
-               be helpful for factor variables.
-               For instance, if you have a Gender variable with 0/1 value, and associated
-               labels are male/female, this function would convert all 0 to male and
-               all 1 to female and returns the new variable as factor.
-               as_character() does the same as as_label(), but returns
-               a character vector." />
+   or character vectors) with their associated value labels. Might
+   be helpful for factor variables.
+   For instance, if you have a Gender variable with 0/1 value, and associated
+   labels are male/female, this function would convert all 0 to male and
+   all 1 to female and returns the new variable as factor.
+   as_character() does the same as as_label(), but returns
+   a character vector." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17</span>
       </span>
     </div>
 
@@ -99,6 +99,9 @@
     </li>
     <li>
       <a href="../articles/labelleddata.html">Working with Labelled Data</a>
+    </li>
+    <li>
+      <a href="../articles/quasiquotation.html">Using quasiquotation to add variable and value labels</a>
     </li>
   </ul>
 </li>
@@ -129,18 +132,19 @@
     <div class="ref-description">
     
     <p><code>as_label()</code> converts (replaces) values of a variable (also of factors
-               or character vectors) with their associated value labels. Might
-               be helpful for factor variables.
-               For instance, if you have a Gender variable with 0/1 value, and associated
-               labels are male/female, this function would convert all 0 to male and
-               all 1 to female and returns the new variable as factor.
-               <code>as_character()</code> does the same as <code>as_label()</code>, but returns
-               a character vector.</p>
+   or character vectors) with their associated value labels. Might
+   be helpful for factor variables.
+   For instance, if you have a Gender variable with 0/1 value, and associated
+   labels are male/female, this function would convert all 0 to male and
+   all 1 to female and returns the new variable as factor.
+   <code>as_character()</code> does the same as <code>as_label()</code>, but returns
+   a character vector.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>as_character</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
@@ -190,6 +194,12 @@ with their value labels. See 'Examples' and <code><a href='get_na.html'>get_na</
 dropped (i.e. <code><a href='https://www.rdocumentation.org/packages/base/topics/droplevels'>droplevels</a></code> will be applied before returning
 the result).</p></td>
     </tr>
+    <tr>
+      <th>keep.labels</th>
+      <td><p>Logical, if <code>TRUE</code>, value labels are preserved This
+allows users to quickly convert back factors to numeric vectors with
+<code><a href='as_numeric.html'>as_numeric()</a></code>.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -232,6 +242,7 @@ the result).</p></td>
 <span class='co'># structure of numeric values won't be changed</span>
 <span class='co'># by this function, it only applies to labelled vectors</span>
 <span class='co'># (typically categorical or factor variables)</span>
+
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>efc</span>$<span class='no'>e17age</span>)</div><div class='output co'>#&gt;  num [1:908] 83 88 82 67 84 85 74 87 79 83 ...
 #&gt;  - attr(*, "label")= chr "elder' age"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>e17age</span>))</div><div class='output co'>#&gt;  num [1:908] 83 88 82 67 84 85 74 87 79 83 ...
 #&gt;  - attr(*, "label")= chr "elder' age"</div><div class='input'>
@@ -248,29 +259,38 @@ the result).</p></td>
 <span class='co'># create vector</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>NA</span>)
 <span class='co'># add less labels than values</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='no'>x</span>,
-                <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>),
-                <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-                <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'><span class='co'># convert to label w/o non-labelled values</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>),
+  <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'>
+<span class='co'># convert to label w/o non-labelled values</span>
 <span class='fu'>as_label</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] yes   maybe no    maybe &lt;NA&gt;  &lt;NA&gt; 
-#&gt; Levels: yes maybe no</div><div class='input'><span class='co'># convert to label, including non-labelled values</span>
+#&gt; Levels: yes maybe no</div><div class='input'>
+<span class='co'># convert to label, including non-labelled values</span>
 <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] yes   maybe no    maybe 4     &lt;NA&gt; 
 #&gt; Levels: yes maybe no 4</div><div class='input'>
 
 <span class='co'># create labelled integer, with missing flag</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>haven</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>, <span class='fl'>2</span>:<span class='fl'>3</span>),
-              <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"c"</span>),
-                <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>)))
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>, <span class='fl'>2</span>:<span class='fl'>3</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"c"</span>),
+    <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>))
+)
+
 <span class='co'># to labelled factor, with missing labels</span>
 <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;  [1] Agreement    &lt;NA&gt;         &lt;NA&gt;         Refused      First       
 #&gt;  [6] Not home     Disagreement &lt;NA&gt;         &lt;NA&gt;         Agreement   
 #&gt; [11] &lt;NA&gt;         &lt;NA&gt;        
-#&gt; Levels: Agreement Disagreement First Refused Not home</div><div class='input'><span class='co'># to labelled factor, missings removed</span>
+#&gt; Levels: Agreement Disagreement First Refused Not home</div><div class='input'>
+<span class='co'># to labelled factor, missings removed</span>
 <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] Agreement    &lt;NA&gt;         &lt;NA&gt;         &lt;NA&gt;         &lt;NA&gt;        
 #&gt;  [6] &lt;NA&gt;         Disagreement &lt;NA&gt;         &lt;NA&gt;         Agreement   
 #&gt; [11] &lt;NA&gt;         &lt;NA&gt;        
-#&gt; Levels: Agreement Disagreement</div><div class='input'><span class='co'># keep missings, and use non-labelled values as well</span>
+#&gt; Levels: Agreement Disagreement</div><div class='input'>
+<span class='co'># keep missings, and use non-labelled values as well</span>
 <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;  [1] Agreement    2            3            Refused      First       
 #&gt;  [6] Not home     Disagreement 3            2            Agreement   
 #&gt; [11] 2            3           
@@ -303,6 +323,27 @@ the result).</p></td>
 #&gt; attr(,"label")
 #&gt; [1] New variable label!
 #&gt; Levels: ape bear cat</div><div class='input'>
+
+<span class='co'># convert to numeric and back again, preserving label attributes</span>
+<span class='co'># *and* values in numeric vector</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>4</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='no'>x</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>`null`</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>`one`</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>`four`</span> <span class='kw'>=</span> <span class='fl'>4</span>))
+
+<span class='co'># to factor</span>
+<span class='fu'>as_label</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] null one  null four
+#&gt; Levels: null one four</div><div class='input'>
+<span class='co'># to factor, back to numeric - values are 1, 2 and 3,</span>
+<span class='co'># instead of original 0, 1 and 4</span>
+<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] 1 2 1 3
+#&gt; attr(,"labels")
+#&gt; null  one four 
+#&gt;    1    2    3 </div><div class='input'>
+<span class='co'># preserve label-attributes when converting to factor, use these attributes</span>
+<span class='co'># to restore original numeric values when converting back to numeric</span>
+<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>use.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 0 1 0 4
+#&gt; attr(,"labels")
+#&gt; null  one four 
+#&gt;    0    1    4 </div><div class='input'>
 
 <span class='co'># easily coerce specific variables in a data frame to factor</span>
 <span class='co'># and keep other variables, with their class preserved</span>

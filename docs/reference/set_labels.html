@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17</span>
       </span>
     </div>
 
@@ -99,6 +99,9 @@
     </li>
     <li>
       <a href="../articles/labelleddata.html">Working with Labelled Data</a>
+    </li>
+    <li>
+      <a href="../articles/quasiquotation.html">Using quasiquotation to add variable and value labels</a>
     </li>
   </ul>
 </li>
@@ -311,7 +314,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>x</span></div><div class='output co'>#&gt;  [1]  1  1  1  2  2 -2  3  3  3  3  3  9
 #&gt; attr(,"labels")
 #&gt; Refused     One     Two   Three Missing 
-#&gt;      -2       1       2       3       9 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/set_na'>set_na</a></span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>2</span>, <span class='fl'>9</span>))</div><div class='output co'>#&gt;  [1]  1  1  1  2  2 NA  3  3  3  3  3 NA
+#&gt;      -2       1       2       3       9 </div><div class='input'><span class='fu'><a href='set_na.html'>set_na</a></span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>2</span>, <span class='fl'>9</span>))</div><div class='output co'>#&gt;  [1]  1  1  1  2  2 NA  3  3  3  3  3 NA
 #&gt; attr(,"labels")
 #&gt;   One   Two Three 
 #&gt;     1     2     3 </div><div class='input'>
@@ -368,7 +371,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span>)
 <span class='co'># set 2 and 3 as missing, which will automatically set as</span>
 <span class='co'># tagged NA by 'set_na()'</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/set_na'>set_na</a></span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>))
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_na.html'>set_na</a></span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>))
 <span class='no'>x</span></div><div class='output co'>#&gt; [1]  1 NA NA  4</div><div class='input'><span class='co'># set label via named vector just for tagged NA(3)</span>
 <span class='fu'>set_labels</span>(<span class='no'>x</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>`New Value`</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"3"</span>)))</div><div class='output co'>#&gt; [1]  1 NA NA  4
 #&gt; attr(,"labels")
