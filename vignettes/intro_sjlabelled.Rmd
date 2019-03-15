@@ -207,11 +207,9 @@ str(tmp)
 ```
 
 You can use `set_labels()` within a pipe-workflow with _dplyr_.
-```{r echo=FALSE, message=FALSE}
+```{r message=FALSE}
 library(dplyr)
 library(sjmisc) # for frq()
-```
-```{r}
 data(efc)
 
 efc %>% 
@@ -348,9 +346,10 @@ get_na(x, as.tag = TRUE)
 
 ## Replacing specific NA with values
 
-While `set_na()` allows you to replace values with (tagged) NA's, `replace_na()` allows you to replace either all NA values of a vector or specific tagged NA values with a non-NA value.
+While `set_na()` allows you to replace values with (tagged) NA's, `replace_na()` (from package **sjmisc**) allows you to replace either all NA values of a vector or specific tagged NA values with a non-NA value.
 
 ```{r}
+library(sjmisc) # for replace_na()
 data(efc)
 str(efc$c84cop3)
 
