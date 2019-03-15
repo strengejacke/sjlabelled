@@ -1,6 +1,6 @@
 # sjlabelled - Labelled Data Utility Functions <img src="man/figures/logo.png" align="right" />
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1249215.svg)](https://doi.org/10.5281/zenodo.1249215)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1249215.svg)](https://doi.org/10.5281/zenodo.1249215) &#160;&#160; [![Documentation](https://img.shields.io/badge/documentation-sjlabelled-orange.svg?colorB=E91E63)](https://strengejacke.github.io/sjlabelled/) &#160;&#160; [![Build Status](https://travis-ci.org/strengejacke/sjlabelled.svg?branch=master)](https://travis-ci.org/strengejacke/sjlabelled)
 
 This package contains utility functions that are useful when working with labelled data (especially intended for people coming from 'SPSS', 'SAS' or 'Stata' and/or who are new to R).
 
@@ -19,8 +19,7 @@ devtools::install_github("strengejacke/sjlabelled")
 
 ### Officiale, stable release
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sjlabelled)](https://cran.r-project.org/package=sjlabelled)
-&#160;&#160;
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sjlabelled)](https://cran.r-project.org/package=sjlabelled) &#160;&#160; [![Documentation](https://img.shields.io/badge/documentation-sjlabelled-orange.svg?colorB=E91E63)](https://strengejacke.github.io/sjlabelled/) &#160;&#160; [![Build Status](https://travis-ci.org/strengejacke/sjlabelled.svg?branch=master)](https://travis-ci.org/strengejacke/sjlabelled) &#160;&#160;
 [![downloads](http://cranlogs.r-pkg.org/badges/sjlabelled)](http://cranlogs.r-pkg.org/)
 &#160;&#160;
 [![total](http://cranlogs.r-pkg.org/badges/grand-total/sjlabelled)](http://cranlogs.r-pkg.org/)
