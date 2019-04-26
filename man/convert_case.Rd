@@ -13,7 +13,7 @@ convert_case(lab, case = NULL, verbose = FALSE, ...)
 specified character case. See \code{\link[snakecase]{to_any_case}} for
 more details on this argument.}
 
-\item{verbose}{Toggle warnings.}
+\item{verbose}{Toggle warnings and messages on or off.}
 
 \item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 like \code{sep_in} or \code{sep_out}.}

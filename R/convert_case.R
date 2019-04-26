@@ -10,7 +10,7 @@
 #' @param case Desired target case. Labels will automatically converted into the
 #'          specified character case. See \code{\link[snakecase]{to_any_case}} for
 #'          more details on this argument.
-#' @param verbose Toggle warnings.
+#' @param verbose Toggle warnings and messages on or off.
 #' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 #'        like \code{sep_in} or \code{sep_out}.
 #'

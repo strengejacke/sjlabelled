@@ -1,3 +1,9 @@
+# sjlabelled 1.0.18
+
+## Changes to functions
+
+`convert_case()` gets a `verbose`-argument to toggle warnings and messages on or off.
+
 # sjlabelled 1.0.17
 
 ## General
