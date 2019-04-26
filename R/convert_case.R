@@ -10,6 +10,7 @@
 #' @param case Desired target case. Labels will automatically converted into the
 #'          specified character case. See \code{\link[snakecase]{to_any_case}} for
 #'          more details on this argument.
+#' @param verbose Toggle warnings.
 #' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 #'        like \code{sep_in} or \code{sep_out}.
 #'
@@ -26,10 +27,11 @@
 #' convert_case(colnames(iris), case = "snake")
 #'
 #' @export
-convert_case <- function(lab, case = NULL, ...) {
+convert_case <- function(lab, case = NULL, verbose = FALSE, ...) {
 
   if (!requireNamespace("snakecase", quietly = TRUE)) {
-    message("Package `snakecase` needs to be installed for case-conversion.")
+    if (verbose)
+      message("Package `snakecase` needs to be installed for case-conversion.")
     return(lab)
   }
 

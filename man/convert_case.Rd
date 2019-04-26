@@ -4,7 +4,7 @@
 \alias{convert_case}
 \title{Generic case conversion for labels}
 \usage{
-convert_case(lab, case = NULL, ...)
+convert_case(lab, case = NULL, verbose = FALSE, ...)
 }
 \arguments{
 \item{lab}{Character vector that should be case converted.}
@@ -12,6 +12,8 @@ convert_case(lab, case = NULL, ...)
 \item{case}{Desired target case. Labels will automatically converted into the
 specified character case. See \code{\link[snakecase]{to_any_case}} for
 more details on this argument.}
+
+\item{verbose}{Toggle warnings.}
 
 \item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 like \code{sep_in} or \code{sep_out}.}
