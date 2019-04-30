@@ -1,5 +1,9 @@
 # sjlabelled 1.0.18
 
+## New functions
+
+* `remove_label()`, to remove variable labels (and preserve value labels).
+
 ## Changes to functions
 
 `convert_case()` gets a `verbose`-argument to toggle warnings and messages on or off.
