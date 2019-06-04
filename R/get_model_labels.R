@@ -71,8 +71,8 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
   if (!inherits(models, "list")) models <- list(models)
 
   # get model terms and model frame
-  m <- try(purrr::map(models, ~ insight::find_predictors(.x, flatten = TRUE)), silent = TRUE)
-  mf <- try(purrr::map(models, ~ insight::get_data(.x)[, -1, drop = FALSE]), silent = TRUE)
+  m <- try(lapply(models, function(.x) insight::find_predictors(.x, flatten = TRUE)), silent = TRUE)
+  mf <- try(lapply(models, function(.x) insight::get_data(.x)[, -1, drop = FALSE]), silent = TRUE)
 
   # return NULL on error
   if (inherits(m, "try-error") || inherits(mf, "try-error")) {
@@ -82,7 +82,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 
   # get all variable labels for predictors
 
-  lbs1 <- purrr::map(1:length(m), function(x) {
+  lbs1 <- lapply(1:length(m), function(x) {
     if (is.null(mf[[x]])) {
       m[[x]][-1]
     } else {

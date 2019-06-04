@@ -160,13 +160,12 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE, enc = NULL, v
 
 # converts atomic numeric vectors into factors with
 # numerical factor levels
-#' @importFrom purrr map_df
 atomic_to_fac <- function(data.spss) {
   # tell user...
   message("Converting atomic to factors. Please wait...\n")
   # iterate all columns
 
-  purrr::map(
+  lapply(
     data.spss,
     function(x) {
       # capture value labels attribute first
