@@ -12,12 +12,14 @@ data_frame <- function(...) {
 is.stan <- function(x) inherits(x, c("stanreg", "stanfit", "brmsfit"))
 
 #' @importFrom rlang is_empty
-#' @importFrom dplyr select
+#' @importFrom tidyselect vars_select
 get_dot_data <- function(x, qs) {
   if (rlang::is_empty(qs))
     x
-  else
-    suppressMessages(dplyr::select(x, !!!qs))
+  else {
+    vars <- suppressWarnings(tidyselect::vars_select(colnames(x), !!!qs))
+    x[, vars, drop = FALSE]
+  }
 }
 
 # return names of objects passed as ellipses argument

@@ -17,14 +17,15 @@ Depends:
     R (>= 3.2),
     stats
 Imports:
-    dplyr,
     haven (>= 1.1.2),
     insight,
     magrittr,
     purrr,
     rlang,
+    tidyselect,
     utils
 Suggests:
+    dplyr,
     glmmTMB,
     Hmisc,
     sjmisc,

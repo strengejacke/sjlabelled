@@ -161,7 +161,6 @@ read_spss <- function(path, atomic.to.fac = FALSE, tag.na = FALSE, enc = NULL, v
 # converts atomic numeric vectors into factors with
 # numerical factor levels
 #' @importFrom purrr map_df
-#' @importFrom dplyr n_distinct
 atomic_to_fac <- function(data.spss) {
   # tell user...
   message("Converting atomic to factors. Please wait...\n")
@@ -175,7 +174,7 @@ atomic_to_fac <- function(data.spss) {
       # and save variable label, if any
       lab <- attr(x, "label", exact = T)
       # is atomic, which was factor in SPSS?
-      if (is.atomic(x) && !is.null(labs) && length(labs) >= dplyr::n_distinct(x, na.rm = TRUE)) {
+      if (is.atomic(x) && !is.null(labs) && length(labs) >= length(unique(stats::na.omit(x)))) {
         # so we have value labels (only typical for factors, not
         # continuous variables) and a variable of type "atomic" (SPSS
         # continuous variables would be imported as numeric) - this

@@ -35,7 +35,7 @@ obj_has_rownames <- function(x) {
   !identical(as.character(1:nrow(x)), rownames(x))
 }
 
-#' @importFrom dplyr select
+#' @importFrom tidyselect vars_select
 add_cols <- function(data, ..., .after = 1, .before = NULL) {
   if (is.character(.after))
     .after <- which(colnames(data) == .after)
@@ -56,10 +56,12 @@ add_cols <- function(data, ..., .after = 1, .before = NULL) {
     c1 <- 1:.after
     c2 <- (.after + 1):ncol(data)
 
-    x1 <- dplyr::select(data, !! c1)
-    x2 <- dplyr::select(data, !! c2)
+    v1 <- tidyselect::vars_select(colnames(data), !! c1)
+    v2 <- tidyselect::vars_select(colnames(data), !! c2)
+
+    x1 <- data[, v1, drop = FALSE]
+    x2 <- data[, v2, drop = FALSE]
 
     cbind(x1, dat, x2)
   }
 }
-
