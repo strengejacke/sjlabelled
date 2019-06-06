@@ -1,4 +1,4 @@
-# sjlabelled 1.0.18
+# sjlabelled 1.1.0
 
 ## New functions
 
