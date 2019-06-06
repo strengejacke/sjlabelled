@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generic case conversion for labels — convert_case • sjlabelled</title>
+<title>Remove variable labels from variables — remove_label • sjlabelled</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,12 +30,9 @@
 
 
 
-<meta property="og:title" content="Generic case conversion for labels — convert_case" />
+<meta property="og:title" content="Remove variable labels from variables — remove_label" />
 
-<meta property="og:description" content="This function wraps to_any_case() from the snakecase
-  package with certain defaults for the sep_in and
-  sep_out arguments, used for instance to convert cases in
-  get_term_labels." />
+<meta property="og:description" content="Remove variable labels from variables." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -120,61 +117,92 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generic case conversion for labels</h1>
+    <h1>Remove variable labels from variables</h1>
     
-    <div class="hidden name"><code>convert_case.Rd</code></div>
+    <div class="hidden name"><code>remove_label.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function wraps <code>to_any_case()</code> from the <span class="pkg">snakecase</span>
-  package with certain defaults for the <code>sep_in</code> and
-  <code>sep_out</code> arguments, used for instance to convert cases in
-  <code><a href='get_term_labels.html'>get_term_labels</a></code>.</p>
+    <p>Remove variable labels from variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>convert_case</span>(<span class='no'>lab</span>, <span class='kw'>case</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>remove_label</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>lab</th>
-      <td><p>Character vector that should be case converted.</p></td>
-    </tr>
-    <tr>
-      <th>case</th>
-      <td><p>Desired target case. Labels will automatically converted into the
-specified character case. See <code><a href='https://www.rdocumentation.org/packages/snakecase/topics/to_any_case'>to_any_case</a></code> for
-more details on this argument.</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>Toggle warnings and messages on or off.</p></td>
+      <th>x</th>
+      <td><p>A vector or data frame.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Further arguments passed down to <code><a href='https://www.rdocumentation.org/packages/snakecase/topics/to_any_case'>to_any_case</a></code>,
-like <code>sep_in</code> or <code>sep_out</code>.</p></td>
+      <td><p>Optional, unquoted names of variables that should be selected for
+further processing. Required, if <code>x</code> is a data frame (and no
+vector) and only selected variables from <code>x</code> should be processed.
+You may also use functions like <code>:</code> or tidyselect's
+<code><a href='https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers'>select_helpers</a></code>.
+See 'Examples'.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>lab</code>, with converted case.</p>
+    <p><code>x</code> with removed variable labels</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>When calling <code>to_any_case()</code> from <span class="pkg">snakecase</span>, the
-  <code>sep_in</code> argument is set to <code>"(?&lt;!\\d)\\."</code>, and the
-  <code>sep_out</code> to <code>" "</code>. This gives feasible results from variable
-  labels for plot annotations.</p>
+    <div class='dont-index'><p><code><a href='set_label.html'>set_label</a></code> to manually set variable labels or
+           <code><a href='get_label.html'>get_label</a></code> to get variable labels; <code><a href='set_labels.html'>set_labels</a></code> to
+           add value labels, replacing the existing ones (and removing non-specified
+           value labels).</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>iris</span>)
-<span class='fu'>convert_case</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>iris</span>))</div><div class='output co'>#&gt; [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </div><div class='input'><span class='fu'>convert_case</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>iris</span>), <span class='kw'>case</span> <span class='kw'>=</span> <span class='st'>"snake"</span>)</div><div class='output co'>#&gt; [1] "sepal length" "sepal width"  "petal length" "petal width"  "species"     </div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>efc</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>efc</span>[, <span class='fl'>1</span>:<span class='fl'>5</span>]
+<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                                    c12hour 
+#&gt; "average number of hours of care per week" 
+#&gt;                                   e15relat 
+#&gt;                    "relationship to elder" 
+#&gt;                                     e16sex 
+#&gt;                           "elder's gender" 
+#&gt;                                     e17age 
+#&gt;                               "elder' age" 
+#&gt;                                     e42dep 
+#&gt;                       "elder's dependency" </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 'data.frame':	908 obs. of  5 variables:
+#&gt;  $ c12hour : num  16 148 70 168 168 16 161 110 28 40 ...
+#&gt;   ..- attr(*, "label")= chr "average number of hours of care per week"
+#&gt;  $ e15relat: num  2 2 1 1 2 2 1 4 2 2 ...
+#&gt;   ..- attr(*, "label")= chr "relationship to elder"
+#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4 5 6 7 8
+#&gt;   .. ..- attr(*, "names")= chr  "spouse/partner" "child" "sibling" "daughter or son -in-law" ...
+#&gt;  $ e16sex  : num  2 2 2 2 2 2 1 2 2 2 ...
+#&gt;   ..- attr(*, "label")= chr "elder's gender"
+#&gt;   ..- attr(*, "labels")= Named num  1 2
+#&gt;   .. ..- attr(*, "names")= chr  "male" "female"
+#&gt;  $ e17age  : num  83 88 82 67 84 85 74 87 79 83 ...
+#&gt;   ..- attr(*, "label")= chr "elder' age"
+#&gt;  $ e42dep  : num  3 3 3 4 4 4 4 4 4 4 ...
+#&gt;   ..- attr(*, "label")= chr "elder's dependency"
+#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4
+#&gt;   .. ..- attr(*, "names")= chr  "independent" "slightly dependent" "moderately dependent" "severely dependent"</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_label</span>(<span class='no'>x</span>)
+<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;  c12hour e15relat   e16sex   e17age   e42dep 
+#&gt;       ""       ""       ""       ""       "" </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 'data.frame':	908 obs. of  5 variables:
+#&gt;  $ c12hour : num  16 148 70 168 168 16 161 110 28 40 ...
+#&gt;  $ e15relat: num  2 2 1 1 2 2 1 4 2 2 ...
+#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4 5 6 7 8
+#&gt;   .. ..- attr(*, "names")= chr  "spouse/partner" "child" "sibling" "daughter or son -in-law" ...
+#&gt;  $ e16sex  : num  2 2 2 2 2 2 1 2 2 2 ...
+#&gt;   ..- attr(*, "labels")= Named num  1 2
+#&gt;   .. ..- attr(*, "names")= chr  "male" "female"
+#&gt;  $ e17age  : num  83 88 82 67 84 85 74 87 79 83 ...
+#&gt;  $ e42dep  : num  3 3 3 4 4 4 4 4 4 4 ...
+#&gt;   ..- attr(*, "labels")= Named num  1 2 3 4
+#&gt;   .. ..- attr(*, "names")= chr  "independent" "slightly dependent" "moderately dependent" "severely dependent"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -184,7 +212,7 @@ like <code>sep_in</code> or <code>sep_out</code>.</p></td>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

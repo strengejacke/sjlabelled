@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17.9000</span>
       </span>
     </div>
 
@@ -180,54 +180,51 @@ value label, but will become the value label itself). The
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"low"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>".."</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='st'>".."</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='st'>".."</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"high"</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 )
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
-#&gt; <span style='color: #0000BB;'># x &lt;integer&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=20  valid N=20  mean=3.00  sd=1.38
-#&gt; </span><span> 
-#&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   2      10        10      10
-#&gt;    2    ..   8      40        40      50
-#&gt;    3    ..   2      10        10      60
-#&gt;    4    ..   4      20        20      80
-#&gt;    5  high   4      20        20     100
+#&gt; <span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
+#&gt; # total N=20  valid N=20  mean=3.30  sd=1.66
+#&gt; 
+#&gt; </span><span> val label frq raw.prc valid.prc cum.prc
+#&gt;    1   low   6      30        30      30
+#&gt;    2    ..   0       0         0      30
+#&gt;    3    ..   2      10        10      40
+#&gt;    4    ..   6      30        30      70
+#&gt;    5  high   6      30        30     100
 #&gt;   NA    NA   0       0        NA      NA
 #&gt; </div><div class='input'>
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='no'>x</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; 
-#&gt; </span><span style='color: #0000BB;'># x &lt;integer&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=20  valid N=20  mean=3.00  sd=1.38
-#&gt; </span><span> 
-#&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   2      10        10      10
-#&gt;    2  .._2   8      40        40      50
-#&gt;    3  .._3   2      10        10      60
-#&gt;    4  .._4   4      20        20      80
-#&gt;    5  high   4      20        20     100
+#&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
+#&gt; # total N=20  valid N=20  mean=3.30  sd=1.66
+#&gt; 
+#&gt; </span><span> val label frq raw.prc valid.prc cum.prc
+#&gt;    1   low   6      30        30      30
+#&gt;    3  .._3   2      10        10      40
+#&gt;    4  .._4   6      30        30      70
+#&gt;    5  high   6      30        30     100
 #&gt;   NA    NA   0       0        NA      NA
 #&gt; </div><div class='input'>
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='no'>x</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"."</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; 
-#&gt; </span><span style='color: #0000BB;'># x &lt;integer&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=20  valid N=20  mean=3.00  sd=1.38
-#&gt; </span><span> 
-#&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   2      10        10      10
-#&gt;    2  ...2   8      40        40      50
-#&gt;    3  ...3   2      10        10      60
-#&gt;    4  ...4   4      20        20      80
-#&gt;    5  high   4      20        20     100
+#&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
+#&gt; # total N=20  valid N=20  mean=3.30  sd=1.66
+#&gt; 
+#&gt; </span><span> val label frq raw.prc valid.prc cum.prc
+#&gt;    1   low   6      30        30      30
+#&gt;    3  ...3   2      10        10      40
+#&gt;    4  ...4   6      30        30      70
+#&gt;    5  high   6      30        30     100
 #&gt;   NA    NA   0       0        NA      NA
 #&gt; </div><div class='input'>
 <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='no'>x</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>z</span>)</div><div class='output co'>#&gt; 
-#&gt; </span><span style='color: #0000BB;'># x &lt;integer&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=20  valid N=20  mean=3.00  sd=1.38
-#&gt; </span><span> 
-#&gt;  val label frq raw.prc valid.prc cum.prc
-#&gt;    1   low   2      10        10      10
-#&gt;    2     2   8      40        40      50
-#&gt;    3     3   2      10        10      60
-#&gt;    4     4   4      20        20      80
-#&gt;    5  high   4      20        20     100
+#&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
+#&gt; # total N=20  valid N=20  mean=3.30  sd=1.66
+#&gt; 
+#&gt; </span><span> val label frq raw.prc valid.prc cum.prc
+#&gt;    1   low   6      30        30      30
+#&gt;    3     3   2      10        10      40
+#&gt;    4     4   6      30        30      70
+#&gt;    5  high   6      30        30     100
 #&gt;   NA    NA   0       0        NA      NA
 #&gt; </div><div class='input'>
 </div></span></pre>

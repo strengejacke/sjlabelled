@@ -67,7 +67,7 @@ a numeric variable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17.9000</span>
       </span>
     </div>
 
@@ -188,17 +188,15 @@ of consecutive factor level numbers). See 'Examples'.</p></td>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>efc</span>)
 <span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_label.html'>as_label</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='no'>test</span>)</div><div class='output co'>#&gt; test
-#&gt;          independent   slightly dependent moderately dependent 
-#&gt;                   66                  225                  306 
-#&gt;   severely dependent 
-#&gt;                  304 </div><div class='input'>
+#&gt; &lt;dbl&gt; 
+#&gt;     1 </div><div class='input'>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>))</div><div class='output co'>#&gt; 
-#&gt;   1   2   3   4 
-#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/hist'>hist</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='as_numeric-1.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; 1 
+#&gt; 1 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/hist'>hist</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='as_numeric-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># set lowest value of new variable to "5".</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='fl'>5</span>))</div><div class='output co'>#&gt; 
-#&gt;   5   6   7   8 
-#&gt;  66 225 306 304 </div><div class='input'>
+#&gt; 5 
+#&gt; 1 </div><div class='input'>
 <span class='co'># numeric factor keeps values</span>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"3"</span>, <span class='st'>"4"</span>, <span class='st'>"6"</span>))
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/table'>table</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>dummy</span>))</div><div class='output co'>#&gt; 

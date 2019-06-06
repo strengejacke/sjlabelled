@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.17.9000</span>
       </span>
     </div>
 
@@ -1169,10 +1169,10 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='co'># watch result. due to recode-pattern, we have age groups with</span>
 <span class='co'># no observations (zero-counts)</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
-#&gt; <span style='color: #0000BB;'># carer' age (x) &lt;numeric&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=908  valid N=901  mean=11.07  sd=2.69
-#&gt; </span><span> 
-#&gt;  val  label frq raw.prc valid.prc cum.prc
+#&gt; <span style='color: #BB0000;'>carer' age (x)</span><span style='color: #0000BB;'> &lt;numeric&gt;
+#&gt; # total N=908  valid N=901  mean=11.07  sd=2.69
+#&gt; 
+#&gt; </span><span> val  label frq raw.prc valid.prc cum.prc
 #&gt;    1    1-5   0    0.00      0.00    0.00
 #&gt;    2   6-10   0    0.00      0.00    0.00
 #&gt;    3  11-15   0    0.00      0.00    0.00
@@ -1196,10 +1196,10 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;   NA     NA   7    0.77        NA      NA
 #&gt; </div><div class='input'><span class='co'># now, let's drop zero's</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/sjmisc/topics/frq'>frq</a></span>(<span class='fu'>drop_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; 
-#&gt; </span><span style='color: #0000BB;'># carer' age (x) &lt;numeric&gt;</span><span> 
-#&gt; </span><span style='color: #0000BB;'># total N=908  valid N=901  mean=11.07  sd=2.69
-#&gt; </span><span> 
-#&gt;  val label frq raw.prc valid.prc cum.prc
+#&gt; </span><span style='color: #BB0000;'>carer' age (x)</span><span style='color: #0000BB;'> &lt;numeric&gt;
+#&gt; # total N=908  valid N=901  mean=11.07  sd=2.69
+#&gt; 
+#&gt; </span><span> val label frq raw.prc valid.prc cum.prc
 #&gt;    4 16-20   5    0.55      0.55    0.55
 #&gt;    5 21-25  15    1.65      1.66    2.22
 #&gt;    6 26-30  28    3.08      3.11    5.33
