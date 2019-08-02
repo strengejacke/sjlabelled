@@ -249,7 +249,12 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
       # remove attributes
       x <- remove_all_labels(x)
     } else {
-      for (i in seq_len(length(vl))) x[x == vn[i]] <- vl[i]
+      for (i in seq_len(length(vl))) {
+        #if label is number, prevents loop from replacing again
+        x[x == vn[i]] <- paste0(vl[i], "_X_")
+      }
+      # remove suffix
+      x <- gsub("_X_$", "", x)
       # to factor
       x <- factor(x, levels = unique(vl))
     }
