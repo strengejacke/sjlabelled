@@ -187,7 +187,7 @@ atomic_to_fac <- function(data.spss) {
       }
       x
   }) %>%
-    as.data.frame()
+    as.data.frame(stringsAsFactors = FALSE)
 }
 
 
@@ -289,7 +289,7 @@ write_data <- function(x, path, type, version, drop.na) {
 
   # convert data to labelled
   # x <- as_label(x, add.non.labelled = T, drop.na = drop.na)
-  x <- as_labelled(x, add.labels = TRUE)
+  x <- as_labelled(x, add.labels = TRUE, skip.strings = TRUE)
 
   # check for correct column names
   for (i in seq_len(ncol(x))) {

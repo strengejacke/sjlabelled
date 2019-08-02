@@ -43,7 +43,7 @@ unlabel <- function(x, verbose = TRUE) {
     if (!is.null(pb)) close(pb)
 
     # remove redundant class attributes
-    x <- as.data.frame(x)
+    x <- as.data.frame(x, stringsAsFactors = FALSE)
   } else {
     # remove labelled class
     if (is_labelled(x)) x <- unclass(x)

@@ -27,7 +27,7 @@ remove_all_labels <- function(x) {
 
 #' @export
 remove_all_labels.data.frame <- function(x) {
-  as.data.frame(lapply(x, FUN = remove_all_labels_helper))
+  as.data.frame(lapply(x, FUN = remove_all_labels_helper), stringsAsFactors = FALSE)
 }
 
 #' @export

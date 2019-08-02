@@ -14,6 +14,9 @@
 #'          attribute. If \code{FALSE} (default), all former \code{class}-attributes
 #'          will be removed and the class-attribute of \code{x} will only
 #'          be \code{labelled}.
+#' @param skip.strings Logical, if \code{TRUE}, character vector are not converted
+#'   into labelled-vectors. Else, character vectors are converted to factors
+#'   vector and the associated values are used as value labels.
 #' @return \code{x}, as \code{labelled}-class object.
 #'
 #' @examples
@@ -44,28 +47,30 @@
 #'
 #' @importFrom stats na.omit
 #' @export
-as_labelled <- function(x, add.labels = FALSE, add.class = FALSE) {
+as_labelled <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
   UseMethod("as_labelled")
 }
 
 #' @export
-as_labelled.data.frame <- function(x, add.labels = FALSE, add.class = FALSE) {
-  data.frame(lapply(x, FUN = as_labelled_helper, add.labels, add.class))
+as_labelled.data.frame <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
+  data_frame(lapply(x, FUN = as_labelled_helper, add.labels, add.class, skip.strings))
 }
 
 #' @export
-as_labelled.list <- function(x, add.labels = FALSE, add.class = FALSE) {
-  lapply(x, FUN = as_labelled_helper, add.labels, add.class)
+as_labelled.list <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
+  lapply(x, FUN = as_labelled_helper, add.labels, add.class, skip.strings)
 }
 
 #' @export
-as_labelled.default <- function(x, add.labels = FALSE, add.class = FALSE) {
-  as_labelled_helper(x, add.labels, add.class)
+as_labelled.default <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
+  as_labelled_helper(x, add.labels, add.class, skip.strings)
 }
 
-as_labelled_helper <- function(x, add.labels, add.class) {
+as_labelled_helper <- function(x, add.labels, add.class, skip.strings) {
   # do nothing for labelled class
   if (is_labelled(x)) return(x)
+
+  if (is.character(x) && skip.strings) return(x)
 
   # if factor, convert to numeric
   if (is.factor(x)) x <- as_numeric(x, keep.labels = T)

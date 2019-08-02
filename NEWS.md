@@ -1,3 +1,9 @@
+# sjlabelled 1.1.1
+
+## Bug fixes
+
+* Fix issues with saving character vectors to SPSS files.
+
 # sjlabelled 1.1.0
 
 ## New functions
