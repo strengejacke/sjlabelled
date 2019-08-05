@@ -5,7 +5,7 @@ Title: Labelled Data Utility Functions
 Version: 1.1.0
 Date: 2019-06-06
 Authors@R: c(
-    person("Daniel", "Lüdecke", role = c("aut", "cre"), email = "d.luedecke@uke.de", comment = c(ORCID = "0000-0002-8895-3206"),
+    person("Daniel", "Lüdecke", role = c("aut", "cre"), email = "d.luedecke@uke.de", comment = c(ORCID = "0000-0002-8895-3206")),
     person("David", "Ranzolin", role = "ctb", email = "daranzolin@gmail.com")
     )
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>
