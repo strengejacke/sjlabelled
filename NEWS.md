@@ -2,6 +2,7 @@
 
 ## Bug fixes
 
+* Fix issue in `as_label()` to prevent replacement recycling when labels were numeric.
 * Fix issues with saving character vectors to SPSS files.
 
 # sjlabelled 1.1.0
