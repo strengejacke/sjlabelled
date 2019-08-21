@@ -1,5 +1,10 @@
 # sjlabelled 1.1.1
 
+## Changes to functions
+
+* The `read_*()`-functions get a `drop.labels`-argument, which - if `TRUE` - automatically calls `drop_labels()` on the importet dataset.
+* `read_data()` is a shortcut that calls one of the `read_*()`-functions, depending on the file extension.
+
 ## Bug fixes
 
 * Fix issue in `as_label()` to prevent replacement recycling when labels were numeric.

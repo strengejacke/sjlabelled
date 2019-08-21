@@ -17,15 +17,16 @@ Description: Collection of functions dealing with labelled data, like reading an
     multiple declared missing values.
 License: GPL-3
 Depends:
-    R (>= 3.2),
-    stats
+    R (>= 3.2)
 Imports:
     haven (>= 1.1.2),
     insight (>= 0.4.1),
     magrittr,
     purrr,
     rlang,
+    stats,
     tidyselect,
+    tools,
     utils
 Suggests:
     dplyr,
