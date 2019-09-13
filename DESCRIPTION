@@ -2,8 +2,8 @@ Package: sjlabelled
 Type: Package
 Encoding: UTF-8
 Title: Labelled Data Utility Functions
-Version: 1.1.0.9000
-Date: 2019-06-06
+Version: 1.1.1
+Date: 2019-09-13
 Authors@R: c(
     person("Daniel", "Lüdecke", role = c("aut", "cre"), email = "d.luedecke@uke.de", comment = c(ORCID = "0000-0002-8895-3206")),
     person("David", "Ranzolin", role = "ctb", email = "daranzolin@gmail.com")

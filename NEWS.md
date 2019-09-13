@@ -2,7 +2,7 @@
 
 ## Changes to functions
 
-* The `read_*()`-functions get a `drop.labels`-argument, which - if `TRUE` - automatically calls `drop_labels()` on the importet dataset.
+* The `read_*()`-functions get a `drop.labels`-argument, which - if `TRUE` - automatically calls `drop_labels()` on the imported dataset.
 * `read_data()` is a shortcut that calls one of the `read_*()`-functions, depending on the file extension.
 
 ## Bug fixes
