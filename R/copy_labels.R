@@ -48,7 +48,6 @@
 #' copy_labels(efc.sub, efc, -e17age) %>% str()
 #'
 #'
-#' @importFrom dplyr enquos
 #' @export
 copy_labels <- function(df_new, df_origin = NULL, ...) {
   # check if old df is NULL. if so, we remove all labels
