@@ -10,6 +10,8 @@
 #' @param df_new The new, subsetted data frame.
 #' @param df_origin The original data frame where the subset (\code{df_new}) stems from;
 #'          use \code{NULL}, if value and variable labels from \code{df_new} should be removed.
+#' @inheritParams as_factor
+#'
 #' @return Returns \code{df_new} with either removed value and variable label attributes
 #'           (if \code{df_origin = NULL}) or with copied value and variable label
 #'           attributes (if \code{df_origin} was the original subsetted data frame).
@@ -41,8 +43,14 @@
 #' # copy labels from those columns that are available
 #' copy_labels(efc.sub, efc.sub2) %>% str()
 #'
+#' # copy labels from only some columns
+#' copy_labels(efc.sub, efc, e42dep) %>% str()
+#' copy_labels(efc.sub, efc, -e17age) %>% str()
+#'
+#'
+#' @importFrom dplyr enquos
 #' @export
-copy_labels <- function(df_new, df_origin = NULL) {
+copy_labels <- function(df_new, df_origin = NULL, ...) {
   # check if old df is NULL. if so, we remove all labels
   # from the data frame.
   if (is.null(df_origin)) {
@@ -56,6 +64,8 @@ copy_labels <- function(df_new, df_origin = NULL) {
       # get matching colnames, because we only copy attributes from variables
       # that also exist in the new data frame (of course)
       cn <- intersect(colnames(df_new), colnames(df_origin))
+      .dat <- get_dot_data(df_origin, rlang::quos(...))
+      cn <- intersect(cn, names(.dat))
 
       for (i in cn) {
         # copy variable and value labels
