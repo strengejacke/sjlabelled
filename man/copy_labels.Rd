@@ -4,13 +4,20 @@
 \alias{copy_labels}
 \title{Copy value and variable labels to (subsetted) data frames}
 \usage{
-copy_labels(df_new, df_origin = NULL)
+copy_labels(df_new, df_origin = NULL, ...)
 }
 \arguments{
 \item{df_new}{The new, subsetted data frame.}
 
 \item{df_origin}{The original data frame where the subset (\code{df_new}) stems from;
 use \code{NULL}, if value and variable labels from \code{df_new} should be removed.}
+
+\item{...}{Optional, unquoted names of variables that should be selected for
+further processing. Required, if \code{x} is a data frame (and no
+vector) and only selected variables from \code{x} should be processed.
+You may also use functions like \code{:} or tidyselect's
+\code{\link[tidyselect]{select_helpers}}.
+See 'Examples'.}
 }
 \value{
 Returns \code{df_new} with either removed value and variable label attributes
@@ -51,5 +58,10 @@ efc.sub2 <- select(efc, c160age, e42dep, neg_c_7, c82cop1, c84cop3)
 
 # copy labels from those columns that are available
 copy_labels(efc.sub, efc.sub2) \%>\% str()
+
+# copy labels from only some columns
+copy_labels(efc.sub, efc, e42dep) \%>\% str()
+copy_labels(efc.sub, efc, -e17age) \%>\% str()
+
 
 }
