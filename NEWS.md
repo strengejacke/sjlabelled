@@ -1,3 +1,9 @@
+# sjlabelled 1.1.2
+
+## Changes to functions
+
+* `copy_labels` gets a `...`-argument to copy only specific variables values.
+
 # sjlabelled 1.1.1
 
 ## Changes to functions
