@@ -174,5 +174,4 @@ as_numeric(as_label(x, keep.labels = TRUE), use.labels = TRUE)
 # easily coerce specific variables in a data frame to factor
 # and keep other variables, with their class preserved
 as_label(efc, e42dep, e16sex, c172code)
-
 }

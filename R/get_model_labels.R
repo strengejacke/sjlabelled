@@ -246,8 +246,7 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, .
           colnames(m) <- gsub(pattern = "_", replacement = "", x = colnames(m), fixed = TRUE)
         y <- y[obj_has_name(m, y)]
         if (length(y) > 0) {
-          vars <- tidyselect::vars_select(colnames(m), !! y)
-          m[, vars, drop = FALSE]
+          m[, y, drop = FALSE]
         } else {
           m[[1]]
         }

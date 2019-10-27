@@ -26,8 +26,8 @@
 #' @importFrom rlang quos
 #' @export
 remove_label <- function(x, ...) {
-  # evaluate arguments, generate data
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
 
   if (is.data.frame(x)) {
     # iterate variables of data frame

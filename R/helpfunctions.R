@@ -11,17 +11,6 @@ data_frame <- function(...) {
 # do we have a stan-model?
 is.stan <- function(x) inherits(x, c("stanreg", "stanfit", "brmsfit"))
 
-#' @importFrom rlang is_empty
-#' @importFrom tidyselect vars_select
-get_dot_data <- function(x, qs) {
-  if (rlang::is_empty(qs))
-    x
-  else {
-    vars <- suppressWarnings(tidyselect::vars_select(colnames(x), !!!qs))
-    x[, vars, drop = FALSE]
-  }
-}
-
 # return names of objects passed as ellipses argument
 dot_names <- function(dots) unname(unlist(lapply(dots, as.character)))
 

@@ -69,7 +69,6 @@
 #' data(iris)
 #' get_label(iris, def.value = colnames(iris))
 #' get_label(iris, def.value = colnames(iris), case = "parsed")
-#'
 #' @export
 get_label <- function(x, ..., def.value = NULL, case = NULL) {
   UseMethod("get_label")
@@ -78,8 +77,8 @@ get_label <- function(x, ..., def.value = NULL, case = NULL) {
 
 #' @export
 get_label.data.frame <- function(x, ..., def.value = NULL, case = NULL) {
-  # evaluate arguments, generate data
-  x <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  x <- .get_dot_data(x, dots)
 
   sapply(seq_along(x), function(i) {
     # get label

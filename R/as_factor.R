@@ -70,8 +70,6 @@
 #' # use select-helpers from dplyr-package
 #' library(dplyr)
 #' as_factor(efc, contains("cop"), c161sex:c175empl)
-#'
-#'
 #' @export
 as_factor <- function(x, ..., add.non.labelled = FALSE) {
   UseMethod("as_factor")
@@ -80,15 +78,17 @@ as_factor <- function(x, ..., add.non.labelled = FALSE) {
 
 #' @export
 as_factor.default <- function(x, ..., add.non.labelled = FALSE) {
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
+
   to_fac_helper(.dat, add.non.labelled)
 }
 
 
 #' @export
 as_factor.data.frame <- function(x, ..., add.non.labelled = FALSE) {
-  # evaluate arguments, generate data
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
 
   for (i in colnames(.dat)) {
     x[[i]] <- to_fac_helper(.dat[[i]], add.non.labelled)

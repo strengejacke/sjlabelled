@@ -14,8 +14,7 @@ string_ends_with <- function(pattern, x) {
 }
 
 string_one_of <- function(pattern, x) {
-  m <- unlist(lapply(pattern, function(.x) grep(.x, x, fixed = TRUE, useBytes = TRUE)))
-  x[m]
+  unlist(lapply(pattern, function(.x) grep(.x, x, fixed = TRUE, useBytes = TRUE)))
 }
 
 rownames_as_column <- function(x, var = "rowname") {
@@ -55,11 +54,8 @@ add_cols <- function(data, ..., .after = 1, .before = NULL) {
     c1 <- 1:.after
     c2 <- (.after + 1):ncol(data)
 
-    v1 <- tidyselect::vars_select(colnames(data), !! c1)
-    v2 <- tidyselect::vars_select(colnames(data), !! c2)
-
-    x1 <- data[, v1, drop = FALSE]
-    x2 <- data[, v2, drop = FALSE]
+    x1 <- data[, colnames(data)[c1], drop = FALSE]
+    x2 <- data[, colnames(data)[c2], drop = FALSE]
 
     cbind(x1, dat, x2)
   }

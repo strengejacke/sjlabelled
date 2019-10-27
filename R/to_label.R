@@ -146,7 +146,6 @@
 #' # easily coerce specific variables in a data frame to factor
 #' # and keep other variables, with their class preserved
 #' as_label(efc, e42dep, e16sex, c172code)
-#'
 #' @export
 as_label <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = FALSE) {
   UseMethod("as_label")
@@ -155,15 +154,17 @@ as_label <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label
 
 #' @export
 as_label.default <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = FALSE) {
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
+
   as_label_helper(.dat, add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels)
 }
 
 
 #' @export
 as_label.data.frame <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = FALSE) {
-  # evaluate arguments, generate data
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
 
   # iterate variables of data frame
   for (i in colnames(.dat)) {
@@ -283,8 +284,8 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
 #' @rdname as_label
 #' @export
 as_character <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE) {
-  # evaluate arguments, generate data
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
 
   # get variable labels
   vl <- get_label(x)

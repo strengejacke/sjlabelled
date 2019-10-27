@@ -84,7 +84,6 @@
 #' as_numeric(x)
 #' as_numeric(x, use.labels = TRUE)
 #' as_numeric(x, use.labels = TRUE, keep.labels = FALSE)
-#'
 #' @export
 as_numeric <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
   UseMethod("as_numeric")
@@ -93,15 +92,17 @@ as_numeric <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels =
 
 #' @export
 as_numeric.default <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
+
   as_numeric_helper(.dat, start.at, keep.labels, use.labels)
 }
 
 
 #' @export
 as_numeric.data.frame <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
-  # evaluate arguments, generate data
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
 
   # iterate variables of data frame
   for (i in colnames(.dat)) {

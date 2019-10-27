@@ -77,7 +77,6 @@ get_label(list(efc$e42dep, efc$e16sex, efc$e15relat))
 data(iris)
 get_label(iris, def.value = colnames(iris))
 get_label(iris, def.value = colnames(iris), case = "parsed")
-
 }
 \seealso{
 See vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}

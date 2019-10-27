@@ -8,7 +8,8 @@ remove_labels <- function(x, ..., labels) {
   if (length(na.labels) && !all(haven::is_tagged_na(na.labels))) stop("`labels` must be a tagged NA.", call. = F)
 
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
 
   if (is.data.frame(x)) {
     # iterate variables of data frame

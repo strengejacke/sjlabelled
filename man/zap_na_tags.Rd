@@ -41,5 +41,4 @@ get_na(zap_na_tags(x))
 x <- c(1:5, tagged_na("a"), tagged_na("z"), NA)
 haven::print_tagged_na(x)
 haven::print_tagged_na(zap_na_tags(x))
-
 }

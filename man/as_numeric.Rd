@@ -102,5 +102,4 @@ x
 as_numeric(x)
 as_numeric(x, use.labels = TRUE)
 as_numeric(x, use.labels = TRUE, keep.labels = FALSE)
-
 }

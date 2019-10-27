@@ -63,7 +63,8 @@ copy_labels <- function(df_new, df_origin = NULL, ...) {
       # get matching colnames, because we only copy attributes from variables
       # that also exist in the new data frame (of course)
       cn <- intersect(colnames(df_new), colnames(df_origin))
-      .dat <- get_dot_data(df_origin, rlang::quos(...))
+      dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+      .dat <- .get_dot_data(df_origin, dots)
       cn <- intersect(cn, names(.dat))
 
       for (i in cn) {

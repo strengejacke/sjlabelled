@@ -82,6 +82,4 @@ as_factor(efc, e42dep, e16sex, c172code)
 # use select-helpers from dplyr-package
 library(dplyr)
 as_factor(efc, contains("cop"), c161sex:c175empl)
-
-
 }

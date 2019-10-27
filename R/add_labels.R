@@ -93,8 +93,6 @@
 #' # get current NA values
 #' get_na(x)
 #' get_na(remove_labels(x, labels = tagged_na("c")))
-#'
-#' @importFrom rlang quos
 #' @export
 add_labels <- function(x, ..., labels) {
 
@@ -103,7 +101,8 @@ add_labels <- function(x, ..., labels) {
   if (is.null(names(labels))) stop("`labels` must be a named vector.", call. = F)
 
   # evaluate arguments, generate data
-  .dat <- get_dot_data(x, rlang::quos(...))
+  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  .dat <- .get_dot_data(x, dots)
 
   if (is.data.frame(x)) {
     # iterate variables of data frame

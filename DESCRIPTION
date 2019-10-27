@@ -25,7 +25,6 @@ Imports:
     purrr,
     rlang,
     stats,
-    tidyselect,
     tools,
     utils
 Suggests:

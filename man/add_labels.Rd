@@ -108,7 +108,6 @@ x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
 # get current NA values
 get_na(x)
 get_na(remove_labels(x, labels = tagged_na("c")))
-
 }
 \seealso{
 \code{\link{set_label}} to manually set variable labels or
