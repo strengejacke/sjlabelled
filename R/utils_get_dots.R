@@ -11,7 +11,16 @@
       pattern <- gsub("contains\\(\"(.*)\"\\)", "\\1", i)
       columns[string_contains(pattern, columns)]
 
-      # one-of token
+      # starts-with token
+    } else if (grepl("^starts\\(", i) || grepl("^starts_with\\(", i)) {
+      pattern <- gsub("(.*)\\(\"(.*)\"\\)", "\\2", i)
+      columns[string_starts_with(pattern, columns)]
+
+      # ends-with token
+    } else if (grepl("^ends\\(", i) || grepl("^ends_with\\(", i)) {
+      pattern <- gsub("(.*)\\(\"(.*)\"\\)", "\\2", i)
+      columns[string_ends_with(pattern, columns)]
+
     } else if (grepl("^one_of\\(", i)) {
       pattern <- gsub("(\"|\\s)", "", unlist(strsplit(gsub("one_of\\(\"(.*)\"\\)", "\\1", i), ",")))
       columns[string_one_of(pattern, columns)]
