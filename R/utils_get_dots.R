@@ -2,6 +2,10 @@
 # the variable names as character vector
 .get_dot_data <- function(dat, dots, verbose = TRUE) {
 
+  if (!is.data.frame(dat) || length(dots) == 0) {
+    return(dat)
+  }
+
   columns <- colnames(dat)
 
   x <- unlist(lapply(dots, function(i) {

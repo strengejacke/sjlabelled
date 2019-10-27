@@ -1,5 +1,9 @@
 # sjlabelled 1.1.2
 
+## General
+
+* Reduce package dependencies.
+
 ## Changes to functions
 
 * `copy_labels` gets a `...`-argument to copy only specific variables values.
