@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -142,7 +142,45 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-variable-labels" class="hasAnchor"><a href="#section-variable-labels" class="anchor"></a>Variable Labels</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="get_label.html">get_label()</a></code> </p>
+        </td>
+        <td><p>Retrieve variable label(s) of labelled data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="copy_labels.html">copy_labels()</a></code> </p>
+        </td>
+        <td><p>Copy value and variable labels to (subsetted) data frames</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="remove_label.html">remove_label()</a></code> </p>
+        </td>
+        <td><p>Remove variable labels from variables</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="remove_all_labels.html">remove_all_labels()</a></code> </p>
+        </td>
+        <td><p>Remove value and variable labels from vector or data frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="set_label.html">set_label()</a></code> <code><a href="set_label.html">`set_label<-`()</a></code> <code><a href="set_label.html">var_labels()</a></code> </p>
+        </td>
+        <td><p>Add variable label(s) to variables</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-value-labels" class="hasAnchor"><a href="#section-value-labels" class="anchor"></a>Value Labels</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -155,51 +193,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="as_factor.html">as_factor()</a></code> </p>
-        </td>
-        <td><p>Convert variable into factor and keep value labels</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="as_label.html">as_label()</a></code> <code><a href="as_label.html">as_character()</a></code> </p>
-        </td>
-        <td><p>Convert variable into factor with associated value labels</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="as_labelled.html">as_labelled()</a></code> </p>
-        </td>
-        <td><p>Convert vector to labelled class</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="as_numeric.html">as_numeric()</a></code> </p>
-        </td>
-        <td><p>Convert factors to numeric variables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="convert_case.html">convert_case()</a></code> </p>
-        </td>
-        <td><p>Generic case conversion for labels</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="copy_labels.html">copy_labels()</a></code> </p>
         </td>
         <td><p>Copy value and variable labels to (subsetted) data frames</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="efc.html">efc</a></code> </p>
-        </td>
-        <td><p>Sample dataset from the EUROFAMCARE project</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_label.html">get_label()</a></code> </p>
-        </td>
-        <td><p>Retrieve variable label(s) of labelled data</p></td>
       </tr><tr>
         
         <td>
@@ -209,21 +205,109 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="remove_all_labels.html">remove_all_labels()</a></code> </p>
+        </td>
+        <td><p>Remove value and variable labels from vector or data frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="set_labels.html">set_labels()</a></code> <code><a href="set_labels.html">val_labels()</a></code> </p>
+        </td>
+        <td><p>Add value labels to variables</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-labelled-model-predictors" class="hasAnchor"><a href="#section-labelled-model-predictors" class="anchor"></a>Labelled Model Predictors</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="get_term_labels.html">get_term_labels()</a></code> <code><a href="get_term_labels.html">get_dv_labels()</a></code> </p>
+        </td>
+        <td><p>Retrieve labels of model terms from regression models</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-labelled-values" class="hasAnchor"><a href="#section-labelled-values" class="anchor"></a>Labelled Values</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="get_values.html">get_values()</a></code> </p>
+        </td>
+        <td><p>Retrieve values of labelled variables</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tidy_labels.html">tidy_labels()</a></code> </p>
+        </td>
+        <td><p>Repair value labels</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-missing-values" class="hasAnchor"><a href="#section-missing-values" class="anchor"></a>Missing Values</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
           <p><code><a href="get_na.html">get_na()</a></code> </p>
         </td>
         <td><p>Retrieve tagged NA values of labelled variables</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_term_labels.html">get_term_labels()</a></code> <code><a href="get_term_labels.html">get_dv_labels()</a></code> </p>
+          <p><code><a href="set_na.html">set_na()</a></code> </p>
         </td>
-        <td><p>Retrieve labels of model terms from regression models</p></td>
+        <td><p>Replace specific values in vector with NA</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-converting-variables" class="hasAnchor"><a href="#section-converting-variables" class="anchor"></a>Converting Variables</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="as_label.html">as_character()</a></code> <code><a href="as_label.html">as_character_helper()</a></code> <code><a href="as_label.html">as_label()</a></code> </p>
+        </td>
+        <td><p>Convert variable into factor with associated value labels</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_values.html">get_values()</a></code> </p>
+          <p><code><a href="as_factor.html">as_factor()</a></code> </p>
         </td>
-        <td><p>Retrieve values of labelled variables</p></td>
+        <td><p>Convert variable into factor and keep value labels</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="as_numeric.html">as_numeric()</a></code> </p>
+        </td>
+        <td><p>Convert factors to numeric variables</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-converting-labelled-variables" class="hasAnchor"><a href="#section-converting-labelled-variables" class="anchor"></a>Converting Labelled Variables</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="as_labelled.html">as_labelled()</a></code> </p>
+        </td>
+        <td><p>Convert vector to labelled class</p></td>
       </tr><tr>
         
         <td>
@@ -233,63 +317,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="read_spss.html">read_spss()</a></code> <code><a href="read_spss.html">read_sas()</a></code> <code><a href="read_spss.html">read_stata()</a></code> <code><a href="read_spss.html">read_data()</a></code> </p>
-        </td>
-        <td><p>Import data from other statistical software packages</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_all_labels.html">remove_all_labels()</a></code> </p>
-        </td>
-        <td><p>Remove value and variable labels from vector or data frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_label.html">remove_label()</a></code> </p>
-        </td>
-        <td><p>Remove variable labels from variables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_label.html">set_label()</a></code> <code><a href="set_label.html">`set_label<-`()</a></code> <code><a href="set_label.html">var_labels()</a></code> </p>
-        </td>
-        <td><p>Add variable label(s) to variables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_labels.html">set_labels()</a></code> <code><a href="set_labels.html">val_labels()</a></code> </p>
-        </td>
-        <td><p>Add value labels to variables</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_na.html">set_na()</a></code> </p>
-        </td>
-        <td><p>Replace specific values in vector with NA</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sjlabelled-package.html">sjlabelled-package</a></code> </p>
-        </td>
-        <td><p>Labelled Data Utility Functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tidy_labels.html">tidy_labels()</a></code> </p>
-        </td>
-        <td><p>Repair value labels</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="unlabel.html">unlabel()</a></code> </p>
         </td>
         <td><p>Convert labelled vectors into normal classes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="write_spss.html">write_spss()</a></code> <code><a href="write_spss.html">write_stata()</a></code> <code><a href="write_spss.html">write_sas()</a></code> </p>
-        </td>
-        <td><p>Write data to other statistical software packages</p></td>
       </tr><tr>
         
         <td>
@@ -303,6 +333,26 @@
         </td>
         <td><p>Convert tagged NA values into regular NA</p></td>
       </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-importing-and-exporting-data" class="hasAnchor"><a href="#section-importing-and-exporting-data" class="anchor"></a>Importing and Exporting Data</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="read_spss.html">read_spss()</a></code> <code><a href="read_spss.html">read_sas()</a></code> <code><a href="read_spss.html">read_stata()</a></code> <code><a href="read_spss.html">read_data()</a></code> </p>
+        </td>
+        <td><p>Import data from other statistical software packages</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="write_spss.html">write_spss()</a></code> <code><a href="write_spss.html">write_stata()</a></code> <code><a href="write_spss.html">write_sas()</a></code> </p>
+        </td>
+        <td><p>Write data to other statistical software packages</p></td>
+      </tr>
     </tbody>
     </table>
   </div>
@@ -310,7 +360,14 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-variable-labels">Variable Labels</a></li>
+      <li><a href="#section-value-labels">Value Labels</a></li>
+      <li><a href="#section-labelled-model-predictors">Labelled Model Predictors</a></li>
+      <li><a href="#section-labelled-values">Labelled Values</a></li>
+      <li><a href="#section-missing-values">Missing Values</a></li>
+      <li><a href="#section-converting-variables">Converting Variables</a></li>
+      <li><a href="#section-converting-labelled-variables">Converting Labelled Variables</a></li>
+      <li><a href="#section-importing-and-exporting-data">Importing and Exporting Data</a></li>
     </ul>
   </div>
 </div>
@@ -318,7 +375,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Daniel Lüdecke.</p>
+  <p>Developed by <a href='https://github.com/strengejacke'>Daniel Lüdecke</a>.</p>
 </div>
 
 <div class="pkgdown">

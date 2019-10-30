@@ -36,6 +36,7 @@ Duplicated value labels in variables may cause troubles when
 }
 \examples{
 library(sjmisc)
+set.seed(123)
 x <- set_labels(
   sample(1:5, size = 20, replace = TRUE),
   labels = c("low" = 1, ".." = 2, ".." = 3, ".." = 4, "high" = 5)

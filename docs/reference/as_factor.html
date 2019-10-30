@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -140,7 +140,10 @@
                variable and value label attributes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for data.frame</span>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -228,70 +231,10 @@ get value labels.</p></td>
  ))
 
 <span class='co'># only copy existing value labels</span>
-<span class='fu'>as_factor</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   [1] 3    3    3    4    4    4    4    4    4    4    4    3    4    3    3   
-#&gt;  [16] 3    1    3    3    4    4    3    4    4    3    4    4    2    3    4   
-#&gt;  [31] 4    4    3    4    4    4    4    2    4    3    3    4    4    4    4   
-#&gt;  [46] 4    4    4    3    4    4    4    4    4    4    4    4    4    3    4   
-#&gt;  [61] 4    4    4    3    3    3    4    3    4    4    4    4    4    4    4   
-#&gt;  [76] 4    4    3    3    4    2    3    4    3    4    4    4    4    4    4   
-#&gt;  [91] 3    1    2    3    4    3    &lt;NA&gt; 4    3    4    3    3    3    4    4   
-#&gt; [106] 3    3    2    3    4    4    3    4    4    4    2    2    3    4    4   
-#&gt; [121] 3    4    4    4    3    4    1    4    2    4    3    3    4    4    3   
-#&gt; [136] 3    4    2    4    3    2    4    4    3    4    4    4    4    4    3   
-#&gt; [151] 4    4    4    4    4    3    3    4    3    3    3    3    4    4    3   
-#&gt; [166] 4    4    4    3    4    3    3    3    3    4    4    3    4    4    4   
-#&gt; [181] 4    3    3    4    4    4    4    4    2    3    3    4    2    4    3   
-#&gt; [196] 3    2    4    2    3    3    4    3    4    3    3    4    4    3    3   
-#&gt; [211] 3    4    4    4    2    3    4    4    4    2    3    4    4    3    4   
-#&gt; [226] 3    4    3    3    3    3    3    4    3    4    4    3    2    3    2   
-#&gt; [241] 1    3    3    2    2    3    1    2    3    2    3    3    3    4    1   
-#&gt; [256] 3    3    4    2    2    2    4    4    3    3    4    3    3    3    3   
-#&gt; [271] 2    3    2    2    3    3    3    3    2    3    3    2    2    2    3   
-#&gt; [286] 3    4    4    4    4    2    2    3    4    3    2    3    3    2    2   
-#&gt; [301] 4    4    3    2    2    3    4    2    3    1    3    3    3    4    3   
-#&gt; [316] 3    4    4    3    2    3    3    2    4    2    3    3    3    1    1   
-#&gt; [331] 2    4    4    4    3    2    2    3    3    2    2    2    2    2    3   
-#&gt; [346] 4    3    4    1    2    4    2    2    2    3    3    4    3    3    2   
-#&gt; [361] 3    3    2    3    2    1    1    2    2    2    2    4    4    1    2   
-#&gt; [376] 2    2    3    4    4    4    3    3    4    3    2    2    4    3    4   
-#&gt; [391] 4    3    1    3    2    4    2    2    4    2    4    4    4    2    1   
-#&gt; [406] 2    4    2    4    3    4    1    1    2    2    3    2    4    4    3   
-#&gt; [421] 4    3    4    3    4    4    2    4    4    4    1    3    2    2    3   
-#&gt; [436] 2    3    4    4    3    3    2    3    3    2    4    3    4    3    3   
-#&gt; [451] 3    2    3    3    3    4    2    4    3    3    3    2    4    3    4   
-#&gt; [466] 4    4    1    3    2    4    1    1    1    1    1    4    2    1    3   
-#&gt; [481] 4    3    4    2    3    3    3    1    1    3    2    3    4    2    3   
-#&gt; [496] 2    2    3    3    2    4    4    3    4    4    4    3    3    3    3   
-#&gt; [511] 2    3    2    2    3    3    4    4    4    2    2    4    3    2    2   
-#&gt; [526] 3    1    2    3    2    4    1    4    3    2    2    3    4    3    4   
-#&gt; [541] 4    2    3    2    3    3    2    4    3    2    3    2    2    3    3   
-#&gt; [556] 3    4    4    4    2    4    2    4    2    3    1    2    3    4    4   
-#&gt; [571] 4    4    4    4    4    3    4    2    4    3    4    3    3    3    2   
-#&gt; [586] 2    3    4    4    4    1    4    4    3    4    4    4    2    4    4   
-#&gt; [601] 3    4    3    2    2    2    2    1    2    2    4    4    4    4    4   
-#&gt; [616] 4    3    3    3    3    3    1    3    3    4    3    4    4    2    3   
-#&gt; [631] 3    4    2    3    4    3    3    3    2    3    3    3    3    2    2   
-#&gt; [646] 3    2    4    2    2    2    4    4    4    1    4    3    2    3    3   
-#&gt; [661] 2    2    2    3    1    3    1    2    2    3    3    2    3    4    4   
-#&gt; [676] 1    4    4    1    3    1    2    2    4    3    1    3    3    2    4   
-#&gt; [691] 4    3    4    3    4    4    3    4    3    4    3    2    1    2    2   
-#&gt; [706] 4    2    2    3    1    2    4    3    4    4    4    4    2    1    4   
-#&gt; [721] 2    2    3    4    3    2    4    2    3    3    3    4    2    4    2   
-#&gt; [736] 3    2    3    2    1    4    3    3    3    4    2    2    2    3    3   
-#&gt; [751] 4    4    4    4    4    1    2    4    4    2    2    3    2    2    2   
-#&gt; [766] 2    3    3    1    2    1    1    2    3    2    1    3    3    2    2   
-#&gt; [781] 2    2    3    3    3    3    4    2    4    1    1    1    2    4    2   
-#&gt; [796] 2    2    2    1    3    2    4    3    4    2    3    4    3    4    3   
-#&gt; [811] 3    3    2    3    2    2    3    1    1    3    1    2    2    3    2   
-#&gt; [826] 2    2    3    2    4    1    3    1    3    1    2    1    2    2    3   
-#&gt; [841] 4    2    2    2    1    2    2    2    2    2    2    4    3    1    4   
-#&gt; [856] 2    3    3    2    2    2    3    1    2    3    3    2    2    2    1   
-#&gt; [871] 2    2    2    3    2    2    4    3    4    2    3    1    2    3    3   
-#&gt; [886] 2    4    3    3    2    2    3    3    3    4    2    4    3    3    4   
-#&gt; [901] 1    2    &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
+<span class='fu'>as_factor</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; [1] 3 3 3 4 4 4
 #&gt; Levels: 1 2 3 4</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>), <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "1" "2" "3" "4"</div><div class='input'>
 <span class='co'># also add labels to non-labelled values</span>
-<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error: 1 components of `...` were not used.</span>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error: 1 components of `...` were not used.</span>
 #&gt; <span class='error'></span>
 #&gt; <span class='error'>We detected these problematic arguments:</span>
 #&gt; <span class='error'>* `add.non.labelled`</span>
@@ -305,7 +248,7 @@ get value labels.</p></td>
 
 <span class='co'># easily coerce specific variables in a data frame to factor</span>
 <span class='co'># and keep other variables, with their class preserved</span>
-<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>)</div><div class='output co'>#&gt; <span class='error'>Error: 3 components of `...` were not used.</span>
+<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error: 3 components of `...` were not used.</span>
 #&gt; <span class='error'></span>
 #&gt; <span class='error'>We detected these problematic arguments:</span>
 #&gt; <span class='error'>* `..1`</span>
@@ -315,7 +258,7 @@ get value labels.</p></td>
 #&gt; <span class='error'>Did you misspecify an argument?</span></div><div class='input'>
 <span class='co'># use select-helpers from dplyr-package</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>)</div><div class='output co'>#&gt; <span class='error'>Error: 2 components of `...` were not used.</span>
+<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error: 2 components of `...` were not used.</span>
 #&gt; <span class='error'></span>
 #&gt; <span class='error'>We detected these problematic arguments:</span>
 #&gt; <span class='error'>* `..1`</span>
@@ -339,7 +282,7 @@ get value labels.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Daniel Lüdecke.</p>
+  <p>Developed by <a href='https://github.com/strengejacke'>Daniel Lüdecke</a>.</p>
 </div>
 
 <div class="pkgdown">

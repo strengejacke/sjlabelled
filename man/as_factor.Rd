@@ -2,9 +2,12 @@
 % Please edit documentation in R/as_factor.R
 \name{as_factor}
 \alias{as_factor}
+\alias{as_factor.data.frame}
 \title{Convert variable into factor and keep value labels}
 \usage{
-as_factor(x, ..., add.non.labelled = FALSE)
+as_factor(x, ...)
+
+\method{as_factor}{data.frame}(x, ..., add.non.labelled = FALSE)
 }
 \arguments{
 \item{x}{A vector or data frame.}
@@ -67,19 +70,19 @@ x <- set_labels(
  ))
 
 # only copy existing value labels
-as_factor(x)
+as_factor(x) \%>\% head()
 get_labels(as_factor(x), values = "p")
 
 # also add labels to non-labelled values
-as_factor(x, add.non.labelled = TRUE)
+as_factor(x, add.non.labelled = TRUE) \%>\% head()
 get_labels(as_factor(x, add.non.labelled = TRUE), values = "p")
 
 
 # easily coerce specific variables in a data frame to factor
 # and keep other variables, with their class preserved
-as_factor(efc, e42dep, e16sex, c172code)
+as_factor(efc, e42dep, e16sex, c172code) \%>\% head()
 
 # use select-helpers from dplyr-package
 library(dplyr)
-as_factor(efc, contains("cop"), c161sex:c175empl)
+as_factor(efc, contains("cop"), c161sex:c175empl) \%>\% head()
 }

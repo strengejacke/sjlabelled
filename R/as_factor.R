@@ -55,39 +55,37 @@
 #'  ))
 #'
 #' # only copy existing value labels
-#' as_factor(x)
+#' as_factor(x) %>% head()
 #' get_labels(as_factor(x), values = "p")
 #'
 #' # also add labels to non-labelled values
-#' as_factor(x, add.non.labelled = TRUE)
+#' as_factor(x, add.non.labelled = TRUE) %>% head()
 #' get_labels(as_factor(x, add.non.labelled = TRUE), values = "p")
 #'
 #'
 #' # easily coerce specific variables in a data frame to factor
 #' # and keep other variables, with their class preserved
-#' as_factor(efc, e42dep, e16sex, c172code)
+#' as_factor(efc, e42dep, e16sex, c172code) %>% head()
 #'
 #' # use select-helpers from dplyr-package
 #' library(dplyr)
-#' as_factor(efc, contains("cop"), c161sex:c175empl)
+#' as_factor(efc, contains("cop"), c161sex:c175empl) %>% head()
 #' @export
-as_factor <- function(x, ..., add.non.labelled = FALSE) {
+as_factor <- function(x, ...) {
   UseMethod("as_factor")
 }
 
 
 #' @export
-as_factor.default <- function(x, ..., add.non.labelled = FALSE) {
-  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
-  .dat <- .get_dot_data(x, dots)
-
-  to_fac_helper(.dat, add.non.labelled)
+as_factor.default <- function(x, add.non.labelled = FALSE, ...) {
+  to_fac_helper(x, add.non.labelled)
 }
 
 
+#' @rdname as_factor
 #' @export
 as_factor.data.frame <- function(x, ..., add.non.labelled = FALSE) {
-  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  dots <- sapply(eval(substitute(alist(...))), deparse)
   .dat <- .get_dot_data(x, dots)
 
   for (i in colnames(.dat)) {

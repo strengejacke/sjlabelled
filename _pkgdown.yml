@@ -1,0 +1,63 @@
+authors:
+  Daniel Lüdecke:
+    href: https://github.com/strengejacke
+
+template:
+  params:
+    bootswatch: cosmo
+
+reference:
+- title: "Variable Labels"
+  contents:
+  - get_label
+  - copy_labels
+  - remove_label
+  - remove_all_labels
+  - set_label
+  - var_labels
+
+- title: "Value Labels"
+  contents:
+  - add_labels
+  - copy_labels
+  - get_labels
+  - remove_labels
+  - remove_all_labels
+  - set_labels
+  - val_labels
+
+- title: "Labelled Model Predictors"
+  contents:
+  - get_term_labels
+
+- title: "Labelled Values"
+  contents:
+  - get_values
+  - tidy_labels
+
+- title: "Missing Values"
+  contents:
+  - get_na
+  - set_na
+
+- title: "Converting Variables"
+  contents:
+  - as_character
+  - as_factor
+  - as_label
+  - as_numeric
+
+- title: "Converting Labelled Variables"
+  contents:
+  - as_labelled
+  - is_labelled
+  - unlabel
+  - zap_labels
+  - zap_na_tags
+  - zap_unlabelled
+
+- title: "Importing and Exporting Data"
+  contents:
+  - read_data
+  - write_spss
+

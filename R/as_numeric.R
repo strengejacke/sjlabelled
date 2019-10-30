@@ -74,7 +74,7 @@
 #' efc$e17age <- as.factor(efc$e17age)
 #'
 #' # convert back "sex" and "age" into numeric
-#' as_numeric(efc, e16sex, e17age)
+#' as_numeric(efc, e16sex, e17age) %>% head()
 #'
 #' x <- factor(c("None", "Little", "Some", "Lots"))
 #' x <- set_labels(x,
@@ -85,23 +85,21 @@
 #' as_numeric(x, use.labels = TRUE)
 #' as_numeric(x, use.labels = TRUE, keep.labels = FALSE)
 #' @export
-as_numeric <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
+as_numeric <- function(x, ...) {
   UseMethod("as_numeric")
 }
 
 
 #' @export
-as_numeric.default <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
-  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
-  .dat <- .get_dot_data(x, dots)
-
-  as_numeric_helper(.dat, start.at, keep.labels, use.labels)
+as_numeric.default <- function(x, start.at = NULL, keep.labels = TRUE, use.labels = FALSE, ...) {
+  as_numeric_helper(x, start.at, keep.labels, use.labels)
 }
 
 
+#' @rdname as_numeric
 #' @export
 as_numeric.data.frame <- function(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE) {
-  dots <- as.character(match.call(expand.dots = FALSE)$`...`)
+  dots <- sapply(eval(substitute(alist(...))), deparse)
   .dat <- .get_dot_data(x, dots)
 
   # iterate variables of data frame
