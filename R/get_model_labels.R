@@ -201,7 +201,6 @@ prepare.labels <- function(x, catval, style = c("varname", "label")) {
 
 #' @rdname get_term_labels
 #' @importFrom purrr map map2 flatten_chr
-#' @importFrom tidyselect vars_select
 #' @importFrom stats model.frame
 #' @export
 get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...) {

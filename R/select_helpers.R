@@ -33,7 +33,6 @@ obj_has_rownames <- function(x) {
   !identical(as.character(1:nrow(x)), rownames(x))
 }
 
-#' @importFrom tidyselect vars_select
 add_cols <- function(data, ..., .after = 1, .before = NULL) {
   if (is.character(.after))
     .after <- which(colnames(data) == .after)
