@@ -7,6 +7,7 @@
 ## Changes to functions
 
 * `copy_labels` gets a `...`-argument to copy only specific variables values.
+* The `read_*()` functions are now less verbose by default.
 
 # sjlabelled 1.1.1
 

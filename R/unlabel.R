@@ -20,7 +20,7 @@
 #'
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @export
-unlabel <- function(x, verbose = TRUE) {
+unlabel <- function(x, verbose = FALSE) {
   # check if complete data frame or only single
   # vector should be converted
   if (is.data.frame(x)) {

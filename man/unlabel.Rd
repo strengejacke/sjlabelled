@@ -4,7 +4,7 @@
 \alias{unlabel}
 \title{Convert labelled vectors into normal classes}
 \usage{
-unlabel(x, verbose = TRUE)
+unlabel(x, verbose = FALSE)
 }
 \arguments{
 \item{x}{A data frame, which contains \code{\link[haven]{labelled}} class
