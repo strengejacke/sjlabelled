@@ -1,8 +1,11 @@
-#' @importFrom rlang enexprs
 #' @importFrom purrr map_at
 #' @rdname set_labels
 #' @export
 val_labels <- function(x, ..., force.labels = FALSE, force.values = TRUE, drop.na = TRUE) {
+  if (!requireNamespace("rlang", quietly = TRUE)) {
+    stop("Package 'rlang' required for this function to work. Please install it.")
+  }
+
   # get dots
   .dots <- rlang::enexprs(...)
   lang <- unlist(lapply(rlang::enexprs(...), is.language))

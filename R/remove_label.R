@@ -23,7 +23,6 @@
 #' get_label(x)
 #' str(x)
 #'
-#' @importFrom rlang quos
 #' @export
 remove_label <- function(x, ...) {
   dots <- as.character(match.call(expand.dots = FALSE)$`...`)

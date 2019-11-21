@@ -54,7 +54,7 @@ tidy_labels <- function(x, ..., sep = "_", remove = FALSE) {
 }
 
 
-#' @importFrom purrr map as_vector
+#' @importFrom purrr as_vector
 tidy_labels_helper <- function(x, sep, remove) {
   # get value labels from variable. drop unused labels
   labs <-
@@ -80,7 +80,7 @@ tidy_labels_helper <- function(x, sep, remove) {
 
   # find position of duplicated labels
   dupes <- duped.val %>%
-    purrr::map(~which(labs == .x)) %>%
+    lapply(function(.x) which(labs == .x)) %>%
     purrr::as_vector(.type = "double")
 
   if (remove) {

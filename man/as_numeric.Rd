@@ -7,8 +7,7 @@
 \usage{
 as_numeric(x, ...)
 
-\method{as_numeric}{data.frame}(x, ..., start.at = NULL,
-  keep.labels = TRUE, use.labels = FALSE)
+\method{as_numeric}{data.frame}(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE)
 }
 \arguments{
 \item{x}{A vector or data frame.}

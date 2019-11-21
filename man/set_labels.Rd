@@ -5,11 +5,16 @@
 \alias{val_labels}
 \title{Add value labels to variables}
 \usage{
-set_labels(x, ..., labels, force.labels = FALSE, force.values = TRUE,
-  drop.na = TRUE)
+set_labels(
+  x,
+  ...,
+  labels,
+  force.labels = FALSE,
+  force.values = TRUE,
+  drop.na = TRUE
+)
 
-val_labels(x, ..., force.labels = FALSE, force.values = TRUE,
-  drop.na = TRUE)
+val_labels(x, ..., force.labels = FALSE, force.values = TRUE, drop.na = TRUE)
 }
 \arguments{
 \item{x}{A vector or data frame.}

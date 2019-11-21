@@ -59,7 +59,7 @@
 #' # get label of dv
 #' get_dv_labels(fit)
 #'
-#' @importFrom purrr map flatten_chr
+#' @importFrom purrr flatten_chr
 #' @importFrom insight find_parameters get_data
 #' @importFrom stats model.frame coef terms
 #' @export
@@ -104,19 +104,23 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
   # for categorical predictors, we have one term per
   # value (factor level), so extract these as well
 
-  lbs2 <- purrr::map(mf, ~ purrr::map2(.x, colnames(.x), function(.x, .y) {
-    if (is.factor(.x)) {
-      l <- get_labels(.x)
-      if (!anyNA(suppressWarnings(as.numeric(l))))
-        paste0(.y, l)
-      else
-        l
-    }
-  }) %>% unlist())
+  lbs2 <- lapply(mf, function(.x) {
+    purrr::map2(.x, colnames(.x), function(.x, .y) {
+      if (is.factor(.x)) {
+        l <- get_labels(.x)
+        if (!anyNA(suppressWarnings(as.numeric(l))))
+          paste0(.y, l)
+        else
+          l
+      }
+    }) %>% unlist()
+  })
 
-  fixed.names <- purrr::map(mf, ~ purrr::map2(.x, colnames(.x), function(.x, .y) {
-    if (is.factor(.x)) paste0(.y, levels(.x))
-  }) %>% unlist())
+  fixed.names <- lapply(mf, function(.x) {
+    purrr::map2(.x, colnames(.x), function(.x, .y) {
+      if (is.factor(.x)) paste0(.y, levels(.x))
+    }) %>% unlist()
+  })
 
   # flatten, if we have any elements. in case all predictors
   # were non-factors, list has only NULLs

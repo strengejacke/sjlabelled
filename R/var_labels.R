@@ -1,14 +1,17 @@
-#' @importFrom rlang ensyms as_string
 #' @rdname set_label
 #' @export
 var_labels <- function(x, ...) {
   # get dots
   .dots <- match.call(expand.dots = FALSE)$`...`
 
-  if (inherits(.dots, "pairlist"))
+  if (inherits(.dots, "pairlist")) {
+    if (!requireNamespace("rlang", quietly = TRUE)) {
+      stop("Package 'rlang' required for this function to work. Please install it.")
+    }
     .dots <- lapply(rlang::ensyms(...), rlang::as_string) %>% unlist()
-  else
+  } else {
     .dots <- unlist(.dots)
+  }
 
   # select variables
   vars <- names(.dots)

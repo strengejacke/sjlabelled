@@ -5,11 +5,15 @@
 \alias{get_dv_labels}
 \title{Retrieve labels of model terms from regression models}
 \usage{
-get_term_labels(models, mark.cat = FALSE, case = NULL,
-  prefix = c("none", "varname", "label"), ...)
+get_term_labels(
+  models,
+  mark.cat = FALSE,
+  case = NULL,
+  prefix = c("none", "varname", "label"),
+  ...
+)
 
-get_dv_labels(models, case = NULL, multi.resp = FALSE, mv = FALSE,
-  ...)
+get_dv_labels(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...)
 }
 \arguments{
 \item{models}{One or more fitted regression models. May also be glm's or

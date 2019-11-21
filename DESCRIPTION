@@ -22,7 +22,6 @@ Imports:
     insight (>= 0.4.1),
     magrittr,
     purrr,
-    rlang,
     stats,
     tools,
     utils
@@ -31,10 +30,11 @@ Suggests:
     sjmisc,
     sjPlot,
     knitr,
+    rlang,
     rmarkdown,
     snakecase,
     testthat
 URL: https://strengejacke.github.io/sjlabelled
 BugReports: https://github.com/strengejacke/sjlabelled/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0
 VignetteBuilder: knitr

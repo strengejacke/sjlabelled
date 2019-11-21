@@ -4,8 +4,14 @@
 \alias{get_labels}
 \title{Retrieve value labels of labelled data}
 \usage{
-get_labels(x, attr.only = FALSE, values = NULL, non.labelled = FALSE,
-  drop.na = TRUE, drop.unused = FALSE)
+get_labels(
+  x,
+  attr.only = FALSE,
+  values = NULL,
+  non.labelled = FALSE,
+  drop.na = TRUE,
+  drop.unused = FALSE
+)
 }
 \arguments{
 \item{x}{A data frame with variables that have value label attributes (e.g.

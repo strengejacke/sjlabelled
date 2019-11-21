@@ -9,15 +9,29 @@
 \usage{
 as_character(x, ...)
 
-\method{as_character}{data.frame}(x, ..., add.non.labelled = FALSE,
-  prefix = FALSE, var.label = NULL, drop.na = TRUE,
-  drop.levels = FALSE, keep.labels = FALSE)
+\method{as_character}{data.frame}(
+  x,
+  ...,
+  add.non.labelled = FALSE,
+  prefix = FALSE,
+  var.label = NULL,
+  drop.na = TRUE,
+  drop.levels = FALSE,
+  keep.labels = FALSE
+)
 
 as_label(x, ...)
 
-\method{as_label}{data.frame}(x, ..., add.non.labelled = FALSE,
-  prefix = FALSE, var.label = NULL, drop.na = TRUE,
-  drop.levels = FALSE, keep.labels = FALSE)
+\method{as_label}{data.frame}(
+  x,
+  ...,
+  add.non.labelled = FALSE,
+  prefix = FALSE,
+  var.label = NULL,
+  drop.na = TRUE,
+  drop.levels = FALSE,
+  keep.labels = FALSE
+)
 }
 \arguments{
 \item{x}{A vector or data frame.}

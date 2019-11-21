@@ -4,8 +4,7 @@
 \alias{as_labelled}
 \title{Convert vector to labelled class}
 \usage{
-as_labelled(x, add.labels = FALSE, add.class = FALSE,
-  skip.strings = FALSE)
+as_labelled(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE)
 }
 \arguments{
 \item{x}{Variable (vector), \code{data.frame} or \code{list} of variables
