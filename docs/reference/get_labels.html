@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1.1</span>
       </span>
     </div>
 
@@ -138,8 +138,14 @@
     <p>This function returns the value labels of labelled data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_labels</span>(<span class='no'>x</span>, <span class='kw'>attr.only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_labels</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>attr.only</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>values</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -285,8 +291,7 @@ the return value.</p></td>
   <span class='no'>efc</span>$<span class='no'>e42dep</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"independent"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"dependent"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"not used"</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 )
-<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"   "not used"   </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"  </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "2"           "3"           "dependent"  </div><div class='input'>
-</div></pre>
+<span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"   "not used"   </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "dependent"  </div><div class='input'><span class='fu'>get_labels</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>, <span class='kw'>non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.unused</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "independent" "2"           "3"           "dependent"  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -79,7 +79,7 @@ a numeric variable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1.1</span>
       </span>
     </div>
 
@@ -145,8 +145,7 @@ a numeric variable.</p>
     <pre class="usage"><span class='fu'>as_numeric</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>as_numeric</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>as_numeric</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>use.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,17 +199,15 @@ of consecutive factor level numbers). See 'Examples'.</p></td>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>efc</span>)
 <span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_label.html'>as_label</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>test</span>)</div><div class='output co'>#&gt; test
-#&gt;          independent   slightly dependent moderately dependent 
-#&gt;                   66                  225                  306 
-#&gt;   severely dependent 
-#&gt;                  304 </div><div class='input'>
+#&gt; &lt;dbl&gt; 
+#&gt;     1 </div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>))</div><div class='output co'>#&gt; 
-#&gt;   1   2   3   4 
-#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='as_numeric-1.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; 1 
+#&gt; 1 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='img'><img src='as_numeric-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># set lowest value of new variable to "5".</span>
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>test</span>, <span class='kw'>start.at</span> <span class='kw'>=</span> <span class='fl'>5</span>))</div><div class='output co'>#&gt; 
-#&gt;   5   6   7   8 
-#&gt;  66 225 306 304 </div><div class='input'>
+#&gt; 5 
+#&gt; 1 </div><div class='input'>
 <span class='co'># numeric factor keeps values</span>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"3"</span>, <span class='st'>"4"</span>, <span class='st'>"6"</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>as_numeric</span>(<span class='no'>dummy</span>))</div><div class='output co'>#&gt; 

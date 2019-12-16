@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1.1</span>
       </span>
     </div>
 
@@ -155,16 +155,30 @@
     <pre class="usage"><span class='fu'>as_character</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>as_character</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>as_character</span>(
+  <span class='no'>x</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 
 <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>as_label</span>(
+  <span class='no'>x</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -238,37 +252,29 @@ allows users to quickly convert back factors to numeric vectors with
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>efc</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>efc</span>)[<span class='st'>'c161sex'</span>])</div><div class='output co'>#&gt; $c161sex
 #&gt; [1] "Male"   "Female"
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>efc</span>$<span class='no'>c161sex</span>)</div><div class='output co'>#&gt; [1] 2 2 1 1 2 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>c161sex</span>))</div><div class='output co'>#&gt; [1] Female Female Male   Male   Female Male  
-#&gt; Levels: Male Female</div><div class='input'>
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>efc</span>$<span class='no'>c161sex</span>)</div><div class='output co'>#&gt; [1] 2 2 1 1 2 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>c161sex</span>))</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>efc</span>)[<span class='st'>'e42dep'</span>])</div><div class='output co'>#&gt; $e42dep
 #&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
 #&gt; [4] "severely dependent"  
 #&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; 
 #&gt;   1   2   3   4 
 #&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>))</div><div class='output co'>#&gt; 
-#&gt;          independent   slightly dependent moderately dependent 
-#&gt;                   66                  225                  306 
-#&gt;   severely dependent 
-#&gt;                  304 </div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; [1] 3 3 3 4 4 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>))</div><div class='output co'>#&gt; [1] moderately dependent moderately dependent moderately dependent
-#&gt; [4] severely dependent   severely dependent   severely dependent  
-#&gt; 4 Levels: independent slightly dependent ... severely dependent</div><div class='input'>
+#&gt; &lt;dbl&gt; 
+#&gt;     1 </div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)</div><div class='output co'>#&gt; [1] 3 3 3 4 4 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>))</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
 <span class='co'># structure of numeric values won't be changed</span>
 <span class='co'># by this function, it only applies to labelled vectors</span>
 <span class='co'># (typically categorical or factor variables)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>efc</span>$<span class='no'>e17age</span>)</div><div class='output co'>#&gt;  num [1:908] 83 88 82 67 84 85 74 87 79 83 ...
-#&gt;  - attr(*, "label")= chr "elder' age"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>e17age</span>))</div><div class='output co'>#&gt;  num [1:908] 83 88 82 67 84 85 74 87 79 83 ...
-#&gt;  - attr(*, "label")= chr "elder' age"</div><div class='input'>
+#&gt;  - attr(*, "label")= chr "elder' age"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>as_label</span>(<span class='no'>efc</span>$<span class='no'>e17age</span>))</div><div class='output co'>#&gt;  chr "&lt;dbl&gt;"</div><div class='input'>
 
 <span class='co'># factor with non-numeric levels</span>
-<span class='fu'>as_label</span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>)))</div><div class='output co'>#&gt; [1] a b c
-#&gt; Levels: a b c</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>)))</div><div class='output co'>#&gt; [1] "&lt;fct&gt;"</div><div class='input'>
 <span class='co'># factor with non-numeric levels, prefixed</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='no'>x</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ape"</span>, <span class='st'>"bear"</span>, <span class='st'>"cat"</span>))
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] [a] ape  [b] bear [c] cat 
-#&gt; Levels: [a] ape [b] bear [c] cat</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, prefix = TRUE): unused argument (prefix = TRUE)</span></div><div class='input'>
 
 <span class='co'># create vector</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>NA</span>)
@@ -280,11 +286,9 @@ allows users to quickly convert back factors to numeric vectors with
   <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'>
 <span class='co'># convert to label w/o non-labelled values</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] yes   maybe no    maybe &lt;NA&gt;  &lt;NA&gt; 
-#&gt; Levels: yes maybe no</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
 <span class='co'># convert to label, including non-labelled values</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] yes   maybe no    maybe 4     &lt;NA&gt; 
-#&gt; Levels: yes maybe no 4</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, add.non.labelled = TRUE): unused argument (add.non.labelled = TRUE)</span></div><div class='input'>
 
 <span class='co'># create labelled integer, with missing flag</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>haven</span>)
@@ -295,20 +299,11 @@ allows users to quickly convert back factors to numeric vectors with
 )
 
 <span class='co'># to labelled factor, with missing labels</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;  [1] Agreement    &lt;NA&gt;         &lt;NA&gt;         Refused      First       
-#&gt;  [6] Not home     Disagreement &lt;NA&gt;         &lt;NA&gt;         Agreement   
-#&gt; [11] &lt;NA&gt;         &lt;NA&gt;        
-#&gt; Levels: Agreement Disagreement First Refused Not home</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.na = FALSE): unused argument (drop.na = FALSE)</span></div><div class='input'>
 <span class='co'># to labelled factor, missings removed</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] Agreement    &lt;NA&gt;         &lt;NA&gt;         &lt;NA&gt;         &lt;NA&gt;        
-#&gt;  [6] &lt;NA&gt;         Disagreement &lt;NA&gt;         &lt;NA&gt;         Agreement   
-#&gt; [11] &lt;NA&gt;         &lt;NA&gt;        
-#&gt; Levels: Agreement Disagreement</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.na = TRUE): unused argument (drop.na = TRUE)</span></div><div class='input'>
 <span class='co'># keep missings, and use non-labelled values as well</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;  [1] Agreement    2            3            Refused      First       
-#&gt;  [6] Not home     Disagreement 3            2            Agreement   
-#&gt; [11] 2            3           
-#&gt; Levels: Agreement 2 3 Disagreement First Refused Not home</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, add.non.labelled = TRUE, drop.na = FALSE): unused arguments (add.non.labelled = TRUE, drop.na = FALSE)</span></div><div class='input'>
 
 <span class='co'># convert labelled character to factor</span>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"F"</span>, <span class='st'>"F"</span>, <span class='st'>"X"</span>)
@@ -316,8 +311,7 @@ allows users to quickly convert back factors to numeric vectors with
   <span class='no'>dummy</span>,
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>`M`</span> <span class='kw'>=</span> <span class='st'>"Male"</span>, <span class='kw'>`F`</span> <span class='kw'>=</span> <span class='st'>"Female"</span>, <span class='kw'>`X`</span> <span class='kw'>=</span> <span class='st'>"Refused"</span>)
 )
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>dummy</span>,, <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[F] Female"  "[M] Male"    "[X] Refused"</div><div class='input'><span class='fu'>as_label</span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; [1] Male    Female  Female  Refused
-#&gt; Levels: Female Male Refused</div><div class='input'>
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>dummy</span>,, <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[F] Female"  "[M] Male"    "[X] Refused"</div><div class='input'><span class='fu'>as_label</span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; [1] "&lt;chr&gt;"</div><div class='input'>
 <span class='co'># drop unused factor levels, but preserve variable label</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>), <span class='kw'>levels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>))
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='no'>x</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ape"</span>, <span class='st'>"bear"</span>, <span class='st'>"cat"</span>))
@@ -328,15 +322,9 @@ allows users to quickly convert back factors to numeric vectors with
 #&gt;    a    b    c 
 #&gt; attr(,"label")
 #&gt; [1] A factor!
-#&gt; Levels: a b c d</div><div class='input'><span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] ape  bear cat 
-#&gt; attr(,"label")
-#&gt; [1] A factor!
-#&gt; Levels: ape bear cat</div><div class='input'>
+#&gt; Levels: a b c d</div><div class='input'><span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.levels = TRUE): unused argument (drop.levels = TRUE)</span></div><div class='input'>
 <span class='co'># change variable label</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='st'>"New variable label!"</span>, <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] ape  bear cat 
-#&gt; attr(,"label")
-#&gt; [1] New variable label!
-#&gt; Levels: ape bear cat</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>var.label</span> <span class='kw'>=</span> <span class='st'>"New variable label!"</span>, <span class='kw'>drop.levels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, var.label = "New variable label!", drop.levels = TRUE): unused arguments (var.label = "New variable label!", drop.levels = TRUE)</span></div><div class='input'>
 
 <span class='co'># convert to numeric and back again, preserving label attributes</span>
 <span class='co'># *and* values in numeric vector</span>
@@ -344,180 +332,20 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='no'>x</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>`null`</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>`one`</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>`four`</span> <span class='kw'>=</span> <span class='fl'>4</span>))
 
 <span class='co'># to factor</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] null one  null four
-#&gt; Levels: null one four</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
 <span class='co'># to factor, back to numeric - values are 1, 2 and 3,</span>
 <span class='co'># instead of original 0, 1 and 4</span>
-<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] 1 2 1 3
+<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; [1] 1
 #&gt; attr(,"labels")
-#&gt; null  one four 
-#&gt;    1    2    3 </div><div class='input'>
+#&gt; &lt;dbl&gt; 
+#&gt;     1 </div><div class='input'>
 <span class='co'># preserve label-attributes when converting to factor, use these attributes</span>
 <span class='co'># to restore original numeric values when converting back to numeric</span>
-<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>use.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 0 1 0 4
-#&gt; attr(,"labels")
-#&gt; null  one four 
-#&gt;    0    1    4 </div><div class='input'>
+<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>keep.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>use.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, keep.labels = TRUE): unused argument (keep.labels = TRUE)</span></div><div class='input'>
 
 <span class='co'># easily coerce specific variables in a data frame to factor</span>
 <span class='co'># and keep other variables, with their class preserved</span>
-<span class='fu'>as_label</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>)</div><div class='output co'>#&gt;    c12hour e15relat e16sex e17age               e42dep c82cop1 c83cop2 c84cop3
-#&gt; 1       16        2 female     83 moderately dependent       3       2       2
-#&gt; 2      148        2 female     88 moderately dependent       3       3       3
-#&gt; 3       70        1 female     82 moderately dependent       2       2       1
-#&gt; 4      168        1 female     67   severely dependent       4       1       3
-#&gt; 5      168        2 female     84   severely dependent       3       2       1
-#&gt; 6       16        2 female     85   severely dependent       2       2       3
-#&gt; 7      161        1   male     74   severely dependent       4       2       4
-#&gt; 8      110        4 female     87   severely dependent       3       2       2
-#&gt; 9       28        2 female     79   severely dependent       3       2       3
-#&gt; 10      40        2 female     83   severely dependent       3       2       1
-#&gt; 11     100        1   male     68   severely dependent       3       4       4
-#&gt; 12      25        8 female     97 moderately dependent       3       3       3
-#&gt; 13      25        2 female     80   severely dependent       3       2       2
-#&gt; 14      24        1 female     75 moderately dependent       3       2       4
-#&gt; 15      56        2 female     82 moderately dependent       2       3       3
-#&gt; 16      20        2 female     89 moderately dependent       4       2       1
-#&gt; 17      25        1   male     80          independent       3       2       1
-#&gt; 18     126        1   male     72 moderately dependent       4       2       1
-#&gt; 19     168        2   male     94 moderately dependent       3       2       1
-#&gt; 20     118        1   male     79   severely dependent       3       2       4
-#&gt; 21     150        2 female     89   severely dependent       3       2       3
-#&gt; 22      50        1   male     67 moderately dependent       4       1       2
-#&gt; 23      18        2 female     94   severely dependent       3       1       1
-#&gt; 24     168        2 female     83   severely dependent       3       2       2
-#&gt; 25      15        2 female     85 moderately dependent       3       2       1
-#&gt; 26     168        1   male     80   severely dependent       2       3       4
-#&gt; 27      12        2 female     88   severely dependent       2       3       3
-#&gt; 28       7        1   male     76   slightly dependent       2       2       2
-#&gt; 29      35        2 female     84 moderately dependent       3       2       2
-#&gt; 30     168        2 female     95   severely dependent       2       2       1
-#&gt; 31     150        2   male     88   severely dependent       3       2       4
-#&gt; 32     168        1   male     87   severely dependent       3       1       3
-#&gt; 33     168        4 female     89 moderately dependent       3       2       2
-#&gt; 34     119        1   male     80   severely dependent       2       2       4
-#&gt; 35     168        1 female     75   severely dependent       3       2       1
-#&gt; 36     168        1   male     82   severely dependent       3       2       1
-#&gt; 37     168        1   male     69   severely dependent       3       4       3
-#&gt; 38      28        2 female     91   slightly dependent       3       1       1
-#&gt;    c85cop4 c86cop5 c87cop6 c88cop7 c89cop8 c90cop9 c160age c161sex
-#&gt; 1        2       1       1       2       3       3      56       2
-#&gt; 2        3       4       1       3       2       2      54       2
-#&gt; 3        4       1       1       1       4       3      80       1
-#&gt; 4        1       1       1       1       2       4      69       1
-#&gt; 5        2       2       2       1       4       4      47       2
-#&gt; 6        3       3       2       2       1       1      56       1
-#&gt; 7        1       1       2       4       1       4      61       2
-#&gt; 8        1       1       1       2       3       3      67       2
-#&gt; 9        2       2       1       3       1       3      59       2
-#&gt; 10       2       1       1       1       1       3      49       2
-#&gt; 11       4       4       4       4       1       1      66       2
-#&gt; 12       1       3       1       4       3       1      47       2
-#&gt; 13       2       2       1       2       4       4      58       2
-#&gt; 14       4       1       1       2       4       4      75       1
-#&gt; 15       3       2       2       1       1       1      49       2
-#&gt; 16       3       3       1       2       1       3      56       2
-#&gt; 17       2       1       1       2       4       4      75       2
-#&gt; 18       2       1       1       2       3       3      70       2
-#&gt; 19       2       2       1       3       1       4      52       1
-#&gt; 20       2       1       3       3       2       2      48       2
-#&gt; 21       2       1       1       1       1       3      58       2
-#&gt; 22       1       1       1       1       2       2      65       2
-#&gt; 23       1       1       1       1       2       4      49       2
-#&gt; 24       4       1       1       2       3       4      60       2
-#&gt; 25       2       1       1       2       3       3      55       2
-#&gt; 26       4       3       1       4       1       4      62       2
-#&gt; 27      NA       1       1       4       2       2      68       2
-#&gt; 28       2       1       1       1       3       2      76       2
-#&gt; 29       2       4       1       2       2       1      58       2
-#&gt; 30       2       1       1       1       2       4      65       2
-#&gt; 31       4       4       4       4       1       3      63       1
-#&gt; 32       1       1       1       1       1       4      79       2
-#&gt; 33       3       1       1       3       1       1      65       2
-#&gt; 34       4       2       1       4       2       3      74       2
-#&gt; 35       2       1       1       1       3       4      76       1
-#&gt; 36       2       1       1       1       4       4      73       2
-#&gt; 37       2       1       1       4       1       1      67       2
-#&gt; 38       2       1       1       1       4       4      62       2
-#&gt;                           c172code c175empl barthtot neg_c_7 pos_v_4 quol_5
-#&gt; 1  intermediate level of education        1       75      12      12     14
-#&gt; 2  intermediate level of education        1       75      20      11     10
-#&gt; 3           low level of education        0       35      11      13      7
-#&gt; 4  intermediate level of education        0        0      10      15     12
-#&gt; 5  intermediate level of education        0       25      12      15     19
-#&gt; 6  intermediate level of education        1       60      19       9      8
-#&gt; 7  intermediate level of education        0        5      15      13     20
-#&gt; 8  intermediate level of education        0       35      11      14     20
-#&gt; 9                             &lt;NA&gt;        0       15      15      13      8
-#&gt; 10 intermediate level of education        0        0      10      13     15
-#&gt; 11 intermediate level of education        0       25      28       9      1
-#&gt; 12 intermediate level of education        1       85      18       8     19
-#&gt; 13         high level of education        0       15      13      14     12
-#&gt; 14          low level of education        0       70      18      14      8
-#&gt; 15         high level of education        1       NA      16       9      8
-#&gt; 16 intermediate level of education        0        0      13      14      6
-#&gt; 17 intermediate level of education        0       95      11      15     16
-#&gt; 18 intermediate level of education        0       55      11      13     14
-#&gt; 19         high level of education        1       55      13      13     15
-#&gt; 20         high level of education        1       45      17      12     10
-#&gt; 21 intermediate level of education        1        0      11      11     15
-#&gt; 22 intermediate level of education        0       70       9      12     21
-#&gt; 23 intermediate level of education        1       20       8      15     18
-#&gt; 24 intermediate level of education        0        0      14      15     15
-#&gt; 25 intermediate level of education        0       95      11      14     16
-#&gt; 26 intermediate level of education        0       10      23      12      0
-#&gt; 27         high level of education        0       75      NA      10     10
-#&gt; 28 intermediate level of education        0       90      11       9     14
-#&gt; 29 intermediate level of education        0       60      15      11      4
-#&gt; 30          low level of education        0       20      11      NA     15
-#&gt; 31 intermediate level of education        1       NA      25      13      9
-#&gt; 32          low level of education        0       50       9      12     18
-#&gt; 33 intermediate level of education        0       75      15       9     12
-#&gt; 34 intermediate level of education        0       50      20      12      1
-#&gt; 35 intermediate level of education        0       30       9      15      4
-#&gt; 36          low level of education        0        0      10      14     13
-#&gt; 37 intermediate level of education        0       30      19       9      4
-#&gt; 38 intermediate level of education        0       90       8      14     16
-#&gt;    resttotn tot_sc_e n4pstu nur_pst
-#&gt; 1         0        4      0      NA
-#&gt; 2         4        0      0      NA
-#&gt; 3         0        1      2       2
-#&gt; 4         2        0      3       3
-#&gt; 5         2        1      2       2
-#&gt; 6         1        3      2       2
-#&gt; 7         0        0      3       3
-#&gt; 8         0        1      1       1
-#&gt; 9         0        2      3       3
-#&gt; 10        1        1      3       3
-#&gt; 11        1        1      3       3
-#&gt; 12        1        1      1       1
-#&gt; 13        0        3      3       3
-#&gt; 14        0        0      1       1
-#&gt; 15        3        3      0      NA
-#&gt; 16        0        2      0      NA
-#&gt; 17        0        2      0      NA
-#&gt; 18        0        0      2       2
-#&gt; 19        3        1      1       1
-#&gt; 20        0        7      2       2
-#&gt; 21        1        1      4       3
-#&gt; 22        0        0      1       1
-#&gt; 23        1        0      2       2
-#&gt; 24        1        1      3       3
-#&gt; 25        0        2      1       1
-#&gt; 26        1        1      2       2
-#&gt; 27        0        5      2       2
-#&gt; 28        0        2      0      NA
-#&gt; 29        0        2      2       2
-#&gt; 30        0        0      3       3
-#&gt; 31        1        2      3       3
-#&gt; 32        0        1      2       2
-#&gt; 33        0        1      1       1
-#&gt; 34        0        7      3       3
-#&gt; 35        0        4      3       3
-#&gt; 36        0        1      3       3
-#&gt; 37        0        6      3       3
-#&gt; 38        1        1      0      NA
-#&gt;  [ reached 'max' / getOption("max.print") -- omitted 870 rows ]</div></pre>
+<span class='fu'>as_label</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(efc, e42dep, e16sex, c172code): unused arguments (e42dep, e16sex, c172code)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

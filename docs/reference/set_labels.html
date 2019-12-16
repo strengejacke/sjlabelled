@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1.1</span>
       </span>
     </div>
 
@@ -152,11 +152,16 @@
    (see 'Examples').</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_labels</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='no'>labels</span>, <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>set_labels</span>(
+  <span class='no'>x</span>,
+  <span class='no'>...</span>,
+  <span class='no'>labels</span>,
+  <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)
 
-<span class='fu'>val_labels</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>val_labels</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>force.values</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -265,11 +270,11 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='no'>dummy</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"very low"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"very high"</span> <span class='kw'>=</span> <span class='fl'>4</span>))
 <span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
-#&gt; # total N=40  valid N=40  mean=2.45  sd=1.06
+#&gt; # total N=40  valid N=40  mean=2.48  sd=1.04
 #&gt; 
 #&gt; </span><span> val     label frq raw.prc valid.prc cum.prc
-#&gt;    1  very low   9    22.5      22.5    22.5
-#&gt;    2         2  12    30.0      30.0    52.5
+#&gt;    1  very low   8    20.0      20.0    20.0
+#&gt;    2         2  13    32.5      32.5    52.5
 #&gt;    3         3  11    27.5      27.5    80.0
 #&gt;    4 very high   8    20.0      20.0   100.0
 #&gt;   NA      &lt;NA&gt;   0     0.0        NA      NA
@@ -409,6 +414,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; </div><div class='input'>
 <span class='co'># using quasi-quotation</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>rlang</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='st'>"dummy1"</span>
 <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"so low"</span>, <span class='st'>"rather low"</span>, <span class='st'>"mid"</span>, <span class='st'>"very hi"</span>)
 
@@ -440,8 +446,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; 
 #&gt; $dummy3
 #&gt; [1] "[1] very hi"    "[2] mid"        "[3] rather low" "[4] so low"    
-#&gt; </div><div class='input'>
-</div></span></pre>
+#&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1.1</span>
       </span>
     </div>
 
@@ -194,6 +194,7 @@ get value labels.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sjmisc</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>magrittr</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>efc</span>)
 <span class='co'># normal factor conversion, loses value attributes</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)
@@ -211,15 +212,15 @@ get value labels.</p></td>
 <span class='co'># factor conversion, which keeps value attributes</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_factor</span>(<span class='no'>efc</span>$<span class='no'>e42dep</span>)
 <span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; 
-#&gt; </span><span style='color: #BB0000;'>elder's dependency (x)</span><span style='color: #0000BB;'> &lt;categorical&gt;
+#&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;categorical&gt;
 #&gt; # total N=908  valid N=901  mean=2.94  sd=0.94
 #&gt; 
-#&gt; </span><span> val                label frq raw.prc valid.prc cum.prc
-#&gt;    1          independent  66    7.27      7.33    7.33
-#&gt;    2   slightly dependent 225   24.78     24.97   32.30
-#&gt;    3 moderately dependent 306   33.70     33.96   66.26
-#&gt;    4   severely dependent 304   33.48     33.74  100.00
-#&gt;   NA                 &lt;NA&gt;   7    0.77        NA      NA
+#&gt; </span><span> val frq raw.prc valid.prc cum.prc
+#&gt;    1  66    7.27      7.33    7.33
+#&gt;    2 225   24.78     24.97   32.30
+#&gt;    3 306   33.70     33.96   66.26
+#&gt;    4 304   33.48     33.74  100.00
+#&gt;   NA   7    0.77        NA      NA
 #&gt; </div><div class='input'>
 <span class='co'># create parially labelled vector</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(
@@ -232,58 +233,39 @@ get value labels.</p></td>
 
 <span class='co'># only copy existing value labels</span>
 <span class='fu'>as_factor</span>(<span class='no'>x</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; [1] 3 3 3 4 4 4
-#&gt; Levels: 1 2 3 4</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>), <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[4] severe dependency" "[9] missing value"    </div><div class='input'>
+#&gt; Levels: 1 2 3 4</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>), <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "1" "2" "3" "4"</div><div class='input'>
 <span class='co'># also add labels to non-labelled values</span>
-<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; [1] 3 3 3 4 4 4
-#&gt; Levels: 1 2 3 4</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] 2"                 "[3] 3"                
-#&gt; [4] "[4] severe dependency" "[9] missing value"    </div><div class='input'>
+<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error: 1 components of `...` were not used.</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>We detected these problematic arguments:</span>
+#&gt; <span class='error'>* `add.non.labelled`</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Did you misspecify an argument?</span></div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>as_factor</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>values</span> <span class='kw'>=</span> <span class='st'>"p"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: 1 components of `...` were not used.</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>We detected these problematic arguments:</span>
+#&gt; <span class='error'>* `add.non.labelled`</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Did you misspecify an argument?</span></div><div class='input'>
 
 <span class='co'># easily coerce specific variables in a data frame to factor</span>
 <span class='co'># and keep other variables, with their class preserved</span>
-<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt;   c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4 c86cop5
-#&gt; 1      16        2      2     83      3       3       2       2       2       1
-#&gt; 2     148        2      2     88      3       3       3       3       3       4
-#&gt; 3      70        1      2     82      3       2       2       1       4       1
-#&gt; 4     168        1      2     67      4       4       1       3       1       1
-#&gt; 5     168        2      2     84      4       3       2       1       2       2
-#&gt; 6      16        2      2     85      4       2       2       3       3       3
-#&gt;   c87cop6 c88cop7 c89cop8 c90cop9 c160age c161sex c172code c175empl barthtot
-#&gt; 1       1       2       3       3      56       2        2        1       75
-#&gt; 2       1       3       2       2      54       2        2        1       75
-#&gt; 3       1       1       4       3      80       1        1        0       35
-#&gt; 4       1       1       2       4      69       1        2        0        0
-#&gt; 5       2       1       4       4      47       2        2        0       25
-#&gt; 6       2       2       1       1      56       1        2        1       60
-#&gt;   neg_c_7 pos_v_4 quol_5 resttotn tot_sc_e n4pstu nur_pst
-#&gt; 1      12      12     14        0        4      0      NA
-#&gt; 2      20      11     10        4        0      0      NA
-#&gt; 3      11      13      7        0        1      2       2
-#&gt; 4      10      15     12        2        0      3       3
-#&gt; 5      12      15     19        2        1      2       2
-#&gt; 6      19       9      8        1        3      2       2</div><div class='input'>
+<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='no'>e42dep</span>, <span class='no'>e16sex</span>, <span class='no'>c172code</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error: 3 components of `...` were not used.</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>We detected these problematic arguments:</span>
+#&gt; <span class='error'>* `..1`</span>
+#&gt; <span class='error'>* `..2`</span>
+#&gt; <span class='error'>* `..3`</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Did you misspecify an argument?</span></div><div class='input'>
 <span class='co'># use select-helpers from dplyr-package</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt;   c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4 c86cop5
-#&gt; 1      16        2      2     83      3       3       2       2       2       1
-#&gt; 2     148        2      2     88      3       3       3       3       3       4
-#&gt; 3      70        1      2     82      3       2       2       1       4       1
-#&gt; 4     168        1      2     67      4       4       1       3       1       1
-#&gt; 5     168        2      2     84      4       3       2       1       2       2
-#&gt; 6      16        2      2     85      4       2       2       3       3       3
-#&gt;   c87cop6 c88cop7 c89cop8 c90cop9 c160age c161sex c172code c175empl barthtot
-#&gt; 1       1       2       3       3      56       2        2        1       75
-#&gt; 2       1       3       2       2      54       2        2        1       75
-#&gt; 3       1       1       4       3      80       1        1        0       35
-#&gt; 4       1       1       2       4      69       1        2        0        0
-#&gt; 5       2       1       4       4      47       2        2        0       25
-#&gt; 6       2       2       1       1      56       1        2        1       60
-#&gt;   neg_c_7 pos_v_4 quol_5 resttotn tot_sc_e n4pstu nur_pst
-#&gt; 1      12      12     14        0        4      0      NA
-#&gt; 2      20      11     10        4        0      0      NA
-#&gt; 3      11      13      7        0        1      2       2
-#&gt; 4      10      15     12        2        0      3       3
-#&gt; 5      12      15     19        2        1      2       2
-#&gt; 6      19       9      8        1        3      2       2</div></span></pre>
+<span class='fu'>as_factor</span>(<span class='no'>efc</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>contains</a></span>(<span class='st'>"cop"</span>), <span class='no'>c161sex</span>:<span class='no'>c175empl</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>()</div><div class='output co'>#&gt; <span class='error'>Error: 2 components of `...` were not used.</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>We detected these problematic arguments:</span>
+#&gt; <span class='error'>* `..1`</span>
+#&gt; <span class='error'>* `..2`</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Did you misspecify an argument?</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
