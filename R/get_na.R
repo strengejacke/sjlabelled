@@ -46,9 +46,6 @@
 #' y <- labelled(c(2:3, 3:1, tagged_na("y"), 4:1),
 #'               c("Agreement" = 1, "Disagreement" = 4, "Why" = tagged_na("y")))
 #' get_na(data.frame(x, y))
-#'
-#'
-#' @importFrom haven is_tagged_na
 #' @export
 get_na <- function(x, as.tag = FALSE) {
   UseMethod("get_na")
@@ -75,6 +72,10 @@ get_na_helper <- function(x, as.tag) {
 
   # any labelled?
   if (is.null(values)) return(NULL)
+
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
 
   # get NA
   nas <- values[haven::is_tagged_na(values)]

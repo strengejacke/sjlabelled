@@ -31,8 +31,11 @@ write_sas <- function(x, path, drop.na = FALSE) {
 }
 
 
-#' @importFrom haven write_sav write_dta write_sas
 .write_data <- function(x, path, type, version, drop.na) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
+
   # make sure to have tidy labels
   message("Tidying value labels. Please wait...")
   x <- tidy_labels(x)

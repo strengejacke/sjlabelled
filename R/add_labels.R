@@ -116,7 +116,6 @@ add_labels <- function(x, ..., labels) {
   x
 }
 
-#' @importFrom haven is_tagged_na na_tag
 add_labels_helper <- function(x, value) {
   # get current labels of `x`
   current.labels <- get_labels(
@@ -155,26 +154,28 @@ add_labels_helper <- function(x, value) {
     all.labels <- value
   }
 
-  # replace tagged NA
-  if (any(haven::is_tagged_na(value))) {
-    # get tagged NAs
-    value_tag <- haven::na_tag(value)[haven::is_tagged_na(value)]
-    cna_tag <- haven::na_tag(current.na)
+  if (requireNamespace("haven", quietly = TRUE)) {
+    # replace tagged NA
+    if (any(haven::is_tagged_na(value))) {
+      # get tagged NAs
+      value_tag <- haven::na_tag(value)[haven::is_tagged_na(value)]
+      cna_tag <- haven::na_tag(current.na)
 
-    # find matches (replaced NA), i.e. see if 'x' has any
-    # tagged NA values that match the tagged NA specified in 'value'
-    doubles <- na.omit(match(value_tag, cna_tag))
+      # find matches (replaced NA), i.e. see if 'x' has any
+      # tagged NA values that match the tagged NA specified in 'value'
+      doubles <- na.omit(match(value_tag, cna_tag))
 
-    # tell user if we found any tagged NA, and that these will be replaced
-    if (any(doubles)) {
-      message(sprintf(
-        "tagged NA '%s' was replaced with new value label.\n",
-        names(current.na)[doubles]
-      ))
+      # tell user if we found any tagged NA, and that these will be replaced
+      if (any(doubles)) {
+        message(sprintf(
+          "tagged NA '%s' was replaced with new value label.\n",
+          names(current.na)[doubles]
+        ))
+      }
+
+      # remove multiple tagged NA
+      current.na <- current.na[-doubles]
     }
-
-    # remove multiple tagged NA
-    current.na <- current.na[-doubles]
   }
 
   # sort labels by values

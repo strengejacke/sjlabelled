@@ -56,5 +56,4 @@ str(x2)
 
 get_values(x1)
 get_values(x2)
-
 }

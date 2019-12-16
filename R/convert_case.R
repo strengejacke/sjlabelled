@@ -25,7 +25,6 @@
 #' data(iris)
 #' convert_case(colnames(iris))
 #' convert_case(colnames(iris), case = "snake")
-#'
 #' @export
 convert_case <- function(lab, case = NULL, verbose = FALSE, ...) {
 

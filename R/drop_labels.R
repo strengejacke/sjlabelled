@@ -17,6 +17,9 @@ drop_labels <- function(x, ..., drop.na = TRUE) {
 }
 
 drop_labels_helper <- function(x, drop.na) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
   # retrieve named labels
   tidy.labels <- attr(x, "labels", exact = T)
   tidy.labels <- tidy.labels[!haven::is_tagged_na(tidy.labels)]

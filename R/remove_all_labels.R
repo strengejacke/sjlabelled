@@ -18,7 +18,6 @@
 #' data(efc)
 #' str(efc)
 #' str(remove_all_labels(efc))
-#'
 #' @export
 remove_all_labels <- function(x) {
   UseMethod("remove_all_labels")

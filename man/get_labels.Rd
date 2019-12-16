@@ -127,7 +127,6 @@ efc$e42dep <- set_labels(
 get_labels(efc$e42dep)
 get_labels(efc$e42dep, drop.unused = TRUE)
 get_labels(efc$e42dep, non.labelled = TRUE, drop.unused = TRUE)
-
 }
 \seealso{
 See vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}

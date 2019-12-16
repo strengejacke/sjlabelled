@@ -173,10 +173,13 @@ set_na <- function(x, ..., na, drop.levels = TRUE, as.tag = FALSE) {
 
 #' @importFrom purrr map2
 #' @importFrom stats na.omit
-#' @importFrom haven tagged_na na_tag
 set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   # check if values has only NA's
   if (sum(is.na(x)) == length(x)) return(x)
+
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
 
   if (is.list(value)) {
     lnames <- purrr::map2(value, names(value), ~ rep(.y, length(.x))) %>%

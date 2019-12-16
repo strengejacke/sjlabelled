@@ -22,7 +22,6 @@
 #' x <- remove_label(x)
 #' get_label(x)
 #' str(x)
-#'
 #' @export
 remove_label <- function(x, ...) {
   dots <- as.character(match.call(expand.dots = FALSE)$`...`)

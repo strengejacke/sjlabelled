@@ -18,8 +18,7 @@ License: GPL-3
 Depends:
     R (>= 3.2)
 Imports:
-    haven (>= 1.1.2),
-    insight (>= 0.4.1),
+    insight (>= 0.7.0),
     magrittr,
     purrr,
     stats,
@@ -27,6 +26,7 @@ Imports:
     utils
 Suggests:
     dplyr,
+    haven (>= 1.1.2),
     sjmisc,
     sjPlot,
     knitr,
@@ -36,5 +36,5 @@ Suggests:
     testthat
 URL: https://strengejacke.github.io/sjlabelled
 BugReports: https://github.com/strengejacke/sjlabelled/issues
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr

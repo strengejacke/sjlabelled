@@ -220,6 +220,10 @@ zap_unlabelled_helper <- function(x) {
 }
 
 zap_na_tags_helper <- function(x) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
+
   # check if values has only NA's
   if (sum(is.na(x)) == length(x)) return(x)
   # convert all NA, including tagged NA, into regular NA

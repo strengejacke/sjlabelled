@@ -100,7 +100,6 @@ mydat.var <- get_label(mydat)
 
 # retrieve value labels
 mydat.val <- get_labels(mydat)}
-
 }
 \seealso{
 Vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}.

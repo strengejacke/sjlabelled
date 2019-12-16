@@ -23,7 +23,6 @@ This function removes value and variable label attributes
 data(efc)
 str(efc)
 str(remove_all_labels(efc))
-
 }
 \seealso{
 See vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package},

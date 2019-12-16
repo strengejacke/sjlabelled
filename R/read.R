@@ -51,10 +51,11 @@
 #'
 #' # retrieve value labels
 #' mydat.val <- get_labels(mydat)}
-#'
-#' @importFrom haven read_sav read_sas read_dta
 #' @export
 read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na = FALSE, enc = NULL, verbose = FALSE) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
   # read data file
   data.spss <- haven::read_sav(file = path, encoding = enc, user_na = tag.na)
   # prepare tagged NA?
@@ -156,6 +157,9 @@ read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na =
 #' @rdname read_spss
 #' @export
 read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, drop.labels = FALSE, enc = NULL, verbose = FALSE) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
   # read data file
   data <- haven::read_sas(data_file = path, catalog_file = path.cat, encoding = enc)
 
@@ -177,6 +181,9 @@ read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, drop.labels =
 #' @rdname read_spss
 #' @export
 read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = NULL, verbose = FALSE) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for this function. Please install it.")
+  }
   # read data file
   data <- haven::read_dta(file = path, encoding = enc)
 

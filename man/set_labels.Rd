@@ -196,7 +196,6 @@ dummies \%>\%
     !!x1 := c("really low" = 1, "low" = 3, "a bit mid" = 2, "hi" = 4),
     dummy3 = !!x2
   ) \%>\% get_labels(values = "p")
-
 }
 \seealso{
 See vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}

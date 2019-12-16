@@ -37,5 +37,4 @@ When calling \code{to_any_case()} from \pkg{snakecase}, the
 data(iris)
 convert_case(colnames(iris))
 convert_case(colnames(iris), case = "snake")
-
 }

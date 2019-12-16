@@ -57,6 +57,4 @@ get_na(replace_na(x, value = 2, tagged.na = "c"))
 y <- labelled(c(2:3, 3:1, tagged_na("y"), 4:1),
               c("Agreement" = 1, "Disagreement" = 4, "Why" = tagged_na("y")))
 get_na(data.frame(x, y))
-
-
 }

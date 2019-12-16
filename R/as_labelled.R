@@ -44,7 +44,6 @@
 #'
 #' get_values(x1)
 #' get_values(x2)
-#'
 #' @importFrom stats na.omit
 #' @export
 as_labelled <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {

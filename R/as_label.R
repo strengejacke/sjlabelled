@@ -173,7 +173,6 @@ as_label.data.frame <- function(x, ..., add.non.labelled = FALSE, prefix = FALSE
 }
 
 
-#' @importFrom haven na_tag is_tagged_na
 as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels) {
   # prefix labels?
   if (prefix)
@@ -197,6 +196,9 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
 
     # any NA?
     if (!is.null(current.na)) {
+      if (!requireNamespace("haven", quietly = TRUE)) {
+        stop("Package 'haven' required for this function. Please install it.")
+      }
       # we have to set all NA labels at once, else NA loses tag
       # so we prepare a dummy label-vector, where we copy all different
       # NA labels to `x` afterwards

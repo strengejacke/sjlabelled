@@ -46,7 +46,6 @@
 #'               c("Agreement" = 1, "Disagreement" = 4, "Why" = tagged_na("y")))
 #' get_values(data.frame(x, y))
 #'
-#' @importFrom haven is_tagged_na na_tag
 #' @export
 get_values <- function(x, sort.val = TRUE, drop.na = FALSE) {
   UseMethod("get_values")
@@ -80,9 +79,11 @@ get_values_helper <- function(x, sort.val = TRUE, drop.na = FALSE) {
   else
     values <- as.numeric(unname(labels))
 
-  # do we have any tagged NAs?
-  if (any(haven::is_tagged_na(values)) && !drop.na) {
-    values[haven::is_tagged_na(values)] <- paste0("NA(", haven::na_tag(values[haven::is_tagged_na(values)]), ")")
+  if (requireNamespace("haven", quietly = TRUE)) {
+    # do we have any tagged NAs?
+    if (any(haven::is_tagged_na(values)) && !drop.na) {
+      values[haven::is_tagged_na(values)] <- paste0("NA(", haven::na_tag(values[haven::is_tagged_na(values)]), ")")
+    }
   }
 
   # sort values

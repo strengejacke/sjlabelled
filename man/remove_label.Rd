@@ -31,7 +31,6 @@ str(x)
 x <- remove_label(x)
 get_label(x)
 str(x)
-
 }
 \seealso{
 \code{\link{set_label}} to manually set variable labels or
