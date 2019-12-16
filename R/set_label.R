@@ -43,7 +43,6 @@
 #' library(sjPlot)
 #' sjp.frq(dummy, title = NULL)}
 #'
-#'
 #' # Set variable labels for data frame
 #' dummy <- data.frame(
 #'   a = sample(1:4, 10, replace = TRUE),
@@ -56,7 +55,6 @@
 #' # remove one variable label
 #' dummy <- set_label(dummy, c("Variable A", "", "Variable C"))
 #' str(dummy)
-#'
 #'
 #' # setting same variable labels to multiple vectors
 #'
@@ -81,6 +79,7 @@
 #'   c = sample(1:4, 10, replace = TRUE)
 #' )
 #'
+#' library(magrittr)
 #' dummy %>%
 #'   var_labels(a = "First variable", c = "third variable") %>%
 #'   get_label()

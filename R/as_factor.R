@@ -36,6 +36,7 @@
 #'
 #' @examples
 #' library(sjmisc)
+#' library(magrittr)
 #' data(efc)
 #' # normal factor conversion, loses value attributes
 #' x <- as.factor(efc$e42dep)

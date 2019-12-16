@@ -82,13 +82,13 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 
   # get all variable labels for predictors
 
-  lbs1 <- lapply(1:length(m), function(x) {
+  lbs1 <- unlist(lapply(1:length(m), function(x) {
     if (is.null(mf[[x]])) {
       m[[x]][-1]
     } else {
       get_label(mf[[x]], def.value = colnames(mf[[x]]))
     }
-  }) %>% unlist()
+  }))
 
 
   # any empty name? if yes, use label as name
@@ -105,7 +105,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
   # value (factor level), so extract these as well
 
   lbs2 <- lapply(mf, function(.x) {
-    purrr::map2(.x, colnames(.x), function(.x, .y) {
+    unlist(purrr::map2(.x, colnames(.x), function(.x, .y) {
       if (is.factor(.x)) {
         l <- get_labels(.x)
         if (!anyNA(suppressWarnings(as.numeric(l))))
@@ -113,13 +113,13 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
         else
           l
       }
-    }) %>% unlist()
+    }))
   })
 
   fixed.names <- lapply(mf, function(.x) {
-    purrr::map2(.x, colnames(.x), function(.x, .y) {
+    unlist(purrr::map2(.x, colnames(.x), function(.x, .y) {
       if (is.factor(.x)) paste0(.y, levels(.x))
-    }) %>% unlist()
+    }))
   })
 
   # flatten, if we have any elements. in case all predictors

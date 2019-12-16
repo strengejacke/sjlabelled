@@ -225,7 +225,7 @@ read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = N
   message("Converting atomic to factors. Please wait...\n")
   # iterate all columns
 
-  lapply(
+  as.data.frame(lapply(
     d,
     function(x) {
       # capture value labels attribute first
@@ -246,8 +246,7 @@ read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = N
         if (!is.null(lab)) attr(x, "label") <- lab
       }
       x
-    }) %>%
-    as.data.frame(stringsAsFactors = FALSE)
+    }), stringsAsFactors = FALSE)
 }
 
 

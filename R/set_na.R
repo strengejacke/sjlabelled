@@ -64,6 +64,7 @@
 #' # add named vector as further missing value
 #' set_na(dummy, na = c("Refused" = 5), as.tag = TRUE)
 #' # see different missing types
+#' library(dplyr)
 #' library(haven)
 #' print_tagged_na(set_na(dummy, na = c("Refused" = 5), as.tag = TRUE))
 #'
@@ -182,9 +183,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   }
 
   if (is.list(value)) {
-    lnames <- purrr::map2(value, names(value), ~ rep(.y, length(.x))) %>%
-      unlist() %>%
-      unname()
+    lnames <- unname(unlist(purrr::map2(value, names(value), ~ rep(.y, length(.x)))))
     value <- unlist(value)
     names(value) <- lnames
   }

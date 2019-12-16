@@ -19,7 +19,6 @@ Depends:
     R (>= 3.2)
 Imports:
     insight (>= 0.7.0),
-    magrittr,
     purrr,
     stats,
     tools,
@@ -27,6 +26,7 @@ Imports:
 Suggests:
     dplyr,
     haven (>= 1.1.2),
+    magrittr,
     sjmisc,
     sjPlot,
     knitr,

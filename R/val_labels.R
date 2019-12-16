@@ -1,4 +1,3 @@
-#' @importFrom purrr map_at
 #' @rdname set_labels
 #' @export
 val_labels <- function(x, ..., force.labels = FALSE, force.values = TRUE, drop.na = TRUE) {
@@ -8,8 +7,7 @@ val_labels <- function(x, ..., force.labels = FALSE, force.values = TRUE, drop.n
 
   # get dots
   .dots <- rlang::enexprs(...)
-  lang <- unlist(lapply(rlang::enexprs(...), is.language))
-  labels <- purrr::map_at(.dots, which(lang), eval)
+  labels <- lapply(.dots, function(i) if (is.language(i)) eval(i) else i)
 
   # select variables
   vars <- names(labels)

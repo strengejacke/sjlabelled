@@ -1,7 +1,3 @@
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
 data_frame <- function(...) {
   x <- data.frame(..., stringsAsFactors = FALSE)
   rownames(x) <- NULL
@@ -22,6 +18,9 @@ is.num.fac <- function(x) {
   # check if we have numeric levels
   !anyNA(suppressWarnings(as.numeric(levels(x))))
 }
+
+
+.compact_list <- function(x) x[!sapply(x, function(i) length(i) == 0 || is.null(i) || any(i == "NULL"))]
 
 
 #' @importFrom stats na.omit
@@ -58,7 +57,7 @@ isempty <- function(x, first.only = TRUE) {
       }
       # we have a non-character vector here. check for length
     } else if (is.list(x)) {
-      x <- purrr::compact(x)
+      x <- .compact_list(x)
       zero_len <- length(x) == 0
     } else {
       zero_len <- length(x) == 0

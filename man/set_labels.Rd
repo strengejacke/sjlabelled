@@ -179,6 +179,7 @@ get_labels(test)
 
 # using quasi-quotation
 library(rlang)
+library(dplyr)
 x1 <- "dummy1"
 x2 <- c("so low", "rather low", "mid", "very hi")
 

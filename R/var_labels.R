@@ -8,7 +8,7 @@ var_labels <- function(x, ...) {
     if (!requireNamespace("rlang", quietly = TRUE)) {
       stop("Package 'rlang' required for this function to work. Please install it.")
     }
-    .dots <- lapply(rlang::ensyms(...), rlang::as_string) %>% unlist()
+    .dots <- unlist(lapply(rlang::ensyms(...), rlang::as_string))
   } else {
     .dots <- unlist(.dots)
   }

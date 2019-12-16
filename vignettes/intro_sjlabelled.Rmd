@@ -293,6 +293,7 @@ x <- data.frame(
   c = sample(1:4, 10, replace = TRUE)
 )
 
+library(magrittr) # for pipe
 x %>% 
   var_labels(
     a = "Variable A",

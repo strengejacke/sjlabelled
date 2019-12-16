@@ -50,6 +50,7 @@
 #' get_label(efc)["e42dep"]
 #'
 #' # 'get_label()' also works within pipe-chains
+#' library(magrittr)
 #' efc %>% get_label(e42dep, e16sex)
 #'
 #' # set default values
