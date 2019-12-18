@@ -74,7 +74,7 @@
 #' efc$e17age <- as.factor(efc$e17age)
 #'
 #' # convert back "sex" and "age" into numeric
-#' as_numeric(efc, e16sex, e17age) %>% head()
+#' head(as_numeric(efc, e16sex, e17age))
 #'
 #' x <- factor(c("None", "Little", "Some", "Lots"))
 #' x <- set_labels(x,
