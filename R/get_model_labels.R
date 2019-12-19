@@ -208,7 +208,7 @@ prepare.labels <- function(x, catval, style = c("varname", "label")) {
 
 
 #' @rdname term_labels
-#' @importFrom purrr map map2 flatten_chr
+#' @importFrom purrr map flatten_chr
 #' @importFrom stats model.frame
 #' @export
 response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...) {
