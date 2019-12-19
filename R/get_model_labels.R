@@ -6,9 +6,7 @@
 #'        variable name and category value is returned.
 #'
 #' @param models One or more fitted regression models. May also be glm's or
-#'        mixed models. Any model with \code{\link[stats]{model.frame}} method
-#'        and which is supported by \pkg{broom}'s \code{\link[broom]{tidy}}
-#'        function should work.
+#'        mixed models.
 #' @param mark.cat Logical, if \code{TRUE}, the returned vector has an
 #'        attribute with logical values, which indicate whether a label indicates
 #'        the value from a factor category (attribute value is \code{TRUE}) or

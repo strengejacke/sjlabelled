@@ -29,9 +29,7 @@ get_dv_labels(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...)
 }
 \arguments{
 \item{models}{One or more fitted regression models. May also be glm's or
-mixed models. Any model with \code{\link[stats]{model.frame}} method
-and which is supported by \pkg{broom}'s \code{\link[broom]{tidy}}
-function should work.}
+mixed models.}
 
 \item{mark.cat}{Logical, if \code{TRUE}, the returned vector has an
 attribute with logical values, which indicate whether a label indicates
