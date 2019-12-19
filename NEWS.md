@@ -3,6 +3,8 @@
 ## General
 
 * Reduce package dependencies.
+* `get_dv_labels()` was renamed to `response_labels()`. `get_dv_labels()` will remain as alias.
+* `get_term_labels()` was renamed to `term_labels()`. `get_term_labels()` will remain as alias.
 
 ## Changes to functions
 

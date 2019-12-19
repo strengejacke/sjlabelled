@@ -4,7 +4,7 @@
 #' @description This function wraps \code{to_any_case()} from the \pkg{snakecase}
 #'   package with certain defaults for the \code{sep_in} and
 #'   \code{sep_out} arguments, used for instance to convert cases in
-#'   \code{\link{get_term_labels}}.
+#'   \code{\link{term_labels}}.
 #'
 #' @param lab Character vector that should be case converted.
 #' @param case Desired target case. Labels will automatically converted into the

@@ -1,5 +1,5 @@
 #' @title Retrieve labels of model terms from regression models
-#' @name get_term_labels
+#' @name term_labels
 #'
 #' @description This function retrieves variable labels from model terms. In case
 #'        of categorical variables, where one variable has multiple dummies,
@@ -25,9 +25,9 @@
 #' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
 #'        like \code{preprocess} or \code{postprocess}.
 #'
-#' @return For \code{get_term_labels()}, a (named) character vector with
+#' @return For \code{term_labels()}, a (named) character vector with
 #'         variable labels of all model terms, which can be used, for instance,
-#'         as axis labels to annotate plots. \cr \cr For \code{get_dv_labels()},
+#'         as axis labels to annotate plots. \cr \cr For \code{response_labels()},
 #'         a character vector with variable labels from all dependent variables
 #'         of \code{models}.
 #'
@@ -42,28 +42,27 @@
 #' data(efc)
 #'
 #' fit <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
-#' get_term_labels(fit)
+#' term_labels(fit)
 #'
 #' # make "education" categorical
 #' library(sjmisc)
 #' efc$c172code <- to_factor(efc$c172code)
 #' fit <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
-#' get_term_labels(fit)
+#' term_labels(fit)
 #'
 #' # prefix value of categorical variables with variable name
-#' get_term_labels(fit, prefix = "varname")
+#' term_labels(fit, prefix = "varname")
 #'
 #' # prefix value of categorical variables with value label
-#' get_term_labels(fit, prefix = "label")
+#' term_labels(fit, prefix = "label")
 #'
 #' # get label of dv
-#' get_dv_labels(fit)
-#'
+#' response_labels(fit)
 #' @importFrom purrr flatten_chr
 #' @importFrom insight find_parameters get_data
 #' @importFrom stats model.frame coef terms
 #' @export
-get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("none", "varname", "label"), ...) {
+term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("none", "varname", "label"), ...) {
 
   prefix <- match.arg(prefix)
 
@@ -105,7 +104,7 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
   # value (factor level), so extract these as well
 
   lbs2 <- lapply(mf, function(.x) {
-    unlist(purrr::map2(.x, colnames(.x), function(.x, .y) {
+    unlist(mapply(function(.x, .y) {
       if (is.factor(.x)) {
         l <- get_labels(.x)
         if (!anyNA(suppressWarnings(as.numeric(l))))
@@ -113,13 +112,13 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
         else
           l
       }
-    }))
+    }, .x, colnames(.x)))
   })
 
   fixed.names <- lapply(mf, function(.x) {
-    unlist(purrr::map2(.x, colnames(.x), function(.x, .y) {
+    unlist(mapply(function(.x, .y) {
       if (is.factor(.x)) paste0(.y, levels(.x))
-    }))
+    }, .x, colnames(.x)))
   })
 
   # flatten, if we have any elements. in case all predictors
@@ -183,6 +182,11 @@ get_term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("n
 }
 
 
+#' @rdname term_labels
+#' @export
+get_term_labels <- term_labels
+
+
 prepare.labels <- function(x, catval, style = c("varname", "label")) {
   x_var <- names(x[!catval])
   x_val <- names(x[catval])
@@ -203,11 +207,11 @@ prepare.labels <- function(x, catval, style = c("varname", "label")) {
 }
 
 
-#' @rdname get_term_labels
+#' @rdname term_labels
 #' @importFrom purrr map map2 flatten_chr
 #' @importFrom stats model.frame
 #' @export
-get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...) {
+response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...) {
 
   if (!missing(multi.resp)) mv <- multi.resp
 
@@ -240,9 +244,7 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, .
 
 
   mf <- tryCatch({
-    purrr::map2(
-      models,
-      intercepts.names,
+    mapply(
       function(x, y) {
         m <- insight::get_data(x)
         if (mv && inherits(x, "brmsfit"))
@@ -253,7 +255,9 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, .
         } else {
           m[[1]]
         }
-      }
+      },
+      models,
+      intercepts.names
     )},
     error = function(x) { NULL },
     warning = function(x) { NULL }
@@ -267,11 +271,7 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, .
 
   # get all labels
 
-  lbs <- purrr::map2(
-    mf,
-    intercepts.names,
-    ~ get_label(.x, def.value = .y)
-  )
+  lbs <- mapply(function(.x, .y) get_label(.x, def.value = .y), mf, intercepts.names)
 
 
   # flatten list, and check for correct elements
@@ -287,3 +287,8 @@ get_dv_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, .
 
   convert_case(lbs, case, ...)
 }
+
+
+#' @rdname term_labels
+#' @export
+get_dv_labels <- response_labels

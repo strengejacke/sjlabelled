@@ -25,7 +25,7 @@ like \code{sep_in} or \code{sep_out}.}
 This function wraps \code{to_any_case()} from the \pkg{snakecase}
   package with certain defaults for the \code{sep_in} and
   \code{sep_out} arguments, used for instance to convert cases in
-  \code{\link{get_term_labels}}.
+  \code{\link{term_labels}}.
 }
 \details{
 When calling \code{to_any_case()} from \pkg{snakecase}, the

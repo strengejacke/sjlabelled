@@ -172,7 +172,6 @@ set_na <- function(x, ..., na, drop.levels = TRUE, as.tag = FALSE) {
 }
 
 
-#' @importFrom purrr map2
 #' @importFrom stats na.omit
 set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   # check if values has only NA's
@@ -183,7 +182,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   }
 
   if (is.list(value)) {
-    lnames <- unname(unlist(purrr::map2(value, names(value), ~ rep(.y, length(.x)))))
+    lnames <- unname(unlist(mapply(function(.x, .y) rep(.y, length(.x), value, names(value)))))
     value <- unlist(value)
     names(value) <- lnames
   }

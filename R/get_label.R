@@ -20,7 +20,7 @@
 #' @param def.value Optional, a character string which will be returned as label
 #'          if \code{x} has no label attribute. By default, \code{NULL} is returned.
 #'
-#' @inheritParams get_term_labels
+#' @inheritParams term_labels
 #'
 #' @return A named character vector with all variable labels from the data frame or list;
 #'           or a simple character vector (of length 1) with the variable label, if \code{x} is a variable.
