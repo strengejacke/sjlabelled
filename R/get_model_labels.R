@@ -208,7 +208,7 @@ prepare.labels <- function(x, catval, style = c("varname", "label")) {
 
 
 #' @rdname term_labels
-#' @importFrom purrr map flatten_chr
+#' @importFrom purrr flatten_chr
 #' @importFrom stats model.frame
 #' @export
 response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...) {
@@ -220,7 +220,7 @@ response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE,
 
 
   intercepts.names <- tryCatch({
-    purrr::map(models, function(x) {
+    lapply(models, function(x) {
       if (inherits(x, "brmsfit")) {
         if (is.null(stats::formula(x)$formula) && !is.null(stats::formula(x)$responses))
           if (mv)
