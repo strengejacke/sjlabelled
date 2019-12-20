@@ -56,7 +56,6 @@
 #'
 #' # get label of dv
 #' response_labels(fit)
-#' @importFrom purrr flatten_chr
 #' @importFrom insight find_parameters get_data
 #' @importFrom stats model.frame coef terms
 #' @export
@@ -110,25 +109,25 @@ term_labels <- function(models, mark.cat = FALSE, case = NULL, prefix = c("none"
         else
           l
       }
-    }, .x, colnames(.x)))
+    }, .x, colnames(.x), SIMPLIFY = FALSE))
   })
 
   fixed.names <- lapply(mf, function(.x) {
     unlist(mapply(function(.x, .y) {
       if (is.factor(.x)) paste0(.y, levels(.x))
-    }, .x, colnames(.x)))
+    }, .x, colnames(.x), SIMPLIFY = FALSE))
   })
 
   # flatten, if we have any elements. in case all predictors
   # were non-factors, list has only NULLs
 
   lbs2 <- if (!is.null(unlist(lbs2)))
-    purrr::flatten_chr(lbs2)
+    as.character(unlist(lbs2))
   else
     NULL
 
   fixed.names <- if (!is.null(unlist(fixed.names)))
-    purrr::flatten_chr(fixed.names)
+    as.character(unlist(fixed.names))
   else
     NULL
 
@@ -206,7 +205,6 @@ prepare.labels <- function(x, catval, style = c("varname", "label")) {
 
 
 #' @rdname term_labels
-#' @importFrom purrr flatten_chr
 #' @importFrom stats model.frame
 #' @export
 response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE, ...) {
@@ -229,9 +227,9 @@ response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE,
           deparse(stats::formula(x)$formula[[2L]])
       } else if (inherits(x, "stanmvreg")) {
         if (mv)
-          purrr::map_chr(stats::formula(x), ~ deparse(.x[[2L]]))
+          sapply(stats::formula(x), function(.x) deparse(.x[[2L]], width.cutoff = 500), simplify = TRUE)
         else
-          paste(purrr::map_chr(stats::formula(x), ~ deparse(.x[[2L]])), collapse = ", ")
+          paste(sapply(stats::formula(x), function(.x) deparse(.x[[2L]], width.cutoff = 500), simplify = TRUE), collapse = ", ")
       } else {
         deparse(stats::formula(x)[[2L]])
       }
@@ -255,7 +253,8 @@ response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE,
         }
       },
       models,
-      intercepts.names
+      intercepts.names,
+      SIMPLIFY = FALSE
     )},
     error = function(x) { NULL },
     warning = function(x) { NULL }
@@ -269,12 +268,12 @@ response_labels <- function(models, case = NULL, multi.resp = FALSE, mv = FALSE,
 
   # get all labels
 
-  lbs <- mapply(function(.x, .y) get_label(.x, def.value = .y), mf, intercepts.names)
+  lbs <- mapply(function(.x, .y) get_label(.x, def.value = .y), mf, intercepts.names, SIMPLIFY = FALSE)
 
 
   # flatten list, and check for correct elements
 
-  lbs <- purrr::flatten_chr(lbs)
+  lbs <- as.character(unlist(lbs))
 
 
   # There are some formulas that return a rather cryptic

@@ -19,7 +19,6 @@ Depends:
     R (>= 3.2)
 Imports:
     insight (>= 0.7.0),
-    purrr,
     stats,
     tools,
     utils

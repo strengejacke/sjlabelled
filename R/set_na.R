@@ -182,7 +182,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   }
 
   if (is.list(value)) {
-    lnames <- unname(unlist(mapply(function(.x, .y) rep(.y, length(.x), value, names(value)))))
+    lnames <- unname(unlist(mapply(function(.x, .y) rep(.y, length(.x)), value, names(value), SIMPLIFY = FALSE)))
     value <- unlist(value)
     names(value) <- lnames
   }

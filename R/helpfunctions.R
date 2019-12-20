@@ -31,7 +31,6 @@ is.num.chr <- function(x, na.rm = FALSE) {
 }
 
 
-#' @importFrom purrr compact
 isempty <- function(x, first.only = TRUE) {
   # do we have a valid vector?
   if (!is.null(x)) {
