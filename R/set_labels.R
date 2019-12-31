@@ -285,7 +285,11 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
 
       # determine amount of labels and unique values
       lablen <- length(labels)
-      values <- sort(unique(stats::na.omit(as.vector(x))))
+      values <- unique(stats::na.omit(as.vector(x)))
+      if (.is_num_chr(values) || .is_num_fac(values)) {
+        values <- as.numeric(values)
+      }
+      values <- sort(values)
 
       # set var name string
       if (isempty(var.name)) {
