@@ -11,6 +11,10 @@
 * `copy_labels` gets a `...`-argument to copy only specific variables values.
 * The `read_*()` functions are now less verbose by default.
 
+## Bug fixes
+
+* Fixed issue in `set_labels()` for character vectors with numeric char-values that are larger than `9`.
+
 # sjlabelled 1.1.1
 
 ## Changes to functions
