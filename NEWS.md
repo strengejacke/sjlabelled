@@ -6,6 +6,10 @@
 * `get_dv_labels()` was renamed to `response_labels()`. `get_dv_labels()` will remain as alias.
 * `get_term_labels()` was renamed to `term_labels()`. `get_term_labels()` will remain as alias.
 
+## New functions
+
+* `label_to_colnames()` as a convenient shortcut to set variable labels as column names.
+
 ## Changes to functions
 
 * `copy_labels` gets a `...`-argument to copy only specific variables values.

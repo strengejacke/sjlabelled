@@ -40,7 +40,6 @@
 #'
 #' @examples
 #' # add_labels()
-
 #' data(efc)
 #' get_labels(efc$e42dep)
 #'
