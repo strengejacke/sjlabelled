@@ -51,6 +51,7 @@
 #'
 #' # retrieve value labels
 #' mydat.val <- get_labels(mydat)}
+#' @importFrom haven read_sav read_sas read_dta
 #' @export
 read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na = FALSE, enc = NULL, verbose = FALSE) {
   if (!requireNamespace("haven", quietly = TRUE)) {

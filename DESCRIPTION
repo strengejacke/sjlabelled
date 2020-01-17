@@ -18,13 +18,13 @@ License: GPL-3
 Depends:
     R (>= 3.2)
 Imports:
+    haven (>= 1.1.2),
     insight (>= 0.7.0),
     stats,
     tools,
     utils
 Suggests:
     dplyr,
-    haven (>= 1.1.2),
     magrittr,
     sjmisc,
     sjPlot,

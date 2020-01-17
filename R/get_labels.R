@@ -148,6 +148,7 @@ get_labels.default <- function(x, attr.only = FALSE, values = NULL,
 
 # Retrieve value labels of a data frame or variable
 # See 'get_labels'
+#' @importFrom haven is_tagged_na na_tag
 get_labels_helper <- function(x, attr.only, include.values, include.non.labelled, drop.na, drop.unused) {
 
   labels <- attr(x, "labels", exact = TRUE)
@@ -169,9 +170,12 @@ get_labels_helper <- function(x, attr.only, include.values, include.non.labelled
       }
     }
   } else {
-    if (!requireNamespace("haven", quietly = TRUE)) {
-      stop("Package 'haven' required for this function. Please install it.")
-    }
+
+    ## TODO enable later
+    # if (!requireNamespace("haven", quietly = TRUE)) {
+    #   stop("Package 'haven' required for this function. Please install it.")
+    # }
+
     # drop na?
     if (drop.na) labels <- labels[!haven::is_tagged_na(labels)]
 
