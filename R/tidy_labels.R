@@ -3,7 +3,7 @@
 #'
 #' @description Duplicated value labels in variables may cause troubles when
 #'              saving labelled data, or computing cross tabs (cf.
-#'              \code{\link[sjmisc]{flat_table}} or \code{\link[sjPlot]{sjp.xtab}}).
+#'              \code{\link[sjmisc]{flat_table}} or \code{\link[sjPlot]{plot_xtab}}).
 #'              \code{tidy_labels()} repairs duplicated value labels by suffixing
 #'              them with the associated value.
 #'

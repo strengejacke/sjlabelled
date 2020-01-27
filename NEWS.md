@@ -1,3 +1,9 @@
+# sjlabelled 1.1.3
+
+## Bug fixes
+
+* Fix warning from CRAN checks.
+
 # sjlabelled 1.1.2
 
 ## General
