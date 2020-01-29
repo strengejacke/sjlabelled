@@ -11,6 +11,7 @@ reference:
   contents:
   - get_label
   - copy_labels
+  - label_to_colnames
   - remove_label
   - remove_all_labels
   - set_label

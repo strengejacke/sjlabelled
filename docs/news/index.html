@@ -76,7 +76,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -132,15 +132,39 @@
       
     </div>
 
+    <div id="sjlabelled-113" class="section level1">
+<h1 class="page-header">
+<a href="#sjlabelled-113" class="anchor"></a>sjlabelled 1.1.3<small> 2020-01-28 </small>
+</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fix warning from CRAN checks.</li>
+</ul>
+</div>
+</div>
     <div id="sjlabelled-112" class="section level1">
 <h1 class="page-header">
-<a href="#sjlabelled-112" class="anchor"></a>sjlabelled 1.1.2<small> Unreleased </small>
+<a href="#sjlabelled-112" class="anchor"></a>sjlabelled 1.1.2<small> 2020-01-17 </small>
 </h1>
 <div id="general" class="section level2">
 <h2 class="hasAnchor">
 <a href="#general" class="anchor"></a>General</h2>
 <ul>
 <li>Reduce package dependencies.</li>
+<li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> was renamed to <code><a href="../reference/term_labels.html">response_labels()</a></code>. <code><a href="../reference/term_labels.html">get_dv_labels()</a></code> will remain as alias.</li>
+<li>
+<code><a href="../reference/term_labels.html">get_term_labels()</a></code> was renamed to <code><a href="../reference/term_labels.html">term_labels()</a></code>. <code><a href="../reference/term_labels.html">get_term_labels()</a></code> will remain as alias.</li>
+</ul>
+</div>
+<div id="new-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h2>
+<ul>
+<li>
+<code><a href="../reference/label_to_colnames.html">label_to_colnames()</a></code> as a convenient shortcut to set variable labels as column names.</li>
 </ul>
 </div>
 <div id="changes-to-functions" class="section level2">
@@ -150,6 +174,13 @@
 <li>
 <code>copy_labels</code> gets a <code>...</code>-argument to copy only specific variables values.</li>
 <li>The <code>read_*()</code> functions are now less verbose by default.</li>
+</ul>
+</div>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fixed issue in <code><a href="../reference/set_labels.html">set_labels()</a></code> for character vectors with numeric char-values that are larger than <code>9</code>.</li>
 </ul>
 </div>
 </div>
@@ -166,9 +197,9 @@
 <code><a href="../reference/read_spss.html">read_data()</a></code> is a shortcut that calls one of the <code>read_*()</code>-functions, depending on the file extension.</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix issue in <code><a href="../reference/as_label.html">as_label()</a></code> to prevent replacement recycling when labels were numeric.</li>
 <li>Fix issues with saving character vectors to SPSS files.</li>
@@ -179,9 +210,9 @@
 <h1 class="page-header">
 <a href="#sjlabelled-110" class="anchor"></a>sjlabelled 1.1.0<small> 2019-06-06 </small>
 </h1>
-<div id="new-functions" class="section level2">
+<div id="new-functions-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h2>
+<a href="#new-functions-1" class="anchor"></a>New functions</h2>
 <ul>
 <li>
 <code><a href="../reference/remove_label.html">remove_label()</a></code>, to remove variable labels (and preserve value labels).</li>
@@ -205,9 +236,9 @@
 <li>New package-vignette on quasiquotation.</li>
 </ul>
 </div>
-<div id="new-functions-1" class="section level2">
+<div id="new-functions-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions-1" class="anchor"></a>New functions</h2>
+<a href="#new-functions-2" class="anchor"></a>New functions</h2>
 <ul>
 <li>Re-implement <code><a href="../reference/set_na.html">set_na()</a></code>, to define (labelled) <code>NA</code>-values in a vector.</li>
 </ul>
@@ -220,9 +251,9 @@
 <code><a href="../reference/as_label.html">as_label()</a></code> gets a <code>keep.labels</code>-argument. With this, users can easily convert vector to factors and vice versa, preserving label-attributes.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fixed bug with argument <code>use.labels</code> in <code><a href="../reference/as_numeric.html">as_numeric()</a></code>.</li>
 </ul>
@@ -240,9 +271,9 @@
 <li>Minor code revisions to avoid errors during CRAN check for current devel-versions of R.</li>
 </ul>
 </div>
-<div id="new-functions-2" class="section level2">
+<div id="new-functions-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions-2" class="anchor"></a>New functions</h2>
+<a href="#new-functions-3" class="anchor"></a>New functions</h2>
 <ul>
 <li>
 <code><a href="../reference/set_labels.html">val_labels()</a></code> as counterpart to <code><a href="../reference/set_label.html">var_labels()</a></code>, to set value labels, with support for quasi-quotation (see Examples).</li>
@@ -268,11 +299,11 @@
 <li>Update code to the new class-attribute <code>haven_labelled</code> from the <strong>haven</strong>-package.</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Fix issue in <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> that returned wrong object names for factors where factor levels did start with “1”.</li>
+<li>Fix issue in <code><a href="../reference/term_labels.html">get_term_labels()</a></code> that returned wrong object names for factors where factor levels did start with “1”.</li>
 </ul>
 </div>
 </div>
@@ -287,9 +318,9 @@
 <li>Reduce package dependencies.</li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix bug in <code><a href="../reference/set_label.html">var_labels()</a></code>, where non-existing columns may lead to wrong labelling.</li>
 </ul>
@@ -316,9 +347,9 @@
 <li>The <code>read_*()</code>-functions get a <code>verbose</code>-argument, to show or hide the progressbar when imported datasets are converted.</li>
 </ul>
 </div>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Due to changes in the <em>broom</em> and <em>lmerTest</em> packages, tidiers did no longer work for <code>lmerModLmerTest</code> objects.</li>
 </ul>
@@ -333,13 +364,13 @@
 <a href="#general-6" class="anchor"></a>General</h2>
 <ul>
 <li>
-<code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> now support <em>clmm</em>-objects (package <strong>ordinal</strong>) and <em>stanmvreg</em>-objects (package <strong>rstanarm</strong>).</li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> and <code><a href="../reference/term_labels.html">get_term_labels()</a></code> now support <em>clmm</em>-objects (package <strong>ordinal</strong>) and <em>stanmvreg</em>-objects (package <strong>rstanarm</strong>).</li>
 <li>
 <code><a href="../reference/read_spss.html">read_spss()</a></code> gets a <code>enc</code>-argument for character encoding, which is now supported since haven 1.1.2.</li>
 <li>
-<code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> now returns <code>NULL</code> for unsupported models, instead of giving an error.</li>
+<code><a href="../reference/term_labels.html">get_term_labels()</a></code> now returns <code>NULL</code> for unsupported models, instead of giving an error.</li>
 <li>
-<code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> now returns a default string for unsupported models, instead of giving an error.</li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> now returns a default string for unsupported models, instead of giving an error.</li>
 </ul>
 </div>
 </div>
@@ -360,14 +391,14 @@
 <a href="#changes-to-functions-6" class="anchor"></a>Changes to functions</h2>
 <ul>
 <li>
-<code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> gets a <code>multi.resp</code>-argument to return each label of a multivariate response model (only for <em>brmsfit</em> objects).</li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> gets a <code>multi.resp</code>-argument to return each label of a multivariate response model (only for <em>brmsfit</em> objects).</li>
 <li>
 <code><a href="../reference/get_label.html">get_label()</a></code> now also returns name-attribute for empty labels if <code>x</code> was a data.frame.</li>
 </ul>
 </div>
-<div id="bug-fixes-5" class="section level2">
+<div id="bug-fixes-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code>write_*()</code>-functions should now properly set labels for negative values.</li>
@@ -391,16 +422,16 @@
 <a href="#changes-to-functions-7" class="anchor"></a>Changes to functions</h2>
 <ul>
 <li>
-<code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> gets a <code>prefix</code>-argument to prefix the returned labels of categorical variable either with the related variable name or label.</li>
+<code><a href="../reference/term_labels.html">get_term_labels()</a></code> gets a <code>prefix</code>-argument to prefix the returned labels of categorical variable either with the related variable name or label.</li>
 </ul>
 </div>
-<div id="bug-fixes-6" class="section level2">
+<div id="bug-fixes-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-8" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Fix issues with retrieving incorrect labels from <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> for models that used unlabelled data in combination with other contrasts than the default option.</li>
+<li>Fix issues with retrieving incorrect labels from <code><a href="../reference/term_labels.html">get_term_labels()</a></code> for models that used unlabelled data in combination with other contrasts than the default option.</li>
 <li>
-<code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> no longer returns <code>"NULL"</code> for multivariate-response-models fitted with <em>brms</em>.</li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> no longer returns <code>"NULL"</code> for multivariate-response-models fitted with <em>brms</em>.</li>
 </ul>
 </div>
 </div>
@@ -439,12 +470,12 @@
 <a href="#changes-to-functions-8" class="anchor"></a>Changes to functions</h2>
 <ul>
 <li>
-<code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> now support <code>clm</code>-objects from package <em>ordinal</em>, <code>polr</code>-objects from package <em>MASS</em> and <code>Zelig-relogit</code>-objects from package <em>Zelig</em>.</li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> and <code><a href="../reference/term_labels.html">get_term_labels()</a></code> now support <code>clm</code>-objects from package <em>ordinal</em>, <code>polr</code>-objects from package <em>MASS</em> and <code>Zelig-relogit</code>-objects from package <em>Zelig</em>.</li>
 <li>
-<code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> get a <code>...</code>-argument to pass down further arguments to <code><a href="https://rdrr.io/pkg/snakecase/man/to_any_case.html">snakecase::to_any_case()</a></code>.</li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> and <code><a href="../reference/term_labels.html">get_term_labels()</a></code> get a <code>...</code>-argument to pass down further arguments to <code><a href="https://rdrr.io/pkg/snakecase/man/to_any_case.html">snakecase::to_any_case()</a></code>.</li>
 <li>
 <code><a href="../reference/convert_case.html">convert_case()</a></code> is now exported, for usage in other packages as well.</li>
-<li>Remove <code>protect</code>-argument from internal case conversion (affects <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code>), in preparation for forthcoming <em>snakecase</em>-package update.</li>
+<li>Remove <code>protect</code>-argument from internal case conversion (affects <code><a href="../reference/term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/term_labels.html">get_dv_labels()</a></code>), in preparation for forthcoming <em>snakecase</em>-package update.</li>
 </ul>
 </div>
 </div>
@@ -460,9 +491,9 @@
 <li>Revised <code>lbl_df()</code> due to changes in the internals of <code><a href="https://tibble.tidyverse.org/reference/formatting.html">tibble::trunc_mat()</a></code>.</li>
 </ul>
 </div>
-<div id="new-functions-3" class="section level2">
+<div id="new-functions-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions-3" class="anchor"></a>New functions</h2>
+<a href="#new-functions-4" class="anchor"></a>New functions</h2>
 <ul>
 <li>
 <code><a href="../reference/as_factor.html">as_factor()</a></code> to convert labelled vectors into factors, preserving labels.</li>
@@ -473,7 +504,7 @@
 <a href="#changes-to-functions-9" class="anchor"></a>Changes to functions</h2>
 <ul>
 <li>
-<code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> now supports <code>brmsfit</code>-objects from package <code>brms</code>.</li>
+<code><a href="../reference/term_labels.html">get_dv_labels()</a></code> now supports <code>brmsfit</code>-objects from package <code>brms</code>.</li>
 </ul>
 </div>
 </div>
@@ -486,15 +517,15 @@
 <a href="#changes-to-functions-10" class="anchor"></a>Changes to functions</h2>
 <ul>
 <li>
-<code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> now includes variable names for factors with numeric factor levels only (and not only return the numeric level as term label).</li>
+<code><a href="../reference/term_labels.html">get_term_labels()</a></code> now includes variable names for factors with numeric factor levels only (and not only return the numeric level as term label).</li>
 </ul>
 </div>
-<div id="bug-fixes-7" class="section level2">
+<div id="bug-fixes-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-9" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fixed bug for <code><a href="../reference/as_label.html">as_label()</a></code>, when <code>x</code> was a character vector and argument <code>drop.levels</code> was <code>TRUE</code>.</li>
-<li>Fixed issue for <em>lme</em> and <em>gls</em> objects in <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code>.</li>
+<li>Fixed issue for <em>lme</em> and <em>gls</em> objects in <code><a href="../reference/term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/term_labels.html">get_dv_labels()</a></code>.</li>
 </ul>
 </div>
 </div>
@@ -526,7 +557,7 @@
 <a href="#changes-to-functions-11" class="anchor"></a>Changes to functions</h2>
 <ul>
 <li>
-<code><a href="../reference/get_label.html">get_label()</a></code>, <code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> get a <code>case</code>-argument, to convert labels into any case, using the <a href="https://cran.r-project.org/package=snakecase">snakecase</a>-package.</li>
+<code><a href="../reference/get_label.html">get_label()</a></code>, <code><a href="../reference/term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/term_labels.html">get_dv_labels()</a></code> get a <code>case</code>-argument, to convert labels into any case, using the <a href="https://cran.r-project.org/package=snakecase">snakecase</a>-package.</li>
 </ul>
 </div>
 </div>
@@ -541,12 +572,12 @@
 <li>Removed function ‘var_rename()’, which is in pkg ‘sjmisc’.</li>
 </ul>
 </div>
-<div id="new-functions-4" class="section level2">
+<div id="new-functions-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions-4" class="anchor"></a>New functions</h2>
+<a href="#new-functions-5" class="anchor"></a>New functions</h2>
 <ul>
 <li>
-<code><a href="../reference/get_term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/get_term_labels.html">get_dv_labels()</a></code> to retrieve term labels from regression models.</li>
+<code><a href="../reference/term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/term_labels.html">get_dv_labels()</a></code> to retrieve term labels from regression models.</li>
 </ul>
 </div>
 <div id="changes-to-functions-12" class="section level2">
@@ -576,6 +607,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#sjlabelled-113">1.1.3</a></li>
         <li><a href="#sjlabelled-112">1.1.2</a></li>
         <li><a href="#sjlabelled-111">1.1.1</a></li>
         <li><a href="#sjlabelled-110">1.1.0</a></li>

@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -246,24 +246,26 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; <span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=40  valid N=40  mean=2.75  sd=1.10
 #&gt; 
-#&gt; </span><span> val frq raw.prc valid.prc cum.prc
-#&gt;    1   8      20        20      20
-#&gt;    2   6      15        15      35
-#&gt;    3  14      35        35      70
-#&gt;    4  12      30        30     100
-#&gt;   NA   0       0        NA      NA
+#&gt; </span><span>Value |  N | Raw % | Valid % | Cum. %
+#&gt; -------------------------------------
+#&gt;     1 |  8 |    20 |      20 |     20
+#&gt;     2 |  6 |    15 |      15 |     35
+#&gt;     3 | 14 |    35 |      35 |     70
+#&gt;     4 | 12 |    30 |      30 |    100
+#&gt;  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='no'>dummy</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span>))
 <span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='no'>dummy</span>)</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=40  valid N=40  mean=2.75  sd=1.10
 #&gt; 
-#&gt; </span><span> val    label frq raw.prc valid.prc cum.prc
-#&gt;    1 very low   8      20        20      20
-#&gt;    2      low   6      15        15      35
-#&gt;    3      mid  14      35        35      70
-#&gt;    4       hi  12      30        30     100
-#&gt;   NA     &lt;NA&gt;   0       0        NA      NA
+#&gt; </span><span>Value |    Label |  N | Raw % | Valid % | Cum. %
+#&gt; ------------------------------------------------
+#&gt;     1 | very low |  8 |    20 |      20 |     20
+#&gt;     2 |      low |  6 |    15 |      15 |     35
+#&gt;     3 |      mid | 14 |    35 |      35 |     70
+#&gt;     4 |       hi | 12 |    30 |      30 |    100
+#&gt;  &lt;NA&gt; |     &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='co'># assign labels with named vector</span>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>40</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
@@ -272,12 +274,13 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=40  valid N=40  mean=2.48  sd=1.04
 #&gt; 
-#&gt; </span><span> val     label frq raw.prc valid.prc cum.prc
-#&gt;    1  very low   8    20.0      20.0    20.0
-#&gt;    2         2  13    32.5      32.5    52.5
-#&gt;    3         3  11    27.5      27.5    80.0
-#&gt;    4 very high   8    20.0      20.0   100.0
-#&gt;   NA      &lt;NA&gt;   0     0.0        NA      NA
+#&gt; </span><span>Value |     Label |  N | Raw % | Valid % | Cum. %
+#&gt; -------------------------------------------------
+#&gt;     1 |  very low |  8 | 20.00 |   20.00 |  20.00
+#&gt;     2 |         2 | 13 | 32.50 |   32.50 |  52.50
+#&gt;     3 |         3 | 11 | 27.50 |   27.50 |  80.00
+#&gt;     4 | very high |  8 | 20.00 |   20.00 | 100.00
+#&gt;  &lt;NA&gt; |      &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='co'># force using all labels, even if not all labels</span>
 <span class='co'># have associated values in vector</span>
@@ -290,10 +293,11 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;numeric&gt;
 #&gt; # total N=5  valid N=5  mean=2.40  sd=0.55
 #&gt; 
-#&gt; </span><span> val label frq raw.prc valid.prc cum.prc
-#&gt;    2     1   3      60        60      60
-#&gt;    3     2   2      40        40     100
-#&gt;   NA  &lt;NA&gt;   0       0        NA      NA
+#&gt; </span><span>Value | Label | N | Raw % | Valid % | Cum. %
+#&gt; --------------------------------------------
+#&gt;     2 |     1 | 3 |    60 |      60 |     60
+#&gt;     3 |     2 | 2 |    40 |      40 |    100
+#&gt;  &lt;NA&gt; |  &lt;NA&gt; | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='co'># all three value labels</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='no'>x</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1"</span>, <span class='st'>"2"</span>, <span class='st'>"3"</span>), <span class='kw'>force.labels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
@@ -304,11 +308,12 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;numeric&gt;
 #&gt; # total N=5  valid N=5  mean=2.40  sd=0.55
 #&gt; 
-#&gt; </span><span> val label frq raw.prc valid.prc cum.prc
-#&gt;    1     1   0       0         0       0
-#&gt;    2     2   3      60        60      60
-#&gt;    3     3   2      40        40     100
-#&gt;   NA  &lt;NA&gt;   0       0        NA      NA
+#&gt; </span><span>Value | Label | N | Raw % | Valid % | Cum. %
+#&gt; --------------------------------------------
+#&gt;     1 |     1 | 0 |     0 |       0 |      0
+#&gt;     2 |     2 | 3 |    60 |      60 |     60
+#&gt;     3 |     3 | 2 |    40 |      40 |    100
+#&gt;  &lt;NA&gt; |  &lt;NA&gt; | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='co'># create vector</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>NA</span>)
