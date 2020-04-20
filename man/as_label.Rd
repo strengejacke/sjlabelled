@@ -138,22 +138,22 @@ as_label(x, add.non.labelled = TRUE)
 
 
 # create labelled integer, with missing flag
-library(haven)
-x <- labelled(
-  c(1:3, tagged_na("a", "c", "z"), 4:1, 2:3),
-  c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
-    "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
-)
+if (require("haven")) {
+  x <- labelled(
+    c(1:3, tagged_na("a", "c", "z"), 4:1, 2:3),
+    c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
+      "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
+  )
 
-# to labelled factor, with missing labels
-as_label(x, drop.na = FALSE)
+  # to labelled factor, with missing labels
+  as_label(x, drop.na = FALSE)
 
-# to labelled factor, missings removed
-as_label(x, drop.na = TRUE)
+  # to labelled factor, missings removed
+  as_label(x, drop.na = TRUE)
 
-# keep missings, and use non-labelled values as well
-as_label(x, add.non.labelled = TRUE, drop.na = FALSE)
-
+  # keep missings, and use non-labelled values as well
+  as_label(x, add.non.labelled = TRUE, drop.na = FALSE)
+}
 
 # convert labelled character to factor
 dummy <- c("M", "F", "F", "X")

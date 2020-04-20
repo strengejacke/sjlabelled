@@ -51,10 +51,10 @@ As you can see in the above figure, the plot has neither axis nor legend labels.
 
 ```{r warning=FALSE, fig.height=6, fig.width=7}
 barplot(
-  table(as_label(efc$e42dep),
-        as_label(efc$e16sex)), 
-  beside = T, 
-  legend.text = T
+  table(sjlabelled::as_label(efc$e42dep),
+        sjlabelled::as_label(efc$e16sex)), 
+  beside = TRUE, 
+  legend.text = TRUE
 )
 ```
 
@@ -71,10 +71,10 @@ With this function, you can easily add titles to plots dynamically, i.e. dependi
 
 ```{r warning=FALSE, fig.height=6, fig.width=7}
 barplot(
-  table(as_label(efc$e42dep),
-        as_label(efc$e16sex)), 
-  beside = T, 
-  legend.text = T,
+  table(sjlabelled::as_label(efc$e42dep),
+        sjlabelled::as_label(efc$e16sex)), 
+  beside = TRUE, 
+  legend.text = TRUE,
   main = get_label(efc$e42dep)
 )
 ```

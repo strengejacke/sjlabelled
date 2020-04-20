@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,7 +48,6 @@
 
 <meta property="og:title" content="Changelog" />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -62,7 +65,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3.1</span>
       </span>
     </div>
 
@@ -114,7 +117,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/strengejacke/sjlabelled/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -128,24 +136,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/strengejacke/sjlabelled/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="sjlabelled-113" class="section level1">
-<h1 class="page-header">
-<a href="#sjlabelled-113" class="anchor"></a>sjlabelled 1.1.3<small> 2020-01-28 </small>
+    <div id="sjlabelled-114" class="section level1">
+<h1 class="page-header" data-toc-text="1.1.4">
+<a href="#sjlabelled-114" class="anchor"></a>sjlabelled 1.1.4<small> Unreleased </small>
 </h1>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fixed issues in <code><a href="../reference/add_labels.html">remove_labels()</a></code> when factor levels were strings.</li>
+</ul>
+</div>
+</div>
+    <div id="sjlabelled-113" class="section level1">
+<h1 class="page-header" data-toc-text="1.1.3">
+<a href="#sjlabelled-113" class="anchor"></a>sjlabelled 1.1.3<small> 2020-01-28 </small>
+</h1>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix warning from CRAN checks.</li>
 </ul>
 </div>
 </div>
     <div id="sjlabelled-112" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.1.2">
 <a href="#sjlabelled-112" class="anchor"></a>sjlabelled 1.1.2<small> 2020-01-17 </small>
 </h1>
 <div id="general" class="section level2">
@@ -176,16 +196,16 @@
 <li>The <code>read_*()</code> functions are now less verbose by default.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fixed issue in <code><a href="../reference/set_labels.html">set_labels()</a></code> for character vectors with numeric char-values that are larger than <code>9</code>.</li>
 </ul>
 </div>
 </div>
     <div id="sjlabelled-111" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.1.1">
 <a href="#sjlabelled-111" class="anchor"></a>sjlabelled 1.1.1<small> 2019-09-13 </small>
 </h1>
 <div id="changes-to-functions-1" class="section level2">
@@ -197,9 +217,9 @@
 <code><a href="../reference/read_spss.html">read_data()</a></code> is a shortcut that calls one of the <code>read_*()</code>-functions, depending on the file extension.</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix issue in <code><a href="../reference/as_label.html">as_label()</a></code> to prevent replacement recycling when labels were numeric.</li>
 <li>Fix issues with saving character vectors to SPSS files.</li>
@@ -207,7 +227,7 @@
 </div>
 </div>
     <div id="sjlabelled-110" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.1.0">
 <a href="#sjlabelled-110" class="anchor"></a>sjlabelled 1.1.0<small> 2019-06-06 </small>
 </h1>
 <div id="new-functions-1" class="section level2">
@@ -225,7 +245,7 @@
 </div>
 </div>
     <div id="sjlabelled-1017" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.17">
 <a href="#sjlabelled-1017" class="anchor"></a>sjlabelled 1.0.17<small> 2019-03-10 </small>
 </h1>
 <div id="general-1" class="section level2">
@@ -251,16 +271,16 @@
 <code><a href="../reference/as_label.html">as_label()</a></code> gets a <code>keep.labels</code>-argument. With this, users can easily convert vector to factors and vice versa, preserving label-attributes.</li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fixed bug with argument <code>use.labels</code> in <code><a href="../reference/as_numeric.html">as_numeric()</a></code>.</li>
 </ul>
 </div>
 </div>
     <div id="sjlabelled-1016" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.16">
 <a href="#sjlabelled-1016" class="anchor"></a>sjlabelled 1.0.16<small> 2019-01-10 </small>
 </h1>
 <div id="general-2" class="section level2">
@@ -289,7 +309,7 @@
 </div>
 </div>
     <div id="sjlabelled-1015" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.15">
 <a href="#sjlabelled-1015" class="anchor"></a>sjlabelled 1.0.15<small> 2018-11-22 </small>
 </h1>
 <div id="general-3" class="section level2">
@@ -299,16 +319,16 @@
 <li>Update code to the new class-attribute <code>haven_labelled</code> from the <strong>haven</strong>-package.</li>
 </ul>
 </div>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix issue in <code><a href="../reference/term_labels.html">get_term_labels()</a></code> that returned wrong object names for factors where factor levels did start with “1”.</li>
 </ul>
 </div>
 </div>
     <div id="sjlabelled-1014" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.14">
 <a href="#sjlabelled-1014" class="anchor"></a>sjlabelled 1.0.14<small> 2018-09-12 </small>
 </h1>
 <div id="general-4" class="section level2">
@@ -318,16 +338,16 @@
 <li>Reduce package dependencies.</li>
 </ul>
 </div>
-<div id="bug-fixes-5" class="section level2">
+<div id="bug-fixes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix bug in <code><a href="../reference/set_label.html">var_labels()</a></code>, where non-existing columns may lead to wrong labelling.</li>
 </ul>
 </div>
 </div>
     <div id="sjlabelled-1013" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.13">
 <a href="#sjlabelled-1013" class="anchor"></a>sjlabelled 1.0.13<small> 2018-08-11 </small>
 </h1>
 <div id="general-5" class="section level2">
@@ -347,16 +367,16 @@
 <li>The <code>read_*()</code>-functions get a <code>verbose</code>-argument, to show or hide the progressbar when imported datasets are converted.</li>
 </ul>
 </div>
-<div id="bug-fixes-6" class="section level2">
+<div id="bug-fixes-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-6" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Due to changes in the <em>broom</em> and <em>lmerTest</em> packages, tidiers did no longer work for <code>lmerModLmerTest</code> objects.</li>
 </ul>
 </div>
 </div>
     <div id="sjlabelled-1012" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.12">
 <a href="#sjlabelled-1012" class="anchor"></a>sjlabelled 1.0.12<small> 2018-07-08 </small>
 </h1>
 <div id="general-6" class="section level2">
@@ -375,7 +395,7 @@
 </div>
 </div>
     <div id="sjlabelled-1011" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.11">
 <a href="#sjlabelled-1011" class="anchor"></a>sjlabelled 1.0.11<small> 2018-06-06 </small>
 </h1>
 <div id="general-7" class="section level2">
@@ -396,9 +416,9 @@
 <code><a href="../reference/get_label.html">get_label()</a></code> now also returns name-attribute for empty labels if <code>x</code> was a data.frame.</li>
 </ul>
 </div>
-<div id="bug-fixes-7" class="section level2">
+<div id="bug-fixes-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-7" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-8" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code>write_*()</code>-functions should now properly set labels for negative values.</li>
@@ -406,7 +426,7 @@
 </div>
 </div>
     <div id="sjlabelled-109" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.9">
 <a href="#sjlabelled-109" class="anchor"></a>sjlabelled 1.0.9<small> 2018-04-24 </small>
 </h1>
 <div id="general-8" class="section level2">
@@ -425,9 +445,9 @@
 <code><a href="../reference/term_labels.html">get_term_labels()</a></code> gets a <code>prefix</code>-argument to prefix the returned labels of categorical variable either with the related variable name or label.</li>
 </ul>
 </div>
-<div id="bug-fixes-8" class="section level2">
+<div id="bug-fixes-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-8" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-9" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix issues with retrieving incorrect labels from <code><a href="../reference/term_labels.html">get_term_labels()</a></code> for models that used unlabelled data in combination with other contrasts than the default option.</li>
 <li>
@@ -436,7 +456,7 @@
 </div>
 </div>
     <div id="sjlabelled-108" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.8">
 <a href="#sjlabelled-108" class="anchor"></a>sjlabelled 1.0.8<small> 2018-02-26 </small>
 </h1>
 <div id="general-9" class="section level2">
@@ -448,21 +468,21 @@
 </div>
 </div>
     <div id="sjlabelled-107" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.7">
 <a href="#sjlabelled-107" class="anchor"></a>sjlabelled 1.0.7<small> 2018-01-31 </small>
 </h1>
 <div id="general-10" class="section level2">
 <h2 class="hasAnchor">
 <a href="#general-10" class="anchor"></a>General</h2>
 <ul>
-<li>Cross references from <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::select_helpers</a></code> were updated to <code><a href="https://rdrr.io/pkg/tidyselect/man/select_helpers.html">tidyselect::select_helpers</a></code>.</li>
+<li>Cross references from <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::select_helpers</a></code> were updated to <code><a href="https://tidyselect.r-lib.org/reference/select_helpers.html">tidyselect::select_helpers</a></code>.</li>
 <li>Replace deprecated arguments in <code><a href="../reference/convert_case.html">convert_case()</a></code> from call to package <em>snakecase</em>
 </li>
 </ul>
 </div>
 </div>
     <div id="sjlabelled-106" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.6">
 <a href="#sjlabelled-106" class="anchor"></a>sjlabelled 1.0.6<small> 2018-01-11 </small>
 </h1>
 <div id="changes-to-functions-8" class="section level2">
@@ -480,7 +500,7 @@
 </div>
 </div>
     <div id="sjlabelled-105" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.5">
 <a href="#sjlabelled-105" class="anchor"></a>sjlabelled 1.0.5<small> 2017-11-09 </small>
 </h1>
 <div id="general-11" class="section level2">
@@ -509,7 +529,7 @@
 </div>
 </div>
     <div id="sjlabelled-104" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.4">
 <a href="#sjlabelled-104" class="anchor"></a>sjlabelled 1.0.4<small> 2017-10-08 </small>
 </h1>
 <div id="changes-to-functions-10" class="section level2">
@@ -520,9 +540,9 @@
 <code><a href="../reference/term_labels.html">get_term_labels()</a></code> now includes variable names for factors with numeric factor levels only (and not only return the numeric level as term label).</li>
 </ul>
 </div>
-<div id="bug-fixes-9" class="section level2">
+<div id="bug-fixes-10" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-9" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-10" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fixed bug for <code><a href="../reference/as_label.html">as_label()</a></code>, when <code>x</code> was a character vector and argument <code>drop.levels</code> was <code>TRUE</code>.</li>
 <li>Fixed issue for <em>lme</em> and <em>gls</em> objects in <code><a href="../reference/term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/term_labels.html">get_dv_labels()</a></code>.</li>
@@ -530,7 +550,7 @@
 </div>
 </div>
     <div id="sjlabelled-103" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.3">
 <a href="#sjlabelled-103" class="anchor"></a>sjlabelled 1.0.3<small> 2017-09-19 </small>
 </h1>
 <div id="general-12" class="section level2">
@@ -542,7 +562,7 @@
 </div>
 </div>
     <div id="sjlabelled-102" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.2">
 <a href="#sjlabelled-102" class="anchor"></a>sjlabelled 1.0.2<small> 2017-09-11 </small>
 </h1>
 <div id="general-13" class="section level2">
@@ -562,7 +582,7 @@
 </div>
 </div>
     <div id="sjlabelled-101" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.1">
 <a href="#sjlabelled-101" class="anchor"></a>sjlabelled 1.0.1<small> 2017-07-07 </small>
 </h1>
 <div id="general-14" class="section level2">
@@ -590,7 +610,7 @@
 </div>
 </div>
     <div id="sjlabelled-100" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.0">
 <a href="#sjlabelled-100" class="anchor"></a>sjlabelled 1.0.0<small> 2017-06-12 </small>
 </h1>
 <div id="general-15" class="section level2">
@@ -603,33 +623,10 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#sjlabelled-113">1.1.3</a></li>
-        <li><a href="#sjlabelled-112">1.1.2</a></li>
-        <li><a href="#sjlabelled-111">1.1.1</a></li>
-        <li><a href="#sjlabelled-110">1.1.0</a></li>
-        <li><a href="#sjlabelled-1017">1.0.17</a></li>
-        <li><a href="#sjlabelled-1016">1.0.16</a></li>
-        <li><a href="#sjlabelled-1015">1.0.15</a></li>
-        <li><a href="#sjlabelled-1014">1.0.14</a></li>
-        <li><a href="#sjlabelled-1013">1.0.13</a></li>
-        <li><a href="#sjlabelled-1012">1.0.12</a></li>
-        <li><a href="#sjlabelled-1011">1.0.11</a></li>
-        <li><a href="#sjlabelled-109">1.0.9</a></li>
-        <li><a href="#sjlabelled-108">1.0.8</a></li>
-        <li><a href="#sjlabelled-107">1.0.7</a></li>
-        <li><a href="#sjlabelled-106">1.0.6</a></li>
-        <li><a href="#sjlabelled-105">1.0.5</a></li>
-        <li><a href="#sjlabelled-104">1.0.4</a></li>
-        <li><a href="#sjlabelled-103">1.0.3</a></li>
-        <li><a href="#sjlabelled-102">1.0.2</a></li>
-        <li><a href="#sjlabelled-101">1.0.1</a></li>
-        <li><a href="#sjlabelled-100">1.0.0</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -641,7 +638,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

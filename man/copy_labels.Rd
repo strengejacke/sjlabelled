@@ -36,7 +36,6 @@ In case \code{df_origin = NULL}, all possible label attributes
         from \code{df_new} are removed.
 }
 \examples{
-library(dplyr)
 data(efc)
 
 # create subset - drops label attributes
@@ -53,15 +52,14 @@ str(efc.sub)
 
 # create subset - drops label attributes
 efc.sub <- subset(efc, subset = e16sex == 1, select = c(4:8))
-# create subset with dplyr's select - attributes are preserved
-efc.sub2 <- select(efc, c160age, e42dep, neg_c_7, c82cop1, c84cop3)
-
-# copy labels from those columns that are available
-copy_labels(efc.sub, efc.sub2) \%>\% str()
+if (require("dplyr")) {
+  # create subset with dplyr's select - attributes are preserved
+  efc.sub2 <- select(efc, c160age, e42dep, neg_c_7, c82cop1, c84cop3)
+  # copy labels from those columns that are available
+  copy_labels(efc.sub, efc.sub2) \%>\% str()
+}
 
 # copy labels from only some columns
-copy_labels(efc.sub, efc, e42dep) \%>\% str()
-copy_labels(efc.sub, efc, -e17age) \%>\% str()
-
-
+str(copy_labels(efc.sub, efc, e42dep))
+str(copy_labels(efc.sub, efc, -e17age))
 }

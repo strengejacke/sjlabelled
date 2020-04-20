@@ -11,6 +11,11 @@ vignette: >
 
 ```{r echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+
+if (!requireNamespace("sjmisc", quietly = TRUE) ||
+    !requireNamespace("rlang", quietly = TRUE)) {
+  knitr::opts_chunk$set(eval = FALSE)
+}
 ```
 
 Labelling data is typically a task for end-users and is applied in own scripts or functions rather than in packages. However, sometimes it can be useful for both end-users and package developers to have a flexible way to add variable and value labels to their data. In such cases, [quasiquotation](https://adv-r.hadley.nz/quasiquotation.html) is helpful.

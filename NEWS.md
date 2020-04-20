@@ -3,6 +3,7 @@
 ## Bug fixes
 
 * Fixed issues in `remove_labels()` when factor levels were strings.
+* Fixed Namespace issues in vignettes.
 
 # sjlabelled 1.1.3
 

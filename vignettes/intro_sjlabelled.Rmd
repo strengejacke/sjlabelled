@@ -11,6 +11,12 @@ vignette: >
 
 ```{r echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+if (!requireNamespace("sjmisc", quietly = TRUE) ||
+    !requireNamespace("haven", quietly = TRUE) ||
+    !requireNamespace("magrittr", quietly = TRUE) ||
+    !requireNamespace("dplyr", quietly = TRUE)) {
+  knitr::opts_chunk$set(eval = FALSE)
+}
 ```
 
 This package provides functions to read and write data between R and other statistical software packages like _SPSS_, _SAS_ or _Stata_ and to work with labelled data; this includes easy ways to get and set label attributes, to convert labelled vectors into factors (and vice versa), or to deal with multiple declared missing values etc.
