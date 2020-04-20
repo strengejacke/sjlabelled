@@ -1,3 +1,9 @@
+# sjlabelled 1.1.4
+
+## Bug fixes
+
+* Fixed issues in `remove_labels()` when factor levels were strings.
+
 # sjlabelled 1.1.3
 
 ## Bug fixes

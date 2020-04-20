@@ -1,14 +1,17 @@
 #' @rdname add_labels
 #' @export
 remove_labels <- function(x, ..., labels) {
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    stop("Package 'haven' required for this function. Please install it.")
-  }
   # check for valid value. value must be a named vector
   if (is.null(labels)) stop("`labels` is NULL.", call. = F)
+
   # if value is NA, it must be tagged
   na.labels <- labels[is.na(labels)]
-  if (length(na.labels) && !all(haven::is_tagged_na(na.labels))) stop("`labels` must be a tagged NA.", call. = F)
+  if (length(na.labels)) {
+    if (!requireNamespace("haven", quietly = TRUE)) {
+      stop("Package 'haven' required for this function. Please install it.")
+    }
+    if (!all(haven::is_tagged_na(na.labels))) stop("`labels` must be a tagged NA.", call. = F)
+  }
 
   # evaluate arguments, generate data
   dots <- as.character(match.call(expand.dots = FALSE)$`...`)
@@ -62,11 +65,12 @@ remove_labels_helper <- function(x, labels) {
   # switch value and names attribute, since get_labels
   # returns the values as names, and the value labels
   # as "vector content"
-  all.labels <- as.numeric(names(current.labels))
+  all.labels <- names(current.labels)
+  if (.is_num_chr(all.labels)) all.labels <- as.numeric(all.labels)
   names(all.labels) <- as.character(current.labels)
 
   # sort labels by values
-  all.labels <- all.labels[order(as.numeric(all.labels))]
+  all.labels <- all.labels[order(all.labels)]
 
   # complete labels, including NA labels
   compl.lab <- c(all.labels, current.na)
