@@ -148,7 +148,6 @@ get_labels.default <- function(x, attr.only = FALSE, values = NULL,
 
 # Retrieve value labels of a data frame or variable
 # See 'get_labels'
-#' @importFrom haven is_tagged_na na_tag
 get_labels_helper <- function(x, attr.only, include.values, include.non.labelled, drop.na, drop.unused) {
 
   labels <- attr(x, "labels", exact = TRUE)
@@ -171,13 +170,10 @@ get_labels_helper <- function(x, attr.only, include.values, include.non.labelled
     }
   } else {
 
-    ## TODO enable later
-    # if (!requireNamespace("haven", quietly = TRUE)) {
-    #   stop("Package 'haven' required for this function. Please install it.")
-    # }
-
     # drop na?
-    if (drop.na) labels <- labels[!haven::is_tagged_na(labels)]
+    if (isTRUE(drop.na) && requireNamespace("haven", quietly = TRUE)) {
+      labels <- labels[!haven::is_tagged_na(labels)]
+    }
 
     # check if we have anything
     if (!is.null(labels) && length(labels) > 0) {
@@ -197,9 +193,11 @@ get_labels_helper <- function(x, attr.only, include.values, include.non.labelled
 
       # do we have any tagged NAs? If so, get tagged NAs
       # and annotate them properly
-      if (any(haven::is_tagged_na(values))) {
-        values[haven::is_tagged_na(values)] <-
-          paste0("NA(", haven::na_tag(values[haven::is_tagged_na(values)]), ")")
+      if (requireNamespace("haven", quietly = TRUE)) {
+        if (any(haven::is_tagged_na(values))) {
+          values[haven::is_tagged_na(values)] <-
+            paste0("NA(", haven::na_tag(values[haven::is_tagged_na(values)]), ")")
+        }
       }
 
       # do we want to include non-labelled values as well? if yes,

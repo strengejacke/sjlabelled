@@ -17,12 +17,11 @@ drop_labels <- function(x, ..., drop.na = TRUE) {
 }
 
 drop_labels_helper <- function(x, drop.na) {
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    stop("Package 'haven' required for this function. Please install it.")
-  }
   # retrieve named labels
   tidy.labels <- attr(x, "labels", exact = T)
-  tidy.labels <- tidy.labels[!haven::is_tagged_na(tidy.labels)]
+  if (requireNamespace("haven", quietly = TRUE)) {
+    tidy.labels <- tidy.labels[!haven::is_tagged_na(tidy.labels)]
+  }
 
   # return x, if no attribute
   if (is.null(tidy.labels)) return(x)
@@ -49,7 +48,7 @@ drop_labels_helper <- function(x, drop.na) {
   } else {
     attr(x, "labels") <- tidy.labels
 
-    # if labels, e.g. due to taggend NA, are no longer of same
+    # if labels, e.g. due to tagged NA, are no longer of same
     # type as labelled vector, remove labelled class attribute -
     # else, haven will throw errors
     if (inherits(x, c("labelled", "haven_labelled")) && typeof(x) != typeof(tidy.labels))
