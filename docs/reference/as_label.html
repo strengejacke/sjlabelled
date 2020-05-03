@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
       </span>
     </div>
 
@@ -299,20 +299,22 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, add.non.labelled = TRUE): unused argument (add.non.labelled = TRUE)</span></div><div class='input'>
 
 <span class='co'># create labelled integer, with missing flag</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>haven</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>, <span class='fl'>2</span>:<span class='fl'>3</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"c"</span>),
-    <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>))
-)
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"haven"</span>)) {
+  <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>, <span class='fl'>2</span>:<span class='fl'>3</span>),
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"c"</span>),
+      <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>))
+  )
 
-<span class='co'># to labelled factor, with missing labels</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.na = FALSE): unused argument (drop.na = FALSE)</span></div><div class='input'>
-<span class='co'># to labelled factor, missings removed</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.na = TRUE): unused argument (drop.na = TRUE)</span></div><div class='input'>
-<span class='co'># keep missings, and use non-labelled values as well</span>
-<span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, add.non.labelled = TRUE, drop.na = FALSE): unused arguments (add.non.labelled = TRUE, drop.na = FALSE)</span></div><div class='input'>
+  <span class='co'># to labelled factor, with missing labels</span>
+  <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
+  <span class='co'># to labelled factor, missings removed</span>
+  <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+  <span class='co'># keep missings, and use non-labelled values as well</span>
+  <span class='fu'>as_label</span>(<span class='no'>x</span>, <span class='kw'>add.non.labelled</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+}</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.na = FALSE): unused argument (drop.na = FALSE)</span></div><div class='input'>
 <span class='co'># convert labelled character to factor</span>
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"F"</span>, <span class='st'>"F"</span>, <span class='st'>"X"</span>)
 <span class='no'>dummy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(
