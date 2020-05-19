@@ -189,6 +189,9 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
   # get labels
   labels <- NULL
 
+  # Convert to character
+  x <- as.character(x)
+
   # keep missings?
   if (!drop.na) {
     # get NA
