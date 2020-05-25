@@ -253,6 +253,7 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
       # remove attributes
       x <- remove_all_labels(x)
     } else {
+      x <- as.character(x)
       for (i in seq_len(length(vl))) {
         #if label is number, prevents loop from replacing again
         x[x == vn[i]] <- paste0(vl[i], "_X_")

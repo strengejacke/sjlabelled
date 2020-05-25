@@ -435,8 +435,8 @@ get_value_range <- function(x) {
     maxval <- length(unique(stats::na.omit(x)))
   } else {
     # retrieve values
-    minval <- min(x, na.rm = TRUE)
-    maxval <- max(x, na.rm = TRUE)
+    minval <- as.numeric(min(x, na.rm = TRUE))
+    maxval <- as.numeric(max(x, na.rm = TRUE))
   }
   # determine value range
   valrange <- maxval - minval + 1
