@@ -191,27 +191,30 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
 
   # keep missings?
   if (!drop.na) {
-    # get NA
-    current.na <- get_na(x)
 
-    # any NA?
-    if (!is.null(current.na)) {
-      if (!requireNamespace("haven", quietly = TRUE)) {
-        stop("Package 'haven' required for this function. Please install it.")
-      }
-      # we have to set all NA labels at once, else NA loses tag
-      # so we prepare a dummy label-vector, where we copy all different
-      # NA labels to `x` afterwards
-      dummy_na <- rep("", times = length(x))
+    ## TODO enable replacing tagged NA again
 
-      # iterare NA
-      for (i in seq_len(length(current.na))) {
-        dummy_na[haven::na_tag(x) == haven::na_tag(current.na[i])] <- names(current.na)[i]
-      }
-
-      x[haven::is_tagged_na(x)] <- dummy_na[haven::is_tagged_na(x)]
-    }
-  } else {
+  #   # get NA
+  #   current.na <- get_na(x)
+  #
+  #   # any NA?
+  #   if (!is.null(current.na)) {
+  #     if (!requireNamespace("haven", quietly = TRUE)) {
+  #       stop("Package 'haven' required for this function. Please install it.")
+  #     }
+  #     # we have to set all NA labels at once, else NA loses tag
+  #     # so we prepare a dummy label-vector, where we copy all different
+  #     # NA labels to `x` afterwards
+  #     dummy_na <- rep("", times = length(x))
+  #
+  #     # iterare NA
+  #     for (i in seq_len(length(current.na))) {
+  #       dummy_na[haven::na_tag(x) == haven::na_tag(current.na[i])] <- names(current.na)[i]
+  #     }
+  #
+  #     x[haven::is_tagged_na(x)] <- dummy_na[haven::is_tagged_na(x)]
+  #   }
+  # } else {
     # in case x has tagged NA's we need to be sure to convert
     # those into regular NA's, because else saving would not work
     x[is.na(x)] <- NA
