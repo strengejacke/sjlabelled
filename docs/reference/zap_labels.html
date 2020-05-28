@@ -89,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.5</span>
       </span>
     </div>
 
@@ -186,7 +186,7 @@ with such vectors.</p></td>
 further processing. Required, if <code>x</code> is a data frame (and no
 vector) and only selected variables from <code>x</code> should be processed.
 You may also use functions like <code>:</code> or tidyselect's
-<code><a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>select_helpers</a></code>.
+<code><a href='https://tidyselect.r-lib.org/reference/language.html'>select_helpers</a></code>.
 See 'Examples'.</p></td>
     </tr>
     <tr>
@@ -1241,7 +1241,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>), <span class='fl'>4</span>:<span class='fl'>1</span>),
               <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Agreement"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='st'>"Unused"</span> <span class='kw'>=</span> <span class='fl'>5</span>,
                 <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>)))
-<span class='no'>x</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
+<span class='no'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]     1     2     3 NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -1249,20 +1249,20 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;      1    Agreement
 #&gt;      4 Disagreement
 #&gt;      5       Unused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='no'>x</span>, <span class='kw'>drop.na</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]     1     2     3 NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
 #&gt;  value        label
 #&gt;      1    Agreement
 #&gt;      4 Disagreement
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]     1     2     3 NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
 #&gt;  value        label
 #&gt;      1    Agreement
-#&gt;      4 Disagreement</div><div class='input'><span class='fu'><a href='zap_na_tags.html'>zap_na_tags</a></span>(<span class='fu'>drop_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+#&gt;      4 Disagreement</div><div class='input'><span class='fu'><a href='zap_na_tags.html'>zap_na_tags</a></span>(<span class='fu'>drop_labels</span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]  1  2  3 NA  4  3  2  1
 #&gt; 
 #&gt; Labels:
@@ -1280,7 +1280,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
     <span class='st'>"Refused"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> <span class='kw'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>))
   )
 <span class='co'># get current values and labels</span>
-<span class='no'>x</span></div><div class='output co'>#&gt; &lt;Labelled double&gt;
+<span class='no'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -1290,7 +1290,7 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;  NA(c)        First
 #&gt;  NA(a)      Refused
 #&gt;  NA(z)     Not home</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "Agreement"    "Disagreement"</div><div class='input'>
-<span class='fu'>fill_labels</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; &lt;Labelled double&gt;
+<span class='fu'>fill_labels</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:

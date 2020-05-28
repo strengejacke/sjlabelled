@@ -5,3 +5,12 @@
 ^pkgdown$
 ^docs$
 ^_pkgdown\.yml$
+
+^LICENSE
+^README.rmd
+^Meta$
+^doc$
+^docs$
+^paper$
+^.github$
+^.git$
