@@ -23,7 +23,7 @@ val_labels(x, ..., force.labels = FALSE, force.values = TRUE, drop.na = TRUE)
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect:select_helpers]{select_helpers}}. \cr \cr For \code{val_labels()},
+select-helpers. \cr \cr For \code{val_labels()},
 pairs of named vectors, where the name equals the variable name, which
 should be labelled, and the value is the new variable label. \code{val_labels()}
 also supports quasi-quotation (see 'Examples').}

@@ -8,8 +8,7 @@
 #' @param ... Optional, unquoted names of variables that should be selected for
 #'          further processing. Required, if \code{x} is a data frame (and no
 #'          vector) and only selected variables from \code{x} should be processed.
-#'          You may also use functions like \code{:} or tidyselect's
-#'          \code{\link[tidyselect:select_helpers]{select_helpers}}.
+#'          You may also use functions like \code{:} or tidyselect's select-helpers.
 #'          See 'Examples'.
 #' @param add.non.labelled Logical, if \code{TRUE}, non-labelled values also
 #'          get value labels.
@@ -75,6 +74,11 @@
 as_factor <- function(x, ...) {
   UseMethod("as_factor")
 }
+
+
+#' @rdname as_factor
+#' @export
+to_factor <- as_factor
 
 
 #' @export

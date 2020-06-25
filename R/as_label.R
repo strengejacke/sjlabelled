@@ -152,6 +152,11 @@ as_label <- function(x, ...) {
 }
 
 
+#' @rdname as_label
+#' @export
+to_label <- as_label
+
+
 #' @export
 as_label.default <- function(x, add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, keep.labels = FALSE, ...) {
   as_label_helper(x, add.non.labelled, prefix, var.label, drop.na, drop.levels, keep.labels)

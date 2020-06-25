@@ -12,8 +12,7 @@ tidy_labels(x, ..., sep = "_", remove = FALSE)
 \item{...}{Optional, unquoted names of variables that should be selected for
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
-You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect:select_helpers]{select_helpers}}.
+You may also use functions like \code{:} or tidyselect's select-helpers.
 See 'Examples'.}
 
 \item{sep}{String that will be used to separate the suffixed value from the

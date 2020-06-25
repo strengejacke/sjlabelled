@@ -2,10 +2,13 @@
 % Please edit documentation in R/as_numeric.R
 \name{as_numeric}
 \alias{as_numeric}
+\alias{to_numeric}
 \alias{as_numeric.data.frame}
 \title{Convert factors to numeric variables}
 \usage{
 as_numeric(x, ...)
+
+to_numeric(x, ...)
 
 \method{as_numeric}{data.frame}(x, ..., start.at = NULL, keep.labels = TRUE, use.labels = FALSE)
 }
@@ -15,8 +18,7 @@ as_numeric(x, ...)
 \item{...}{Optional, unquoted names of variables that should be selected for
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
-You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect:select_helpers]{select_helpers}}.
+You may also use functions like \code{:} or tidyselect's select-helpers.
 See 'Examples'.}
 
 \item{start.at}{Starting index, i.e. the lowest numeric value of the variable's

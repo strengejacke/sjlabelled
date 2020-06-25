@@ -2,10 +2,13 @@
 % Please edit documentation in R/as_factor.R
 \name{as_factor}
 \alias{as_factor}
+\alias{to_factor}
 \alias{as_factor.data.frame}
 \title{Convert variable into factor and keep value labels}
 \usage{
 as_factor(x, ...)
+
+to_factor(x, ...)
 
 \method{as_factor}{data.frame}(x, ..., add.non.labelled = FALSE)
 }
@@ -15,8 +18,7 @@ as_factor(x, ...)
 \item{...}{Optional, unquoted names of variables that should be selected for
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
-You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect:select_helpers]{select_helpers}}.
+You may also use functions like \code{:} or tidyselect's select-helpers.
 See 'Examples'.}
 
 \item{add.non.labelled}{Logical, if \code{TRUE}, non-labelled values also

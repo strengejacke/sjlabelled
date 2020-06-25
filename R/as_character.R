@@ -5,6 +5,11 @@ as_character <- function(x, ...) {
 }
 
 
+#' @rdname as_label
+#' @export
+to_character <- as_character
+
+
 #' @export
 as_character.default <- function(x, add.non.labelled = FALSE, prefix = FALSE, var.label = NULL, drop.na = TRUE, drop.levels = FALSE, ...) {
   as_character_helper(x, add.non.labelled, prefix, var.label, drop.na, drop.levels)

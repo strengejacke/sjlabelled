@@ -90,6 +90,11 @@ as_numeric <- function(x, ...) {
 }
 
 
+#' @rdname as_numeric
+#' @export
+to_numeric <- as_numeric
+
+
 #' @export
 as_numeric.default <- function(x, start.at = NULL, keep.labels = TRUE, use.labels = FALSE, ...) {
   as_numeric_helper(x, start.at, keep.labels, use.labels)

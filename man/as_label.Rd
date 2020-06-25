@@ -2,12 +2,16 @@
 % Please edit documentation in R/as_character.R, R/as_label.R
 \name{as_character}
 \alias{as_character}
+\alias{to_character}
 \alias{as_character.data.frame}
 \alias{as_label}
+\alias{to_label}
 \alias{as_label.data.frame}
 \title{Convert variable into factor with associated value labels}
 \usage{
 as_character(x, ...)
+
+to_character(x, ...)
 
 \method{as_character}{data.frame}(
   x,
@@ -21,6 +25,8 @@ as_character(x, ...)
 )
 
 as_label(x, ...)
+
+to_label(x, ...)
 
 \method{as_label}{data.frame}(
   x,
@@ -39,8 +45,7 @@ as_label(x, ...)
 \item{...}{Optional, unquoted names of variables that should be selected for
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
-You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect:select_helpers]{select_helpers}}.
+You may also use functions like \code{:} or tidyselect's select-helpers.
 See 'Examples'.}
 
 \item{add.non.labelled}{Logical, if \code{TRUE}, values without associated
