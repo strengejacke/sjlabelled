@@ -1,3 +1,9 @@
+# sjlabelled 1.1.6
+
+## General
+
+* Fix issue in `write_*()` functions that did not work since the last *haven*  update.
+
 # sjlabelled 1.1.5
 
 ## General
