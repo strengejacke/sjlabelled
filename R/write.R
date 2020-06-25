@@ -42,7 +42,7 @@ write_sas <- function(x, path, drop.na = FALSE) {
 
   # convert data to labelled
   # x <- as_label(x, add.non.labelled = T, drop.na = drop.na)
-  x <- as_labelled(x, add.labels = TRUE, skip.strings = TRUE)
+  x <- as_labelled(x, add.labels = TRUE, skip.strings = TRUE, add.class = TRUE)
 
   # check for correct column names
   for (i in seq_len(ncol(x))) {
