@@ -7,21 +7,21 @@
 zap_na_tags(x, ...)
 }
 \arguments{
-\item{x}{A \code{\link[haven]{labelled}} vector with \code{tagged_na}
+\item{x}{A \code{\link[haven:labelled]{labelled()}} vector with \code{tagged_na}
 values, or a data frame with such vectors.}
 
 \item{...}{Optional, unquoted names of variables that should be selected for
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect]{select_helpers}}.
+\code{\link[tidyselect:select_helpers]{select_helpers}}.
 See 'Examples'.}
 }
 \value{
 \code{x}, where all \code{tagged_na} values are converted to \code{NA}.
 }
 \description{
-Replaces all \code{\link[haven]{tagged_na}} values with
+Replaces all \code{\link[haven:tagged_na]{tagged_na()}} values with
                regular \code{NA}.
 }
 \examples{

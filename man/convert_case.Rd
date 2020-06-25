@@ -10,12 +10,12 @@ convert_case(lab, case = NULL, verbose = FALSE, ...)
 \item{lab}{Character vector that should be case converted.}
 
 \item{case}{Desired target case. Labels will automatically converted into the
-specified character case. See \code{\link[snakecase]{to_any_case}} for
+specified character case. See \code{\link[snakecase:to_any_case]{to_any_case()}} for
 more details on this argument.}
 
 \item{verbose}{Toggle warnings and messages on or off.}
 
-\item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
+\item{...}{Further arguments passed down to \code{to_any_case()},
 like \code{sep_in} or \code{sep_out}.}
 }
 \value{

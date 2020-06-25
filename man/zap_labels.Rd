@@ -16,18 +16,18 @@ zap_labels(x, ...)
 zap_unlabelled(x, ...)
 }
 \arguments{
-\item{x}{(partially) \code{\link[haven]{labelled}} vector or a data frame
+\item{x}{(partially) \code{\link[haven:labelled]{labelled()}} vector or a data frame
 with such vectors.}
 
 \item{...}{Optional, unquoted names of variables that should be selected for
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect]{select_helpers}}.
+\code{\link[tidyselect:select_helpers]{select_helpers}}.
 See 'Examples'.}
 
 \item{drop.na}{Logical, whether existing value labels of tagged NA values
-(see \code{\link[haven]{tagged_na}}) should be removed (\code{drop.na = TRUE},
+(see \code{\link[haven:tagged_na]{tagged_na}}) should be removed (\code{drop.na = TRUE},
 the default) or preserved (\code{drop.na = FALSE}).
 See \code{\link{get_na}} for more details on tagged NA values.}
 }

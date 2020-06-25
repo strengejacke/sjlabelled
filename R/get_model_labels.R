@@ -12,7 +12,7 @@
 #'        the value from a factor category (attribute value is \code{TRUE}) or
 #'        a term's variable labels (attribute value is \code{FALSE}).
 #' @param case Desired target case. Labels will automatically converted into the
-#'          specified character case. See \code{\link[snakecase]{to_any_case}} for
+#'          specified character case. See \code{\link[snakecase:to_any_case]{to_any_case()}} for
 #'          more details on this argument.
 #' @param prefix Indicates whether the value labels of categorical variables
 #'          should be prefixed, e.g. with the variable name or variable label.
@@ -20,7 +20,7 @@
 #' @param mv,multi.resp Logical, if \code{TRUE} and \code{models} is a multivariate
 #'          response model from a \code{brmsfit} object, then the labels for each
 #'          dependent variable (multiple responses) are returned.
-#' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
+#' @param ... Further arguments passed down to \code{to_any_case()},
 #'        like \code{preprocess} or \code{postprocess}.
 #'
 #' @return For \code{term_labels()}, a (named) character vector with

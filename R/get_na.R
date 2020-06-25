@@ -5,7 +5,7 @@
 #'                value labels from a labelled vector.
 #'
 #' @param x Variable (vector) with value label attributes, including
-#'          tagged missing values (see \code{\link[haven]{tagged_na}});
+#'          tagged missing values (see \code{\link[haven:tagged_na]{tagged_na()}});
 #'          or a data frame or list with such variables.
 #' @param as.tag Logical, if \code{TRUE}, the returned values are not tagged NA's,
 #'          but their string representative including the tag value. See 'Examples'.
@@ -18,7 +18,7 @@
 #'            different values, so it is possible to distinguish between these
 #'            missing types. In R, multiple declared missings cannot be represented
 #'            in a similar way with the regular missing values. However,
-#'            \code{\link[haven]{tagged_na}} values can do this.
+#'            \code{tagged_na()} values can do this.
 #'            Tagged \code{NA}s work exactly like regular R missing values
 #'            except that they store one additional byte of information: a tag,
 #'            which is usually a letter ("a" to "z") or character number ("0" to "9").

@@ -22,7 +22,7 @@ Convenient argument to work with pipe-chains (see 'Examples').}
 if \code{x} has no label attribute. By default, \code{NULL} is returned.}
 
 \item{case}{Desired target case. Labels will automatically converted into the
-specified character case. See \code{\link[snakecase]{to_any_case}} for
+specified character case. See \code{\link[snakecase:to_any_case]{to_any_case()}} for
 more details on this argument.}
 }
 \value{

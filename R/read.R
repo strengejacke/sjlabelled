@@ -13,7 +13,7 @@
 #' @param drop.labels Logical, if \code{TRUE}, unused value labels are removed. See
 #'   \code{\link{drop_labels}}.
 #' @param tag.na Logical, if \code{TRUE}, missing values are imported
-#'    as \code{\link[haven]{tagged_na}} values; else, missing values are
+#'    as \code{\link[haven:tagged_na]{tagged_na}} values; else, missing values are
 #'    converted to regular \code{NA} (default behaviour).
 #' @param path.cat Optional, the file path to the SAS catalog file.
 #' @param enc The character encoding used for the file. This defaults to the encoding

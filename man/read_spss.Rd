@@ -52,7 +52,7 @@ converted to factors.}
 \code{\link{drop_labels}}.}
 
 \item{tag.na}{Logical, if \code{TRUE}, missing values are imported
-as \code{\link[haven]{tagged_na}} values; else, missing values are
+as \code{\link[haven:tagged_na]{tagged_na}} values; else, missing values are
 converted to regular \code{NA} (default behaviour).}
 
 \item{enc}{The character encoding used for the file. This defaults to the encoding

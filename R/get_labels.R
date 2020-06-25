@@ -27,7 +27,7 @@
 #'          are returned. See 'Examples'.
 #' @param non.labelled Logical, if \code{TRUE}, values without labels will
 #'          also be included in the returned labels (see \code{\link{fill_labels}}).
-#' @param drop.na Logical, whether labels of tagged NA values (see \code{\link[haven]{tagged_na}})
+#' @param drop.na Logical, whether labels of tagged NA values (see \code{\link[haven:tagged_na]{tagged_na()}})
 #'          should be included in the return value or not. By default, labelled
 #'          (tagged) missing values are not returned. See \code{\link{get_na}}
 #'          for more details on tagged NA values.

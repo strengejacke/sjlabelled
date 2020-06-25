@@ -12,7 +12,7 @@
 #'                a partially labelled vector, i.e. if not all values are
 #'                labelled, non-labelled values get labels.
 #'
-#' @param x (partially) \code{\link[haven]{labelled}} vector or a data frame
+#' @param x (partially) \code{\link[haven:labelled]{labelled()}} vector or a data frame
 #'          with such vectors.
 #'
 #' @inheritParams add_labels
@@ -154,10 +154,10 @@ zap_unlabelled <- function(x, ...) {
 #' @title Convert tagged NA values into regular NA
 #' @name zap_na_tags
 #'
-#' @description Replaces all \code{\link[haven]{tagged_na}} values with
+#' @description Replaces all \code{\link[haven:tagged_na]{tagged_na()}} values with
 #'                regular \code{NA}.
 #'
-#' @param x A \code{\link[haven]{labelled}} vector with \code{tagged_na}
+#' @param x A \code{\link[haven:labelled]{labelled()}} vector with \code{tagged_na}
 #'            values, or a data frame with such vectors.
 #'
 #' @inheritParams add_labels

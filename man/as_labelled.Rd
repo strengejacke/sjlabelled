@@ -8,7 +8,7 @@ as_labelled(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE)
 }
 \arguments{
 \item{x}{Variable (vector), \code{data.frame} or \code{list} of variables
-that should be converted to \code{\link[haven]{labelled}}-class
+that should be converted to \code{\link[haven:labelled]{labelled()}}-class
 objects.}
 
 \item{add.labels}{Logical, if \code{TRUE}, non-labelled values will be

@@ -30,7 +30,7 @@
 #'   see vignette \href{https://cran.r-project.org/package=sjlabelled/vignettes/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}.
 #'
 #' @details \code{set_na()} converts all values defined in \code{na} with
-#'   a related \code{NA} or tagged NA value (see \code{\link[haven]{tagged_na}}).
+#'   a related \code{NA} or tagged NA value (see \code{\link[haven:tagged_na]{tagged_na()}}).
 #'   Tagged \code{NA}s work exactly like regular R missing values
 #'   except that they store one additional byte of information: a tag,
 #'   which is usually a letter ("a" to "z") or character number ("0" to "9").

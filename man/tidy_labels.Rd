@@ -13,7 +13,7 @@ tidy_labels(x, ..., sep = "_", remove = FALSE)
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect]{select_helpers}}.
+\code{\link[tidyselect:select_helpers]{select_helpers}}.
 See 'Examples'.}
 
 \item{sep}{String that will be used to separate the suffixed value from the
@@ -30,7 +30,7 @@ value label, but will become the value label itself). The
 \description{
 Duplicated value labels in variables may cause troubles when
              saving labelled data, or computing cross tabs (cf.
-             \code{\link[sjmisc]{flat_table}} or \code{\link[sjPlot]{plot_xtab}}).
+             \code{\link[sjmisc:flat_table]{flat_table()}} or \code{\link[sjPlot:plot_xtab]{plot_xtab()}}).
              \code{tidy_labels()} repairs duplicated value labels by suffixing
              them with the associated value.
 }

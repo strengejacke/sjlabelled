@@ -15,7 +15,7 @@
 #'          \item{For \code{remove_labels()}}{Either a numeric vector, indicating
 #'          the position of one or more label attributes that should be removed;
 #'          a character vector with names of label attributes that should be
-#'          removed; or a \code{\link[haven]{tagged_na}} to remove the labels
+#'          removed; or a \code{\link[haven:tagged_na]{tagged_na()}} to remove the labels
 #'          from specific NA values.}
 #'          }
 #'

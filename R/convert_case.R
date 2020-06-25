@@ -8,10 +8,10 @@
 #'
 #' @param lab Character vector that should be case converted.
 #' @param case Desired target case. Labels will automatically converted into the
-#'          specified character case. See \code{\link[snakecase]{to_any_case}} for
+#'          specified character case. See \code{\link[snakecase:to_any_case]{to_any_case()}} for
 #'          more details on this argument.
 #' @param verbose Toggle warnings and messages on or off.
-#' @param ... Further arguments passed down to \code{\link[snakecase]{to_any_case}},
+#' @param ... Further arguments passed down to \code{to_any_case()},
 #'        like \code{sep_in} or \code{sep_out}.
 #'
 #' @return \code{lab}, with converted case.

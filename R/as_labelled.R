@@ -5,7 +5,7 @@
 #'                class vector, resp. adds a \code{labelled} class-attribute.
 #'
 #' @param x Variable (vector), \code{data.frame} or \code{list} of variables
-#'          that should be converted to \code{\link[haven]{labelled}}-class
+#'          that should be converted to \code{\link[haven:labelled]{labelled()}}-class
 #'          objects.
 #' @param add.labels Logical, if \code{TRUE}, non-labelled values will be
 #'          labelled with the corresponding value.

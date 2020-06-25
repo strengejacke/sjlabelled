@@ -37,14 +37,14 @@ the value from a factor category (attribute value is \code{TRUE}) or
 a term's variable labels (attribute value is \code{FALSE}).}
 
 \item{case}{Desired target case. Labels will automatically converted into the
-specified character case. See \code{\link[snakecase]{to_any_case}} for
+specified character case. See \code{\link[snakecase:to_any_case]{to_any_case()}} for
 more details on this argument.}
 
 \item{prefix}{Indicates whether the value labels of categorical variables
 should be prefixed, e.g. with the variable name or variable label.
 May be abbreviated. See 'Examples',}
 
-\item{...}{Further arguments passed down to \code{\link[snakecase]{to_any_case}},
+\item{...}{Further arguments passed down to \code{to_any_case()},
 like \code{preprocess} or \code{postprocess}.}
 
 \item{mv, multi.resp}{Logical, if \code{TRUE} and \code{models} is a multivariate

@@ -23,7 +23,7 @@ val_labels(x, ..., force.labels = FALSE, force.values = TRUE, drop.na = TRUE)
 further processing. Required, if \code{x} is a data frame (and no
 vector) and only selected variables from \code{x} should be processed.
 You may also use functions like \code{:} or tidyselect's
-\code{\link[tidyselect]{select_helpers}}. \cr \cr For \code{val_labels()},
+\code{\link[tidyselect:select_helpers]{select_helpers}}. \cr \cr For \code{val_labels()},
 pairs of named vectors, where the name equals the variable name, which
 should be labelled, and the value is the new variable label. \code{val_labels()}
 also supports quasi-quotation (see 'Examples').}
@@ -51,7 +51,7 @@ by \code{labels} will be added as label as well. See 'Examples'.
 This parameter will be ignored, if \code{labels} is a named vector.}
 
 \item{drop.na}{Logical, whether existing value labels of tagged NA values
-(see \code{\link[haven]{tagged_na}}) should be removed (\code{drop.na = TRUE},
+(see \code{\link[haven:tagged_na]{tagged_na}}) should be removed (\code{drop.na = TRUE},
 the default) or preserved (\code{drop.na = FALSE}).
 See \code{\link{get_na}} for more details on tagged NA values.}
 }
