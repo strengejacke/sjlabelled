@@ -8,12 +8,14 @@
 #' @param path File path of the output file.
 #' @param version File version to use. Supports versions 8-14.
 #' @param drop.na Logical, if \code{TRUE}, tagged \code{NA} values with value labels
-#'          will be converted to regular NA's. Else, tagged \code{NA} values will be replaced
-#'          with their value labels. See 'Examples' and \code{\link{get_na}}.
+#'   will be converted to regular NA's. Else, tagged \code{NA} values will be replaced
+#'   with their value labels. See 'Examples' and \code{\link{get_na}}.
+#' @param compress Logical, if \code{TRUE} and a SPSS-file should be created,
+#'   saves \code{x} in \code{zsav} (i.e. compressed SPSS) format.
 #'
 #' @export
-write_spss <- function(x, path, drop.na = FALSE) {
-  .write_data(x = x, path = path, type = "spss", version = 14, drop.na = drop.na)
+write_spss <- function(x, path, drop.na = FALSE, compress = FALSE) {
+  .write_data(x = x, path = path, type = "spss", version = 14, drop.na = drop.na, compress = compress)
 }
 
 
@@ -31,7 +33,7 @@ write_sas <- function(x, path, drop.na = FALSE) {
 }
 
 
-.write_data <- function(x, path, type, version, drop.na) {
+.write_data <- function(x, path, type, version, drop.na, compress = FALSE) {
   if (!requireNamespace("haven", quietly = TRUE)) {
     stop("Package 'haven' required for this function. Please install it.")
   }
@@ -57,9 +59,13 @@ write_sas <- function(x, path, drop.na = FALSE) {
   # tell user
   message(sprintf("Writing %s file to '%s'. Please wait...", type, path))
 
+  if (tolower(tools::file_ext(path)) == "zsav") {
+    compress <- TRUE
+  }
+
   if (type == "spss") {
     # write SPSS
-    haven::write_sav(data = x, path = path)
+    haven::write_sav(data = x, path = path, compress = compress)
   } else if (type == "stata") {
     # write Stata
     haven::write_dta(data = x, path = path, version = version)
