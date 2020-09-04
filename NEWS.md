@@ -4,6 +4,7 @@
 
 * `write_spss()` gets a `compress` argument, to save data as compressed SPSS file (zsav-format).
 * The select-helper `num_range()` is now also supported.
+* Give proper warning when `set_labels()` was used on a vector with completely missing values.
 
 # sjlabelled 1.1.6
 
