@@ -240,8 +240,8 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
   if (is.null(labels) || length(labels) == 0) return(x)
 
   # valid vector?
-  if (is.null(x)) {
-    warning("can't add value labels to NULL vectors.", call. = T)
+  if (is.null(x) || all(is.na(x))) {
+    warning("Can't add value labels to NULL vectors or vector with only missing values.", call. = FALSE)
     return(x)
   }
 
@@ -300,7 +300,7 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
 
       # check for valid bounds of values
       if (is.infinite(valrange)) {
-        warning(sprintf("Can't set value labels for \"%s\". Infinite value range.", name.string), call. = T)
+        warning(sprintf("Can't set value labels for \"%s\". Infinite value range.", name.string), call. = FALSE)
 
         # check if we have named vector. in this
         # case, just add these values
