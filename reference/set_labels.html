@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -250,7 +250,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://strengejacke.github.io/sjmisc'>sjmisc</a></span>)
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace = <span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>dummy</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>dummy</span>)
+</div><div class='output co'>#&gt; 
 #&gt; <span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=40  valid N=40  mean=2.75  sd=1.10
 #&gt; 
@@ -263,7 +264,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>dummy</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span>))
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>dummy</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>dummy</span>)
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=40  valid N=40  mean=2.75  sd=1.10
 #&gt; 
@@ -278,7 +280,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='co'># assign labels with named vector</span>
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace = <span class='fl'>TRUE</span>)
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>dummy</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"very low"</span> = <span class='fl'>1</span>, <span class='st'>"very high"</span> = <span class='fl'>4</span>))
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>dummy</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>dummy</span>)
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=40  valid N=40  mean=2.48  sd=1.04
 #&gt; 
@@ -294,10 +297,13 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='co'># have associated values in vector</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>2</span>)
 <span class='co'># only two value labels</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1"</span>, <span class='st'>"2"</span>, <span class='st'>"3"</span>))</div><div class='output co'>#&gt; <span class='message'>More labels than values of "x". Using first 2 labels.</span></div><div class='input'><span class='kw'>x</span></div><div class='output co'>#&gt; [1] 2 2 3 3 2
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1"</span>, <span class='st'>"2"</span>, <span class='st'>"3"</span>))
+</div><div class='output co'>#&gt; <span class='message'>More labels than values of "x". Using first 2 labels.</span></div><div class='input'><span class='kw'>x</span>
+</div><div class='output co'>#&gt; [1] 2 2 3 3 2
 #&gt; attr(,"labels")
 #&gt; 1 2 
-#&gt; 2 3 </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; 
+#&gt; 2 3 </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;numeric&gt;
 #&gt; # total N=5  valid N=5  mean=2.40  sd=0.55
 #&gt; 
@@ -309,10 +315,12 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt; </div><div class='input'>
 <span class='co'># all three value labels</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1"</span>, <span class='st'>"2"</span>, <span class='st'>"3"</span>), force.labels = <span class='fl'>TRUE</span>)
-<span class='kw'>x</span></div><div class='output co'>#&gt; [1] 2 2 3 3 2
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; [1] 2 2 3 3 2
 #&gt; attr(,"labels")
 #&gt; 1 2 3 
-#&gt; 1 2 3 </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; 
+#&gt; 1 2 3 </div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;numeric&gt;
 #&gt; # total N=5  valid N=5  mean=2.40  sd=0.55
 #&gt; 
@@ -326,21 +334,27 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='co'># create vector</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>NA</span>)
 <span class='co'># add less labels than values</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>), force.values = <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'><span class='kw'>x</span></div><div class='output co'>#&gt; [1]  1  2  3  2  4 NA
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>), force.values = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'><span class='kw'>x</span>
+</div><div class='output co'>#&gt; [1]  1  2  3  2  4 NA
 #&gt; attr(,"labels")
 #&gt;   yes maybe    no 
 #&gt;     1     2     3 </div><div class='input'><span class='co'># add all necessary labels</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>), force.values = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>More values in "x" than length of "labels". Additional values were added to labels.</span></div><div class='input'><span class='kw'>x</span></div><div class='output co'>#&gt; [1]  1  2  3  2  4 NA
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>), force.values = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; <span class='message'>More values in "x" than length of "labels". Additional values were added to labels.</span></div><div class='input'><span class='kw'>x</span>
+</div><div class='output co'>#&gt; [1]  1  2  3  2  4 NA
 #&gt; attr(,"labels")
 #&gt;   yes maybe    no     4 
 #&gt;     1     2     3     4 </div><div class='input'>
 <span class='co'># set labels and missings</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='op'>-</span><span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>9</span>)
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Refused"</span>, <span class='st'>"One"</span>, <span class='st'>"Two"</span>, <span class='st'>"Three"</span>, <span class='st'>"Missing"</span>))
-<span class='kw'>x</span></div><div class='output co'>#&gt;  [1]  1  1  1  2  2 -2  3  3  3  3  3  9
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt;  [1]  1  1  1  2  2 -2  3  3  3  3  3  9
 #&gt; attr(,"labels")
 #&gt; Refused     One     Two   Three Missing 
-#&gt;      -2       1       2       3       9 </div><div class='input'><span class='fu'><a href='set_na.html'>set_na</a></span>(<span class='kw'>x</span>, na = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>2</span>, <span class='fl'>9</span>))</div><div class='output co'>#&gt;  [1]  1  1  1  2  2 NA  3  3  3  3  3 NA
+#&gt;      -2       1       2       3       9 </div><div class='input'><span class='fu'><a href='set_na.html'>set_na</a></span>(<span class='kw'>x</span>, na = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>2</span>, <span class='fl'>9</span>))
+</div><div class='output co'>#&gt;  [1]  1  1  1  2  2 NA  3  3  3  3  3 NA
 #&gt; attr(,"labels")
 #&gt;   One   Two Three 
 #&gt;     1     2     3 </div><div class='input'>
@@ -352,7 +366,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
     <span class='st'>"Refused"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>))
 )
 <span class='co'># get current NA values</span>
-<span class='kw'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -361,15 +376,18 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;      4 Disagreement
 #&gt;  NA(c)        First
 #&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'><a href='get_na.html'>get_na</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt;    First  Refused Not home 
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'><a href='get_na.html'>get_na</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;    First  Refused Not home 
 #&gt;       NA       NA       NA </div><div class='input'><span class='co'># lose value labels from tagged NA by default, if not specified</span>
-<span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"New Three"</span> = <span class='fl'>3</span>))</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
+<span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"New Three"</span> = <span class='fl'>3</span>))
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
 #&gt;  value     label
 #&gt;      3 New Three</div><div class='input'><span class='co'># do not drop na</span>
-<span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"New Three"</span> = <span class='fl'>3</span>), drop.na = <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
+<span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"New Three"</span> = <span class='fl'>3</span>), drop.na = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -382,7 +400,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='co'># set labels via named vector,</span>
 <span class='co'># not using all possible values</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)</div><div class='output co'>#&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)
+</div><div class='output co'>#&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
 #&gt; [4] "severely dependent"  </div><div class='input'>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>set_labels</span>(
   <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>,
@@ -390,7 +409,9 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
              `severe dependency` = <span class='fl'>2</span>,
              `missing value` = <span class='fl'>9</span>)
   )
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>, values = <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[9] missing value"    </div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>, values = <span class='st'>"p"</span>, non.labelled = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[3] 3"                
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>, values = <span class='st'>"p"</span>)
+</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[9] missing value"    </div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>, values = <span class='st'>"p"</span>, non.labelled = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; [1] "[1] independent"       "[2] severe dependency" "[3] 3"                
 #&gt; [4] "[4] 4"                 "[9] missing value"    </div><div class='input'>
 <span class='co'># labels can also be set for tagged NA value</span>
 <span class='co'># create numeric vector</span>
@@ -398,8 +419,10 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='co'># set 2 and 3 as missing, which will automatically set as</span>
 <span class='co'># tagged NA by 'set_na()'</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_na.html'>set_na</a></span>(<span class='kw'>x</span>, na = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>))
-<span class='kw'>x</span></div><div class='output co'>#&gt; [1]  1 NA NA  4</div><div class='input'><span class='co'># set label via named vector just for tagged NA(3)</span>
-<span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(`New Value` = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"3"</span>)))</div><div class='output co'>#&gt; [1]  1 NA NA  4
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; [1]  1 NA NA  4</div><div class='input'><span class='co'># set label via named vector just for tagged NA(3)</span>
+<span class='fu'>set_labels</span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(`New Value` = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"3"</span>)))
+</div><div class='output co'>#&gt; [1]  1 NA NA  4
 #&gt; attr(,"labels")
 #&gt; New Value 
 #&gt;        NA </div><div class='input'>
@@ -416,7 +439,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
   labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span>)
 )
 <span class='co'># see result...</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>test</span>)</div><div class='output co'>#&gt; $dummy1
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>test</span>)
+</div><div class='output co'>#&gt; $dummy1
 #&gt; [1] "very low" "low"      "mid"      "hi"      
 #&gt; 
 #&gt; $dummy2
@@ -436,7 +460,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
     <span class='op'>!</span><span class='op'>!</span><span class='kw'>x1</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"really low"</span>, <span class='st'>"low"</span>, <span class='st'>"a bit mid"</span>, <span class='st'>"hi"</span>),
     dummy3 = <span class='op'>!</span><span class='op'>!</span><span class='kw'>x2</span>
   ) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='get_labels.html'>get_labels</a></span>()</div><div class='output co'>#&gt; $dummy1
+  <span class='fu'><a href='get_labels.html'>get_labels</a></span>()
+</div><div class='output co'>#&gt; $dummy1
 #&gt; [1] "really low" "low"        "a bit mid"  "hi"        
 #&gt; 
 #&gt; $dummy2
@@ -451,7 +476,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
   <span class='fu'>val_labels</span>(
     <span class='op'>!</span><span class='op'>!</span><span class='kw'>x1</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"really low"</span> = <span class='fl'>1</span>, <span class='st'>"low"</span> = <span class='fl'>3</span>, <span class='st'>"a bit mid"</span> = <span class='fl'>2</span>, <span class='st'>"hi"</span> = <span class='fl'>4</span>),
     dummy3 = <span class='op'>!</span><span class='op'>!</span><span class='kw'>x2</span>
-  ) <span class='op'>%&gt;%</span> <span class='fu'><a href='get_labels.html'>get_labels</a></span>(values = <span class='st'>"p"</span>)</div><div class='output co'>#&gt; $dummy1
+  ) <span class='op'>%&gt;%</span> <span class='fu'><a href='get_labels.html'>get_labels</a></span>(values = <span class='st'>"p"</span>)
+</div><div class='output co'>#&gt; $dummy1
 #&gt; [1] "[1] really low" "[2] a bit mid"  "[3] low"        "[4] hi"        
 #&gt; 
 #&gt; $dummy2

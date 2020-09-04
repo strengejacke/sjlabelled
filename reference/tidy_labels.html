@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -196,7 +196,8 @@ value label, but will become the value label itself). The
   <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, size = <span class='fl'>20</span>, replace = <span class='fl'>TRUE</span>),
   labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"low"</span> = <span class='fl'>1</span>, <span class='st'>".."</span> = <span class='fl'>2</span>, <span class='st'>".."</span> = <span class='fl'>3</span>, <span class='st'>".."</span> = <span class='fl'>4</span>, <span class='st'>"high"</span> = <span class='fl'>5</span>)
 )
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; 
 #&gt; <span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=20  valid N=20  mean=2.80  sd=1.32
 #&gt; 
@@ -210,7 +211,8 @@ value label, but will become the value label itself). The
 #&gt;  &lt;NA&gt; |  &lt;NA&gt; | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='kw'>z</span> <span class='op'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='kw'>x</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>z</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>z</span>)
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=20  valid N=20  mean=2.80  sd=1.32
 #&gt; 
@@ -224,7 +226,8 @@ value label, but will become the value label itself). The
 #&gt;  &lt;NA&gt; |  &lt;NA&gt; | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='kw'>z</span> <span class='op'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='kw'>x</span>, sep = <span class='st'>"."</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>z</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>z</span>)
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=20  valid N=20  mean=2.80  sd=1.32
 #&gt; 
@@ -238,7 +241,8 @@ value label, but will become the value label itself). The
 #&gt;  &lt;NA&gt; |  &lt;NA&gt; | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'>
 <span class='kw'>z</span> <span class='op'>&lt;-</span> <span class='fu'>tidy_labels</span>(<span class='kw'>x</span>, remove = <span class='fl'>TRUE</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>z</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>z</span>)
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>x</span><span style='color: #0000BB;'> &lt;integer&gt;
 #&gt; # total N=20  valid N=20  mean=2.80  sd=1.32
 #&gt; 
@@ -250,7 +254,8 @@ value label, but will become the value label itself). The
 #&gt;     4 |     4 | 2 |    10 |      10 |     85
 #&gt;     5 |  high | 3 |    15 |      15 |    100
 #&gt;  &lt;NA&gt; |  &lt;NA&gt; | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;
-#&gt; </div><div class='input'></div></span></pre>
+#&gt; </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

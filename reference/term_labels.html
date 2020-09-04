@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -230,7 +230,8 @@ dependent variable (multiple responses) are returned.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
 
 <span class='kw'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='kw'>barthtot</span> <span class='op'>~</span> <span class='kw'>c160age</span> <span class='op'>+</span> <span class='kw'>c12hour</span> <span class='op'>+</span> <span class='kw'>c161sex</span> <span class='op'>+</span> <span class='kw'>c172code</span>, data = <span class='kw'>efc</span>)
-<span class='fu'>term_labels</span>(<span class='kw'>fit</span>)</div><div class='output co'>#&gt;                                    c160age 
+<span class='fu'>term_labels</span>(<span class='kw'>fit</span>)
+</div><div class='output co'>#&gt;                                    c160age 
 #&gt;                               "carer' age" 
 #&gt;                                    c12hour 
 #&gt; "average number of hours of care per week" 
@@ -242,7 +243,8 @@ dependent variable (multiple responses) are returned.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://strengejacke.github.io/sjmisc'>sjmisc</a></span>)
 <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>c172code</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as_factor.html'>to_factor</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>c172code</span>)
 <span class='kw'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='kw'>barthtot</span> <span class='op'>~</span> <span class='kw'>c160age</span> <span class='op'>+</span> <span class='kw'>c12hour</span> <span class='op'>+</span> <span class='kw'>c161sex</span> <span class='op'>+</span> <span class='kw'>c172code</span>, data = <span class='kw'>efc</span>)
-<span class='fu'>term_labels</span>(<span class='kw'>fit</span>)</div><div class='output co'>#&gt;                                    c160age 
+<span class='fu'>term_labels</span>(<span class='kw'>fit</span>)
+</div><div class='output co'>#&gt;                                    c160age 
 #&gt;                               "carer' age" 
 #&gt;                                    c12hour 
 #&gt; "average number of hours of care per week" 
@@ -257,7 +259,8 @@ dependent variable (multiple responses) are returned.</p></td>
 #&gt;                                  c172code3 
 #&gt;                  "high level of education" </div><div class='input'>
 <span class='co'># prefix value of categorical variables with variable name</span>
-<span class='fu'>term_labels</span>(<span class='kw'>fit</span>, prefix = <span class='st'>"varname"</span>)</div><div class='output co'>#&gt;                                     c160age 
+<span class='fu'>term_labels</span>(<span class='kw'>fit</span>, prefix = <span class='st'>"varname"</span>)
+</div><div class='output co'>#&gt;                                     c160age 
 #&gt;                                "carer' age" 
 #&gt;                                     c12hour 
 #&gt;  "average number of hours of care per week" 
@@ -272,7 +275,8 @@ dependent variable (multiple responses) are returned.</p></td>
 #&gt;                                   c172code3 
 #&gt;         "c172code: high level of education" </div><div class='input'>
 <span class='co'># prefix value of categorical variables with value label</span>
-<span class='fu'>term_labels</span>(<span class='kw'>fit</span>, prefix = <span class='st'>"label"</span>)</div><div class='output co'>#&gt;                                                       c160age 
+<span class='fu'>term_labels</span>(<span class='kw'>fit</span>, prefix = <span class='st'>"label"</span>)
+</div><div class='output co'>#&gt;                                                       c160age 
 #&gt;                                                  "carer' age" 
 #&gt;                                                       c12hour 
 #&gt;                    "average number of hours of care per week" 
@@ -287,7 +291,8 @@ dependent variable (multiple responses) are returned.</p></td>
 #&gt;                                                     c172code3 
 #&gt;         "carer's level of education: high level of education" </div><div class='input'>
 <span class='co'># get label of dv</span>
-<span class='fu'>response_labels</span>(<span class='kw'>fit</span>)</div><div class='output co'>#&gt; [1] "Total score BARTHEL INDEX"</div></pre>
+<span class='fu'>response_labels</span>(<span class='kw'>fit</span>)
+</div><div class='output co'>#&gt; [1] "Total score BARTHEL INDEX"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

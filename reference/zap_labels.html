@@ -89,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -214,7 +214,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
     <pre class="examples"><div class='input'><span class='co'># zap_labels() ----</span>
 
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)
+</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
 #&gt;  - attr(*, "label")= chr "elder's dependency"
 #&gt;  - attr(*, "labels")= Named num [1:4] 1 2 3 4
 #&gt;   ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"</div><div class='input'>
@@ -222,23 +223,32 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
   <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>,
   labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"independent"</span> = <span class='fl'>1</span>, <span class='st'>"severe dependency"</span> = <span class='fl'>4</span>)
 )
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; x
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; x
 #&gt;   1   2   3   4 
-#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
+#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
 #&gt;  - attr(*, "label")= chr "elder's dependency"
 #&gt;  - attr(*, "labels")= Named num [1:2] 1 4
 #&gt;   ..- attr(*, "names")= chr [1:2] "independent" "severe dependency"</div><div class='input'>
 <span class='co'># zap all labelled values</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>zap_labels</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>zap_labels</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; 
 #&gt;   1   2   3   4 
-#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_labels</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>zap_labels</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
+#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_labels</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>zap_labels</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...
 #&gt;  - attr(*, "label")= chr "elder's dependency"
 #&gt;  - attr(*, "labels")= Named num [1:2] 1 4
 #&gt;   ..- attr(*, "names")= chr [1:2] "independent" "severe dependency"</div><div class='input'>
 <span class='co'># zap all unlabelled values</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>zap_unlabelled</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>zap_unlabelled</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; 
 #&gt;   1   4 
-#&gt;  66 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_unlabelled</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>zap_unlabelled</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt;  num [1:908] NA NA NA 4 4 4 4 4 4 4 ...
+#&gt;  66 304 </div><div class='input'><span class='fu'><a href='get_values.html'>get_values</a></span>(<span class='fu'>zap_unlabelled</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; [1] 1 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>zap_unlabelled</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt;  num [1:908] NA NA NA 4 4 4 4 4 4 4 ...
 #&gt;  - attr(*, "label")= chr "elder's dependency"
 #&gt;  - attr(*, "labels")= Named num [1:2] 1 4
 #&gt;   ..- attr(*, "names")= chr [1:2] "independent" "severe dependency"</div><div class='input'>
@@ -250,7 +260,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
     <span class='kw'>e42dep</span>,
     labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"independent"</span> = <span class='fl'>1</span>, <span class='st'>"severe dependency"</span> = <span class='fl'>4</span>)
   ) <span class='op'>%&gt;%</span>
-  <span class='fu'>zap_labels</span>()</div><div class='output co'>#&gt;     c172code e42dep
+  <span class='fu'>zap_labels</span>()
+</div><div class='output co'>#&gt;     c172code e42dep
 #&gt; 1          2      3
 #&gt; 2          2      3
 #&gt; 3          1      3
@@ -1164,7 +1175,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://strengejacke.github.io/sjmisc'>sjmisc</a></span>)
 <span class='kw'>rp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/rec_pattern.html'>rec_pattern</a></span>(<span class='fl'>1</span>, <span class='fl'>100</span>)
-<span class='kw'>rp</span></div><div class='output co'>#&gt; $pattern
+<span class='kw'>rp</span>
+</div><div class='output co'>#&gt; $pattern
 #&gt; [1] "1:5=1;6:10=2;11:15=3;16:20=4;21:25=5;26:30=6;31:35=7;36:40=8;41:45=9;46:50=10;51:55=11;56:60=12;61:65=13;66:70=14;71:75=15;76:80=16;81:85=17;86:90=18;91:95=19;96:100=20;"
 #&gt; 
 #&gt; $labels
@@ -1184,7 +1196,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 
 <span class='co'># watch result. due to recode-pattern, we have age groups with</span>
 <span class='co'># no observations (zero-counts)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; 
 #&gt; <span style='color: #BB0000;'>carer' age (x)</span><span style='color: #0000BB;'> &lt;numeric&gt;
 #&gt; # total N=908  valid N=901  mean=11.07  sd=2.69
 #&gt; 
@@ -1212,7 +1225,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;    20 | 96-100 |   0 |  0.00 |    0.00 | 100.00
 #&gt;  &lt;NA&gt; |   &lt;NA&gt; |   7 |  0.77 |    &lt;NA&gt; |   &lt;NA&gt;
 #&gt; </div><div class='input'><span class='co'># now, let's drop zero's</span>
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='fu'>drop_labels</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/frq.html'>frq</a></span>(<span class='fu'>drop_labels</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; 
 #&gt; </span><span style='color: #BB0000;'>carer' age (x)</span><span style='color: #0000BB;'> &lt;numeric&gt;
 #&gt; # total N=908  valid N=901  mean=11.07  sd=2.69
 #&gt; 
@@ -1240,7 +1254,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>), <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span>),
               <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Agreement"</span> = <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> = <span class='fl'>4</span>, <span class='st'>"Unused"</span> = <span class='fl'>5</span>,
                 <span class='st'>"Not home"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>)))
-<span class='kw'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]     1     2     3 NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -1248,20 +1263,23 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;      1    Agreement
 #&gt;      4 Disagreement
 #&gt;      5       Unused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='kw'>x</span>, drop.na = <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='kw'>x</span>, drop.na = <span class='fl'>FALSE</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]     1     2     3 NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
 #&gt;  value        label
 #&gt;      1    Agreement
 #&gt;      4 Disagreement
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>drop_labels</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]     1     2     3 NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
 #&gt;  value        label
 #&gt;      1    Agreement
-#&gt;      4 Disagreement</div><div class='input'><span class='fu'><a href='zap_na_tags.html'>zap_na_tags</a></span>(<span class='fu'>drop_labels</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
+#&gt;      4 Disagreement</div><div class='input'><span class='fu'><a href='zap_na_tags.html'>zap_na_tags</a></span>(<span class='fu'>drop_labels</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[8]&gt;
 #&gt; [1]  1  2  3 NA  4  3  2  1
 #&gt; 
 #&gt; Labels:
@@ -1279,7 +1297,8 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
     <span class='st'>"Refused"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>))
   )
 <span class='co'># get current values and labels</span>
-<span class='kw'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -1288,8 +1307,10 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;      4 Disagreement
 #&gt;  NA(c)        First
 #&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; [1] "Agreement"    "Disagreement"</div><div class='input'>
-<span class='fu'>fill_labels</span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] "Agreement"    "Disagreement"</div><div class='input'>
+<span class='fu'>fill_labels</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -1300,8 +1321,10 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 #&gt;      4 Disagreement
 #&gt;  NA(c)        First
 #&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>fill_labels</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; [1] "Agreement"    "2"            "3"            "Disagreement"</div><div class='input'><span class='co'># same as</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>, non.labelled = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "Agreement"    "2"            "3"            "Disagreement"</div></span></pre>
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='fu'>fill_labels</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; [1] "Agreement"    "2"            "3"            "Disagreement"</div><div class='input'><span class='co'># same as</span>
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>x</span>, non.labelled = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; [1] "Agreement"    "2"            "3"            "Disagreement"</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

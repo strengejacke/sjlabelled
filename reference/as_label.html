@@ -87,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -261,31 +261,43 @@ allows users to quickly convert back factors to numeric vectors with
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>efc</span>)[<span class='st'>'c161sex'</span>])</div><div class='output co'>#&gt; $c161sex
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>efc</span>)[<span class='st'>'c161sex'</span>])
+</div><div class='output co'>#&gt; $c161sex
 #&gt; [1] "Male"   "Female"
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>c161sex</span>)</div><div class='output co'>#&gt; [1] 2 2 1 1 2 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>c161sex</span>))</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>efc</span>)[<span class='st'>'e42dep'</span>])</div><div class='output co'>#&gt; $e42dep
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>c161sex</span>)
+</div><div class='output co'>#&gt; [1] 2 2 1 1 2 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>c161sex</span>))
+</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>efc</span>)[<span class='st'>'e42dep'</span>])
+</div><div class='output co'>#&gt; $e42dep
 #&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
 #&gt; [4] "severely dependent"  
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)</div><div class='output co'>#&gt; 
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)
+</div><div class='output co'>#&gt; 
 #&gt;   1   2   3   4 
-#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))</div><div class='output co'>#&gt; 
+#&gt;  66 225 306 304 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))
+</div><div class='output co'>#&gt; 
 #&gt; &lt;dbl&gt; 
 #&gt;     1 </div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)</div><div class='output co'>#&gt; [1] 3 3 3 4 4 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)
+</div><div class='output co'>#&gt; [1] 3 3 3 4 4 4</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))
+</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
 <span class='co'># structure of numeric values won't be changed</span>
 <span class='co'># by this function, it only applies to labelled vectors</span>
 <span class='co'># (typically categorical or factor variables)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e17age</span>)</div><div class='output co'>#&gt;  num [1:908] 83 88 82 67 84 85 74 87 79 83 ...
-#&gt;  - attr(*, "label")= chr "elder' age"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e17age</span>))</div><div class='output co'>#&gt;  chr "&lt;dbl&gt;"</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e17age</span>)
+</div><div class='output co'>#&gt;  num [1:908] 83 88 82 67 84 85 74 87 79 83 ...
+#&gt;  - attr(*, "label")= chr "elder' age"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>as_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e17age</span>))
+</div><div class='output co'>#&gt;  chr "&lt;dbl&gt;"</div><div class='input'>
 
 <span class='co'># factor with non-numeric levels</span>
-<span class='fu'>as_label</span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>)))</div><div class='output co'>#&gt; [1] "&lt;fct&gt;"</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>)))
+</div><div class='output co'>#&gt; [1] "&lt;fct&gt;"</div><div class='input'>
 <span class='co'># factor with non-numeric levels, prefixed</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ape"</span>, <span class='st'>"bear"</span>, <span class='st'>"cat"</span>))
-<span class='fu'>as_label</span>(<span class='kw'>x</span>, prefix = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, prefix = TRUE): unused argument (prefix = TRUE)</span></div><div class='input'>
+<span class='fu'>as_label</span>(<span class='kw'>x</span>, prefix = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, prefix = TRUE): unused argument (prefix = TRUE)</span></div><div class='input'>
 
 <span class='co'># create vector</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>NA</span>)
@@ -295,11 +307,14 @@ allows users to quickly convert back factors to numeric vectors with
   labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>),
   force.labels = <span class='fl'>FALSE</span>,
   force.values = <span class='fl'>FALSE</span>
-)</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'>
+)
+</div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'>
 <span class='co'># convert to label w/o non-labelled values</span>
-<span class='fu'>as_label</span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
 <span class='co'># convert to label, including non-labelled values</span>
-<span class='fu'>as_label</span>(<span class='kw'>x</span>, add.non.labelled = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, add.non.labelled = TRUE): unused argument (add.non.labelled = TRUE)</span></div><div class='input'>
+<span class='fu'>as_label</span>(<span class='kw'>x</span>, add.non.labelled = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, add.non.labelled = TRUE): unused argument (add.non.labelled = TRUE)</span></div><div class='input'>
 
 <span class='co'># create labelled integer, with missing flag</span>
 <span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'><a href='http://haven.tidyverse.org'>"haven"</a></span>)) {
@@ -317,27 +332,33 @@ allows users to quickly convert back factors to numeric vectors with
 
   <span class='co'># keep missings, and use non-labelled values as well</span>
   <span class='fu'>as_label</span>(<span class='kw'>x</span>, add.non.labelled = <span class='fl'>TRUE</span>, drop.na = <span class='fl'>FALSE</span>)
-}</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.na = FALSE): unused argument (drop.na = FALSE)</span></div><div class='input'>
+}
+</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.na = FALSE): unused argument (drop.na = FALSE)</span></div><div class='input'>
 <span class='co'># convert labelled character to factor</span>
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M"</span>, <span class='st'>"F"</span>, <span class='st'>"F"</span>, <span class='st'>"X"</span>)
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(
   <span class='kw'>dummy</span>,
   labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(`M` = <span class='st'>"Male"</span>, `F` = <span class='st'>"Female"</span>, `X` = <span class='st'>"Refused"</span>)
 )
-<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>dummy</span>,, <span class='st'>"p"</span>)</div><div class='output co'>#&gt; [1] "[F] Female"  "[M] Male"    "[X] Refused"</div><div class='input'><span class='fu'>as_label</span>(<span class='kw'>dummy</span>)</div><div class='output co'>#&gt; [1] "&lt;chr&gt;"</div><div class='input'>
+<span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>dummy</span>,, <span class='st'>"p"</span>)
+</div><div class='output co'>#&gt; [1] "[F] Female"  "[M] Male"    "[X] Refused"</div><div class='input'><span class='fu'>as_label</span>(<span class='kw'>dummy</span>)
+</div><div class='output co'>#&gt; [1] "&lt;chr&gt;"</div><div class='input'>
 <span class='co'># drop unused factor levels, but preserve variable label</span>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>), levels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>))
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ape"</span>, <span class='st'>"bear"</span>, <span class='st'>"cat"</span>))
 <span class='fu'><a href='set_label.html'>set_label</a></span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='st'>"A factor!"</span>
-<span class='kw'>x</span></div><div class='output co'>#&gt; [1] a b c
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; [1] a b c
 #&gt; attr(,"labels")
 #&gt;  ape bear  cat 
 #&gt;    a    b    c 
 #&gt; attr(,"label")
 #&gt; [1] A factor!
-#&gt; Levels: a b c d</div><div class='input'><span class='fu'>as_label</span>(<span class='kw'>x</span>, drop.levels = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.levels = TRUE): unused argument (drop.levels = TRUE)</span></div><div class='input'>
+#&gt; Levels: a b c d</div><div class='input'><span class='fu'>as_label</span>(<span class='kw'>x</span>, drop.levels = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, drop.levels = TRUE): unused argument (drop.levels = TRUE)</span></div><div class='input'>
 <span class='co'># change variable label</span>
-<span class='fu'>as_label</span>(<span class='kw'>x</span>, var.label = <span class='st'>"New variable label!"</span>, drop.levels = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, var.label = "New variable label!", drop.levels = TRUE): unused arguments (var.label = "New variable label!", drop.levels = TRUE)</span></div><div class='input'>
+<span class='fu'>as_label</span>(<span class='kw'>x</span>, var.label = <span class='st'>"New variable label!"</span>, drop.levels = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, var.label = "New variable label!", drop.levels = TRUE): unused arguments (var.label = "New variable label!", drop.levels = TRUE)</span></div><div class='input'>
 
 <span class='co'># convert to numeric and back again, preserving label attributes</span>
 <span class='co'># *and* values in numeric vector</span>
@@ -345,20 +366,24 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(`null` = <span class='fl'>0</span>, `one` = <span class='fl'>1</span>, `four` = <span class='fl'>4</span>))
 
 <span class='co'># to factor</span>
-<span class='fu'>as_label</span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
+<span class='fu'>as_label</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; [1] "&lt;dbl&gt;"</div><div class='input'>
 <span class='co'># to factor, back to numeric - values are 1, 2 and 3,</span>
 <span class='co'># instead of original 0, 1 and 4</span>
-<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='kw'>x</span>))</div><div class='output co'>#&gt; [1] 1
+<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='kw'>x</span>))
+</div><div class='output co'>#&gt; [1] 1
 #&gt; attr(,"labels")
 #&gt; &lt;dbl&gt; 
 #&gt;     1 </div><div class='input'>
 <span class='co'># preserve label-attributes when converting to factor, use these attributes</span>
 <span class='co'># to restore original numeric values when converting back to numeric</span>
-<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='kw'>x</span>, keep.labels = <span class='fl'>TRUE</span>), use.labels = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, keep.labels = TRUE): unused argument (keep.labels = TRUE)</span></div><div class='input'>
+<span class='fu'><a href='as_numeric.html'>as_numeric</a></span>(<span class='fu'>as_label</span>(<span class='kw'>x</span>, keep.labels = <span class='fl'>TRUE</span>), use.labels = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in as_label(x, keep.labels = TRUE): unused argument (keep.labels = TRUE)</span></div><div class='input'>
 
 <span class='co'># easily coerce specific variables in a data frame to factor</span>
 <span class='co'># and keep other variables, with their class preserved</span>
-<span class='fu'>as_label</span>(<span class='kw'>efc</span>, <span class='kw'>e42dep</span>, <span class='kw'>e16sex</span>, <span class='kw'>c172code</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as_label(efc, e42dep, e16sex, c172code): unused arguments (e42dep, e16sex, c172code)</span></div></pre>
+<span class='fu'>as_label</span>(<span class='kw'>efc</span>, <span class='kw'>e42dep</span>, <span class='kw'>e16sex</span>, <span class='kw'>c172code</span>)
+</div><div class='output co'>#&gt; <span class='error'>Error in as_label(efc, e42dep, e16sex, c172code): unused arguments (e42dep, e16sex, c172code)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

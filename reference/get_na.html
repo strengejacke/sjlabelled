@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -192,7 +192,8 @@ but their string representative including the tag value. See 'Examples'.</p></td
               <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Agreement"</span> = <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> = <span class='fl'>4</span>, <span class='st'>"First"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"c"</span>),
                 <span class='st'>"Refused"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>)))
 <span class='co'># get current NA values</span>
-<span class='kw'>x</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
+<span class='kw'>x</span>
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -201,13 +202,16 @@ but their string representative including the tag value. See 'Examples'.</p></td
 #&gt;      4 Disagreement
 #&gt;  NA(c)        First
 #&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_na</span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt;    First  Refused Not home 
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_na</span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;    First  Refused Not home 
 #&gt;       NA       NA       NA </div><div class='input'><span class='co'># which NA has which tag?</span>
-<span class='fu'>get_na</span>(<span class='kw'>x</span>, as.tag = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;    First  Refused Not home 
+<span class='fu'>get_na</span>(<span class='kw'>x</span>, as.tag = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt;    First  Refused Not home 
 #&gt;  "NA(c)"  "NA(a)"  "NA(z)" </div><div class='input'>
 <span class='co'># replace only the NA, which is tagged as NA(c)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://strengejacke.github.io/sjmisc'>sjmisc</a></span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/replace_na.html'>replace_na</a></span>(<span class='kw'>x</span>, value = <span class='fl'>2</span>, tagged.na = <span class='st'>"c"</span>)</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
+<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/replace_na.html'>replace_na</a></span>(<span class='kw'>x</span>, value = <span class='fl'>2</span>, tagged.na = <span class='st'>"c"</span>)
+</div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a)     2 NA(z)     4     3     2     1
 #&gt; 
 #&gt; Labels:
@@ -215,12 +219,14 @@ but their string representative including the tag value. See 'Examples'.</p></td
 #&gt;      1    Agreement
 #&gt;      4 Disagreement
 #&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_na</span>(<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/replace_na.html'>replace_na</a></span>(<span class='kw'>x</span>, value = <span class='fl'>2</span>, tagged.na = <span class='st'>"c"</span>))</div><div class='output co'>#&gt;  Refused Not home 
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_na</span>(<span class='fu'><a href='https://rdrr.io/pkg/sjmisc/man/replace_na.html'>replace_na</a></span>(<span class='kw'>x</span>, value = <span class='fl'>2</span>, tagged.na = <span class='st'>"c"</span>))
+</div><div class='output co'>#&gt;  Refused Not home 
 #&gt;       NA       NA </div><div class='input'>
 <span class='co'># data frame as input</span>
 <span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>3</span><span class='op'>:</span><span class='fl'>1</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"y"</span>), <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span>),
               <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Agreement"</span> = <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> = <span class='fl'>4</span>, <span class='st'>"Why"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"y"</span>)))
-<span class='fu'>get_na</span>(<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>))</div><div class='output co'>#&gt; $x
+<span class='fu'>get_na</span>(<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>))
+</div><div class='output co'>#&gt; $x
 #&gt;    First  Refused Not home 
 #&gt;       NA       NA       NA 
 #&gt; 

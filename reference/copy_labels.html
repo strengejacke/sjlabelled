@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -193,7 +193,8 @@ See 'Examples'.</p></td>
 
 <span class='co'># create subset - drops label attributes</span>
 <span class='kw'>efc.sub</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span>(<span class='kw'>efc</span>, subset = <span class='kw'>e16sex</span> <span class='op'>==</span> <span class='fl'>1</span>, select = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span><span class='op'>:</span><span class='fl'>8</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc.sub</span>)</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc.sub</span>)
+</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...
 #&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...
@@ -201,7 +202,8 @@ See 'Examples'.</p></td>
 #&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</div><div class='input'>
 <span class='co'># copy back attributes from original dataframe</span>
 <span class='kw'>efc.sub</span> <span class='op'>&lt;-</span> <span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>, <span class='kw'>efc</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc.sub</span>)</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc.sub</span>)
+</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;   ..- attr(*, "label")= chr "elder' age"
 #&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...
@@ -221,7 +223,9 @@ See 'Examples'.</p></td>
 #&gt;   ..- attr(*, "labels")= Named num [1:4] 1 2 3 4
 #&gt;   .. ..- attr(*, "names")= chr [1:4] "Never" "Sometimes" "Often" "Always"</div><div class='input'>
 <span class='co'># remove all labels</span>
-<span class='kw'>efc.sub</span> <span class='op'>&lt;-</span> <span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>)</div><div class='output co'>#&gt; <span class='message'>Removing all variable and value labels from data frame.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc.sub</span>)</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
+<span class='kw'>efc.sub</span> <span class='op'>&lt;-</span> <span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>)
+</div><div class='output co'>#&gt; <span class='message'>Removing all variable and value labels from data frame.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>efc.sub</span>)
+</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...
 #&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...
@@ -234,7 +238,8 @@ See 'Examples'.</p></td>
   <span class='kw'>efc.sub2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='kw'>efc</span>, <span class='kw'>c160age</span>, <span class='kw'>e42dep</span>, <span class='kw'>neg_c_7</span>, <span class='kw'>c82cop1</span>, <span class='kw'>c84cop3</span>)
   <span class='co'># copy labels from those columns that are available</span>
   <span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>, <span class='kw'>efc.sub2</span>) <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>()
-}</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
+}
+</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...
 #&gt;   ..- attr(*, "label")= chr "elder's dependency"
@@ -250,7 +255,8 @@ See 'Examples'.</p></td>
 #&gt;   ..- attr(*, "labels")= Named num [1:4] 1 2 3 4
 #&gt;   .. ..- attr(*, "names")= chr [1:4] "Never" "Sometimes" "Often" "Always"</div><div class='input'>
 <span class='co'># copy labels from only some columns</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>, <span class='kw'>efc</span>, <span class='kw'>e42dep</span>))</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>, <span class='kw'>efc</span>, <span class='kw'>e42dep</span>))
+</div><div class='output co'>#&gt; 'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...
 #&gt;   ..- attr(*, "label")= chr "elder's dependency"
@@ -258,7 +264,8 @@ See 'Examples'.</p></td>
 #&gt;   .. ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"
 #&gt;  $ c82cop1: num  4 3 3 4 3 3 4 2 2 3 ...
 #&gt;  $ c83cop2: num  2 4 2 2 2 2 1 3 2 2 ...
-#&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>, <span class='kw'>efc</span>, <span class='op'>-</span><span class='kw'>e17age</span>))</div><div class='output co'>#&gt; <span style='color: #BB0000;'>1 variables were not found in the dataset: -e17age
+#&gt;  $ c84cop3: num  4 4 1 1 1 4 2 4 2 4 ...</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='fu'>copy_labels</span>(<span class='kw'>efc.sub</span>, <span class='kw'>efc</span>, <span class='op'>-</span><span class='kw'>e17age</span>))
+</div><div class='output co'>#&gt; <span style='color: #BB0000;'>1 variables were not found in the dataset: -e17age
 #&gt; </span><span>'data.frame':	296 obs. of  5 variables:
 #&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...
 #&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...

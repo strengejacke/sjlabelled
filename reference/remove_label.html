@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -178,7 +178,8 @@ See 'Examples'.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>efc</span>[, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>]
-<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt;                                    c12hour 
+<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;                                    c12hour 
 #&gt; "average number of hours of care per week" 
 #&gt;                                   e15relat 
 #&gt;                    "relationship to elder" 
@@ -187,7 +188,8 @@ See 'Examples'.</p></td>
 #&gt;                                     e17age 
 #&gt;                               "elder' age" 
 #&gt;                                     e42dep 
-#&gt;                       "elder's dependency" </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; 'data.frame':	908 obs. of  5 variables:
+#&gt;                       "elder's dependency" </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; 'data.frame':	908 obs. of  5 variables:
 #&gt;  $ c12hour : num  16 148 70 168 168 16 161 110 28 40 ...
 #&gt;   ..- attr(*, "label")= chr "average number of hours of care per week"
 #&gt;  $ e15relat: num  2 2 1 1 2 2 1 4 2 2 ...
@@ -205,8 +207,10 @@ See 'Examples'.</p></td>
 #&gt;   ..- attr(*, "labels")= Named num [1:4] 1 2 3 4
 #&gt;   .. ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"</div><div class='input'>
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'>remove_label</span>(<span class='kw'>x</span>)
-<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt;  c12hour e15relat   e16sex   e17age   e42dep 
-#&gt;       ""       ""       ""       ""       "" </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; 'data.frame':	908 obs. of  5 variables:
+<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt;  c12hour e15relat   e16sex   e17age   e42dep 
+#&gt;       ""       ""       ""       ""       "" </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>x</span>)
+</div><div class='output co'>#&gt; 'data.frame':	908 obs. of  5 variables:
 #&gt;  $ c12hour : num  16 148 70 168 168 16 161 110 28 40 ...
 #&gt;  $ e15relat: num  2 2 1 1 2 2 1 4 2 2 ...
 #&gt;   ..- attr(*, "labels")= Named num [1:8] 1 2 3 4 5 6 7 8

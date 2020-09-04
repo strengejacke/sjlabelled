@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
       </span>
     </div>
 
@@ -222,7 +222,8 @@ which should be labelled, and the value is the new variable label.</p></td>
   c = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace = <span class='fl'>TRUE</span>)
 )
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span>(<span class='kw'>dummy</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Variable A"</span>, <span class='st'>"Variable B"</span>, <span class='st'>"Variable C"</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>dummy</span>)</div><div class='output co'>#&gt; 'data.frame':	10 obs. of  3 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>dummy</span>)
+</div><div class='output co'>#&gt; 'data.frame':	10 obs. of  3 variables:
 #&gt;  $ a: int  2 1 2 3 2 4 1 2 1 4
 #&gt;   ..- attr(*, "label")= Named chr "Variable A"
 #&gt;   .. ..- attr(*, "names")= chr "a"
@@ -234,7 +235,8 @@ which should be labelled, and the value is the new variable label.</p></td>
 #&gt;   .. ..- attr(*, "names")= chr "c"</div><div class='input'>
 <span class='co'># remove one variable label</span>
 <span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span>(<span class='kw'>dummy</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Variable A"</span>, <span class='st'>""</span>, <span class='st'>"Variable C"</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>dummy</span>)</div><div class='output co'>#&gt; 'data.frame':	10 obs. of  3 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>dummy</span>)
+</div><div class='output co'>#&gt; 'data.frame':	10 obs. of  3 variables:
 #&gt;  $ a: int  2 1 2 3 2 4 1 2 1 4
 #&gt;   ..- attr(*, "label")= Named chr "Variable A"
 #&gt;   .. ..- attr(*, "names")= chr "a"
@@ -253,7 +255,8 @@ which should be labelled, and the value is the new variable label.</p></td>
 <span class='co'># and set variable labels for all three dummies</span>
 <span class='kw'>dummies</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span>(<span class='kw'>dummies</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"First Dummy"</span>, <span class='st'>"2nd Dummy"</span>, <span class='st'>"Third dummy"</span>))
 <span class='co'># see result...</span>
-<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>dummies</span>)</div><div class='output co'>#&gt; [1] "First Dummy" "2nd Dummy"   "Third dummy"</div><div class='input'>
+<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>dummies</span>)
+</div><div class='output co'>#&gt; [1] "First Dummy" "2nd Dummy"   "Third dummy"</div><div class='input'>
 
 <span class='co'># use 'var_labels()' to set labels within a pipe-workflow, and</span>
 <span class='co'># when you need "tidyverse-consistent" api.</span>
@@ -267,10 +270,12 @@ which should be labelled, and the value is the new variable label.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>magrittr</span>)
 <span class='kw'>dummy</span> <span class='op'>%&gt;%</span>
   <span class='fu'>var_labels</span>(a = <span class='st'>"First variable"</span>, c = <span class='st'>"third variable"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='get_label.html'>get_label</a></span>()</div><div class='output co'>#&gt;                a                b                c 
+  <span class='fu'><a href='get_label.html'>get_label</a></span>()
+</div><div class='output co'>#&gt;                a                b                c 
 #&gt; "First variable"               "" "third variable" </div><div class='input'>
 <span class='co'># with quasi-quotation</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://rlang.r-lib.org'>rlang</a></span>)</div><div class='output co'>#&gt; <span class='message'></span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://rlang.r-lib.org'>rlang</a></span>)
+</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘rlang’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:magrittr’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    set_names</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:sjmisc’:</span>
@@ -281,14 +286,17 @@ which should be labelled, and the value is the new variable label.</p></td>
 <span class='kw'>v2</span> <span class='op'>&lt;-</span> <span class='st'>"Third variable"</span>
 <span class='kw'>dummy</span> <span class='op'>%&gt;%</span>
   <span class='fu'>var_labels</span>(a = <span class='op'>!</span><span class='op'>!</span><span class='kw'>v1</span>, c = <span class='op'>!</span><span class='op'>!</span><span class='kw'>v2</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='get_label.html'>get_label</a></span>()</div><div class='output co'>#&gt;                a                b                c 
+  <span class='fu'><a href='get_label.html'>get_label</a></span>()
+</div><div class='output co'>#&gt;                a                b                c 
 #&gt; "First variable"               "" "Third variable" </div><div class='input'>
 <span class='kw'>x1</span> <span class='op'>&lt;-</span> <span class='st'>"a"</span>
 <span class='kw'>x2</span> <span class='op'>&lt;-</span> <span class='st'>"c"</span>
 <span class='kw'>dummy</span> <span class='op'>%&gt;%</span>
   <span class='fu'>var_labels</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>x1</span> <span class='op'>:=</span> <span class='op'>!</span><span class='op'>!</span><span class='kw'>v1</span>, <span class='op'>!</span><span class='op'>!</span><span class='kw'>x2</span> <span class='op'>:=</span> <span class='op'>!</span><span class='op'>!</span><span class='kw'>v2</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='get_label.html'>get_label</a></span>()</div><div class='output co'>#&gt;                a                b                c 
-#&gt; "First variable"               "" "Third variable" </div><div class='input'></div></pre>
+  <span class='fu'><a href='get_label.html'>get_label</a></span>()
+</div><div class='output co'>#&gt;                a                b                c 
+#&gt; "First variable"               "" "Third variable" </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
