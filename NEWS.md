@@ -3,6 +3,7 @@
 ## General
 
 * `write_spss()` gets a `compress` argument, to save data as compressed SPSS file (zsav-format).
+* The select-helper `num_range()` is now also supported.
 
 # sjlabelled 1.1.6
 
