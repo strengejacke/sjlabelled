@@ -1,7 +1,7 @@
 # sjlabelled - Labelled Data Utility Functions <img src="man/figures/logo.png" align="right" />
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/sjlabelled)](https://cran.r-project.org/package=sjlabelled) &#160;&#160; [![Documentation](https://img.shields.io/badge/documentation-sjlabelled-orange.svg?colorB=E91E63)](https://strengejacke.github.io/sjlabelled/) &#160;&#160; [![downloads](http://cranlogs.r-pkg.org/badges/sjlabelled)](http://cranlogs.r-pkg.org/)
-&#160;&#160; [![total](http://cranlogs.r-pkg.org/badges/grand-total/sjlabelled)](http://cranlogs.r-pkg.org/)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/sjlabelled)](https://cran.r-project.org/package=sjlabelled) &#160;&#160; [![Documentation](https://img.shields.io/badge/documentation-sjlabelled-orange.svg?colorB=E91E63)](https://strengejacke.github.io/sjlabelled/) &#160;&#160; [![downloads](https://cranlogs.r-pkg.org/badges/sjlabelled)](https://cranlogs.r-pkg.org/)
+&#160;&#160; [![total](https://cranlogs.r-pkg.org/badges/grand-total/sjlabelled)](https://cranlogs.r-pkg.org/)
 
 This package contains utility functions that are useful when working with labelled data (especially intended for people coming from 'SPSS', 'SAS' or 'Stata' and/or who are new to R).
 
