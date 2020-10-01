@@ -106,9 +106,9 @@ as_labelled_helper <- function(x, add.labels, add.class, skip.strings) {
   # get former class attributes
   xc <- class(x)
   if (add.class)
-    class(x) <- c(xc, "haven_labelled")
+    class(x) <- c(xc, "haven_labelled", "vctrs_vctr")
   else
-    class(x) <- "haven_labelled"
+    class(x) <- c("haven_labelled", "vctrs_vctr")
 
   x
 }
