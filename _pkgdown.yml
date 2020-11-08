@@ -7,6 +7,10 @@ template:
     bootswatch: cosmo
 
 reference:
+- title: "Introduction"
+  contents:
+  - sjlabelled-package
+
 - title: "Variable Labels"
   contents:
   - get_label
@@ -51,6 +55,7 @@ reference:
 - title: "Converting Labelled Variables"
   contents:
   - as_labelled
+  - convert_case
   - is_labelled
   - unlabel
   - zap_labels
@@ -62,3 +67,6 @@ reference:
   - read_data
   - write_spss
 
+- title: "Sample Data"
+  contents:
+  - efc
