@@ -80,19 +80,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -146,14 +140,14 @@
     <p>This function returns the value labels of labelled data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_labels</span>(
-  <span class='kw'>x</span>,
-  attr.only = <span class='fl'>FALSE</span>,
-  values = <span class='kw'>NULL</span>,
-  non.labelled = <span class='fl'>FALSE</span>,
-  drop.na = <span class='fl'>TRUE</span>,
-  drop.unused = <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_labels</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  attr.only <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  values <span class='op'>=</span> <span class='cn'>NULL</span>,
+  non.labelled <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  drop.na <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  drop.unused <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -226,29 +220,29 @@ the return value.</p></td>
 <span class='co'># retrieve value labels</span>
 <span class='co'># mydat.val &lt;- get_labels(mydat)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
-<span class='fu'>get_labels</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span>
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
 #&gt; [4] "severely dependent"  </div><div class='input'>
 <span class='co'># simple barplot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='get_labels-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># get value labels to annotate barplot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>),
-        names.arg = <span class='fu'>get_labels</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>),
-        main = <span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>,
+        names.arg <span class='op'>=</span> <span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>,
+        main <span class='op'>=</span> <span class='fu'><a href='get_label.html'>get_label</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='get_labels-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># include associated values</span>
-<span class='fu'>get_labels</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>, values = <span class='st'>"as.name"</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, values <span class='op'>=</span> <span class='st'>"as.name"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;                      1                      2                      3 
 #&gt;          "independent"   "slightly dependent" "moderately dependent" 
 #&gt;                      4 
 #&gt;   "severely dependent" </div><div class='input'>
 <span class='co'># include associated values</span>
-<span class='fu'>get_labels</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>, values = <span class='st'>"as.prefix"</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, values <span class='op'>=</span> <span class='st'>"as.prefix"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "[1] independent"          "[2] slightly dependent"  
 #&gt; [3] "[3] moderately dependent" "[4] severely dependent"  </div><div class='input'>
 <span class='co'># get labels from multiple variables</span>
-<span class='fu'>get_labels</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>, <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e16sex</span>, <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e15relat</span>))
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, <span class='va'>efc</span><span class='op'>$</span><span class='va'>e16sex</span>, <span class='va'>efc</span><span class='op'>$</span><span class='va'>e15relat</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
 #&gt; [4] "severely dependent"  
@@ -264,37 +258,37 @@ the return value.</p></td>
 #&gt; </div><div class='input'>
 
 <span class='co'># create a dummy factor</span>
-<span class='kw'>f1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hi"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>))
+<span class='va'>f1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"hi"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># search for label attributes only</span>
-<span class='fu'>get_labels</span>(<span class='kw'>f1</span>, attr.only = <span class='fl'>TRUE</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>f1</span>, attr.only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># search for factor levels as well</span>
-<span class='fu'>get_labels</span>(<span class='kw'>f1</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>f1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "hi"  "low" "mid"</div><div class='input'>
 <span class='co'># same for character vectors</span>
-<span class='kw'>c1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"higher"</span>, <span class='st'>"lower"</span>, <span class='st'>"mid"</span>)
+<span class='va'>c1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"higher"</span>, <span class='st'>"lower"</span>, <span class='st'>"mid"</span><span class='op'>)</span>
 <span class='co'># search for label attributes only</span>
-<span class='fu'>get_labels</span>(<span class='kw'>c1</span>, attr.only = <span class='fl'>TRUE</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>c1</span>, attr.only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># search for string values as well</span>
-<span class='fu'>get_labels</span>(<span class='kw'>c1</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>c1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "higher" "lower"  "mid"   </div><div class='input'>
 
 <span class='co'># create vector</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>NA</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='cn'>NA</span><span class='op'>)</span>
 <span class='co'># add less labels than values</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span>), force.values = <span class='fl'>FALSE</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yes"</span>, <span class='st'>"maybe"</span>, <span class='st'>"no"</span><span class='op'>)</span>, force.values <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>"x" has more values than "labels", hence not all values are labelled.</span></div><div class='input'><span class='co'># get labels for labelled values only</span>
-<span class='fu'>get_labels</span>(<span class='kw'>x</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "yes"   "maybe" "no"   </div><div class='input'><span class='co'># get labels for all values</span>
-<span class='fu'>get_labels</span>(<span class='kw'>x</span>, non.labelled = <span class='fl'>TRUE</span>)
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>x</span>, non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "yes"   "maybe" "no"    "4"    </div><div class='input'>
 
 <span class='co'># get labels, including tagged NA values</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://haven.tidyverse.org'>haven</a></span>)
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span>), <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span>),
-              <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Agreement"</span> = <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> = <span class='fl'>4</span>, <span class='st'>"First"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"c"</span>),
-                <span class='st'>"Refused"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"a"</span>), <span class='st'>"Not home"</span> = <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span>(<span class='st'>"z"</span>)))
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://haven.tidyverse.org'>haven</a></span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,
+              <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,
+                <span class='st'>"Refused"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># get current NA values</span>
-<span class='kw'>x</span>
+<span class='va'>x</span>
 </div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
 #&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
 #&gt; 
@@ -304,19 +298,19 @@ the return value.</p></td>
 #&gt;      4 Disagreement
 #&gt;  NA(c)        First
 #&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_labels</span>(<span class='kw'>x</span>, values = <span class='st'>"n"</span>, drop.na = <span class='fl'>FALSE</span>)
+#&gt;  NA(z)     Not home</div><div class='input'><span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"n"</span>, drop.na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;              1              4          NA(c)          NA(a)          NA(z) 
 #&gt;    "Agreement" "Disagreement"        "First"      "Refused"     "Not home" </div><div class='input'>
 
 <span class='co'># create vector with unused labels</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
-<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(
-  <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>,
-  labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"independent"</span> = <span class='fl'>1</span>, <span class='st'>"dependent"</span> = <span class='fl'>4</span>, <span class='st'>"not used"</span> = <span class='fl'>5</span>)
-)
-<span class='fu'>get_labels</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)
-</div><div class='output co'>#&gt; [1] "independent" "dependent"   "not used"   </div><div class='input'><span class='fu'>get_labels</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>, drop.unused = <span class='fl'>TRUE</span>)
-</div><div class='output co'>#&gt; [1] "independent" "dependent"  </div><div class='input'><span class='fu'>get_labels</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>, non.labelled = <span class='fl'>TRUE</span>, drop.unused = <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span>
+<span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span>
+  <span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>,
+  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"independent"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"dependent"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"not used"</span> <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "independent" "dependent"   "not used"   </div><div class='input'><span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, drop.unused <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "independent" "dependent"  </div><div class='input'><span class='fu'>get_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span>, drop.unused <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "independent" "2"           "3"           "dependent"  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -333,7 +327,7 @@ the return value.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

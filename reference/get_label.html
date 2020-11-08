@@ -80,19 +80,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -146,7 +140,7 @@
     <p>This function returns the variable labels of labelled data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_label</span>(<span class='kw'>x</span>, <span class='kw'>...</span>, def.value = <span class='kw'>NULL</span>, case = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, def.value <span class='op'>=</span> <span class='cn'>NULL</span>, case <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,39 +201,39 @@ more details on this argument.</p></td>
 <span class='co'># retrieve value labels</span>
 <span class='co'># mydat.val &lt;- get_labels(mydat)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>efc</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span>
 
 <span class='co'># get variable lable</span>
-<span class='fu'>get_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>)
+<span class='fu'>get_label</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "elder's dependency"</div><div class='input'>
 <span class='co'># alternative way</span>
-<span class='fu'>get_label</span>(<span class='kw'>efc</span>)[<span class='st'>"e42dep"</span>]
+<span class='fu'>get_label</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span><span class='op'>[</span><span class='st'>"e42dep"</span><span class='op'>]</span>
 </div><div class='output co'>#&gt;               e42dep 
 #&gt; "elder's dependency" </div><div class='input'>
 <span class='co'># 'get_label()' also works within pipe-chains</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>magrittr</span>)
-<span class='kw'>efc</span> <span class='op'>%&gt;%</span> <span class='fu'>get_label</span>(<span class='kw'>e42dep</span>, <span class='kw'>e16sex</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>magrittr</span><span class='op'>)</span>
+<span class='va'>efc</span> <span class='op'>%&gt;%</span> <span class='fu'>get_label</span><span class='op'>(</span><span class='va'>e42dep</span>, <span class='va'>e16sex</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;               e42dep               e16sex 
 #&gt; "elder's dependency"     "elder's gender" </div><div class='input'>
 <span class='co'># set default values</span>
-<span class='fu'>get_label</span>(<span class='kw'>mtcars</span>, <span class='kw'>mpg</span>, <span class='kw'>cyl</span>, def.value = <span class='st'>"no var labels"</span>)
+<span class='fu'>get_label</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mpg</span>, <span class='va'>cyl</span>, def.value <span class='op'>=</span> <span class='st'>"no var labels"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;             mpg             cyl 
 #&gt; "no var labels" "no var labels" </div><div class='input'>
 <span class='co'># simple barplot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='get_label-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># get value labels to annotate barplot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>),
-        names.arg = <span class='fu'><a href='get_labels.html'>get_labels</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>),
-        main = <span class='fu'>get_label</span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>,
+        names.arg <span class='op'>=</span> <span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>,
+        main <span class='op'>=</span> <span class='fu'>get_label</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='get_label-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># get labels from multiple variables</span>
-<span class='fu'>get_label</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e42dep</span>, <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e16sex</span>, <span class='kw'>efc</span><span class='op'>$</span><span class='kw'>e15relat</span>))
+<span class='fu'>get_label</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, <span class='va'>efc</span><span class='op'>$</span><span class='va'>e16sex</span>, <span class='va'>efc</span><span class='op'>$</span><span class='va'>e15relat</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "elder's dependency"    "elder's gender"        "relationship to elder"</div><div class='input'>
 <span class='co'># use case conversion for human-readable labels</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>iris</span>)
-<span class='fu'>get_label</span>(<span class='kw'>iris</span>, def.value = <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='kw'>iris</span>))
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='fu'>get_label</span><span class='op'>(</span><span class='va'>iris</span>, def.value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   Sepal.Length    Sepal.Width   Petal.Length    Petal.Width        Species 
-#&gt; "Sepal.Length"  "Sepal.Width" "Petal.Length"  "Petal.Width"      "Species" </div><div class='input'><span class='fu'>get_label</span>(<span class='kw'>iris</span>, def.value = <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='kw'>iris</span>), case = <span class='st'>"parsed"</span>)
+#&gt; "Sepal.Length"  "Sepal.Width" "Petal.Length"  "Petal.Width"      "Species" </div><div class='input'><span class='fu'>get_label</span><span class='op'>(</span><span class='va'>iris</span>, def.value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>, case <span class='op'>=</span> <span class='st'>"parsed"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   Sepal.Length    Sepal.Width   Petal.Length    Petal.Width        Species 
 #&gt; "Sepal Length"  "Sepal Width" "Petal Length"  "Petal Width"      "Species" </div></pre>
   </div>
@@ -257,7 +251,7 @@ more details on this argument.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

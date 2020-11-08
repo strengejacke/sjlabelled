@@ -84,19 +84,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.6.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -154,11 +148,11 @@
                syntax, including support for quasi-quotation (see 'Examples').</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_label</span>(<span class='kw'>x</span>, <span class='kw'>label</span>)
+    <pre class="usage"><span class='fu'>set_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>label</span><span class='op'>)</span>
 
-<span class='fu'>set_label</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>set_label</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='fu'>var_labels</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>var_labels</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,27 +196,27 @@ which should be labelled, and the value is the new variable label.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># manually set value and variable labels</span>
-<span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace = <span class='fl'>TRUE</span>)
-<span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span>(<span class='kw'>dummy</span>, labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span>))
-<span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span>(<span class='kw'>dummy</span>, label = <span class='st'>"Dummy-variable"</span>)
+<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>dummy</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"very low"</span>, <span class='st'>"low"</span>, <span class='st'>"mid"</span>, <span class='st'>"hi"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span><span class='op'>(</span><span class='va'>dummy</span>, label <span class='op'>=</span> <span class='st'>"Dummy-variable"</span><span class='op'>)</span>
 
 <span class='co'># or use:</span>
 <span class='co'># set_label(dummy) &lt;- "Dummy-variable"</span>
 
 <span class='co'># auto-detection of value labels by default, auto-detection of</span>
 <span class='co'># variable labels if argument "title" set to NULL.</span>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://strengejacke.github.io/sjPlot'>sjPlot</a></span>)
-<span class='fu'>sjp.frq</span>(<span class='kw'>dummy</span>, title = <span class='kw'>NULL</span>)}
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
+<span class='fu'>sjp.frq</span><span class='op'>(</span><span class='va'>dummy</span>, title <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span><span class='op'>}</span>
 
 <span class='co'># Set variable labels for data frame</span>
-<span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  a = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace = <span class='fl'>TRUE</span>),
-  b = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace = <span class='fl'>TRUE</span>),
-  c = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace = <span class='fl'>TRUE</span>)
-)
-<span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span>(<span class='kw'>dummy</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Variable A"</span>, <span class='st'>"Variable B"</span>, <span class='st'>"Variable C"</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>dummy</span>)
+<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+  b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+  c <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span><span class='op'>(</span><span class='va'>dummy</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Variable A"</span>, <span class='st'>"Variable B"</span>, <span class='st'>"Variable C"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 'data.frame':	10 obs. of  3 variables:
 #&gt;  $ a: int  2 1 2 3 2 4 1 2 1 4
 #&gt;   ..- attr(*, "label")= Named chr "Variable A"
@@ -234,8 +228,8 @@ which should be labelled, and the value is the new variable label.</p></td>
 #&gt;   ..- attr(*, "label")= Named chr "Variable C"
 #&gt;   .. ..- attr(*, "names")= chr "c"</div><div class='input'>
 <span class='co'># remove one variable label</span>
-<span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span>(<span class='kw'>dummy</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Variable A"</span>, <span class='st'>""</span>, <span class='st'>"Variable C"</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='kw'>dummy</span>)
+<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span><span class='op'>(</span><span class='va'>dummy</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Variable A"</span>, <span class='st'>""</span>, <span class='st'>"Variable C"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 'data.frame':	10 obs. of  3 variables:
 #&gt;  $ a: int  2 1 2 3 2 4 1 2 1 4
 #&gt;   ..- attr(*, "label")= Named chr "Variable A"
@@ -247,34 +241,34 @@ which should be labelled, and the value is the new variable label.</p></td>
 <span class='co'># setting same variable labels to multiple vectors</span>
 
 <span class='co'># create a set of dummy variables</span>
-<span class='kw'>dummy1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace = <span class='fl'>TRUE</span>)
-<span class='kw'>dummy2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace = <span class='fl'>TRUE</span>)
-<span class='kw'>dummy3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace = <span class='fl'>TRUE</span>)
+<span class='va'>dummy1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>dummy2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>dummy3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>40</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='co'># put them in list-object</span>
-<span class='kw'>dummies</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>dummy1</span>, <span class='kw'>dummy2</span>, <span class='kw'>dummy3</span>)
+<span class='va'>dummies</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>dummy1</span>, <span class='va'>dummy2</span>, <span class='va'>dummy3</span><span class='op'>)</span>
 <span class='co'># and set variable labels for all three dummies</span>
-<span class='kw'>dummies</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span>(<span class='kw'>dummies</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"First Dummy"</span>, <span class='st'>"2nd Dummy"</span>, <span class='st'>"Third dummy"</span>))
+<span class='va'>dummies</span> <span class='op'>&lt;-</span> <span class='fu'>set_label</span><span class='op'>(</span><span class='va'>dummies</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"First Dummy"</span>, <span class='st'>"2nd Dummy"</span>, <span class='st'>"Third dummy"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># see result...</span>
-<span class='fu'><a href='get_label.html'>get_label</a></span>(<span class='kw'>dummies</span>)
+<span class='fu'><a href='get_label.html'>get_label</a></span><span class='op'>(</span><span class='va'>dummies</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "First Dummy" "2nd Dummy"   "Third dummy"</div><div class='input'>
 
 <span class='co'># use 'var_labels()' to set labels within a pipe-workflow, and</span>
 <span class='co'># when you need "tidyverse-consistent" api.</span>
 <span class='co'># Set variable labels for data frame</span>
-<span class='kw'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  a = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace = <span class='fl'>TRUE</span>),
-  b = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace = <span class='fl'>TRUE</span>),
-  c = <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace = <span class='fl'>TRUE</span>)
-)
+<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+  b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+  c <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>10</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>magrittr</span>)
-<span class='kw'>dummy</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>var_labels</span>(a = <span class='st'>"First variable"</span>, c = <span class='st'>"third variable"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='get_label.html'>get_label</a></span>()
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>magrittr</span><span class='op'>)</span>
+<span class='va'>dummy</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>var_labels</span><span class='op'>(</span>a <span class='op'>=</span> <span class='st'>"First variable"</span>, c <span class='op'>=</span> <span class='st'>"third variable"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='get_label.html'>get_label</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;                a                b                c 
 #&gt; "First variable"               "" "third variable" </div><div class='input'>
 <span class='co'># with quasi-quotation</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://rlang.r-lib.org'>rlang</a></span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rlang.r-lib.org'>rlang</a></span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘rlang’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:magrittr’:</span>
 #&gt; <span class='message'></span>
@@ -282,18 +276,18 @@ which should be labelled, and the value is the new variable label.</p></td>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    is_empty</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:sjlabelled’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    as_character, as_label</span></div><div class='input'><span class='kw'>v1</span> <span class='op'>&lt;-</span> <span class='st'>"First variable"</span>
-<span class='kw'>v2</span> <span class='op'>&lt;-</span> <span class='st'>"Third variable"</span>
-<span class='kw'>dummy</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>var_labels</span>(a = <span class='op'>!</span><span class='op'>!</span><span class='kw'>v1</span>, c = <span class='op'>!</span><span class='op'>!</span><span class='kw'>v2</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='get_label.html'>get_label</a></span>()
+#&gt; <span class='message'>    as_character, as_label</span></div><div class='input'><span class='va'>v1</span> <span class='op'>&lt;-</span> <span class='st'>"First variable"</span>
+<span class='va'>v2</span> <span class='op'>&lt;-</span> <span class='st'>"Third variable"</span>
+<span class='va'>dummy</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>var_labels</span><span class='op'>(</span>a <span class='op'>=</span> <span class='op'>!</span><span class='op'>!</span><span class='va'>v1</span>, c <span class='op'>=</span> <span class='op'>!</span><span class='op'>!</span><span class='va'>v2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='get_label.html'>get_label</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;                a                b                c 
 #&gt; "First variable"               "" "Third variable" </div><div class='input'>
-<span class='kw'>x1</span> <span class='op'>&lt;-</span> <span class='st'>"a"</span>
-<span class='kw'>x2</span> <span class='op'>&lt;-</span> <span class='st'>"c"</span>
-<span class='kw'>dummy</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>var_labels</span>(<span class='op'>!</span><span class='op'>!</span><span class='kw'>x1</span> <span class='op'>:=</span> <span class='op'>!</span><span class='op'>!</span><span class='kw'>v1</span>, <span class='op'>!</span><span class='op'>!</span><span class='kw'>x2</span> <span class='op'>:=</span> <span class='op'>!</span><span class='op'>!</span><span class='kw'>v2</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='get_label.html'>get_label</a></span>()
+<span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='st'>"a"</span>
+<span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='st'>"c"</span>
+<span class='va'>dummy</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>var_labels</span><span class='op'>(</span><span class='op'>!</span><span class='op'>!</span><span class='va'>x1</span> <span class='op'>:=</span> <span class='op'>!</span><span class='op'>!</span><span class='va'>v1</span>, <span class='op'>!</span><span class='op'>!</span><span class='va'>x2</span> <span class='op'>:=</span> <span class='op'>!</span><span class='op'>!</span><span class='va'>v2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='get_label.html'>get_label</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;                a                b                c 
 #&gt; "First variable"               "" "Third variable" </div><div class='input'>
 </div></pre>
@@ -312,7 +306,7 @@ which should be labelled, and the value is the new variable label.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
