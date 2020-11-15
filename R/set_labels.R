@@ -241,7 +241,7 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
 
   # valid vector?
   if (is.null(x)) {
-    warning("Can't add value labels to NULL vectors, call. = FALSE)
+    warning("Can't add value labels to NULL vectors", call. = FALSE)
     return(x)
   }
 
