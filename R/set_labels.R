@@ -240,8 +240,8 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
   if (is.null(labels) || length(labels) == 0) return(x)
 
   # valid vector?
-  if (is.null(x) || all(is.na(x))) {
-    warning("Can't add value labels to NULL vectors or vector with only missing values.", call. = FALSE)
+  if (is.null(x)) {
+    warning("Can't add value labels to NULL vectors", call. = FALSE)
     return(x)
   }
 
@@ -433,13 +433,22 @@ get_value_range <- function(x) {
     # amount of unique string values
     minval <- 1
     maxval <- length(unique(stats::na.omit(x)))
-  } else {
+  } else if (all(is.na(x))){
+      minval <- 0
+      maxval <- 0
+  }else {
     # retrieve values
     minval <- as.numeric(min(x, na.rm = TRUE))
     maxval <- as.numeric(max(x, na.rm = TRUE))
   }
+
   # determine value range
-  valrange <- maxval - minval + 1
+  if (all(is.na(x))) {
+    valrange <- 0
+  } else{
+    valrange <- maxval - minval + 1
+  }
+
   # return all
   list(
     minval = minval,
