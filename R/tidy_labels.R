@@ -56,14 +56,13 @@ tidy_labels <- function(x, ..., sep = "_", remove = FALSE) {
 
 tidy_labels_helper <- function(x, sep, remove) {
   # get value labels from variable. drop unused labels
-  labs <-
-    get_labels(
-      x,
-      attr.only = TRUE,
-      values = FALSE,
-      drop.unused = TRUE,
-      drop.na = TRUE
-    )
+  labs <- get_labels(
+    x,
+    attr.only = TRUE,
+    values = FALSE,
+    drop.unused = TRUE,
+    drop.na = TRUE
+  )
 
   # no labels? then return...
   if (is.null(labs)) return(x)
