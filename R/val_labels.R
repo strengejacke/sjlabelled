@@ -22,7 +22,7 @@ val_labels <- function(x, ..., force.labels = FALSE, force.values = TRUE, drop.n
       "Following elements are no valid column names in `x`: %s",
       paste(vars[non.vars], collapse = ",")
     ),
-    call. = F)
+    call. = FALSE)
     # remove invalid names
     vars <- vars[-non.vars]
     labels <- labels[-non.vars]

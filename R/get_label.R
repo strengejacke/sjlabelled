@@ -83,7 +83,7 @@ get_label.data.frame <- function(x, ..., def.value = NULL, case = NULL) {
 
   sapply(seq_along(x), function(i) {
     # get label
-    label <- attr(x[[i]], "label", exact = T)
+    label <- attr(x[[i]], "label", exact = TRUE)
 
     # any label?
     if (is.null(label)) {
@@ -108,13 +108,13 @@ get_label.data.frame <- function(x, ..., def.value = NULL, case = NULL) {
 
 #' @export
 get_label.list <- function(x, ..., def.value = NULL, case = NULL) {
-  convert_case(unlist(lapply(x, attr, "label", exact = T)), case)
+  convert_case(unlist(lapply(x, attr, "label", exact = TRUE)), case)
 }
 
 
 #' @export
 get_label.default <- function(x, ..., def.value = NULL, case = NULL) {
-  labels <- attr(x, "label", exact = T)
+  labels <- attr(x, "label", exact = TRUE)
 
   if (is.null(labels))
     convert_case(def.value, case)

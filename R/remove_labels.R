@@ -2,7 +2,7 @@
 #' @export
 remove_labels <- function(x, ..., labels) {
   # check for valid value. value must be a named vector
-  if (is.null(labels)) stop("`labels` is NULL.", call. = F)
+  if (is.null(labels)) stop("`labels` is NULL.", call. = FALSE)
 
   # if value is NA, it must be tagged
   na.labels <- labels[is.na(labels)]
@@ -10,7 +10,7 @@ remove_labels <- function(x, ..., labels) {
     if (!requireNamespace("haven", quietly = TRUE)) {
       stop("Package 'haven' required for this function. Please install it.")
     }
-    if (!all(haven::is_tagged_na(na.labels))) stop("`labels` must be a tagged NA.", call. = F)
+    if (!all(haven::is_tagged_na(na.labels))) stop("`labels` must be a tagged NA.", call. = FALSE)
   }
 
   # evaluate arguments, generate data
@@ -33,9 +33,9 @@ remove_labels <- function(x, ..., labels) {
 remove_labels_helper <- function(x, labels) {
   # get current labels of `x`
   current.labels <- get_labels(x,
-                               attr.only = T,
+                               attr.only = TRUE,
                                values = "n",
-                               non.labelled = F)
+                               non.labelled = FALSE)
 
   # get current NA values
   current.na <- get_na(x)

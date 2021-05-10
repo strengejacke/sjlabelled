@@ -204,7 +204,7 @@ zap_na_tags <- function(x, ...) {
 
 
 zap_labels_helper <- function(x) {
-  x <- set_na(x, na = get_values(x, drop.na = T))
+  x <- set_na(x, na = get_values(x, drop.na = TRUE))
 
   # remove label attributes
   attr(x, "label") <- NULL
@@ -232,7 +232,7 @@ zap_na_tags_helper <- function(x) {
 
   # get labels, w/o labelled NA
   # retrieve named labels
-  labs <- attr(x, "labels", exact = T)
+  labs <- attr(x, "labels", exact = TRUE)
   labs <- labs[!haven::is_tagged_na(labs)]
 
   # if no labels left, clear attribute

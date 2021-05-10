@@ -126,7 +126,7 @@ as_numeric_helper <- function(x, start.at, keep.labels, use.labels) {
   varlab <- get_label(x)
 
   # get labels
-  labels <- get_labels(x, attr.only = T, values = "n")
+  labels <- get_labels(x, attr.only = TRUE, values = "n")
 
   # is character?
   if (is.character(x)) {
@@ -166,7 +166,7 @@ as_numeric_helper <- function(x, start.at, keep.labels, use.labels) {
 
       # check if lowest value of variable differs from
       # requested minimum conversion value
-      val_diff <- start.at - min(new_value, na.rm = T)
+      val_diff <- start.at - min(new_value, na.rm = TRUE)
 
       # adjust new_value
       new_value <- new_value + val_diff

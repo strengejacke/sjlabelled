@@ -190,13 +190,13 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   # check if value is a named vector
   na.names <- names(value)
   # get values for value labels
-  lab.values <- get_values(x, drop.na = F)
+  lab.values <- get_values(x, drop.na = FALSE)
 
   # no tagged NA's for date values
-  if (inherits(x, "Date")) as.tag <- F
+  if (inherits(x, "Date")) as.tag <- FALSE
 
   # get value labels
-  val.lab <- attr(x, "labels", exact = T)
+  val.lab <- attr(x, "labels", exact = TRUE)
   val.lab <- val.lab[!haven::is_tagged_na(val.lab)]
 
   # if value is a character vector, user may have defined a value label.
@@ -224,7 +224,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
     # stop if user wants to assign a value to NA that is
     # already assigned as NA
     if (any(nat %in% as.character(value)))
-      stop("Can't set NA values. At least one element of `value` is already defined as NA. Use `zap_na_tags()` to remove tags from NA values.", call. = F)
+      stop("Can't set NA values. At least one element of `value` is already defined as NA. Use `zap_na_tags()` to remove tags from NA values.", call. = FALSE)
   }
 
   # iterate all NAs
@@ -243,8 +243,8 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
         if (!is.null(na.names)) names(attr(x, "labels"))[lv] <- na.names[i]
       } else {
         # get labels and label values
-        lv <- attr(x, "labels", exact = T)
-        ln <- names(attr(x, "labels", exact = T))
+        lv <- attr(x, "labels", exact = TRUE)
+        ln <- names(attr(x, "labels", exact = TRUE))
         # add NA
         attr(x, "labels") <- c(lv, haven::tagged_na(as.character(value[i])))
         if (!is.null(na.names))
@@ -266,7 +266,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   # remove unused value labels
   removers <- which(get_values(x) %in% value)
 
-  if (!is.null(removers) && !sjmisc::is_empty(removers, first.only = T)) {
+  if (!is.null(removers) && !sjmisc::is_empty(removers, first.only = TRUE)) {
     attr(x, "labels") <- val.lab[-removers]
   }
 
@@ -274,8 +274,8 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   # assignment. If yes, drop levels
   if (is.factor(x) && drop.levels && length(levels(x)) != length(levels(droplevels(x)))) {
     # save value and variable labels
-    keep.val <- attr(x, "labels", exact = T)
-    keep.var <- attr(x, "label", exact = T)
+    keep.val <- attr(x, "labels", exact = TRUE)
+    keep.var <- attr(x, "label", exact = TRUE)
 
     # drop levels
     x <- droplevels(x)

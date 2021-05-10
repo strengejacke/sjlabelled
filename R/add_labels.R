@@ -99,8 +99,8 @@
 add_labels <- function(x, ..., labels) {
 
   # check for valid value. value must be a named vector
-  if (is.null(labels)) stop("`labels` is NULL.", call. = F)
-  if (is.null(names(labels))) stop("`labels` must be a named vector.", call. = F)
+  if (is.null(labels)) stop("`labels` is NULL.", call. = FALSE)
+  if (is.null(names(labels))) stop("`labels` must be a named vector.", call. = FALSE)
 
   # evaluate arguments, generate data
   dots <- as.character(match.call(expand.dots = FALSE)$`...`)
@@ -122,9 +122,9 @@ add_labels_helper <- function(x, value) {
   # get current labels of `x`
   current.labels <- get_labels(
     x,
-    attr.only = T,
+    attr.only = TRUE,
     values = "n",
-    non.labelled = F,
+    non.labelled = FALSE,
     drop.na = TRUE
   )
 

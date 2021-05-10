@@ -72,10 +72,10 @@ as_labelled_helper <- function(x, add.labels, add.class, skip.strings) {
   if (is.character(x) && skip.strings) return(x)
 
   # if factor, convert to numeric
-  if (is.factor(x)) x <- as_numeric(x, keep.labels = T)
+  if (is.factor(x)) x <- as_numeric(x, keep.labels = TRUE)
 
   # return atomics
-  if (is.null(get_labels(x, attr.only = T))) return(x)
+  if (is.null(get_labels(x, attr.only = TRUE))) return(x)
 
   # fill up missing attributes
   if (add.labels) x <- fill_labels(x)

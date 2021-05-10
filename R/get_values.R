@@ -68,7 +68,7 @@ get_values.default <- function(x, sort.val = TRUE, drop.na = FALSE) {
 
 get_values_helper <- function(x, sort.val = TRUE, drop.na = FALSE) {
   # get labels
-  labels <- attr(x, "labels", exact = T)
+  labels <- attr(x, "labels", exact = TRUE)
 
   # nothing found? then leave...
   if (is.null(labels)) return(NULL)

@@ -115,7 +115,7 @@ to_fac_helper <- function(x, add.non.labelled) {
     )
 
   # retrieve variable labels
-  varlab <- attr(x, "label", exact = T)
+  varlab <- attr(x, "label", exact = TRUE)
 
   # switch value and names attribute, since get_labels
   # returns the values as names, and the value labels

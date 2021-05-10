@@ -44,7 +44,7 @@ convert_case <- function(lab, case = NULL, verbose = FALSE, ...) {
 
     # check additional arguments
 
-    add.args <- lapply(match.call(expand.dots = F)$`...`, function(x) x)
+    add.args <- lapply(match.call(expand.dots = FALSE)$`...`, function(x) x)
 
     if ("preprocess" %in% names(add.args)) prep <- eval(add.args[["preprocess"]])
     if ("postprocess" %in% names(add.args)) posp <- eval(add.args[["postprocess"]])

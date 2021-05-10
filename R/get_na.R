@@ -68,7 +68,7 @@ get_na.default <- function(x, as.tag = FALSE) {
 
 get_na_helper <- function(x, as.tag) {
   # get values
-  values <- attr(x, "labels", exact = T)
+  values <- attr(x, "labels", exact = TRUE)
 
   # any labelled?
   if (is.null(values)) return(NULL)

@@ -18,12 +18,12 @@ fill_labels <- function(x, ...) {
 
 fill_labels_helper <- function(x) {
   # get current labels
-  current.values <- get_labels(x, attr.only = T, non.labelled = F)
+  current.values <- get_labels(x, attr.only = TRUE, non.labelled = FALSE)
   # get all labels, including non-labelled values
   all.values <- get_labels(x,
-                           attr.only = T,
+                           attr.only = TRUE,
                            values = "n",
-                           non.labelled = T)
+                           non.labelled = TRUE)
   # have any values?
   if (!is.null(all.values)) {
     # set back all labels, if amount of all labels differ
@@ -40,8 +40,8 @@ fill_labels_helper <- function(x) {
       x <- set_labels(
         x,
         labels = all.val.switch,
-        force.labels = T,
-        force.values = T
+        force.labels = TRUE,
+        force.values = TRUE
       )
     }
   }

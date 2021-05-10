@@ -81,7 +81,12 @@ read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na =
           labels <- attr(x, "labels", exact = TRUE)
 
           # create tagged NA
-          tna <- haven::tagged_na(as.character(na.values))
+          char.na.values <- as.character(na.values)
+          if (is.numeric(na.values)) {
+            negative.values <- which(na.values < 1)
+            char.na.values[negative.values] <- letters[abs(na.values[negative.values])]
+          }
+          tna <- haven::tagged_na(char.na.values)
 
           # replace values with tagged NA
           for (j in seq_len(length(na.values))) {
@@ -116,8 +121,8 @@ read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na =
         # do we have NA range?
         if (!is.null(na.range)) {
           # check if any of the missing range values actually exists in data
-          min.range.start <- min(na.range[!is.infinite(na.range)], na.rm = T)
-          max.range.end <- max(na.range[!is.infinite(na.range)], na.rm = T)
+          min.range.start <- min(na.range[!is.infinite(na.range)], na.rm = TRUE)
+          max.range.end <- max(na.range[!is.infinite(na.range)], na.rm = TRUE)
 
           # we start with range up to highest value
           if (any(na.range == Inf) && min.range.start <= max(x, na.rm = TRUE)) {
@@ -138,7 +143,11 @@ read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na =
         }
 
         # finally, copy x back to data frame
-        if (!is.null(na.range) || !is.null(na.values)) data.spss[[i]] <- x
+        if (!is.null(na.range) || !is.null(na.values)) {
+          data.spss[[i]] <- x
+          attr(data.spss[[i]], "na.values") <- na.values
+          attr(data.spss[[i]], "na.range") <- na.range
+        }
       }
     }
 
@@ -229,9 +238,9 @@ read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = N
     d,
     function(x) {
       # capture value labels attribute first
-      labs <- attr(x, "labels", exact = T)
+      labs <- attr(x, "labels", exact = TRUE)
       # and save variable label, if any
-      lab <- attr(x, "label", exact = T)
+      lab <- attr(x, "label", exact = TRUE)
       # is atomic, which was factor in SPSS?
       if (is.atomic(x) && !is.null(labs) && length(labs) >= length(unique(stats::na.omit(x)))) {
         # so we have value labels (only typical for factors, not

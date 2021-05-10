@@ -11,7 +11,7 @@ is.stan <- function(x) inherits(x, c("stanreg", "stanfit", "brmsfit"))
 dot_names <- function(dots) unname(unlist(lapply(dots, as.character)))
 
 
-is_float <- function(x) is.numeric(x) && !all(x %% 1 == 0, na.rm = T)
+is_float <- function(x) is.numeric(x) && !all(x %% 1 == 0, na.rm = TRUE)
 
 
 is.num.fac <- function(x) {

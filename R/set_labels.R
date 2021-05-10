@@ -251,7 +251,7 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
   # check for null
   if (!is.null(labels)) {
     # if labels is empty string, remove labels attribute
-    if (length(labels) == 1 && nchar(labels, keepNA = F) == 0) {
+    if (length(labels) == 1 && nchar(labels, keepNA = FALSE) == 0) {
       attr(x, "labels") <- NULL
 
       # set labels for character vectors here!
@@ -262,13 +262,13 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
         dummy.labels <- names(labels)
         # but first check if we have named vector or not...
         if (is.null(dummy.labels)) {
-          warning("`labels` must be a named vector.", call. = T)
+          warning("`labels` must be a named vector.", call. = TRUE)
         } else {
           names(dummy.labels) <- unname(labels)
           attr(x, "labels") <- dummy.labels
         }
       } else {
-        warning("Character vectors can only get labels of same type.", call. = T)
+        warning("Character vectors can only get labels of same type.", call. = TRUE)
       }
 
       # set labels for numeric vectors or factors here
@@ -402,7 +402,7 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
     }
     # keep NA's?
     if (!drop.na && !is.null(current.na) && length(current.na) > 0)
-      attr(x, "labels") <- c(attr(x, "labels", exact = T), current.na)
+      attr(x, "labels") <- c(attr(x, "labels", exact = TRUE), current.na)
   }
 
   x
@@ -422,7 +422,7 @@ get_value_range <- function(x) {
     } else {
       # levels are not numeric. we need to convert them
       # first to retrieve minimum level, as numeric
-      minval <- min(as.numeric(levels(x)), na.rm = T)
+      minval <- min(as.numeric(levels(x)), na.rm = TRUE)
 
       # check range, add minimum, so we have max
       maxval <- diff(range(as.numeric(levels(x)))) + minval
@@ -433,7 +433,7 @@ get_value_range <- function(x) {
     # amount of unique string values
     minval <- 1
     maxval <- length(unique(stats::na.omit(x)))
-  } else if (all(is.na(x))){
+  } else if (all(is.na(x))) {
       minval <- 0
       maxval <- 0
   }else {

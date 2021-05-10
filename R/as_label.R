@@ -282,7 +282,7 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
     labels.values <- unname(labels)
     labels <- labels.names
     names(labels) <- labels.values
-    x <- set_labels(x, labels = labels, force.labels = T)
+    x <- set_labels(x, labels = labels, force.labels = TRUE)
   }
 
   # return as factor
