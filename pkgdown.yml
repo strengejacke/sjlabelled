@@ -1,9 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1.9000
-pkgdown_sha: 6094ac3dd80a1f3f1d4e2f47d0ed4716d51362b0
+pkgdown: 1.6.1.9001
+pkgdown_sha: aae5ce1adce646d180f29ede23210ef13527ac7c
 articles:
   intro_sjlabelled: intro_sjlabelled.html
   labelleddata: labelleddata.html
   quasiquotation: quasiquotation.html
-last_built: 2020-11-25T14:56Z
+last_built: 2021-05-10T18:55Z
 

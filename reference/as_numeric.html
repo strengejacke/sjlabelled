@@ -55,6 +55,8 @@ a numeric variable." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -66,9 +68,18 @@ a numeric variable." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,7 +93,7 @@ a numeric variable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7.1</span>
       </span>
     </div>
 
@@ -116,7 +127,7 @@ a numeric variable." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/strengejacke/sjlabelled/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -163,7 +174,7 @@ a numeric variable.</p>
       <td><p>Optional, unquoted names of variables that should be selected for
 further processing. Required, if <code>x</code> is a data frame (and no
 vector) and only selected variables from <code>x</code> should be processed.
-You may also use functions like <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> or tidyselect's select-helpers.
+You may also use functions like <code>:</code> or tidyselect's select-helpers.
 See 'Examples'.</p></td>
     </tr>
     <tr>
@@ -199,120 +210,136 @@ of consecutive factor level numbers). See 'Examples'.</p></td>
           not specified, applies to all variables in the data frame.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span>
-<span class='va'>test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as_character.html'>as_label</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>test</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; test
-#&gt; &lt;dbl&gt; 
-#&gt;     1 </div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>test</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt; 1 
-#&gt; 1 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>test</span>, start.at <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='as_numeric-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># set lowest value of new variable to "5".</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>test</span>, start.at <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt; 5 
-#&gt; 1 </div><div class='input'>
-<span class='co'># numeric factor keeps values</span>
-<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3"</span>, <span class='st'>"4"</span>, <span class='st'>"6"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt; 3 4 6 
-#&gt; 1 1 1 </div><div class='input'>
-<span class='co'># do not drop unused factor levels</span>
-<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>ordered</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"No"</span>, <span class='fl'>5</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"Maybe"</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>,
-                 levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"Maybe"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 2 2 2 2 2 3 3 3
-#&gt; attr(,"labels")
-#&gt;   Yes    No Maybe 
-#&gt;     1     2     3 </div><div class='input'>
-<span class='co'># non-numeric factor is converted to numeric</span>
-<span class='co'># starting at 1</span>
-<span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"D"</span>, <span class='st'>"F"</span>, <span class='st'>"H"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt; 1 2 3 
-#&gt; 1 1 1 </div><div class='input'>
-<span class='co'># for numeric factor levels, value labels will be used, if present</span>
-<span class='va'>dummy1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3"</span>, <span class='st'>"4"</span>, <span class='st'>"6"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>dummy1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>dummy1</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"first"</span>, <span class='st'>"2nd"</span>, <span class='st'>"3rd"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>dummy1</span>
-</div><div class='output co'>#&gt; [1] 3 4 6
-#&gt; attr(,"labels")
-#&gt; first   2nd   3rd 
-#&gt;     3     4     6 
-#&gt; Levels: 3 4 6</div><div class='input'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 3 4 6
-#&gt; attr(,"labels")
-#&gt; first   2nd   3rd 
-#&gt;     3     4     6 </div><div class='input'>
-<span class='co'># for non-numeric factor levels, these will be used.</span>
-<span class='co'># value labels will be ignored</span>
-<span class='va'>dummy2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"D"</span>, <span class='st'>"F"</span>, <span class='st'>"H"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>dummy2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>dummy2</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"first"</span>, <span class='st'>"2nd"</span>, <span class='st'>"3rd"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>dummy2</span>
-</div><div class='output co'>#&gt; [1] D F H
-#&gt; attr(,"labels")
-#&gt; first   2nd   3rd 
-#&gt;     D     F     H 
-#&gt; Levels: D F H</div><div class='input'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 1 2 3
-#&gt; attr(,"labels")
-#&gt; D F H 
-#&gt; 1 2 3 </div><div class='input'>
-
-<span class='co'># easily coerce specific variables in a data frame to numeric</span>
-<span class='co'># and keep other variables, with their class preserved</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span>
-<span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>
-<span class='va'>efc</span><span class='op'>$</span><span class='va'>e16sex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e16sex</span><span class='op'>)</span>
-<span class='va'>efc</span><span class='op'>$</span><span class='va'>e17age</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e17age</span><span class='op'>)</span>
-
-<span class='co'># convert back "sex" and "age" into numeric</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>efc</span>, <span class='va'>e16sex</span>, <span class='va'>e17age</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4 c86cop5
-#&gt; 1      16        2      2     83      3       3       2       2       2       1
-#&gt; 2     148        2      2     88      3       3       3       3       3       4
-#&gt; 3      70        1      2     82      3       2       2       1       4       1
-#&gt; 4     168        1      2     67      4       4       1       3       1       1
-#&gt; 5     168        2      2     84      4       3       2       1       2       2
-#&gt; 6      16        2      2     85      4       2       2       3       3       3
-#&gt;   c87cop6 c88cop7 c89cop8 c90cop9 c160age c161sex c172code c175empl barthtot
-#&gt; 1       1       2       3       3      56       2        2        1       75
-#&gt; 2       1       3       2       2      54       2        2        1       75
-#&gt; 3       1       1       4       3      80       1        1        0       35
-#&gt; 4       1       1       2       4      69       1        2        0        0
-#&gt; 5       2       1       4       4      47       2        2        0       25
-#&gt; 6       2       2       1       1      56       1        2        1       60
-#&gt;   neg_c_7 pos_v_4 quol_5 resttotn tot_sc_e n4pstu nur_pst
-#&gt; 1      12      12     14        0        4      0      NA
-#&gt; 2      20      11     10        4        0      0      NA
-#&gt; 3      11      13      7        0        1      2       2
-#&gt; 4      10      15     12        2        0      3       3
-#&gt; 5      12      15     19        2        1      2       2
-#&gt; 6      19       9      8        1        3      2       2</div><div class='input'>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"None"</span>, <span class='st'>"Little"</span>, <span class='st'>"Some"</span>, <span class='st'>"Lots"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>x</span>,
-  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>None <span class='op'>=</span> <span class='st'>"0.5"</span>, Little <span class='op'>=</span> <span class='st'>"1.3"</span>, Some <span class='op'>=</span> <span class='st'>"1.8"</span>, Lots <span class='op'>=</span> <span class='st'>".2"</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='va'>x</span>
-</div><div class='output co'>#&gt; [1] None   Little Some   Lots  
-#&gt; attr(,"labels")
-#&gt;   Lots   None Little   Some 
-#&gt;    0.2    0.5    1.3    1.8 
-#&gt; Levels: Little Lots None Some</div><div class='input'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 3 1 4 2
-#&gt; attr(,"labels")
-#&gt; Little   Lots   None   Some 
-#&gt;      1      2      3      4 </div><div class='input'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>x</span>, use.labels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 1.3 0.2 1.8 0.5
-#&gt; attr(,"labels")
-#&gt; Little   Lots   None   Some 
-#&gt;    0.2    0.5    1.3    1.8 </div><div class='input'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>x</span>, use.labels <span class='op'>=</span> <span class='cn'>TRUE</span>, keep.labels <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 1.3 0.2 1.8 0.5</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>test</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> test</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;dbl&gt; </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     1 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>test</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 </span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>test</span>, start.at <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt'><img src='as_numeric-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># set lowest value of new variable to "5".</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>test</span>, start.at <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># numeric factor keeps values</span></span>
+<span class='r-in'><span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3"</span>, <span class='st'>"4"</span>, <span class='st'>"6"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 4 6 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 1 1 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># do not drop unused factor levels</span></span>
+<span class='r-in'><span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>ordered</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"No"</span>, <span class='fl'>5</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"Maybe"</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span class='r-in'>                 levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"Maybe"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2 2 2 2 2 3 3 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Yes    No Maybe </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     1     2     3 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># non-numeric factor is converted to numeric</span></span>
+<span class='r-in'><span class='co'># starting at 1</span></span>
+<span class='r-in'><span class='va'>dummy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"D"</span>, <span class='st'>"F"</span>, <span class='st'>"H"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 2 3 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 1 1 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># for numeric factor levels, value labels will be used, if present</span></span>
+<span class='r-in'><span class='va'>dummy1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3"</span>, <span class='st'>"4"</span>, <span class='st'>"6"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>dummy1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>dummy1</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"first"</span>, <span class='st'>"2nd"</span>, <span class='st'>"3rd"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>dummy1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3 4 6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> first   2nd   3rd </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     3     4     6 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: 3 4 6</span>
+<span class='r-in'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3 4 6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> first   2nd   3rd </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     3     4     6 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># for non-numeric factor levels, these will be used.</span></span>
+<span class='r-in'><span class='co'># value labels will be ignored</span></span>
+<span class='r-in'><span class='va'>dummy2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"D"</span>, <span class='st'>"F"</span>, <span class='st'>"H"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>dummy2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>dummy2</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"first"</span>, <span class='st'>"2nd"</span>, <span class='st'>"3rd"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>dummy2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] D F H</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> first   2nd   3rd </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     D     F     H </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: D F H</span>
+<span class='r-in'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>dummy2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> D F H </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 2 3 </span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># easily coerce specific variables in a data frame to numeric</span></span>
+<span class='r-in'><span class='co'># and keep other variables, with their class preserved</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>efc</span><span class='op'>$</span><span class='va'>e16sex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e16sex</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>efc</span><span class='op'>$</span><span class='va'>e17age</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e17age</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># convert back "sex" and "age" into numeric</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>efc</span>, <span class='va'>e16sex</span>, <span class='va'>e17age</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4 c86cop5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      16        2      2     83      3       3       2       2       2       1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2     148        2      2     88      3       3       3       3       3       4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      70        1      2     82      3       2       2       1       4       1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4     168        1      2     67      4       4       1       3       1       1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5     168        2      2     84      4       3       2       1       2       2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6      16        2      2     85      4       2       2       3       3       3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   c87cop6 c88cop7 c89cop8 c90cop9 c160age c161sex c172code c175empl barthtot</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1       1       2       3       3      56       2        2        1       75</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2       1       3       2       2      54       2        2        1       75</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3       1       1       4       3      80       1        1        0       35</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4       1       1       2       4      69       1        2        0        0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5       2       1       4       4      47       2        2        0       25</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6       2       2       1       1      56       1        2        1       60</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   neg_c_7 pos_v_4 quol_5 resttotn tot_sc_e n4pstu nur_pst</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      12      12     14        0        4      0      NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      20      11     10        4        0      0      NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      11      13      7        0        1      2       2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4      10      15     12        2        0      3       3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5      12      15     19        2        1      2       2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6      19       9      8        1        3      2       2</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"None"</span>, <span class='st'>"Little"</span>, <span class='st'>"Some"</span>, <span class='st'>"Lots"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>x</span>,</span>
+<span class='r-in'>  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>None <span class='op'>=</span> <span class='st'>"0.5"</span>, Little <span class='op'>=</span> <span class='st'>"1.3"</span>, Some <span class='op'>=</span> <span class='st'>"1.8"</span>, Lots <span class='op'>=</span> <span class='st'>".2"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>x</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] None   Little Some   Lots  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Lots   None Little   Some </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    0.2    0.5    1.3    1.8 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: Little Lots None Some</span>
+<span class='r-in'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3 1 4 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Little   Lots   None   Some </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1      2      3      4 </span>
+<span class='r-in'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>x</span>, use.labels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.3 0.2 1.8 0.5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Little   Lots   None   Some </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    0.2    0.5    1.3    1.8 </span>
+<span class='r-in'><span class='fu'>as_numeric</span><span class='op'>(</span><span class='va'>x</span>, use.labels <span class='op'>=</span> <span class='cn'>TRUE</span>, keep.labels <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1.3 0.2 1.8 0.5</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -324,11 +351,11 @@ of consecutive factor level numbers). See 'Examples'.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/strengejacke'>Daniel Lüdecke</a>.</p>
+  <p><p>Developed by <a href="https://github.com/strengejacke" class="external-link">Daniel Lüdecke</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -336,6 +363,8 @@ of consecutive factor level numbers). See 'Examples'.</p></td>
 
   
 
+
+  
 
   </body>
 </html>

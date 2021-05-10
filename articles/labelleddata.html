@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7.1</span>
       </span>
     </div>
 
@@ -71,8 +73,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/strengejacke/sjlabelled/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/strengejacke/sjlabelled/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -90,11 +92,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Working with Labelled Data</h1>
-                        <h4 class="author">Daniel Lüdecke</h4>
+                        <h4 data-toc-skip class="author">Daniel Lüdecke</h4>
             
-            <h4 class="date">2020-11-25</h4>
+            <h4 data-toc-skip class="date">2021-05-10</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/master/vignettes/labelleddata.Rmd"><code>vignettes/labelleddata.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/master/vignettes/labelleddata.Rmd" class="external-link"><code>vignettes/labelleddata.Rmd</code></a></small>
       <div class="hidden name"><code>labelleddata.Rmd</code></div>
 
     </div>
@@ -104,27 +106,27 @@
 <p>This vignette shows a small example how functions to work with labelled data can be implemented in a typical data visualization workflow.</p>
 <div id="labelled-data" class="section level1">
 <h1 class="hasAnchor">
-<a href="#labelled-data" class="anchor"></a>Labelled Data</h1>
+<a href="#labelled-data" class="anchor" aria-hidden="true"></a>Labelled Data</h1>
 <p>In software like SPSS, it is common to have value and variable labels as variable attributes. Variable values, even if categorical, are mostly numeric. In R, however, you may use labels as values directly:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"mid"</span>, <span class="st">"high"</span>, <span class="st">"low"</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"mid"</span>, <span class="st">"high"</span>, <span class="st">"low"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] low  high mid  high low </span>
 <span class="co">#&gt; Levels: high low mid</span></code></pre></div>
 <p>Reading SPSS-data with <strong>haven</strong> or <strong>sjlabelled</strong> keeps the numeric values for variables and adds the value and variable labels as attributes. See following example from the sample-dataset efc, which is part of the <strong>sjlabelled</strong>-package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/">sjlabelled</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/" class="external-link">sjlabelled</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>
 <span class="co">#&gt;  num [1:908] 3 3 3 4 4 4 4 4 4 4 ...</span>
 <span class="co">#&gt;  - attr(*, "label")= chr "elder's dependency"</span>
 <span class="co">#&gt;  - attr(*, "labels")= Named num [1:4] 1 2 3 4</span>
 <span class="co">#&gt;   ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"</span></code></pre></div>
-<p>While all plotting and table functions of the <a href="https://cran.r-project.org/package=sjPlot">sjPlot-package</a> make use of these attributes, many packages and/or functions do not consider these attributes, e.g. R base graphics:</p>
+<p>While all plotting and table functions of the <a href="https://cran.r-project.org/package=sjPlot" class="external-link">sjPlot-package</a> make use of these attributes, many packages and/or functions do not consider these attributes, e.g. R base graphics:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/">sjlabelled</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span>, <span class="va">efc</span><span class="op">$</span><span class="va">e16sex</span><span class="op">)</span>, 
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/" class="external-link">sjlabelled</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span>, <span class="va">efc</span><span class="op">$</span><span class="va">e16sex</span><span class="op">)</span>, 
   beside <span class="op">=</span> <span class="cn">T</span>, 
   legend.text <span class="op">=</span> <span class="cn">T</span>
 <span class="op">)</span></code></pre></div>
@@ -133,12 +135,12 @@
 </div>
 <div id="adding-value-labels-as-factor-values" class="section level1">
 <h1 class="hasAnchor">
-<a href="#adding-value-labels-as-factor-values" class="anchor"></a>Adding value labels as factor values</h1>
-<p><code><a href="../reference/as_character.html">as_label()</a></code> is a sjlabelled-function that converts a numeric variable into a factor and sets attribute-value-labels as factor levels. When using factors with valued levels, the bar plot will be labelled.</p>
+<a href="#adding-value-labels-as-factor-values" class="anchor" aria-hidden="true"></a>Adding value labels as factor values</h1>
+<p><code><a href="../reference/as_label.html">as_label()</a></code> is a sjlabelled-function that converts a numeric variable into a factor and sets attribute-value-labels as factor levels. When using factors with valued levels, the bar plot will be labelled.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_character.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>,
-        <span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_character.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e16sex</span><span class="op">)</span><span class="op">)</span>, 
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_label.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>,
+        <span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_label.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e16sex</span><span class="op">)</span><span class="op">)</span>, 
   beside <span class="op">=</span> <span class="cn">TRUE</span>, 
   legend.text <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
@@ -146,7 +148,7 @@
 </div>
 <div id="getting-and-setting-value-and-variable-labels" class="section level1">
 <h1 class="hasAnchor">
-<a href="#getting-and-setting-value-and-variable-labels" class="anchor"></a>Getting and setting value and variable labels</h1>
+<a href="#getting-and-setting-value-and-variable-labels" class="anchor" aria-hidden="true"></a>Getting and setting value and variable labels</h1>
 <p>There are four functions that let you easily set or get value and variable labels of either a single vector or a complete data frame:</p>
 <ul>
 <li>
@@ -160,9 +162,9 @@
 </ul>
 <p>With this function, you can easily add titles to plots dynamically, i.e. depending on the variable that is plotted.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_character.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>,
-        <span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_character.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e16sex</span><span class="op">)</span><span class="op">)</span>, 
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_label.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>,
+        <span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_label.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e16sex</span><span class="op">)</span><span class="op">)</span>, 
   beside <span class="op">=</span> <span class="cn">TRUE</span>, 
   legend.text <span class="op">=</span> <span class="cn">TRUE</span>,
   main <span class="op">=</span> <span class="fu"><a href="../reference/get_label.html">get_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>
@@ -171,15 +173,15 @@
 </div>
 <div id="restore-labels-from-subsetted-data" class="section level1">
 <h1 class="hasAnchor">
-<a href="#restore-labels-from-subsetted-data" class="anchor"></a>Restore labels from subsetted data</h1>
-<p>The base <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code> function drops label attributes (or vector attributes in general) when subsetting data. In the sjlabelled-package, there are handy functions to deal with this problem: <code><a href="../reference/copy_labels.html">copy_labels()</a></code> and <code><a href="../reference/add_labels.html">remove_labels()</a></code>.</p>
+<a href="#restore-labels-from-subsetted-data" class="anchor" aria-hidden="true"></a>Restore labels from subsetted data</h1>
+<p>The base <code><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset()</a></code> function drops label attributes (or vector attributes in general) when subsetting data. In the sjlabelled-package, there are handy functions to deal with this problem: <code><a href="../reference/copy_labels.html">copy_labels()</a></code> and <code><a href="../reference/add_labels.html">remove_labels()</a></code>.</p>
 <p><code><a href="../reference/copy_labels.html">copy_labels()</a></code> adds back labels to a subsetted data frame based on the original data frame. And <code><a href="../reference/add_labels.html">remove_labels()</a></code> removes all label attributes.</p>
 <div id="losing-labels-during-subset" class="section level2">
 <h2 class="hasAnchor">
-<a href="#losing-labels-during-subset" class="anchor"></a>Losing labels during subset</h2>
+<a href="#losing-labels-during-subset" class="anchor" aria-hidden="true"></a>Losing labels during subset</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">efc.sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">efc</span>, subset <span class="op">=</span> <span class="va">e16sex</span> <span class="op">==</span> <span class="fl">1</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">efc.sub</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">efc.sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">efc</span>, subset <span class="op">=</span> <span class="va">e16sex</span> <span class="op">==</span> <span class="fl">1</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">efc.sub</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    296 obs. of  5 variables:</span>
 <span class="co">#&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...</span>
 <span class="co">#&gt;  $ e42dep : num  4 4 1 3 3 4 3 4 2 4 ...</span>
@@ -189,10 +191,10 @@
 </div>
 <div id="add-back-labels" class="section level2">
 <h2 class="hasAnchor">
-<a href="#add-back-labels" class="anchor"></a>Add back labels</h2>
+<a href="#add-back-labels" class="anchor" aria-hidden="true"></a>Add back labels</h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">efc.sub</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/copy_labels.html">copy_labels</a></span><span class="op">(</span><span class="va">efc.sub</span>, <span class="va">efc</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">efc.sub</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">efc.sub</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    296 obs. of  5 variables:</span>
 <span class="co">#&gt;  $ e17age : num  74 68 80 72 94 79 67 80 76 88 ...</span>
 <span class="co">#&gt;   ..- attr(*, "label")= chr "elder' age"</span>
@@ -216,7 +218,7 @@
 </div>
 <div id="conclusion" class="section level1">
 <h1 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h1>
+<a href="#conclusion" class="anchor" aria-hidden="true"></a>Conclusion</h1>
 <p>When working with labelled data, especially when working with data sets imported from other software packages, it comes very handy to make use of the label attributes. The <strong>sjlabelled</strong>-package supports this feature and offers useful functions for these tasks.</p>
 </div>
   </div>
@@ -232,11 +234,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/strengejacke">Daniel Lüdecke</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/strengejacke" class="external-link external-link">Daniel Lüdecke</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -244,6 +248,8 @@
 
   
 
+
+  
 
   </body>
 </html>

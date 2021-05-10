@@ -53,6 +53,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -64,9 +66,18 @@
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,7 +91,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.7.1</span>
       </span>
     </div>
 
@@ -114,7 +125,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/strengejacke/sjlabelled/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -158,7 +169,7 @@
       <td><p>Optional, unquoted names of variables that should be selected for
 further processing. Required, if <code>x</code> is a data frame (and no
 vector) and only selected variables from <code>x</code> should be processed.
-You may also use functions like <code><a href='https://rdrr.io/r/base/Colon.html'>:</a></code> or tidyselect's select-helpers.
+You may also use functions like <code>:</code> or tidyselect's select-helpers.
 See 'Examples'.</p></td>
     </tr>
     <tr>
@@ -203,101 +214,120 @@ from specific NA values.</p></dd>
            value labels).</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># add_labels()</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
-#&gt; [4] "severely dependent"  </div><div class='input'>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`nothing` <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
-#&gt; [4] "severely dependent"   "nothing"             </div><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>"dplyr"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>efc</span> <span class='op'>%&gt;%</span>
-    <span class='co'># select three variables</span>
-    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>e42dep</span>, <span class='va'>c172code</span>, <span class='va'>c161sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='co'># only add new label to two of those</span>
-    <span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>e42dep</span>, <span class='va'>c172code</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`nothing` <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='co'># see data frame, with selected variables having new labels</span>
-  <span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: dplyr</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:sjlabelled’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    as_label</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='output co'>#&gt; $e42dep
-#&gt; [1] "independent"          "slightly dependent"   "moderately dependent"
-#&gt; [4] "severely dependent"   "nothing"             
-#&gt; 
-#&gt; $c172code
-#&gt; [1] "low level of education"          "intermediate level of education"
-#&gt; [3] "high level of education"         "nothing"                        
-#&gt; 
-#&gt; $c161sex
-#&gt; [1] "Male"   "Female"
-#&gt; </div><div class='input'>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`nothing` <span class='op'>=</span> <span class='fl'>5</span>, `zero value` <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[0] zero value"           "[1] independent"         
-#&gt; [3] "[2] slightly dependent"   "[3] moderately dependent"
-#&gt; [5] "[4] severely dependent"   "[5] nothing"             </div><div class='input'>
-<span class='co'># replace old value labels</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>add_labels</span><span class='op'>(</span>
-  <span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>,
-  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`not so dependent` <span class='op'>=</span> <span class='fl'>4</span>, `lorem ipsum` <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>label 'severely dependent' was replaced with new value label.</span></div><div class='input'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[1] independent"          "[2] slightly dependent"  
-#&gt; [3] "[3] moderately dependent" "[4] not so dependent"    
-#&gt; [5] "[5] lorem ipsum"         </div><div class='input'>
-<span class='co'># replace specific missing value (tagged NA)</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='http://haven.tidyverse.org'>"haven"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,
-                <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,
-                  <span class='st'>"Refused"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='co'># get current NA values</span>
-  <span class='va'>x</span>
-  <span class='co'># tagged NA(c) has currently the value label "First", will be</span>
-  <span class='co'># replaced by "Second" now.</span>
-  <span class='fu'>replace_labels</span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Second"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: haven</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘haven’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:sjlabelled’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    as_factor, read_sas, read_spss, read_stata, write_sas, zap_labels</span></div><div class='output co'>#&gt; <span class='message'>tagged NA 'First' was replaced with new value label.</span></div><div class='output co'>#&gt; &lt;labelled&lt;double&gt;[10]&gt;
-#&gt;  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1
-#&gt; 
-#&gt; Labels:
-#&gt;  value        label
-#&gt;      1    Agreement
-#&gt;      4 Disagreement
-#&gt;  NA(c)       Second
-#&gt;  NA(a)      Refused
-#&gt;  NA(z)     Not home</div><div class='input'>
-
-<span class='co'># remove_labels()</span>
-
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[1] independent"          "[3] moderately dependent"
-#&gt; [3] "[4] severely dependent"  </div><div class='input'>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='st'>"independent"</span><span class='op'>)</span>
-<span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "[2] slightly dependent"   "[3] moderately dependent"
-#&gt; [3] "[4] severely dependent"  </div><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='http://haven.tidyverse.org'>"haven"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,
-                <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,
-                  <span class='st'>"Refused"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='co'># get current NA values</span>
-  <span class='fu'><a href='get_na.html'>get_na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-  <span class='fu'><a href='get_na.html'>get_na</a></span><span class='op'>(</span><span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt;  Refused Not home 
-#&gt;       NA       NA </div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># add_labels()</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "independent"          "slightly dependent"   "moderately dependent"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4] "severely dependent"  </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`nothing` <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "independent"          "slightly dependent"   "moderately dependent"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4] "severely dependent"   "nothing"             </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>"dplyr"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>efc</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>    <span class='co'># select three variables</span></span>
+<span class='r-in'>    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>e42dep</span>, <span class='va'>c172code</span>, <span class='va'>c161sex</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>    <span class='co'># only add new label to two of those</span></span>
+<span class='r-in'>    <span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>e42dep</span>, <span class='va'>c172code</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`nothing` <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># see data frame, with selected variables having new labels</span></span>
+<span class='r-in'>  <span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: dplyr</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘dplyr’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following object is masked from ‘package:sjlabelled’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     as_label</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:stats’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     filter, lag</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:base’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     intersect, setdiff, setequal, union</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $e42dep</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "independent"          "slightly dependent"   "moderately dependent"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4] "severely dependent"   "nothing"             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $c172code</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "low level of education"          "intermediate level of education"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3] "high level of education"         "nothing"                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $c161sex</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Male"   "Female"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`nothing` <span class='op'>=</span> <span class='fl'>5</span>, `zero value` <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[0] zero value"           "[1] independent"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3] "[2] slightly dependent"   "[3] moderately dependent"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5] "[4] severely dependent"   "[5] nothing"             </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># replace old value labels</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>add_labels</span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>,</span>
+<span class='r-in'>  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`not so dependent` <span class='op'>=</span> <span class='fl'>4</span>, `lorem ipsum` <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> label 'severely dependent' was replaced with new value label.</span>
+<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[1] independent"          "[2] slightly dependent"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3] "[3] moderately dependent" "[4] not so dependent"    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5] "[5] lorem ipsum"         </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># replace specific missing value (tagged NA)</span></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://haven.tidyverse.org'>"haven"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,</span>
+<span class='r-in'>                <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,</span>
+<span class='r-in'>                  <span class='st'>"Refused"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># get current NA values</span></span>
+<span class='r-in'>  <span class='va'>x</span></span>
+<span class='r-in'>  <span class='co'># tagged NA(c) has currently the value label "First", will be</span></span>
+<span class='r-in'>  <span class='co'># replaced by "Second" now.</span></span>
+<span class='r-in'>  <span class='fu'>replace_labels</span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Second"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: haven</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘haven’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:sjlabelled’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     as_factor, read_sas, read_spss, read_stata, write_sas, zap_labels</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> tagged NA 'First' was replaced with new value label.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[10]&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  value        label</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      1    Agreement</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      4 Disagreement</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(c)       Second</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(a)      Refused</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(z)     Not home</span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># remove_labels()</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[1] independent"          "[3] moderately dependent"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3] "[4] severely dependent"  </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span>, labels <span class='op'>=</span> <span class='st'>"independent"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, values <span class='op'>=</span> <span class='st'>"p"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[2] slightly dependent"   "[3] moderately dependent"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3] "[4] severely dependent"  </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://haven.tidyverse.org'>"haven"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,</span>
+<span class='r-in'>                <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,</span>
+<span class='r-in'>                  <span class='st'>"Refused"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># get current NA values</span></span>
+<span class='r-in'>  <span class='fu'><a href='get_na.html'>get_na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='get_na.html'>get_na</a></span><span class='op'>(</span><span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  Refused Not home </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       NA       NA </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -309,11 +339,11 @@ from specific NA values.</p></dd>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/strengejacke'>Daniel Lüdecke</a>.</p>
+  <p><p>Developed by <a href="https://github.com/strengejacke" class="external-link">Daniel Lüdecke</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -321,6 +351,8 @@ from specific NA values.</p></dd>
 
   
 
+
+  
 
   </body>
 </html>
