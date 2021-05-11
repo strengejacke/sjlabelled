@@ -201,7 +201,7 @@ as_numeric_helper <- function(x, start.at, keep.labels, use.labels) {
 
   # check if we should set back former variable and value labels
   if (keep.labels) {
-    new_value <- set_labels(new_value, labels = labels, force.labels = T)
+    new_value <- set_labels(new_value, labels = labels, force.labels = TRUE)
     new_value <- set_label(new_value, label = varlab)
   }
 

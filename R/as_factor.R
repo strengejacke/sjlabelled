@@ -107,16 +107,19 @@ to_fac_helper <- function(x, add.non.labelled) {
   if (is.factor(x)) return(x)
 
   # retrieve value labels
-  lab <-
-    get_labels(
-      x,
-      attr.only = TRUE,
-      values = "n",
-      non.labelled = add.non.labelled
-    )
+  lab <- get_labels(
+    x,
+    attr.only = TRUE,
+    values = "n",
+    non.labelled = add.non.labelled
+  )
 
   # retrieve variable labels
   varlab <- attr(x, "label", exact = TRUE)
+  na_values <- attr(x, "na_values", exact = TRUE)
+  if (is.null(na_values)) {
+    na_values <- attr(x, "na.values", exact = TRUE)
+  }
 
   # switch value and names attribute, since get_labels
   # returns the values as names, and the value labels
@@ -136,18 +139,19 @@ to_fac_helper <- function(x, add.non.labelled) {
   x <- factor(x, exclude = c(NA_character_, "NaN"))
 
   # set back value labels
-  x <-
-    suppressMessages(
-      set_labels(
-        x,
-        labels = lab.switch,
-        force.labels = TRUE,
-        force.values = FALSE
-      )
+  x <- suppressMessages(
+    set_labels(
+      x,
+      labels = lab.switch,
+      force.labels = TRUE,
+      force.values = FALSE
     )
+  )
 
   # set back variable labels
   attr(x, "label") <- varlab
+  attr(x, "na_values") <- na_values
+  attr(x, "na.values") <- na_values
 
   x
 }

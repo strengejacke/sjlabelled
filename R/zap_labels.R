@@ -235,6 +235,9 @@ zap_na_tags_helper <- function(x) {
   labs <- attr(x, "labels", exact = TRUE)
   labs <- labs[!haven::is_tagged_na(labs)]
 
+  attr(x, "na_values") <- NULL
+  attr(x, "na.values") <- NULL
+
   # if no labels left, clear attribute
   if (is.null(labs)) {
     attr(x, "labels") <- NULL

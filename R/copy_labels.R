@@ -69,6 +69,8 @@ copy_labels <- function(df_new, df_origin = NULL, ...) {
         # copy variable and value labels
         attr(df_new[[i]], "label") <- attr(df_origin[[i]], "label", exact = TRUE)
         attr(df_new[[i]], "labels") <- attr(df_origin[[i]], "labels", exact = TRUE)
+        attr(df_new[[i]], "na_values") <- attr(df_origin[[i]], "na_values", exact = TRUE)
+        attr(df_new[[i]], "na.values") <- attr(df_origin[[i]], "na.values", exact = TRUE)
       }
     } else {
       warning("Both `df_origin` and `df_new` must be of class `data.frame`.", call. = FALSE)

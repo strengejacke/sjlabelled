@@ -43,6 +43,8 @@ remove_all_labels_helper <- function(x) {
   # remove attributes
   attr(x, "label") <- NULL
   attr(x, "labels") <- NULL
+  attr(x, "na_values") <- NULL
+  attr(x, "na.values") <- NULL
 
   # unclass, if labelled. labelled class may throw
   # errors / warnings, when not havin label attributes
