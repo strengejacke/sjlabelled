@@ -264,8 +264,9 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
         if (is.null(dummy.labels)) {
           warning("`labels` must be a named vector.", call. = TRUE)
         } else {
-          names(dummy.labels) <- unname(labels)
-          attr(x, "labels") <- dummy.labels
+          # names(dummy.labels) <- unname(labels)
+          # attr(x, "labels") <- dummy.labels
+          attr(x, "labels") <- labels
         }
       } else {
         warning("Character vectors can only get labels of same type.", call. = TRUE)

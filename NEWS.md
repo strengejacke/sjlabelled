@@ -9,6 +9,8 @@
 
 * Fixed issues with reading/writing tagged `NA` values.
 
+* Fixed issues with value labelling of character vectors.
+
 # sjlabelled 1.1.7
 
 ## General
