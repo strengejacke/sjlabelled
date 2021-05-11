@@ -1,3 +1,14 @@
+# sjlabelled 1.1.8
+
+## Changes to functions
+
+* `label_to_colnames()` gets a `...` argument, to change only column names of
+  selected variables.
+  
+## Bug fixes
+
+* Fixed issues with reading/writing tagged `NA` values.
+
 # sjlabelled 1.1.7
 
 ## General
