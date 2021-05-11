@@ -153,7 +153,7 @@
   data" also for those functions that cannot cope with labelled data by default.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_to_colnames</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>label_to_colnames</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,6 +161,14 @@
     <tr>
       <th>x</th>
       <td><p>A data frame.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Optional, unquoted names of variables that should be selected for
+further processing. Required, if <code>x</code> is a data frame (and no
+vector) and only selected variables from <code>x</code> should be processed.
+You may also use functions like <code>:</code> or tidyselect's select-helpers.
+See 'Examples'.</p></td>
     </tr>
     </table>
 
