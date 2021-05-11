@@ -246,61 +246,20 @@ dependent variable (multiple responses) are returned.</p></td>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>               "carer's level of education" </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># make "education" categorical</span></span>
-<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjmisc/'>sjmisc</a></span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>efc</span><span class='op'>$</span><span class='va'>c172code</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as_factor.html'>to_factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>c172code</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>barthtot</span> <span class='op'>~</span> <span class='va'>c160age</span> <span class='op'>+</span> <span class='va'>c12hour</span> <span class='op'>+</span> <span class='va'>c161sex</span> <span class='op'>+</span> <span class='va'>c172code</span>, data <span class='op'>=</span> <span class='va'>efc</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>term_labels</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    c160age </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                               "carer' age" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    c12hour </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> "average number of hours of care per week" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    c161sex </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                           "carer's gender" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                   c172code </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>               "carer's level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                  c172code1 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                   "low level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                  c172code2 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>          "intermediate level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                  c172code3 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                  "high level of education" </span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://strengejacke.github.io/sjmisc/'>"sjmisc"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>efc</span><span class='op'>$</span><span class='va'>c172code</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as_factor.html'>to_factor</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>c172code</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>barthtot</span> <span class='op'>~</span> <span class='va'>c160age</span> <span class='op'>+</span> <span class='va'>c12hour</span> <span class='op'>+</span> <span class='va'>c161sex</span> <span class='op'>+</span> <span class='va'>c172code</span>, data <span class='op'>=</span> <span class='va'>efc</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>term_labels</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># prefix value of categorical variables with variable name</span></span>
-<span class='r-in'><span class='fu'>term_labels</span><span class='op'>(</span><span class='va'>fit</span>, prefix <span class='op'>=</span> <span class='st'>"varname"</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                     c160age </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                "carer' age" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                     c12hour </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  "average number of hours of care per week" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                     c161sex </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                            "carer's gender" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                    c172code </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                "carer's level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                   c172code1 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>          "c172code: low level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                   c172code2 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> "c172code: intermediate level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                   c172code3 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         "c172code: high level of education" </span>
+<span class='r-in'>  <span class='co'># prefix value of categorical variables with variable name</span></span>
+<span class='r-in'>  <span class='fu'>term_labels</span><span class='op'>(</span><span class='va'>fit</span>, prefix <span class='op'>=</span> <span class='st'>"varname"</span><span class='op'>)</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># prefix value of categorical variables with value label</span></span>
-<span class='r-in'><span class='fu'>term_labels</span><span class='op'>(</span><span class='va'>fit</span>, prefix <span class='op'>=</span> <span class='st'>"label"</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                       c160age </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                  "carer' age" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                       c12hour </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                    "average number of hours of care per week" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                       c161sex </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                              "carer's gender" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                      c172code </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                  "carer's level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                     c172code1 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>          "carer's level of education: low level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                     c172code2 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> "carer's level of education: intermediate level of education" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                     c172code3 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>         "carer's level of education: high level of education" </span>
+<span class='r-in'>  <span class='co'># prefix value of categorical variables with value label</span></span>
+<span class='r-in'>  <span class='fu'>term_labels</span><span class='op'>(</span><span class='va'>fit</span>, prefix <span class='op'>=</span> <span class='st'>"label"</span><span class='op'>)</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># get label of dv</span></span>
-<span class='r-in'><span class='fu'>response_labels</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># get label of dv</span></span>
+<span class='r-in'>  <span class='fu'>response_labels</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Total score BARTHEL INDEX"</span>
 </pre>
   </div>

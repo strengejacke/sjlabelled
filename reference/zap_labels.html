@@ -1189,61 +1189,23 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># drop_labels() ----</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjmisc/'>sjmisc</a></span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>rp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/rec_pattern.html'>rec_pattern</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>rp</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> $pattern</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "1:5=1;6:10=2;11:15=3;16:20=4;21:25=5;26:30=6;31:35=7;36:40=8;41:45=9;46:50=10;51:55=11;56:60=12;61:65=13;66:70=14;71:75=15;76:80=16;81:85=17;86:90=18;91:95=19;96:100=20;"</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> $labels</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>        1        2        3        4        5        6        7        8 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    "1-5"   "6-10"  "11-15"  "16-20"  "21-25"  "26-30"  "31-35"  "36-40" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>        9       10       11       12       13       14       15       16 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  "41-45"  "46-50"  "51-55"  "56-60"  "61-65"  "66-70"  "71-75"  "76-80" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       17       18       19       20 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  "81-85"  "86-90"  "91-95" "96-100" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://strengejacke.github.io/sjmisc/'>"sjmisc"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>rp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/rec_pattern.html'>rec_pattern</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>rp</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># sample data</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
-<span class='r-in'><span class='co'># recode carers age into groups of width 5</span></span>
-<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/rec.html'>rec</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>c160age</span>, rec <span class='op'>=</span> <span class='va'>rp</span><span class='op'>$</span><span class='va'>pattern</span><span class='op'>)</span></span>
-<span class='r-in'><span class='co'># add value labels to new vector</span></span>
-<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='va'>rp</span><span class='op'>$</span><span class='va'>labels</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># sample data</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># recode carers age into groups of width 5</span></span>
+<span class='r-in'>  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/rec.html'>rec</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>c160age</span>, rec <span class='op'>=</span> <span class='va'>rp</span><span class='op'>$</span><span class='va'>pattern</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># add value labels to new vector</span></span>
+<span class='r-in'>  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='va'>rp</span><span class='op'>$</span><span class='va'>labels</span><span class='op'>)</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'># watch result. due to recode-pattern, we have age groups with</span></span>
-<span class='r-in'><span class='co'># no observations (zero-counts)</span></span>
-<span class='r-in'><span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/frq.html'>frq</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>carer' age (x)</span><span style='color: #0000BB;'> &lt;numeric&gt;</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #0000BB;'># total N=908  valid N=901  mean=11.07  sd=2.69</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #0000BB;'></span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #0000BB;'></span><span>Value |  Label |   N | Raw % | Valid % | Cum. %</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> -----------------------------------------------</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     1 |    1-5 |   0 |  0.00 |    0.00 |   0.00</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     2 |   6-10 |   0 |  0.00 |    0.00 |   0.00</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     3 |  11-15 |   0 |  0.00 |    0.00 |   0.00</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     4 |  16-20 |   5 |  0.55 |    0.55 |   0.55</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     5 |  21-25 |  15 |  1.65 |    1.66 |   2.22</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     6 |  26-30 |  28 |  3.08 |    3.11 |   5.33</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     7 |  31-35 |  50 |  5.51 |    5.55 |  10.88</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     8 |  36-40 |  51 |  5.62 |    5.66 |  16.54</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     9 |  41-45 |  99 | 10.90 |   10.99 |  27.52</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    10 |  46-50 | 126 | 13.88 |   13.98 |  41.51</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    11 |  51-55 | 116 | 12.78 |   12.87 |  54.38</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    12 |  56-60 | 122 | 13.44 |   13.54 |  67.92</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    13 |  61-65 | 123 | 13.55 |   13.65 |  81.58</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    14 |  66-70 |  82 |  9.03 |    9.10 |  90.68</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    15 |  71-75 |  41 |  4.52 |    4.55 |  95.23</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    16 |  76-80 |  32 |  3.52 |    3.55 |  98.78</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    17 |  81-85 |   9 |  0.99 |    1.00 |  99.78</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    18 |  86-90 |   2 |  0.22 |    0.22 | 100.00</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    19 |  91-95 |   0 |  0.00 |    0.00 | 100.00</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>    20 | 96-100 |   0 |  0.00 |    0.00 | 100.00</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  &lt;NA&gt; |   &lt;NA&gt; |   7 |  0.77 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-in'><span class='co'># now, let's drop zero's</span></span>
-<span class='r-in'><span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/frq.html'>frq</a></span><span class='op'>(</span><span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># watch result. due to recode-pattern, we have age groups with</span></span>
+<span class='r-in'>  <span class='co'># no observations (zero-counts)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/frq.html'>frq</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># now, let's drop zero's</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://strengejacke.github.io/sjmisc/reference/frq.html'>frq</a></span><span class='op'>(</span><span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BB0000;'>carer' age (x)</span><span style='color: #0000BB;'> &lt;numeric&gt;</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #0000BB;'># total N=908  valid N=901  mean=11.07  sd=2.69</span></span>
@@ -1269,38 +1231,15 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># drop labels, also drop NA value labels, then also zap tagged NA</span></span>
-<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://haven.tidyverse.org'>haven</a></span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,</span>
-<span class='r-in'>              <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"Unused"</span> <span class='op'>=</span> <span class='fl'>5</span>,</span>
-<span class='r-in'>                <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>x</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]     1     2     3 NA(z)     4     3     2     1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  value        label</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      1    Agreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      4 Disagreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      5       Unused</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(z)     Not home</span>
-<span class='r-in'><span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span>, drop.na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]     1     2     3 NA(z)     4     3     2     1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  value        label</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      1    Agreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      4 Disagreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(z)     Not home</span>
-<span class='r-in'><span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]     1     2     3 NA(z)     4     3     2     1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  value        label</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      1    Agreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      4 Disagreement</span>
-<span class='r-in'><span class='fu'><a href='zap_na_tags.html'>zap_na_tags</a></span><span class='op'>(</span><span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://haven.tidyverse.org'>"haven"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,</span>
+<span class='r-in'>                <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"Unused"</span> <span class='op'>=</span> <span class='fl'>5</span>,</span>
+<span class='r-in'>                  <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>x</span></span>
+<span class='r-in'>  <span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span>, drop.na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='zap_na_tags.html'>zap_na_tags</a></span><span class='op'>(</span><span class='fu'><a href='zap_labels.html'>drop_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[8]&gt;</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  1  2  3 NA  4  3  2  1</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
@@ -1313,44 +1252,21 @@ See <code><a href='get_na.html'>get_na</a></code> for more details on tagged NA 
 <span class='r-in'><span class='co'># fill_labels() ----</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># create labelled integer, with tagged missings</span></span>
-<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://haven.tidyverse.org'>haven</a></span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span></span>
-<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,</span>
-<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,</span>
-<span class='r-in'>    <span class='st'>"Refused"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'>  <span class='op'>)</span></span>
-<span class='r-in'><span class='co'># get current values and labels</span></span>
-<span class='r-in'><span class='va'>x</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[10]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  value        label</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      1    Agreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      4 Disagreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(c)        First</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(a)      Refused</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(z)     Not home</span>
-<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Agreement"    "Disagreement"</span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://haven.tidyverse.org'>"haven"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/labelled.html'>labelled</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"c"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>,</span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Agreement"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"Disagreement"</span> <span class='op'>=</span> <span class='fl'>4</span>, <span class='st'>"First"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"c"</span><span class='op'>)</span>,</span>
+<span class='r-in'>      <span class='st'>"Refused"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"Not home"</span> <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/tagged_na.html'>tagged_na</a></span><span class='op'>(</span><span class='st'>"z"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># get current values and labels</span></span>
+<span class='r-in'>  <span class='va'>x</span></span>
+<span class='r-in'>  <span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='fu'><a href='zap_labels.html'>fill_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;labelled&lt;double&gt;[10]&gt;</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> Labels:</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  value        label</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      1    Agreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      2            2</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      3            3</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      4 Disagreement</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(c)        First</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(a)      Refused</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  NA(z)     Not home</span>
-<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='fu'><a href='zap_labels.html'>fill_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Agreement"    "2"            "3"            "Disagreement"</span>
-<span class='r-in'><span class='co'># same as</span></span>
-<span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='zap_labels.html'>fill_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='fu'><a href='zap_labels.html'>fill_labels</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='co'># same as</span></span>
+<span class='r-in'>  <span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>x</span>, non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Agreement"    "2"            "3"            "Disagreement"</span>
 </pre>
   </div>
