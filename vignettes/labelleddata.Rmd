@@ -38,8 +38,8 @@ library(sjlabelled)
 data(efc)
 barplot(
   table(efc$e42dep, efc$e16sex), 
-  beside = T, 
-  legend.text = T
+  beside = TRUE, 
+  legend.text = TRUE
 )
 ```
 
