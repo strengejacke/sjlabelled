@@ -96,10 +96,16 @@ as_labelled_helper <- function(x, add.labels, add.class, skip.strings, tag.na) {
     }
     labels <- attr(x, "labels", exact = TRUE)
     xna <- get_na(x, as.tag = TRUE)
-    names(xna) <- match(unname(gsub("NA\\((.*)\\)", "\\1", xna)), letters) * -1
-    tagged_missing <- haven::print_tagged_na(x)
+    new_tags <- unname(gsub("NA\\((.*)\\)", "\\1", xna))
+    names(new_tags) <- new_tags
+    # convert to numeric, if character
+    numeric_na <- which(is.na(suppressWarnings(as.numeric(new_tags))))
+    if (any(numeric_na)) {
+      names(new_tags)[numeric_na] <- match(new_tags[numeric_na], letters) * -1
+    }
+    tagged_missing <- haven::na_tag(x)
     for (i in 1:length(xna)) {
-      x[which(tagged_missing == xna[i])] <- as.numeric(names(xna[i]))
+      x[which(tagged_missing == new_tags[i])] <- as.numeric(names(new_tags[i]))
     }
     labels[is.na(labels)] <- stats::setNames(attr(x, "na.values"), names(labels[is.na(labels)]))
     attr(x, "labels") <- labels
