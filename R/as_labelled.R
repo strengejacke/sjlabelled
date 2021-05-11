@@ -139,5 +139,10 @@ as_labelled_helper <- function(x, add.labels, add.class, skip.strings, tag.na) {
   else
     class(x) <- c("haven_labelled", "vctrs_vctr")
 
+  # add haven labelled SPSS class
+  if (tag.na) {
+    class(x) <- c("haven_labelled_spss", class(x))
+  }
+
   x
 }
