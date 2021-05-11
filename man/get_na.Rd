@@ -49,12 +49,13 @@ get_na(x)
 get_na(x, as.tag = TRUE)
 
 # replace only the NA, which is tagged as NA(c)
-library(sjmisc)
-replace_na(x, value = 2, tagged.na = "c")
-get_na(replace_na(x, value = 2, tagged.na = "c"))
+if (require("sjmisc")) {
+  replace_na(x, value = 2, tagged.na = "c")
+  get_na(replace_na(x, value = 2, tagged.na = "c"))
 
-# data frame as input
-y <- labelled(c(2:3, 3:1, tagged_na("y"), 4:1),
-              c("Agreement" = 1, "Disagreement" = 4, "Why" = tagged_na("y")))
-get_na(data.frame(x, y))
+  # data frame as input
+  y <- labelled(c(2:3, 3:1, tagged_na("y"), 4:1),
+                c("Agreement" = 1, "Disagreement" = 4, "Why" = tagged_na("y")))
+  get_na(data.frame(x, y))
+}
 }

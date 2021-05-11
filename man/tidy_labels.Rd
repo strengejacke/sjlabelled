@@ -34,21 +34,21 @@ Duplicated value labels in variables may cause troubles when
              them with the associated value.
 }
 \examples{
-library(sjmisc)
-set.seed(123)
-x <- set_labels(
-  sample(1:5, size = 20, replace = TRUE),
-  labels = c("low" = 1, ".." = 2, ".." = 3, ".." = 4, "high" = 5)
-)
-frq(x)
+if (require("sjmisc")) {
+  set.seed(123)
+  x <- set_labels(
+    sample(1:5, size = 20, replace = TRUE),
+    labels = c("low" = 1, ".." = 2, ".." = 3, ".." = 4, "high" = 5)
+  )
+  frq(x)
 
-z <- tidy_labels(x)
-frq(z)
+  z <- tidy_labels(x)
+  frq(z)
 
-z <- tidy_labels(x, sep = ".")
-frq(z)
+  z <- tidy_labels(x, sep = ".")
+  frq(z)
 
-z <- tidy_labels(x, remove = TRUE)
-frq(z)
-
+  z <- tidy_labels(x, remove = TRUE)
+  frq(z)
+}
 }

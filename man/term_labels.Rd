@@ -78,17 +78,18 @@ fit <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
 term_labels(fit)
 
 # make "education" categorical
-library(sjmisc)
-efc$c172code <- to_factor(efc$c172code)
-fit <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
-term_labels(fit)
+if (require("sjmisc")) {
+  efc$c172code <- to_factor(efc$c172code)
+  fit <- lm(barthtot ~ c160age + c12hour + c161sex + c172code, data = efc)
+  term_labels(fit)
 
-# prefix value of categorical variables with variable name
-term_labels(fit, prefix = "varname")
+  # prefix value of categorical variables with variable name
+  term_labels(fit, prefix = "varname")
 
-# prefix value of categorical variables with value label
-term_labels(fit, prefix = "label")
+  # prefix value of categorical variables with value label
+  term_labels(fit, prefix = "label")
 
-# get label of dv
-response_labels(fit)
+  # get label of dv
+  response_labels(fit)
+}
 }

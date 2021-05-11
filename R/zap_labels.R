@@ -67,51 +67,54 @@
 #'
 #' # drop_labels() ----
 #'
-#' library(sjmisc)
-#' rp <- rec_pattern(1, 100)
-#' rp
+#' if (require("sjmisc")) {
+#'   rp <- rec_pattern(1, 100)
+#'   rp
 #'
-#' # sample data
-#' data(efc)
-#' # recode carers age into groups of width 5
-#' x <- rec(efc$c160age, rec = rp$pattern)
-#' # add value labels to new vector
-#' x <- set_labels(x, labels = rp$labels)
+#'   # sample data
+#'   data(efc)
+#'   # recode carers age into groups of width 5
+#'   x <- rec(efc$c160age, rec = rp$pattern)
+#'   # add value labels to new vector
+#'   x <- set_labels(x, labels = rp$labels)
 #'
-#' # watch result. due to recode-pattern, we have age groups with
-#' # no observations (zero-counts)
-#' frq(x)
-#' # now, let's drop zero's
-#' frq(drop_labels(x))
+#'   # watch result. due to recode-pattern, we have age groups with
+#'   # no observations (zero-counts)
+#'   frq(x)
+#'   # now, let's drop zero's
+#'   frq(drop_labels(x))
+#' }
 #'
 #' # drop labels, also drop NA value labels, then also zap tagged NA
-#' library(haven)
-#' x <- labelled(c(1:3, tagged_na("z"), 4:1),
-#'               c("Agreement" = 1, "Disagreement" = 4, "Unused" = 5,
-#'                 "Not home" = tagged_na("z")))
-#' x
-#' drop_labels(x, drop.na = FALSE)
-#' drop_labels(x)
-#' zap_na_tags(drop_labels(x))
+#' if (require("haven")) {
+#'   x <- labelled(c(1:3, tagged_na("z"), 4:1),
+#'                 c("Agreement" = 1, "Disagreement" = 4, "Unused" = 5,
+#'                   "Not home" = tagged_na("z")))
+#'   x
+#'   drop_labels(x, drop.na = FALSE)
+#'   drop_labels(x)
+#'   zap_na_tags(drop_labels(x))
+#' }
 #'
 #'
 #' # fill_labels() ----
 #'
 #' # create labelled integer, with tagged missings
-#' library(haven)
-#' x <- labelled(
-#'   c(1:3, tagged_na("a", "c", "z"), 4:1),
-#'   c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
-#'     "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
-#'   )
-#' # get current values and labels
-#' x
-#' get_labels(x)
+#' if (require("haven")) {
+#'   x <- labelled(
+#'     c(1:3, tagged_na("a", "c", "z"), 4:1),
+#'     c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
+#'       "Refused" = tagged_na("a"), "Not home" = tagged_na("z"))
+#'     )
+#'   # get current values and labels
+#'   x
+#'   get_labels(x)
 #'
-#' fill_labels(x)
-#' get_labels(fill_labels(x))
-#' # same as
-#' get_labels(x, non.labelled = TRUE)
+#'   fill_labels(x)
+#'   get_labels(fill_labels(x))
+#'   # same as
+#'   get_labels(x, non.labelled = TRUE)
+#' }
 #' @importFrom stats na.omit
 #' @export
 zap_labels <- function(x, ...) {

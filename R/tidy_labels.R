@@ -19,23 +19,23 @@
 #' @return \code{x}, with "repaired" (unique) value labels for each variable.
 #'
 #' @examples
-#' library(sjmisc)
-#' set.seed(123)
-#' x <- set_labels(
-#'   sample(1:5, size = 20, replace = TRUE),
-#'   labels = c("low" = 1, ".." = 2, ".." = 3, ".." = 4, "high" = 5)
-#' )
-#' frq(x)
+#' if (require("sjmisc")) {
+#'   set.seed(123)
+#'   x <- set_labels(
+#'     sample(1:5, size = 20, replace = TRUE),
+#'     labels = c("low" = 1, ".." = 2, ".." = 3, ".." = 4, "high" = 5)
+#'   )
+#'   frq(x)
 #'
-#' z <- tidy_labels(x)
-#' frq(z)
+#'   z <- tidy_labels(x)
+#'   frq(z)
 #'
-#' z <- tidy_labels(x, sep = ".")
-#' frq(z)
+#'   z <- tidy_labels(x, sep = ".")
+#'   frq(z)
 #'
-#' z <- tidy_labels(x, remove = TRUE)
-#' frq(z)
-#'
+#'   z <- tidy_labels(x, remove = TRUE)
+#'   frq(z)
+#' }
 #' @export
 tidy_labels <- function(x, ..., sep = "_", remove = FALSE) {
   dots <- as.character(match.call(expand.dots = FALSE)$`...`)
