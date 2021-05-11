@@ -181,6 +181,12 @@ if (require("haven") && require("sjmisc")) {
 
 # using quasi-quotation
 if (require("rlang") && require("dplyr")) {
+  dummies <- data.frame(
+    dummy1 = sample(1:4, 40, replace = TRUE),
+    dummy2 = sample(1:4, 40, replace = TRUE),
+    dummy3 = sample(1:4, 40, replace = TRUE)
+  )
+
   x1 <- "dummy1"
   x2 <- c("so low", "rather low", "mid", "very hi")
 
