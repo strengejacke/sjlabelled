@@ -153,7 +153,13 @@
                class vector, resp. adds a <code>labelled</code> class-attribute.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as_labelled</span><span class='op'>(</span><span class='va'>x</span>, add.labels <span class='op'>=</span> <span class='cn'>FALSE</span>, add.class <span class='op'>=</span> <span class='cn'>FALSE</span>, skip.strings <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>as_labelled</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  add.labels <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  add.class <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  skip.strings <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tag.na <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,6 +188,12 @@ be <code>labelled</code>.</p></td>
       <td><p>Logical, if <code>TRUE</code>, character vector are not converted
 into labelled-vectors. Else, character vectors are converted to factors
 vector and the associated values are used as value labels.</p></td>
+    </tr>
+    <tr>
+      <th>tag.na</th>
+      <td><p>Logical, if <code>TRUE</code>, tagged <code>NA</code> values are replaced
+by their associated values. This is required, for instance, when writing
+data back to SPSS.</p></td>
     </tr>
     </table>
 
