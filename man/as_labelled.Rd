@@ -4,7 +4,13 @@
 \alias{as_labelled}
 \title{Convert vector to labelled class}
 \usage{
-as_labelled(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE)
+as_labelled(
+  x,
+  add.labels = FALSE,
+  add.class = FALSE,
+  skip.strings = FALSE,
+  tag.na = FALSE
+)
 }
 \arguments{
 \item{x}{Variable (vector), \code{data.frame} or \code{list} of variables
@@ -23,6 +29,10 @@ be \code{labelled}.}
 \item{skip.strings}{Logical, if \code{TRUE}, character vector are not converted
 into labelled-vectors. Else, character vectors are converted to factors
 vector and the associated values are used as value labels.}
+
+\item{tag.na}{Logical, if \code{TRUE}, tagged \code{NA} values are replaced
+by their associated values. This is required, for instance, when writing
+data back to SPSS.}
 }
 \value{
 \code{x}, as \code{labelled}-class object.

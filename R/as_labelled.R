@@ -17,6 +17,10 @@
 #' @param skip.strings Logical, if \code{TRUE}, character vector are not converted
 #'   into labelled-vectors. Else, character vectors are converted to factors
 #'   vector and the associated values are used as value labels.
+#' @param tag.na Logical, if \code{TRUE}, tagged \code{NA} values are replaced
+#'   by their associated values. This is required, for instance, when writing
+#'   data back to SPSS.
+#'
 #' @return \code{x}, as \code{labelled}-class object.
 #'
 #' @examples
@@ -46,26 +50,26 @@
 #' get_values(x2)
 #' @importFrom stats na.omit
 #' @export
-as_labelled <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
+as_labelled <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE, tag.na = FALSE) {
   UseMethod("as_labelled")
 }
 
 #' @export
-as_labelled.data.frame <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
-  data_frame(lapply(x, FUN = as_labelled_helper, add.labels, add.class, skip.strings))
+as_labelled.data.frame <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE, tag.na = FALSE) {
+  data_frame(lapply(x, FUN = as_labelled_helper, add.labels, add.class, skip.strings, tag.na))
 }
 
 #' @export
-as_labelled.list <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
-  lapply(x, FUN = as_labelled_helper, add.labels, add.class, skip.strings)
+as_labelled.list <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE, tag.na = FALSE) {
+  lapply(x, FUN = as_labelled_helper, add.labels, add.class, skip.strings, tag.na)
 }
 
 #' @export
-as_labelled.default <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE) {
-  as_labelled_helper(x, add.labels, add.class, skip.strings)
+as_labelled.default <- function(x, add.labels = FALSE, add.class = FALSE, skip.strings = FALSE, tag.na = FALSE) {
+  as_labelled_helper(x, add.labels, add.class, skip.strings, tag.na)
 }
 
-as_labelled_helper <- function(x, add.labels, add.class, skip.strings) {
+as_labelled_helper <- function(x, add.labels, add.class, skip.strings, tag.na) {
   # do nothing for labelled class
   if (is_labelled(x)) return(x)
 
@@ -81,8 +85,25 @@ as_labelled_helper <- function(x, add.labels, add.class, skip.strings) {
   if (add.labels) x <- fill_labels(x)
 
   # reset missings
-  xna <- get_na(x)
-  if (!isempty(xna)) x <- set_na(x, na = xna)
+  if (!tag.na) {
+    xna <- get_na(x)
+    if (!isempty(xna)) {
+      x <- set_na(x, na = xna)
+    }
+  } else {
+    if (!requireNamespace("haven", quietly = TRUE)) {
+      stop("Package 'haven' required for this function. Please install it.")
+    }
+    labels <- attr(x, "labels", exact = TRUE)
+    xna <- get_na(x, as.tag = TRUE)
+    names(xna) <- match(unname(gsub("NA\\((.*)\\)", "\\1", xna)), letters) * -1
+    tagged_missing <- haven::print_tagged_na(x)
+    for (i in 1:length(xna)) {
+      x[which(tagged_missing == xna[i])] <- as.numeric(names(xna[i]))
+    }
+    labels[is.na(labels)] <- stats::setNames(attr(x, "na.values"), names(labels[is.na(labels)]))
+    attr(x, "labels") <- labels
+  }
 
   # is type of labels same as type of vector? typically, character
   # vectors can have numeric labels or vice versa, numeric vectors
