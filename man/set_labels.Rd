@@ -66,7 +66,7 @@ See \code{\link{get_na}} for more details on tagged NA values.}
 This function adds labels as attribute (named \code{"labels"})
    to a variable or vector \code{x}, resp. to a set of variables in a
    data frame or a list-object. A use-case is, for instance, the
-   \CRANpkg{sjPlot}-package, which supports labelled data and automatically
+   \pkg{sjPlot}-package, which supports labelled data and automatically
    assigns labels to axes or legends in plots or to be used in tables.
    \code{val_labels()} is intended for use within pipe-workflows and has a
    tidyverse-consistent syntax, including support for quasi-quotation

@@ -29,7 +29,7 @@ value label, but will become the value label itself). The
 \description{
 Duplicated value labels in variables may cause troubles when
              saving labelled data, or computing cross tabs (cf.
-             \code{\link[sjmisc:flat_table]{flat_table()}} or \code{\link[sjPlot:plot_xtab]{plot_xtab()}}).
+             \code{sjmisc::flat_table()} or \code{sjPlot::plot_xtab()}).
              \code{tidy_labels()} repairs duplicated value labels by suffixing
              them with the associated value.
 }
