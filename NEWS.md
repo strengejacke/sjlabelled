@@ -1,3 +1,9 @@
+# sjlabelled 1.1.9
+
+## Bug fixes
+
+* Fixed issue in `write_*()` functions when labelled data was of type integer.
+
 # sjlabelled 1.1.8
 
 ## Changes to functions

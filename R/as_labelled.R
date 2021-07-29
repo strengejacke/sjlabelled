@@ -122,13 +122,14 @@ as_labelled_helper <- function(x, add.labels, add.class, skip.strings, tag.na) {
   if (!is.null(lt) && typeof(lt) != typeof(x)) {
     lab.at <- attr(x, "labels", exact = TRUE)
     nlab <- names(lab.at)
-    if (is.num.chr(lt, na.rm = TRUE)) {
+    if (is.integer(x) && !is.integer(lt)) {
+      lab.at <- as.integer(lab.at)
+    } else if (is.num.chr(lt, na.rm = TRUE)) {
       lab.at <- as.numeric(lab.at)
-      names(lab.at) <- nlab
     } else {
       lab.at <- as.character(lab.at)
-      names(lab.at) <- nlab
     }
+    names(lab.at) <- nlab
     attr(x, "labels") <- lab.at
   }
 
