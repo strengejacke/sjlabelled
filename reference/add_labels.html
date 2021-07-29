@@ -66,9 +66,6 @@
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -91,7 +88,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8.1</span>
       </span>
     </div>
 
@@ -151,11 +148,11 @@
     <p>These functions add, replace or remove value labels to or from variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, <span class='va'>labels</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>add_labels</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, <span class='va'>labels</span><span class='op'>)</span>
 
 <span class='fu'>replace_labels</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, <span class='va'>labels</span><span class='op'>)</span>
 
-<span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, <span class='va'>labels</span><span class='op'>)</span></pre>
+<span class='fu'>remove_labels</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, <span class='va'>labels</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -214,7 +211,7 @@ from specific NA values.</p></dd>
            value labels).</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='co'># add_labels()</span></span>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'># add_labels()</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "independent"          "slightly dependent"   "moderately dependent"</span>
@@ -327,7 +324,7 @@ from specific NA values.</p></dd>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  Refused Not home </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>       NA       NA </span>
-</pre>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

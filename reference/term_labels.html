@@ -68,9 +68,6 @@
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -93,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8.1</span>
       </span>
     </div>
 
@@ -155,7 +152,7 @@
        variable name and category value is returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>term_labels</span><span class='op'>(</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>term_labels</span><span class='op'>(</span>
   <span class='va'>models</span>,
   mark.cat <span class='op'>=</span> <span class='cn'>FALSE</span>,
   case <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -173,7 +170,7 @@
 
 <span class='fu'>response_labels</span><span class='op'>(</span><span class='va'>models</span>, case <span class='op'>=</span> <span class='cn'>NULL</span>, multi.resp <span class='op'>=</span> <span class='cn'>FALSE</span>, mv <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>get_dv_labels</span><span class='op'>(</span><span class='va'>models</span>, case <span class='op'>=</span> <span class='cn'>NULL</span>, multi.resp <span class='op'>=</span> <span class='cn'>FALSE</span>, mv <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>get_dv_labels</span><span class='op'>(</span><span class='va'>models</span>, case <span class='op'>=</span> <span class='cn'>NULL</span>, multi.resp <span class='op'>=</span> <span class='cn'>FALSE</span>, mv <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -231,7 +228,7 @@ dependent variable (multiple responses) are returned.</p></td>
          functions to annotate plots.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='co'># use data set with labelled data</span></span>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'># use data set with labelled data</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>barthtot</span> <span class='op'>~</span> <span class='va'>c160age</span> <span class='op'>+</span> <span class='va'>c12hour</span> <span class='op'>+</span> <span class='va'>c161sex</span> <span class='op'>+</span> <span class='va'>c172code</span>, data <span class='op'>=</span> <span class='va'>efc</span><span class='op'>)</span></span>
@@ -261,7 +258,7 @@ dependent variable (multiple responses) are returned.</p></td>
 <span class='r-in'>  <span class='fu'>response_labels</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Total score BARTHEL INDEX"</span>
-</pre>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

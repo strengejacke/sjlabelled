@@ -73,9 +73,6 @@
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -98,7 +95,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8.1</span>
       </span>
     </div>
 
@@ -155,22 +152,22 @@
     </div>
 
     <div class="ref-description">
-    <p><code><a href='as_label.html'>as_label()</a></code> converts (replaces) values of a variable (also of factors
+    <p><code>as_label()</code> converts (replaces) values of a variable (also of factors
    or character vectors) with their associated value labels. Might
    be helpful for factor variables.
    For instance, if you have a Gender variable with 0/1 value, and associated
    labels are male/female, this function would convert all 0 to male and
    all 1 to female and returns the new variable as factor.
-   <code><a href='as_label.html'>as_character()</a></code> does the same as <code><a href='as_label.html'>as_label()</a></code>, but returns
+   <code>as_character()</code> does the same as <code>as_label()</code>, but returns
    a character vector.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='as_label.html'>as_character</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>as_character</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'><a href='as_label.html'>to_character</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>to_character</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'><a href='as_label.html'>as_character</a></span><span class='op'>(</span>
+<span class='fu'>as_character</span><span class='op'>(</span>
   <span class='va'>x</span>,
   <span class='va'>...</span>,
   add.non.labelled <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -181,12 +178,12 @@
   keep.labels <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
-<span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'><a href='as_label.html'>to_label</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>to_label</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span>
+<span class='fu'>as_label</span><span class='op'>(</span>
   <span class='va'>x</span>,
   <span class='va'>...</span>,
   add.non.labelled <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -195,7 +192,7 @@
   drop.na <span class='op'>=</span> <span class='cn'>TRUE</span>,
   drop.levels <span class='op'>=</span> <span class='cn'>FALSE</span>,
   keep.labels <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -255,7 +252,7 @@ allows users to quickly convert back factors to numeric vectors with
           is a data frame, the complete data frame <code>x</code> will be returned,
           where variables specified in <code>...</code> are coerced to factors;
           if <code>...</code> is not specified, applies to all variables in the
-          data frame. <code><a href='as_label.html'>as_character()</a></code> returns a character vector.</p>
+          data frame. <code>as_character()</code> returns a character vector.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>See 'Details' in <code><a href='get_na.html'>get_na</a></code>.</p>
@@ -265,14 +262,14 @@ allows users to quickly convert back factors to numeric vectors with
       will be removed when converting variables to factors.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span><span class='op'>[</span><span class='st'>'c161sex'</span><span class='op'>]</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> $c161sex</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Male"   "Female"</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>c161sex</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2 2 1 1 2 1</span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>c161sex</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>c161sex</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "&lt;dbl&gt;"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>)</span><span class='op'>[</span><span class='st'>'e42dep'</span><span class='op'>]</span><span class='op'>)</span></span>
@@ -284,14 +281,14 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>   1   2   3   4 </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  66 225 306 304 </span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;dbl&gt; </span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>     1 </span>
 <span class='r-in'></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3 3 3 4 4 4</span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e42dep</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "&lt;dbl&gt;"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># structure of numeric values won't be changed</span></span>
@@ -301,18 +298,18 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e17age</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  num [1:908] 83 88 82 67 84 85 74 87 79 83 ...</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  - attr(*, "label")= chr "elder' age"</span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e17age</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>efc</span><span class='op'>$</span><span class='va'>e17age</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  chr "&lt;dbl&gt;"</span>
 <span class='r-in'></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># factor with non-numeric levels</span></span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "&lt;fct&gt;"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># factor with non-numeric levels, prefixed</span></span>
 <span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ape"</span>, <span class='st'>"bear"</span>, <span class='st'>"cat"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, prefix <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, prefix <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in as_label(x, prefix = TRUE)</span> unused argument (prefix = TRUE)</span>
 <span class='r-in'></span>
 <span class='r-in'></span>
@@ -328,11 +325,11 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-msg co'><span class='r-pr'>#&gt;</span> "x" has more values than "labels", hence not all values are labelled.</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># convert to label w/o non-labelled values</span></span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "&lt;dbl&gt;"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># convert to label, including non-labelled values</span></span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, add.non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, add.non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in as_label(x, add.non.labelled = TRUE)</span> unused argument (add.non.labelled = TRUE)</span>
 <span class='r-in'></span>
 <span class='r-in'></span>
@@ -345,13 +342,13 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-in'>  <span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'>  <span class='co'># to labelled factor, with missing labels</span></span>
-<span class='r-in'>  <span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, drop.na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, drop.na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'>  <span class='co'># to labelled factor, missings removed</span></span>
-<span class='r-in'>  <span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, drop.na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, drop.na <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'>  <span class='co'># keep missings, and use non-labelled values as well</span></span>
-<span class='r-in'>  <span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, add.non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span>, drop.na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, add.non.labelled <span class='op'>=</span> <span class='cn'>TRUE</span>, drop.na <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in as_label(x, drop.na = FALSE)</span> unused argument (drop.na = FALSE)</span>
 <span class='r-in'></span>
@@ -363,7 +360,7 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'><a href='get_labels.html'>get_labels</a></span><span class='op'>(</span><span class='va'>dummy</span>,, <span class='st'>"p"</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "[Female] F"  "[Male] M"    "[Refused] X"</span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>dummy</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "&lt;chr&gt;"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># drop unused factor levels, but preserve variable label</span></span>
@@ -378,11 +375,11 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"label")</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] A factor!</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> Levels: a b c d</span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, drop.levels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, drop.levels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in as_label(x, drop.levels = TRUE)</span> unused argument (drop.levels = TRUE)</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># change variable label</span></span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, var.label <span class='op'>=</span> <span class='st'>"New variable label!"</span>, drop.levels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, var.label <span class='op'>=</span> <span class='st'>"New variable label!"</span>, drop.levels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in as_label(x, var.label = "New variable label!", drop.levels = TRUE)</span> unused arguments (var.label = "New variable label!", drop.levels = TRUE)</span>
 <span class='r-in'></span>
 <span class='r-in'></span>
@@ -392,12 +389,12 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='set_labels.html'>set_labels</a></span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`null` <span class='op'>=</span> <span class='fl'>0</span>, `one` <span class='op'>=</span> <span class='fl'>1</span>, `four` <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># to factor</span></span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "&lt;dbl&gt;"</span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># to factor, back to numeric - values are 1, 2 and 3,</span></span>
 <span class='r-in'><span class='co'># instead of original 0, 1 and 4</span></span>
-<span class='r-in'><span class='fu'><a href='as_numeric.html'>as_numeric</a></span><span class='op'>(</span><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='as_numeric.html'>as_numeric</a></span><span class='op'>(</span><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"labels")</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;dbl&gt; </span>
@@ -405,15 +402,15 @@ allows users to quickly convert back factors to numeric vectors with
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># preserve label-attributes when converting to factor, use these attributes</span></span>
 <span class='r-in'><span class='co'># to restore original numeric values when converting back to numeric</span></span>
-<span class='r-in'><span class='fu'><a href='as_numeric.html'>as_numeric</a></span><span class='op'>(</span><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>x</span>, keep.labels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, use.labels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='as_numeric.html'>as_numeric</a></span><span class='op'>(</span><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>x</span>, keep.labels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>, use.labels <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
 <span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in as_label(x, keep.labels = TRUE)</span> unused argument (keep.labels = TRUE)</span>
 <span class='r-in'></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'># easily coerce specific variables in a data frame to factor</span></span>
 <span class='r-in'><span class='co'># and keep other variables, with their class preserved</span></span>
-<span class='r-in'><span class='fu'><a href='as_label.html'>as_label</a></span><span class='op'>(</span><span class='va'>efc</span>, <span class='va'>e42dep</span>, <span class='va'>e16sex</span>, <span class='va'>c172code</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>as_label</span><span class='op'>(</span><span class='va'>efc</span>, <span class='va'>e42dep</span>, <span class='va'>e16sex</span>, <span class='va'>c172code</span><span class='op'>)</span></span>
 <span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error in as_label(efc, e42dep, e16sex, c172code)</span> unused arguments (e42dep, e16sex, c172code)</span>
-</pre>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

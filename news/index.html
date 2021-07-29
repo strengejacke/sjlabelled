@@ -65,7 +65,6 @@
 
 
 
-
   
 
   
@@ -88,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8.1</span>
       </span>
     </div>
 
@@ -143,18 +142,27 @@
       <small>Source: <a href='https://github.com/strengejacke/sjlabelled/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="sjlabelled-119" class="section level1">
+<h1 class="page-header" data-toc-text="1.1.9">
+<a href="#sjlabelled-119" class="anchor" aria-hidden="true"></a>sjlabelled 1.1.9<small> Unreleased </small></h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<ul><li>Fixed issue in <code>write_*()</code> functions when labelled data was of type integer.</li>
+</ul></div>
+</div>
     <div id="sjlabelled-118" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.8">
-<a href="#sjlabelled-118" class="anchor" aria-hidden="true"></a>sjlabelled 1.1.8<small> Unreleased </small></h1>
+<a href="#sjlabelled-118" class="anchor" aria-hidden="true"></a>sjlabelled 1.1.8<small> 2021-05-11 </small></h1>
 <div id="changes-to-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#changes-to-functions" class="anchor" aria-hidden="true"></a>Changes to functions</h2>
 <ul><li>
 <code><a href="../reference/label_to_colnames.html">label_to_colnames()</a></code> gets a <code>...</code> argument, to change only column names of selected variables.</li>
 </ul></div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li><p>Fixed issues with reading/writing tagged <code>NA</code> values.</p></li>
 <li><p>Fixed issues with value labelling of character vectors.</p></li>
 </ul></div>
@@ -197,9 +205,9 @@
 <a href="#general-3" class="anchor" aria-hidden="true"></a>General</h2>
 <ul><li>Reduce package dependencies.</li>
 </ul></div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fixed issues in <code><a href="../reference/add_labels.html">remove_labels()</a></code> when factor levels were strings.</li>
 <li>Fixed Namespace issues in vignettes.</li>
 </ul></div>
@@ -207,9 +215,9 @@
     <div id="sjlabelled-113" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.3">
 <a href="#sjlabelled-113" class="anchor" aria-hidden="true"></a>sjlabelled 1.1.3<small> 2020-01-28 </small></h1>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fix warning from CRAN checks.</li>
 </ul></div>
 </div>
@@ -238,9 +246,9 @@
 <code>copy_labels</code> gets a <code>...</code>-argument to copy only specific variables values.</li>
 <li>The <code>read_*()</code> functions are now less verbose by default.</li>
 </ul></div>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fixed issue in <code><a href="../reference/set_labels.html">set_labels()</a></code> for character vectors with numeric char-values that are larger than <code>9</code>.</li>
 </ul></div>
 </div>
@@ -254,9 +262,9 @@
 <li>
 <code><a href="../reference/read_spss.html">read_data()</a></code> is a shortcut that calls one of the <code>read_*()</code>-functions, depending on the file extension.</li>
 </ul></div>
-<div id="bug-fixes-4" class="section level2">
+<div id="bug-fixes-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-5" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fix issue in <code><a href="../reference/as_label.html">as_label()</a></code> to prevent replacement recycling when labels were numeric.</li>
 <li>Fix issues with saving character vectors to SPSS files.</li>
 </ul></div>
@@ -296,9 +304,9 @@
 <ul><li>
 <code><a href="../reference/as_label.html">as_label()</a></code> gets a <code>keep.labels</code>-argument. With this, users can easily convert vector to factors and vice versa, preserving label-attributes.</li>
 </ul></div>
-<div id="bug-fixes-5" class="section level2">
+<div id="bug-fixes-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-6" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fixed bug with argument <code>use.labels</code> in <code><a href="../reference/as_numeric.html">as_numeric()</a></code>.</li>
 </ul></div>
 </div>
@@ -332,9 +340,9 @@
 <a href="#general-7" class="anchor" aria-hidden="true"></a>General</h2>
 <ul><li>Update code to the new class-attribute <code>haven_labelled</code> from the <strong>haven</strong>-package.</li>
 </ul></div>
-<div id="bug-fixes-6" class="section level2">
+<div id="bug-fixes-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-6" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-7" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fix issue in <code><a href="../reference/term_labels.html">get_term_labels()</a></code> that returned wrong object names for factors where factor levels did start with “1”.</li>
 </ul></div>
 </div>
@@ -346,9 +354,9 @@
 <a href="#general-8" class="anchor" aria-hidden="true"></a>General</h2>
 <ul><li>Reduce package dependencies.</li>
 </ul></div>
-<div id="bug-fixes-7" class="section level2">
+<div id="bug-fixes-8" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-7" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-8" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fix bug in <code><a href="../reference/set_label.html">var_labels()</a></code>, where non-existing columns may lead to wrong labelling.</li>
 </ul></div>
 </div>
@@ -368,9 +376,9 @@
 <li>Arguments <code>include.non.labelled</code> and <code>include.values</code> in <code><a href="../reference/get_labels.html">get_labels()</a></code> are renamed to shorter versions <code>non.labelled</code> and <code>values</code>. <code>include.non.labelled</code> and <code>include.values</code> will become softly deprecated.</li>
 <li>The <code>read_*()</code>-functions get a <code>verbose</code>-argument, to show or hide the progressbar when imported datasets are converted.</li>
 </ul></div>
-<div id="bug-fixes-8" class="section level2">
+<div id="bug-fixes-9" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-8" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-9" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Due to changes in the <em>broom</em> and <em>lmerTest</em> packages, tidiers did no longer work for <code>lmerModLmerTest</code> objects.</li>
 </ul></div>
 </div>
@@ -407,9 +415,9 @@
 <li>
 <code><a href="../reference/get_label.html">get_label()</a></code> now also returns name-attribute for empty labels if <code>x</code> was a data.frame.</li>
 </ul></div>
-<div id="bug-fixes-9" class="section level2">
+<div id="bug-fixes-10" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-9" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-10" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>
 <code>write_*()</code>-functions should now properly set labels for negative values.</li>
 </ul></div>
@@ -429,9 +437,9 @@
 <ul><li>
 <code><a href="../reference/term_labels.html">get_term_labels()</a></code> gets a <code>prefix</code>-argument to prefix the returned labels of categorical variable either with the related variable name or label.</li>
 </ul></div>
-<div id="bug-fixes-10" class="section level2">
+<div id="bug-fixes-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-10" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-11" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fix issues with retrieving incorrect labels from <code><a href="../reference/term_labels.html">get_term_labels()</a></code> for models that used unlabelled data in combination with other contrasts than the default option.</li>
 <li>
 <code><a href="../reference/term_labels.html">get_dv_labels()</a></code> no longer returns <code>"NULL"</code> for multivariate-response-models fitted with <em>brms</em>.</li>
@@ -503,9 +511,9 @@
 <ul><li>
 <code><a href="../reference/term_labels.html">get_term_labels()</a></code> now includes variable names for factors with numeric factor levels only (and not only return the numeric level as term label).</li>
 </ul></div>
-<div id="bug-fixes-11" class="section level2">
+<div id="bug-fixes-12" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-11" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
+<a href="#bug-fixes-12" class="anchor" aria-hidden="true"></a>Bug fixes</h2>
 <ul><li>Fixed bug for <code><a href="../reference/as_label.html">as_label()</a></code>, when <code>x</code> was a character vector and argument <code>drop.levels</code> was <code>TRUE</code>.</li>
 <li>Fixed issue for <em>lme</em> and <em>gls</em> objects in <code><a href="../reference/term_labels.html">get_term_labels()</a></code> and <code><a href="../reference/term_labels.html">get_dv_labels()</a></code>.</li>
 </ul></div>
