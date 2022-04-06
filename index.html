@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.8.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.8.2</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -78,7 +78,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/strengejacke/sjlabelled/">
+  <a href="https://github.com/strengejacke/sjlabelled/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -95,35 +95,34 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="sjlabelled---labelled-data-utility-functions-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#sjlabelled---labelled-data-utility-functions-" class="anchor" aria-hidden="true"></a>sjlabelled - Labelled Data Utility Functions <img src="reference/figures/logo.png" align="right">
+<div class="section level1">
+<div class="page-header"><h1 id="sjlabelled---labelled-data-utility-functions-">sjlabelled - Labelled Data Utility Functions <img src="reference/figures/logo.png" align="right"><a class="anchor" aria-label="anchor" href="#sjlabelled---labelled-data-utility-functions-"></a>
 </h1></div>
 
 <p>This package contains utility functions that are useful when working with labelled data (especially intended for people coming from ‘SPSS’, ‘SAS’ or ‘Stata’ and/or who are new to R).</p>
 <p>Basically, this package covers reading and writing data between other statistical packages (like ‘SPSS’) and R, based on the haven and foreign packages; hence, this package also includes functions to make working with labelled data easier. This includes easy ways to get, set or change value and variable label attributes, to convert labelled vectors into factors or numeric (and vice versa), or to deal with multiple declared missing values.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
-<div id="latest-development-build" class="section level3">
-<h3 class="hasAnchor">
-<a href="#latest-development-build" class="anchor" aria-hidden="true"></a>Latest development build</h3>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<div class="section level3">
+<h3 id="latest-development-build">Latest development build<a class="anchor" aria-label="anchor" href="#latest-development-build"></a>
+</h3>
 <p>To install the latest development snapshot (see latest changes below), type following commands into the R console:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"strengejacke/sjlabelled"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"strengejacke/sjlabelled"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="officiale-stable-release" class="section level3">
-<h3 class="hasAnchor">
-<a href="#officiale-stable-release" class="anchor" aria-hidden="true"></a>Officiale, stable release</h3>
+<div class="section level3">
+<h3 id="officiale-stable-release">Officiale, stable release<a class="anchor" aria-label="anchor" href="#officiale-stable-release"></a>
+</h3>
 <p>To install the latest stable release from CRAN, type following command into the R console:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"sjlabelled"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor" aria-hidden="true"></a>Citation</h2>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
 <p>In case you want / have to cite my package, please use <code>citation('sjlabelled')</code> for citation information.</p>
 <p><a href="https://doi.org/10.5281/zenodo.1249215" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1249215.svg" alt="DOI"></a></p>
 </div>
@@ -134,19 +133,16 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=sjlabelled">https://​cloud.r-project.org/​package=sjlabelled</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/strengejacke/sjlabelled/">https://​github.com/​strengejacke/​sjlabelled/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/strengejacke/sjlabelled/issues">https://​github.com/​strengejacke/​sjlabelled/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=sjlabelled" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/strengejacke/sjlabelled/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/strengejacke/sjlabelled/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
 
@@ -154,7 +150,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing sjlabelled</a></li>
+<li><a href="authors.html#citation">Citing sjlabelled</a></li>
 </ul>
 </div>
 
@@ -162,8 +158,8 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://github.com/strengejacke">Daniel Lüdecke</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-8895-3206" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">More on authors...</a></li>
+<a href="https://github.com/strengejacke" class="external-link">Daniel Lüdecke</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-8895-3206" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
@@ -188,7 +184,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer>
