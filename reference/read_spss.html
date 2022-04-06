@@ -73,36 +73,40 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_spss</span><span class="op">(</span>
   <span class="va">path</span>,
-  atomic.to.fac <span class="op">=</span> <span class="cn">FALSE</span>,
+  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
   drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
   tag.na <span class="op">=</span> <span class="cn">FALSE</span>,
-  enc <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
+  encoding <span class="op">=</span> <span class="cn">NULL</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
 <span class="op">)</span>
 
 <span class="fu">read_sas</span><span class="op">(</span>
   <span class="va">path</span>,
   path.cat <span class="op">=</span> <span class="cn">NULL</span>,
-  atomic.to.fac <span class="op">=</span> <span class="cn">FALSE</span>,
+  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
   drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  enc <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
+  encoding <span class="op">=</span> <span class="cn">NULL</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
 <span class="op">)</span>
 
 <span class="fu">read_stata</span><span class="op">(</span>
   <span class="va">path</span>,
-  atomic.to.fac <span class="op">=</span> <span class="cn">FALSE</span>,
+  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
   drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  enc <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
+  encoding <span class="op">=</span> <span class="cn">NULL</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
 <span class="op">)</span>
 
 <span class="fu">read_data</span><span class="op">(</span>
   <span class="va">path</span>,
-  atomic.to.fac <span class="op">=</span> <span class="cn">FALSE</span>,
+  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
   drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  enc <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
+  encoding <span class="op">=</span> <span class="cn">NULL</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -110,10 +114,13 @@
     <h2>Arguments</h2>
     <dl><dt>path</dt>
 <dd><p>File path to the data file.</p></dd>
-<dt>atomic.to.fac</dt>
+<dt>convert.factors</dt>
 <dd><p>Logical, if <code>TRUE</code>, categorical variables imported
 from the dataset (which are imported as <code>atomic</code>) will be
-converted to factors.</p></dd>
+converted to factors. Variables are considered as categorical if they have
+at least the same number of value labels as unique values. This prevents
+that ranges of continuous variables, where - for instance - the minimum and
+maximum values are labelled only, will also be converted to factors.</p></dd>
 <dt>drop.labels</dt>
 <dd><p>Logical, if <code>TRUE</code>, unused value labels are removed. See
 <code><a href="zap_labels.html">drop_labels</a></code>.</p></dd>
@@ -121,13 +128,15 @@ converted to factors.</p></dd>
 <dd><p>Logical, if <code>TRUE</code>, missing values are imported
 as <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></code> values; else, missing values are
 converted to regular <code>NA</code> (default behaviour).</p></dd>
-<dt>enc</dt>
+<dt>encoding</dt>
 <dd><p>The character encoding used for the file. This defaults to the encoding
 specified in the file, or UTF-8. Use this argument to override the default
 encoding stored in the file.</p></dd>
 <dt>verbose</dt>
 <dd><p>Logical, if <code>TRUE</code>, a progress bar is displayed that indicates
 the progress of converting the imported data.</p></dd>
+<dt>atomic.to.fac</dt>
+<dd><p>Deprecated, please use `convert.factors` instead.</p></dd>
 <dt>path.cat</dt>
 <dd><p>Optional, the file path to the SAS catalog file.</p></dd>
 </dl></div>
@@ -141,7 +150,7 @@ the progress of converting the imported data.</p></dd>
     <p>These read-functions behave slightly differently from <span class="pkg">haven</span>'s
   read-functions:</p><ul><li><p>The vectors in the returned data frame are of class <code>atomic</code>, not of class <code>labelled</code>. The labelled-class might cause issues with other packages.</p></li>
 <li><p>When importing SPSS data, variables with user defined missings <em>won't</em> be read into <code>labelled_spss</code> objects, but imported as <em>tagged NA values</em>.</p></li>
-</ul><p>The <code>atomic.to.fac</code> option only
+</ul><p>The <code>convert.factors</code> option only
   converts those variables into factors that are of class <code>atomic</code> and
   which have value labels after import. Atomic vectors without value labels
   are considered as continuous and not converted to factors.</p>
@@ -162,7 +171,7 @@ the progress of converting the imported data.</p></dd>
 <span class="r-in"><span class="va">mydat</span> <span class="op">&lt;-</span> <span class="fu">read_spss</span><span class="op">(</span><span class="st">"my_spss_data.sav"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># use haven's read function, convert atomic to factor</span></span>
-<span class="r-in"><span class="va">mydat</span> <span class="op">&lt;-</span> <span class="fu">read_spss</span><span class="op">(</span><span class="st">"my_spss_data.sav"</span>, atomic.to.fac <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">mydat</span> <span class="op">&lt;-</span> <span class="fu">read_spss</span><span class="op">(</span><span class="st">"my_spss_data.sav"</span>, convert.factors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># retrieve variable labels</span></span>
 <span class="r-in"><span class="va">mydat.var</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">mydat</span><span class="op">)</span></span>
