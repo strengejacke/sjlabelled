@@ -38,6 +38,14 @@ write_sas <- function(x, path, drop.na = FALSE) {
     stop("Package 'haven' required for this function. Please install it.")
   }
 
+  # we need to remove empty columns...
+  empty_columns <- datawizard::empty_columns(x)
+  if (length(empty_columns)) {
+    msg <- insight::format_message(sprintf("Following variables have only missing values and were removed from the dataset: %s", paste(colnames(x)[empty_columns], collapse = ", ")))
+    message(msg)
+    x <- x[-empty_columns]
+  }
+
   # make sure to have tidy labels
   message("Tidying value labels. Please wait...")
   x <- tidy_labels(x)
