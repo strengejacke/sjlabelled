@@ -1,3 +1,8 @@
+# sjlabelled 1.1.10
+
+* `write_*()` functions now remove variables with completely missing data, to
+  avoid errors when writing the data file.
+
 # sjlabelled 1.1.9
 
 ## Bug fixes
