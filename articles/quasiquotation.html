@@ -131,14 +131,14 @@
 
 <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span>, <span class="va">dummy1</span><span class="op">)</span>
 <span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=1.82 sd=0.78</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=2.00 sd=0.85</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 16 | 40.00 |   40.00 |  40.00</span>
-<span class="co">#&gt;     2 |   mid | 15 | 37.50 |   37.50 |  77.50</span>
-<span class="co">#&gt;     3 |    hi |  9 | 22.50 |   22.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
+<span class="co">#&gt;     1 |   low | 14 |    35 |      35 |     35</span>
+<span class="co">#&gt;     2 |   mid | 12 |    30 |      30 |     65</span>
+<span class="co">#&gt;     3 |    hi | 14 |    35 |      35 |    100</span>
+<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 
 <span class="co"># and set same value labels for two of three variables</span>
 <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span>
@@ -148,33 +148,33 @@
 
 <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>
 <span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=1.82 sd=0.78</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=2.00 sd=0.85</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 16 | 40.00 |   40.00 |  40.00</span>
-<span class="co">#&gt;     2 |   mid | 15 | 37.50 |   37.50 |  77.50</span>
-<span class="co">#&gt;     3 |    hi |  9 | 22.50 |   22.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
+<span class="co">#&gt;     1 |   low | 14 |    35 |      35 |     35</span>
+<span class="co">#&gt;     2 |   mid | 12 |    30 |      30 |     65</span>
+<span class="co">#&gt;     3 |    hi | 14 |    35 |      35 |    100</span>
+<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; dummy2 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.12 sd=0.82</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=2.12 sd=0.76</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 11 | 27.50 |   27.50 |  27.50</span>
-<span class="co">#&gt;     2 |   mid | 13 | 32.50 |   32.50 |  60.00</span>
-<span class="co">#&gt;     3 |    hi | 16 | 40.00 |   40.00 | 100.00</span>
+<span class="co">#&gt;     1 |   low |  9 | 22.50 |   22.50 |  22.50</span>
+<span class="co">#&gt;     2 |   mid | 17 | 42.50 |   42.50 |  65.00</span>
+<span class="co">#&gt;     3 |    hi | 14 | 35.00 |   35.00 | 100.00</span>
 <span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; dummy3 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.23 sd=0.80</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.88 sd=0.82</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 |  9 | 22.50 |   22.50 |  22.50</span>
-<span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  55.00</span>
-<span class="co">#&gt;     3 | 18 | 45.00 |   45.00 | 100.00</span>
+<span class="co">#&gt;     1 | 16 | 40.00 |   40.00 |  40.00</span>
+<span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  72.50</span>
+<span class="co">#&gt;     3 | 11 | 27.50 |   27.50 | 100.00</span>
 <span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></code></pre></div>
 <p><code><a href="../reference/set_labels.html">val_labels()</a></code> does the same job as <code><a href="../reference/set_labels.html">set_labels()</a></code>, but in a different way. While <code><a href="../reference/set_labels.html">set_labels()</a></code> requires variables to be specified in the <code>...</code>-argument, and labels in the <code>labels</code>-argument, <code><a href="../reference/set_labels.html">val_labels()</a></code> requires both to be specified in the <code>...</code>.</p>
 <p><code><a href="../reference/set_labels.html">val_labels()</a></code> requires <em>named</em> vectors as argument, with the <em>left-hand side</em> being the name of the variable that should be labelled, and the <em>right-hand side</em> containing the labels for the values.</p>
@@ -187,33 +187,33 @@
 <span class="co"># remaining variables are not labelled</span>
 <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>
 <span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=1.82 sd=0.78</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=2.00 sd=0.85</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 16 | 40.00 |   40.00 |  40.00</span>
-<span class="co">#&gt;     2 |   mid | 15 | 37.50 |   37.50 |  77.50</span>
-<span class="co">#&gt;     3 |    hi |  9 | 22.50 |   22.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
+<span class="co">#&gt;     1 |   low | 14 |    35 |      35 |     35</span>
+<span class="co">#&gt;     2 |   mid | 12 |    30 |      30 |     65</span>
+<span class="co">#&gt;     3 |    hi | 14 |    35 |      35 |    100</span>
+<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; dummy2 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.12 sd=0.82</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 | 11 | 27.50 |   27.50 |  27.50</span>
-<span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  60.00</span>
-<span class="co">#&gt;     3 | 16 | 40.00 |   40.00 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; dummy3 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.23 sd=0.80</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=2.12 sd=0.76</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; -------------------------------------</span>
 <span class="co">#&gt;     1 |  9 | 22.50 |   22.50 |  22.50</span>
-<span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  55.00</span>
-<span class="co">#&gt;     3 | 18 | 45.00 |   45.00 | 100.00</span>
+<span class="co">#&gt;     2 | 17 | 42.50 |   42.50 |  65.00</span>
+<span class="co">#&gt;     3 | 14 | 35.00 |   35.00 | 100.00</span>
+<span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; dummy3 &lt;integer&gt; </span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.88 sd=0.82</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
+<span class="co">#&gt; -------------------------------------</span>
+<span class="co">#&gt;     1 | 16 | 40.00 |   40.00 |  40.00</span>
+<span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  72.50</span>
+<span class="co">#&gt;     3 | 11 | 27.50 |   27.50 | 100.00</span>
 <span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></code></pre></div>
 <p>Unlike <code><a href="../reference/set_labels.html">set_labels()</a></code>, <code><a href="../reference/set_labels.html">val_labels()</a></code> allows the user to add <em>different</em> value labels to different variables in one function call. Another advantage, or difference, of <code><a href="../reference/set_labels.html">val_labels()</a></code> is it’s flexibility in defining variable names and value labels by using quasiquotation.</p>
 <div class="section level3">
