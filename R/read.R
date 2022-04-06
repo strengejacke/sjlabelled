@@ -7,20 +7,24 @@
 #' @seealso Vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}.
 #'
 #' @param path File path to the data file.
-#' @param atomic.to.fac Logical, if \code{TRUE}, categorical variables imported
+#' @param convert.factors Logical, if \code{TRUE}, categorical variables imported
 #'    from the dataset (which are imported as \code{atomic}) will be
-#'    converted to factors.
+#'    converted to factors. Variables are considered as categorical if they have
+#'    at least the same number of value labels as unique values. This prevents
+#'    that ranges of continuous variables, where - for instance - the minimum and
+#'    maximum values are labelled only, will also be converted to factors.
 #' @param drop.labels Logical, if \code{TRUE}, unused value labels are removed. See
 #'   \code{\link{drop_labels}}.
 #' @param tag.na Logical, if \code{TRUE}, missing values are imported
 #'    as \code{\link[haven:tagged_na]{tagged_na}} values; else, missing values are
 #'    converted to regular \code{NA} (default behaviour).
 #' @param path.cat Optional, the file path to the SAS catalog file.
-#' @param enc The character encoding used for the file. This defaults to the encoding
+#' @param encoding The character encoding used for the file. This defaults to the encoding
 #'    specified in the file, or UTF-8. Use this argument to override the default
 #'    encoding stored in the file.
 #' @param verbose Logical, if \code{TRUE}, a progress bar is displayed that indicates
 #'    the progress of converting the imported data.
+#' @param atomic.to.fac Deprecated, please use `convert.factors` instead.
 #'
 #' @return A data frame containing the imported, labelled data. Retrieve value labels with
 #'   \code{\link{get_labels}} and variable labels with \code{\link{get_label}}.
@@ -33,7 +37,7 @@
 #'     \item The vectors in the returned data frame are of class \code{atomic}, not of class \code{labelled}. The labelled-class might cause issues with other packages.
 #'     \item When importing SPSS data, variables with user defined missings \emph{won't} be read into \code{labelled_spss} objects, but imported as \emph{tagged NA values}.
 #'   }
-#'   The \code{atomic.to.fac} option only
+#'   The \code{convert.factors} option only
 #'   converts those variables into factors that are of class \code{atomic} and
 #'   which have value labels after import. Atomic vectors without value labels
 #'   are considered as continuous and not converted to factors.
@@ -44,7 +48,7 @@
 #' mydat <- read_spss("my_spss_data.sav")
 #'
 #' # use haven's read function, convert atomic to factor
-#' mydat <- read_spss("my_spss_data.sav", atomic.to.fac = TRUE)
+#' mydat <- read_spss("my_spss_data.sav", convert.factors = TRUE)
 #'
 #' # retrieve variable labels
 #' mydat.var <- get_label(mydat)
@@ -52,12 +56,12 @@
 #' # retrieve value labels
 #' mydat.val <- get_labels(mydat)}
 #' @export
-read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na = FALSE, enc = NULL, verbose = FALSE) {
+read_spss <- function(path, convert.factors = TRUE, drop.labels = FALSE, tag.na = FALSE, encoding = NULL, verbose = FALSE, atomic.to.fac = convert.factors) {
   if (!requireNamespace("haven", quietly = TRUE)) {
     stop("Package 'haven' required for this function. Please install it.")
   }
   # read data file
-  data.spss <- haven::read_sav(file = path, encoding = enc, user_na = tag.na)
+  data.spss <- haven::read_sav(file = path, encoding = encoding, user_na = tag.na)
   # prepare tagged NA?
   if (tag.na) {
     # remember all-NA values
@@ -159,18 +163,18 @@ read_spss <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, tag.na =
     }
   }
 
-  .read_postprocessing(data.spss, atomic.to.fac, drop.labels, verbose)
+  .read_postprocessing(data.spss, convert.factors, drop.labels, verbose)
 }
 
 
 #' @rdname read_spss
 #' @export
-read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, drop.labels = FALSE, enc = NULL, verbose = FALSE) {
+read_sas <- function(path, path.cat = NULL, convert.factors = TRUE, drop.labels = FALSE, encoding = NULL, verbose = FALSE, atomic.to.fac = convert.factors) {
   if (!requireNamespace("haven", quietly = TRUE)) {
     stop("Package 'haven' required for this function. Please install it.")
   }
   # read data file
-  data <- haven::read_sas(data_file = path, catalog_file = path.cat, encoding = enc)
+  data <- haven::read_sas(data_file = path, catalog_file = path.cat, encoding = encoding)
 
   # find all-NA values
   len <- nrow(data)
@@ -183,18 +187,18 @@ read_sas <- function(path, path.cat = NULL, atomic.to.fac = FALSE, drop.labels =
     cat("\n")
   }
 
-  .read_postprocessing(data, atomic.to.fac, drop.labels, verbose)
+  .read_postprocessing(data, convert.factors, drop.labels, verbose)
 }
 
 
 #' @rdname read_spss
 #' @export
-read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = NULL, verbose = FALSE) {
+read_stata <- function(path, convert.factors = TRUE, drop.labels = FALSE, encoding = NULL, verbose = FALSE, atomic.to.fac = convert.factors) {
   if (!requireNamespace("haven", quietly = TRUE)) {
     stop("Package 'haven' required for this function. Please install it.")
   }
   # read data file
-  data <- haven::read_dta(file = path, encoding = enc)
+  data <- haven::read_dta(file = path, encoding = encoding)
 
   # find all-NA values
   len <- nrow(data)
@@ -207,11 +211,11 @@ read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = N
     cat("\n")
   }
 
-  .read_postprocessing(data, atomic.to.fac, drop.labels, verbose)
+  .read_postprocessing(data, convert.factors, drop.labels, verbose)
 }
 
 
-.read_postprocessing <- function(data, atomic.to.fac, drop.labels, verbose) {
+.read_postprocessing <- function(data, convert.factors, drop.labels, verbose) {
   # remove label attributes
   d <- unlabel(data, verbose = verbose)
 
@@ -219,7 +223,7 @@ read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = N
   if (drop.labels) d <- drop_labels(d)
 
   # convert atomic values to factors
-  if (atomic.to.fac) d <- .atomic_to_fac(d)
+  if (convert.factors) d <- .atomic_to_fac(d)
 
   # return data frame
   d
@@ -262,12 +266,12 @@ read_stata <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = N
 #' @importFrom tools file_ext
 #' @rdname read_spss
 #' @export
-read_data <- function(path, atomic.to.fac = FALSE, drop.labels = FALSE, enc = NULL, verbose = FALSE) {
+read_data <- function(path, convert.factors = TRUE, drop.labels = FALSE, encoding = NULL, verbose = FALSE, atomic.to.fac = convert.factors) {
   switch(
     tools::file_ext(path),
     "sav" = ,
-    "por" = read_spss(path = path, atomic.to.fac = atomic.to.fac, drop.labels = drop.labels, enc = enc, verbose = verbose),
-    "dta" = read_stata(path = path, atomic.to.fac = atomic.to.fac, drop.labels = drop.labels, enc = enc, verbose = verbose),
-    read_sas(path = path, atomic.to.fac = atomic.to.fac, drop.labels = drop.labels, enc = enc, verbose = verbose)
+    "por" = read_spss(path = path, convert.factors = convert.factors, drop.labels = drop.labels, encoding = encoding, verbose = verbose),
+    "dta" = read_stata(path = path, convert.factors = convert.factors, drop.labels = drop.labels, encoding = encoding, verbose = verbose),
+    read_sas(path = path, convert.factors = convert.factors, drop.labels = drop.labels, encoding = encoding, verbose = verbose)
   )
 }

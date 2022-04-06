@@ -9,44 +9,51 @@
 \usage{
 read_spss(
   path,
-  atomic.to.fac = FALSE,
+  convert.factors = TRUE,
   drop.labels = FALSE,
   tag.na = FALSE,
-  enc = NULL,
-  verbose = FALSE
+  encoding = NULL,
+  verbose = FALSE,
+  atomic.to.fac = convert.factors
 )
 
 read_sas(
   path,
   path.cat = NULL,
-  atomic.to.fac = FALSE,
+  convert.factors = TRUE,
   drop.labels = FALSE,
-  enc = NULL,
-  verbose = FALSE
+  encoding = NULL,
+  verbose = FALSE,
+  atomic.to.fac = convert.factors
 )
 
 read_stata(
   path,
-  atomic.to.fac = FALSE,
+  convert.factors = TRUE,
   drop.labels = FALSE,
-  enc = NULL,
-  verbose = FALSE
+  encoding = NULL,
+  verbose = FALSE,
+  atomic.to.fac = convert.factors
 )
 
 read_data(
   path,
-  atomic.to.fac = FALSE,
+  convert.factors = TRUE,
   drop.labels = FALSE,
-  enc = NULL,
-  verbose = FALSE
+  encoding = NULL,
+  verbose = FALSE,
+  atomic.to.fac = convert.factors
 )
 }
 \arguments{
 \item{path}{File path to the data file.}
 
-\item{atomic.to.fac}{Logical, if \code{TRUE}, categorical variables imported
+\item{convert.factors}{Logical, if \code{TRUE}, categorical variables imported
 from the dataset (which are imported as \code{atomic}) will be
-converted to factors.}
+converted to factors. Variables are considered as categorical if they have
+at least the same number of value labels as unique values. This prevents
+that ranges of continuous variables, where - for instance - the minimum and
+maximum values are labelled only, will also be converted to factors.}
 
 \item{drop.labels}{Logical, if \code{TRUE}, unused value labels are removed. See
 \code{\link{drop_labels}}.}
@@ -55,12 +62,14 @@ converted to factors.}
 as \code{\link[haven:tagged_na]{tagged_na}} values; else, missing values are
 converted to regular \code{NA} (default behaviour).}
 
-\item{enc}{The character encoding used for the file. This defaults to the encoding
+\item{encoding}{The character encoding used for the file. This defaults to the encoding
 specified in the file, or UTF-8. Use this argument to override the default
 encoding stored in the file.}
 
 \item{verbose}{Logical, if \code{TRUE}, a progress bar is displayed that indicates
 the progress of converting the imported data.}
+
+\item{atomic.to.fac}{Deprecated, please use `convert.factors` instead.}
 
 \item{path.cat}{Optional, the file path to the SAS catalog file.}
 }
@@ -79,7 +88,7 @@ These read-functions behave slightly differently from \pkg{haven}'s
     \item The vectors in the returned data frame are of class \code{atomic}, not of class \code{labelled}. The labelled-class might cause issues with other packages.
     \item When importing SPSS data, variables with user defined missings \emph{won't} be read into \code{labelled_spss} objects, but imported as \emph{tagged NA values}.
   }
-  The \code{atomic.to.fac} option only
+  The \code{convert.factors} option only
   converts those variables into factors that are of class \code{atomic} and
   which have value labels after import. Atomic vectors without value labels
   are considered as continuous and not converted to factors.
@@ -93,7 +102,7 @@ These are wrapper functions for \CRANpkg{haven}'s \code{read_*}-functions.
 mydat <- read_spss("my_spss_data.sav")
 
 # use haven's read function, convert atomic to factor
-mydat <- read_spss("my_spss_data.sav", atomic.to.fac = TRUE)
+mydat <- read_spss("my_spss_data.sav", convert.factors = TRUE)
 
 # retrieve variable labels
 mydat.var <- get_label(mydat)

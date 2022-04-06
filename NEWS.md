@@ -1,5 +1,10 @@
 # sjlabelled 1.1.9
 
+## Breaking
+
+* The `atomic.to.fac` argument was renamed to `convert.factors`. Furthermore,
+  this argument now defaults to `TRUE`.
+
 ## Changes to functions
 
 * `write_*()` functions now remove variables with completely missing data, to
