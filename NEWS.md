@@ -1,4 +1,4 @@
-# sjlabelled 1.1.9
+# sjlabelled 1.2.0
 
 ## Breaking
 
