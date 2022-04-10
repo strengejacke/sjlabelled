@@ -50,12 +50,6 @@ dummy <- set_label(dummy, label = "Dummy-variable")
 # or use:
 # set_label(dummy) <- "Dummy-variable"
 
-# auto-detection of value labels by default, auto-detection of
-# variable labels if argument "title" set to NULL.
-\dontrun{
-library(sjPlot)
-sjp.frq(dummy, title = NULL)}
-
 # Set variable labels for data frame
 dummy <- data.frame(
   a = sample(1:4, 10, replace = TRUE),
@@ -92,25 +86,24 @@ dummy <- data.frame(
   c = sample(1:4, 10, replace = TRUE)
 )
 
-library(magrittr)
-dummy \%>\%
-  var_labels(a = "First variable", c = "third variable") \%>\%
-  get_label()
+if (require("magrittr") && require("rlang")) {
+  dummy \%>\%
+    var_labels(a = "First variable", c = "third variable") \%>\%
+    get_label()
 
-# with quasi-quotation
-library(rlang)
-v1 <- "First variable"
-v2 <- "Third variable"
-dummy \%>\%
-  var_labels(a = !!v1, c = !!v2) \%>\%
-  get_label()
+  # with quasi-quotation
+  v1 <- "First variable"
+  v2 <- "Third variable"
+  dummy \%>\%
+    var_labels(a = !!v1, c = !!v2) \%>\%
+    get_label()
 
-x1 <- "a"
-x2 <- "c"
-dummy \%>\%
-  var_labels(!!x1 := !!v1, !!x2 := !!v2) \%>\%
-  get_label()
-
+  x1 <- "a"
+  x2 <- "c"
+  dummy \%>\%
+    var_labels(!!x1 := !!v1, !!x2 := !!v2) \%>\%
+    get_label()
+}
 }
 \seealso{
 See vignette \href{../doc/intro_sjlabelled.html}{Labelled Data and the sjlabelled-Package}
