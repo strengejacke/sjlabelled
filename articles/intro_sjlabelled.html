@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.0.2</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Labelled Data and the sjlabelled-Package</h1>
                         <h4 data-toc-skip class="author">Daniel Lüdecke</h4>
             
-            <h4 data-toc-skip class="date">2022-04-10</h4>
+            <h4 data-toc-skip class="date">2022-04-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/HEAD/vignettes/intro_sjlabelled.Rmd" class="external-link"><code>vignettes/intro_sjlabelled.Rmd</code></a></small>
       <div class="hidden name"><code>intro_sjlabelled.Rmd</code></div>
@@ -244,7 +244,7 @@
 <span class="co"># return new labelled vector</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">x</span>
-<span class="co">#&gt;  [1] 1 4 3 2 2 4 3 1 1 1 2 4 1 2 3 4 4 4 2 3</span>
+<span class="co">#&gt;  [1] 3 1 4 3 4 3 2 1 3 1 1 1 1 3 3 4 4 3 1 3</span>
 <span class="co">#&gt; attr(,"labels")</span>
 <span class="co">#&gt; very low      low      mid       hi </span>
 <span class="co">#&gt;        1        2        3        4</span></code></pre></div>
@@ -430,13 +430,13 @@
 <span class="co"># return new vector</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">set_label</a></span><span class="op">(</span><span class="va">x</span>, label <span class="op">=</span> <span class="st">"Dummy-variable"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt;  int [1:10] 3 2 1 1 4 1 4 1 1 1</span>
+<span class="co">#&gt;  int [1:10] 2 4 4 1 3 2 1 2 2 3</span>
 <span class="co">#&gt;  - attr(*, "label")= chr "Dummy-variable"</span>
 
 <span class="co"># label existing vector</span>
 <span class="fu"><a href="../reference/set_label.html">set_label</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Another Dummy-variable"</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt;  int [1:10] 3 2 1 1 4 1 4 1 1 1</span>
+<span class="co">#&gt;  int [1:10] 2 4 4 1 3 2 1 2 2 3</span>
 <span class="co">#&gt;  - attr(*, "label")= chr "Another Dummy-variable"</span></code></pre></div>
 <p><code><a href="../reference/set_label.html">set_label()</a></code> can also set variable labels for a data frame. In this case, the variable attributes get an additional <code>name</code> attribute with the vector’s name. This makes it easier to see which label belongs to which vector.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
@@ -451,13 +451,13 @@
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    10 obs. of  3 variables:</span>
-<span class="co">#&gt;  $ a: int  3 2 2 4 3 3 2 4 4 3</span>
+<span class="co">#&gt;  $ a: int  2 3 3 1 3 4 1 3 3 4</span>
 <span class="co">#&gt;   ..- attr(*, "label")= Named chr "Variable A"</span>
 <span class="co">#&gt;   .. ..- attr(*, "names")= chr "a"</span>
-<span class="co">#&gt;  $ b: int  2 1 4 1 4 1 2 3 4 2</span>
+<span class="co">#&gt;  $ b: int  1 1 4 3 4 3 4 4 1 1</span>
 <span class="co">#&gt;   ..- attr(*, "label")= Named chr "Variable B"</span>
 <span class="co">#&gt;   .. ..- attr(*, "names")= chr "b"</span>
-<span class="co">#&gt;  $ c: int  4 3 1 4 4 1 1 4 1 1</span>
+<span class="co">#&gt;  $ c: int  2 4 3 3 4 4 3 4 4 1</span>
 <span class="co">#&gt;   ..- attr(*, "label")= Named chr "Variable C"</span>
 <span class="co">#&gt;   .. ..- attr(*, "names")= chr "c"</span>
 
@@ -481,11 +481,11 @@
   <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    10 obs. of  3 variables:</span>
-<span class="co">#&gt;  $ a: int  2 3 1 1 3 3 1 2 3 4</span>
+<span class="co">#&gt;  $ a: int  1 3 2 3 2 3 3 3 2 2</span>
 <span class="co">#&gt;   ..- attr(*, "label")= chr "Variable A"</span>
-<span class="co">#&gt;  $ b: int  1 3 4 4 4 3 4 3 2 2</span>
+<span class="co">#&gt;  $ b: int  1 1 4 1 4 2 4 3 4 2</span>
 <span class="co">#&gt;   ..- attr(*, "label")= chr "Variable B"</span>
-<span class="co">#&gt;  $ c: int  2 3 1 2 3 4 3 3 3 1</span>
+<span class="co">#&gt;  $ c: int  1 4 1 2 1 1 2 4 1 2</span>
 <span class="co">#&gt;   ..- attr(*, "label")= chr "Variable C"</span></code></pre></div>
 </div>
 </div>
@@ -502,15 +502,15 @@
 <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; x</span>
 <span class="co">#&gt;  1  2  3  4  5  6  7  8 </span>
-<span class="co">#&gt; 12 10 14 11 20 17 13  3</span>
+<span class="co">#&gt; 10 13 14 11 20  9 10 13</span>
 
 <span class="co"># set value 1 and 8 as tagged missings</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_na.html">set_na</a></span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">8</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">x</span>
-<span class="co">#&gt;   [1]  5  4  6  2  7  4 NA  5  4  7  7  2  3 NA  7 NA  5 NA NA  5  6  7  6 NA  2</span>
-<span class="co">#&gt;  [26]  5 NA  7  7  5  2  2  6  3  5 NA  4  5  5 NA  4 NA  5  6 NA  3  4  6 NA  6</span>
-<span class="co">#&gt;  [51]  3  6  6  4  7 NA  7  7  7  5  6  3  3  6  4 NA  6  2  6  2  7  5  5  3  6</span>
-<span class="co">#&gt;  [76]  6  3  2  4  5  3  5  4  3  3  4  2  5  3  2  3  5 NA  7  3  5  5  6  6  5</span>
+<span class="co">#&gt;   [1]  2  5  7 NA  5 NA  6 NA NA NA  7  5  5  2 NA  4  3  2  5  5 NA  5 NA  5  5</span>
+<span class="co">#&gt;  [26] NA  6  7  7  4 NA  5  3  3  3  4  5  3  3  4 NA  3  3  5  6  4  6  6  4  2</span>
+<span class="co">#&gt;  [51]  5 NA  3  5  3 NA NA  7  5  4  2  4  6 NA  3  4  7  2 NA NA  5  6  7  7  2</span>
+<span class="co">#&gt;  [76]  2 NA NA  7  5  3 NA  2 NA  2  2  6  2  4  6  5  3  5 NA  2  7  4  5 NA  3</span>
 <span class="co">#&gt; attr(,"labels")</span>
 <span class="co">#&gt;  1  8 </span>
 <span class="co">#&gt; NA NA</span>
@@ -519,19 +519,19 @@
 <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">x</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span>
 <span class="co">#&gt; x</span>
 <span class="co">#&gt;    2    3    4    5    6    7 &lt;NA&gt; </span>
-<span class="co">#&gt;   10   14   11   20   17   13   15</span>
+<span class="co">#&gt;   13   14   11   20    9   10   23</span>
 
 <span class="co"># now let's see, which NA's were "1" and which were "8"</span>
 <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt;   [1]     5     4     6     2     7     4 NA(1)     5     4     7     7     2</span>
-<span class="co">#&gt;  [13]     3 NA(1)     7 NA(1)     5 NA(1) NA(8)     5     6     7     6 NA(1)</span>
-<span class="co">#&gt;  [25]     2     5 NA(8)     7     7     5     2     2     6     3     5 NA(1)</span>
-<span class="co">#&gt;  [37]     4     5     5 NA(1)     4 NA(8)     5     6 NA(1)     3     4     6</span>
-<span class="co">#&gt;  [49] NA(1)     6     3     6     6     4     7 NA(1)     7     7     7     5</span>
-<span class="co">#&gt;  [61]     6     3     3     6     4 NA(1)     6     2     6     2     7     5</span>
-<span class="co">#&gt;  [73]     5     3     6     6     3     2     4     5     3     5     4     3</span>
-<span class="co">#&gt;  [85]     3     4     2     5     3     2     3     5 NA(1)     7     3     5</span>
-<span class="co">#&gt;  [97]     5     6     6     5</span>
+<span class="co">#&gt;   [1]     2     5     7 NA(8)     5 NA(1)     6 NA(8) NA(8) NA(8)     7     5</span>
+<span class="co">#&gt;  [13]     5     2 NA(8)     4     3     2     5     5 NA(8)     5 NA(8)     5</span>
+<span class="co">#&gt;  [25]     5 NA(1)     6     7     7     4 NA(8)     5     3     3     3     4</span>
+<span class="co">#&gt;  [37]     5     3     3     4 NA(1)     3     3     5     6     4     6     6</span>
+<span class="co">#&gt;  [49]     4     2     5 NA(1)     3     5     3 NA(8) NA(1)     7     5     4</span>
+<span class="co">#&gt;  [61]     2     4     6 NA(8)     3     4     7     2 NA(8) NA(1)     5     6</span>
+<span class="co">#&gt;  [73]     7     7     2     2 NA(8) NA(1)     7     5     3 NA(1)     2 NA(1)</span>
+<span class="co">#&gt;  [85]     2     2     6     2     4     6     5     3     5 NA(1)     2     7</span>
+<span class="co">#&gt;  [97]     4     5 NA(8)     3</span>
 
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">x</span>
@@ -669,7 +669,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
       </footer>
