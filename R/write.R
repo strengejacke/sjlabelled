@@ -71,6 +71,12 @@ write_sas <- function(x, path, drop.na = FALSE) {
     compress <- TRUE
   }
 
+  if (isTRUE(compress)) {
+    compress <- "zsav"
+  } else {
+    compress <- "byte"
+  }
+
   if (type == "spss") {
     # write SPSS
     haven::write_sav(data = x, path = path, compress = compress)
