@@ -1,5 +1,10 @@
 # sjlabelled 1.2.1
 
+## Changes to functions
+
+* `write_spss()` now uses the default compression from `haven::write_sav()`, 
+  which is in line with the compression standard of SPSS files.
+
 ## Bug fixes
 
 * Fix CRAN check issues.
