@@ -128,8 +128,7 @@ add_labels_helper <- function(x, value) {
     drop.na = TRUE
   )
 
-  # get current NA values
-  current.na <- get_na(x)
+  current.na <- NULL
 
   # if we had already labels, append new ones
   if (!is.null(current.labels)) {
@@ -157,6 +156,8 @@ add_labels_helper <- function(x, value) {
   }
 
   if (requireNamespace("haven", quietly = TRUE)) {
+    # get current NA values - requires haven
+    current.na <- get_na(x)
     # replace tagged NA
     if (any(haven::is_tagged_na(value))) {
       # get tagged NAs
