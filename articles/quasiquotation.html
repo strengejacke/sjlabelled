@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Using quasiquotation to add variable and value labels</h1>
                         <h4 data-toc-skip class="author">Daniel Lüdecke</h4>
             
-            <h4 data-toc-skip class="date">2022-04-27</h4>
+            <h4 data-toc-skip class="date">2022-05-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/HEAD/vignettes/quasiquotation.Rmd" class="external-link"><code>vignettes/quasiquotation.Rmd</code></a></small>
       <div class="hidden name"><code>quasiquotation.Rmd</code></div>
@@ -131,14 +131,14 @@
 
 <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span>, <span class="va">dummy1</span><span class="op">)</span>
 <span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=1.88 sd=0.82</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.95 sd=0.88</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 16 | 40.00 |   40.00 |  40.00</span>
-<span class="co">#&gt;     2 |   mid | 13 | 32.50 |   32.50 |  72.50</span>
-<span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
+<span class="co">#&gt;     1 |   low | 16 |    40 |      40 |     40</span>
+<span class="co">#&gt;     2 |   mid | 10 |    25 |      25 |     65</span>
+<span class="co">#&gt;     3 |    hi | 14 |    35 |      35 |    100</span>
+<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 
 <span class="co"># and set same value labels for two of three variables</span>
 <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span>
@@ -148,33 +148,33 @@
 
 <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>
 <span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=1.88 sd=0.82</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.95 sd=0.88</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
+<span class="co">#&gt; ---------------------------------------------</span>
+<span class="co">#&gt;     1 |   low | 16 |    40 |      40 |     40</span>
+<span class="co">#&gt;     2 |   mid | 10 |    25 |      25 |     65</span>
+<span class="co">#&gt;     3 |    hi | 14 |    35 |      35 |    100</span>
+<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; dummy2 &lt;integer&gt; </span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.98 sd=0.89</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; ---------------------------------------------</span>
 <span class="co">#&gt;     1 |   low | 16 | 40.00 |   40.00 |  40.00</span>
-<span class="co">#&gt;     2 |   mid | 13 | 32.50 |   32.50 |  72.50</span>
-<span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; dummy2 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.05 sd=0.78</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 11 | 27.50 |   27.50 |  27.50</span>
-<span class="co">#&gt;     2 |   mid | 16 | 40.00 |   40.00 |  67.50</span>
-<span class="co">#&gt;     3 |    hi | 13 | 32.50 |   32.50 | 100.00</span>
+<span class="co">#&gt;     2 |   mid |  9 | 22.50 |   22.50 |  62.50</span>
+<span class="co">#&gt;     3 |    hi | 15 | 37.50 |   37.50 | 100.00</span>
 <span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; dummy3 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.25 sd=0.74</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.73 sd=0.78</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 |  7 | 17.50 |   17.50 |  17.50</span>
-<span class="co">#&gt;     2 | 16 | 40.00 |   40.00 |  57.50</span>
-<span class="co">#&gt;     3 | 17 | 42.50 |   42.50 | 100.00</span>
+<span class="co">#&gt;     1 | 19 | 47.50 |   47.50 |  47.50</span>
+<span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  80.00</span>
+<span class="co">#&gt;     3 |  8 | 20.00 |   20.00 | 100.00</span>
 <span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></code></pre></div>
 <p><code><a href="../reference/set_labels.html">val_labels()</a></code> does the same job as <code><a href="../reference/set_labels.html">set_labels()</a></code>, but in a different way. While <code><a href="../reference/set_labels.html">set_labels()</a></code> requires variables to be specified in the <code>...</code>-argument, and labels in the <code>labels</code>-argument, <code><a href="../reference/set_labels.html">val_labels()</a></code> requires both to be specified in the <code>...</code>.</p>
 <p><code><a href="../reference/set_labels.html">val_labels()</a></code> requires <em>named</em> vectors as argument, with the <em>left-hand side</em> being the name of the variable that should be labelled, and the <em>right-hand side</em> containing the labels for the values.</p>
@@ -187,33 +187,33 @@
 <span class="co"># remaining variables are not labelled</span>
 <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>
 <span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=1.88 sd=0.82</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.95 sd=0.88</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 16 | 40.00 |   40.00 |  40.00</span>
-<span class="co">#&gt;     2 |   mid | 13 | 32.50 |   32.50 |  72.50</span>
-<span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
+<span class="co">#&gt;     1 |   low | 16 |    40 |      40 |     40</span>
+<span class="co">#&gt;     2 |   mid | 10 |    25 |      25 |     65</span>
+<span class="co">#&gt;     3 |    hi | 14 |    35 |      35 |    100</span>
+<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; dummy2 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.05 sd=0.78</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.98 sd=0.89</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 | 11 | 27.50 |   27.50 |  27.50</span>
-<span class="co">#&gt;     2 | 16 | 40.00 |   40.00 |  67.50</span>
-<span class="co">#&gt;     3 | 13 | 32.50 |   32.50 | 100.00</span>
+<span class="co">#&gt;     1 | 16 | 40.00 |   40.00 |  40.00</span>
+<span class="co">#&gt;     2 |  9 | 22.50 |   22.50 |  62.50</span>
+<span class="co">#&gt;     3 | 15 | 37.50 |   37.50 | 100.00</span>
 <span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; dummy3 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.25 sd=0.74</span>
+<span class="co">#&gt; # total N=40 valid N=40 mean=1.73 sd=0.78</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
 <span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 |  7 | 17.50 |   17.50 |  17.50</span>
-<span class="co">#&gt;     2 | 16 | 40.00 |   40.00 |  57.50</span>
-<span class="co">#&gt;     3 | 17 | 42.50 |   42.50 | 100.00</span>
+<span class="co">#&gt;     1 | 19 | 47.50 |   47.50 |  47.50</span>
+<span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  80.00</span>
+<span class="co">#&gt;     3 |  8 | 20.00 |   20.00 | 100.00</span>
 <span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></code></pre></div>
 <p>Unlike <code><a href="../reference/set_labels.html">set_labels()</a></code>, <code><a href="../reference/set_labels.html">val_labels()</a></code> allows the user to add <em>different</em> value labels to different variables in one function call. Another advantage, or difference, of <code><a href="../reference/set_labels.html">val_labels()</a></code> is it’s flexibility in defining variable names and value labels by using quasiquotation.</p>
 <div class="section level3">
