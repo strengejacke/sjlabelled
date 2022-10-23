@@ -54,6 +54,7 @@ These functions add, replace or remove value labels to or from variables.
          \code{replace_labels()} is an alias for \code{add_labels()}.
 }
 \examples{
+\dontshow{if (require("dplyr") && require("haven")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # add_labels()
 data(efc)
 get_labels(efc$e42dep)
@@ -110,6 +111,7 @@ if (require("haven")) {
   get_na(x)
   get_na(remove_labels(x, labels = tagged_na("c")))
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link{set_label}} to manually set variable labels or

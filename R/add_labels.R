@@ -38,7 +38,7 @@
 #'          \cr \cr
 #'          \code{replace_labels()} is an alias for \code{add_labels()}.
 #'
-#' @examples
+#' @examplesIf require("dplyr") && require("haven")
 #' # add_labels()
 #' data(efc)
 #' get_labels(efc$e42dep)
