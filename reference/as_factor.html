@@ -71,31 +71,41 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">to_factor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for data.frame</span>
-<span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, add.non.labelled <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">to_factor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for data.frame</span></span>
+<span><span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, add.non.labelled <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector or data frame.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Optional, unquoted names of variables that should be selected for
 further processing. Required, if <code>x</code> is a data frame (and no
 vector) and only selected variables from <code>x</code> should be processed.
 You may also use functions like <code>:</code> or tidyselect's select-helpers.
 See 'Examples'.</p></dd>
+
+
 <dt>add.non.labelled</dt>
 <dd><p>Logical, if <code>TRUE</code>, non-labelled values also
 get value labels.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A factor, including variable and value labels. If <code>x</code>          is a data frame, the complete data frame <code>x</code> will be returned,
+    
+
+<p>A factor, including variable and value labels. If <code>x</code></p>
+
+
+<p>is a data frame, the complete data frame <code>x</code> will be returned,
           where variables specified in <code>...</code> are coerced
           to factors (including variable and value labels);
           if <code>...</code> is not specified, applies to all variables in the
@@ -121,47 +131,46 @@ get value labels.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://magrittr.tidyverse.org" class="external-link">"magrittr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># normal factor conversion, loses value attributes</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># factor conversion, which keeps value attributes</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">as_factor</span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># create partially labelled vector</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_labels.html">set_labels</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span>,</span>
-<span class="r-in">    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">      `1` <span class="op">=</span> <span class="st">"independent"</span>,</span>
-<span class="r-in">      `4` <span class="op">=</span> <span class="st">"severe dependency"</span>,</span>
-<span class="r-in">      `9` <span class="op">=</span> <span class="st">"missing value"</span></span>
-<span class="r-in">   <span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># only copy existing value labels</span></span>
-<span class="r-in">  <span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># also add labels to non-labelled values</span></span>
-<span class="r-in">  <span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, add.non.labelled <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, add.non.labelled <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># easily coerce specific variables in a data frame to factor</span></span>
-<span class="r-in">  <span class="co"># and keep other variables, with their class preserved</span></span>
-<span class="r-in">  <span class="fu">as_factor</span><span class="op">(</span><span class="va">efc</span>, <span class="va">e42dep</span>, <span class="va">e16sex</span>, <span class="va">c172code</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># use select-helpers from dplyr-package</span></span>
-<span class="r-in">  <span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="fu">as_factor</span><span class="op">(</span><span class="va">efc</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"cop"</span><span class="op">)</span>, <span class="va">c161sex</span><span class="op">:</span><span class="va">c175empl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">}</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://magrittr.tidyverse.org" class="external-link">"magrittr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># normal factor conversion, loses value attributes</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># factor conversion, which keeps value attributes</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">as_factor</span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># create partially labelled vector</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_labels.html">set_labels</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span>,</span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      `1` <span class="op">=</span> <span class="st">"independent"</span>,</span></span>
+<span class="r-in"><span>      `4` <span class="op">=</span> <span class="st">"severe dependency"</span>,</span></span>
+<span class="r-in"><span>      `9` <span class="op">=</span> <span class="st">"missing value"</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># only copy existing value labels</span></span></span>
+<span class="r-in"><span>  <span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># also add labels to non-labelled values</span></span></span>
+<span class="r-in"><span>  <span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, add.non.labelled <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="fu">as_factor</span><span class="op">(</span><span class="va">x</span>, add.non.labelled <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># easily coerce specific variables in a data frame to factor</span></span></span>
+<span class="r-in"><span>  <span class="co"># and keep other variables, with their class preserved</span></span></span>
+<span class="r-in"><span>  <span class="fu">as_factor</span><span class="op">(</span><span class="va">efc</span>, <span class="va">e42dep</span>, <span class="va">e16sex</span>, <span class="va">c172code</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># use select-helpers from dplyr-package</span></span></span>
+<span class="r-in"><span>  <span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu">as_factor</span><span class="op">(</span><span class="va">efc</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"cop"</span><span class="op">)</span>, <span class="va">c161sex</span><span class="op">:</span><span class="va">c175empl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: sjmisc</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Learn more about sjmisc with 'browseVignettes("sjmisc")'.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: magrittr</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Arguments in `...` must be used.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as_factor(x, add.non.labelled = TRUE):</span> Arguments in `...` must be used.</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Problematic argument:</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> add.non.labelled = TRUE</span>
 </code></pre></div>
@@ -178,7 +187,7 @@ get value labels.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

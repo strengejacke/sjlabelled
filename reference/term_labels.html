@@ -73,25 +73,25 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">term_labels</span><span class="op">(</span>
-  <span class="va">models</span>,
-  mark.cat <span class="op">=</span> <span class="cn">FALSE</span>,
-  case <span class="op">=</span> <span class="cn">NULL</span>,
-  prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"varname"</span>, <span class="st">"label"</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">get_term_labels</span><span class="op">(</span>
-  <span class="va">models</span>,
-  mark.cat <span class="op">=</span> <span class="cn">FALSE</span>,
-  case <span class="op">=</span> <span class="cn">NULL</span>,
-  prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"varname"</span>, <span class="st">"label"</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">response_labels</span><span class="op">(</span><span class="va">models</span>, case <span class="op">=</span> <span class="cn">NULL</span>, multi.resp <span class="op">=</span> <span class="cn">FALSE</span>, mv <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">get_dv_labels</span><span class="op">(</span><span class="va">models</span>, case <span class="op">=</span> <span class="cn">NULL</span>, multi.resp <span class="op">=</span> <span class="cn">FALSE</span>, mv <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">term_labels</span><span class="op">(</span></span>
+<span>  <span class="va">models</span>,</span>
+<span>  mark.cat <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  case <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"varname"</span>, <span class="st">"label"</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">get_term_labels</span><span class="op">(</span></span>
+<span>  <span class="va">models</span>,</span>
+<span>  mark.cat <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  case <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"varname"</span>, <span class="st">"label"</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">response_labels</span><span class="op">(</span><span class="va">models</span>, case <span class="op">=</span> <span class="cn">NULL</span>, multi.resp <span class="op">=</span> <span class="cn">FALSE</span>, mv <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">get_dv_labels</span><span class="op">(</span><span class="va">models</span>, case <span class="op">=</span> <span class="cn">NULL</span>, multi.resp <span class="op">=</span> <span class="cn">FALSE</span>, mv <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -99,32 +99,47 @@
     <dl><dt>models</dt>
 <dd><p>One or more fitted regression models. May also be glm's or
 mixed models.</p></dd>
+
+
 <dt>mark.cat</dt>
 <dd><p>Logical, if <code>TRUE</code>, the returned vector has an
 attribute with logical values, which indicate whether a label indicates
 the value from a factor category (attribute value is <code>TRUE</code>) or
 a term's variable labels (attribute value is <code>FALSE</code>).</p></dd>
+
+
 <dt>case</dt>
 <dd><p>Desired target case. Labels will automatically converted into the
 specified character case. See <code><a href="https://rdrr.io/pkg/snakecase/man/to_any_case.html" class="external-link">to_any_case()</a></code> for
 more details on this argument.</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>Indicates whether the value labels of categorical variables
 should be prefixed, e.g. with the variable name or variable label.
 May be abbreviated. See 'Examples',</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further arguments passed down to <code>to_any_case()</code>,
 like <code>preprocess</code> or <code>postprocess</code>.</p></dd>
+
+
 <dt>mv, multi.resp</dt>
 <dd><p>Logical, if <code>TRUE</code> and <code>models</code> is a multivariate
 response model from a <code>brmsfit</code> object, then the labels for each
 dependent variable (multiple responses) are returned.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>For <code>term_labels()</code>, a (named) character vector with
+    
+
+<p>For <code>term_labels()</code>, a (named) character vector with
         variable labels of all model terms, which can be used, for instance,
-        as axis labels to annotate plots. <br><br> For <code>response_labels()</code>,
+        as axis labels to annotate plots. <br></p>
+<p></p>
+<p><br> For <code>response_labels()</code>,
         a character vector with variable labels from all dependent variables
         of <code>models</code>.</p>
     </div>
@@ -139,11 +154,11 @@ dependent variable (multiple responses) are returned.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># use data set with labelled data</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">barthtot</span> <span class="op">~</span> <span class="va">c160age</span> <span class="op">+</span> <span class="va">c12hour</span> <span class="op">+</span> <span class="va">c161sex</span> <span class="op">+</span> <span class="va">c172code</span>, data <span class="op">=</span> <span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># use data set with labelled data</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">barthtot</span> <span class="op">~</span> <span class="va">c160age</span> <span class="op">+</span> <span class="va">c12hour</span> <span class="op">+</span> <span class="va">c161sex</span> <span class="op">+</span> <span class="va">c172code</span>, data <span class="op">=</span> <span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                    c160age </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               "carer' age" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                    c12hour </span>
@@ -152,22 +167,22 @@ dependent variable (multiple responses) are returned.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                           "carer's gender" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                   c172code </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               "carer's level of education" </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># make "education" categorical</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">efc</span><span class="op">$</span><span class="va">c172code</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_factor.html">to_factor</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">c172code</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">barthtot</span> <span class="op">~</span> <span class="va">c160age</span> <span class="op">+</span> <span class="va">c12hour</span> <span class="op">+</span> <span class="va">c161sex</span> <span class="op">+</span> <span class="va">c172code</span>, data <span class="op">=</span> <span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># prefix value of categorical variables with variable name</span></span>
-<span class="r-in">  <span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span>, prefix <span class="op">=</span> <span class="st">"varname"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># prefix value of categorical variables with value label</span></span>
-<span class="r-in">  <span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span>, prefix <span class="op">=</span> <span class="st">"label"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># get label of dv</span></span>
-<span class="r-in">  <span class="fu">response_labels</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># make "education" categorical</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">efc</span><span class="op">$</span><span class="va">c172code</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_factor.html">to_factor</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">c172code</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">barthtot</span> <span class="op">~</span> <span class="va">c160age</span> <span class="op">+</span> <span class="va">c12hour</span> <span class="op">+</span> <span class="va">c161sex</span> <span class="op">+</span> <span class="va">c172code</span>, data <span class="op">=</span> <span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># prefix value of categorical variables with variable name</span></span></span>
+<span class="r-in"><span>  <span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span>, prefix <span class="op">=</span> <span class="st">"varname"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># prefix value of categorical variables with value label</span></span></span>
+<span class="r-in"><span>  <span class="fu">term_labels</span><span class="op">(</span><span class="va">fit</span>, prefix <span class="op">=</span> <span class="st">"label"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># get label of dv</span></span></span>
+<span class="r-in"><span>  <span class="fu">response_labels</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Total score BARTHEL INDEX"</span>
 </code></pre></div>
     </div>
@@ -183,7 +198,7 @@ dependent variable (multiple responses) are returned.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

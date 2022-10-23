@@ -88,13 +88,13 @@
 
       
 
-      </header><script src="quasiquotation_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using quasiquotation to add variable and value labels</h1>
                         <h4 data-toc-skip class="author">Daniel Lüdecke</h4>
             
-            <h4 data-toc-skip class="date">2022-05-01</h4>
+            <h4 data-toc-skip class="date">2022-10-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/HEAD/vignettes/quasiquotation.Rmd" class="external-link"><code>vignettes/quasiquotation.Rmd</code></a></small>
       <div class="hidden name"><code>quasiquotation.Rmd</code></div>
@@ -111,150 +111,150 @@
 <p>Usually, <code><a href="../reference/set_labels.html">set_labels()</a></code> can be used to add value labels to variables. The syntax of this function is easy to use, and <code><a href="../reference/set_labels.html">set_labels()</a></code> allows to add value labels to multiple variables at once, if these variables share the same value labels.</p>
 <p>In the following examples, we will use the <code><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq()</a></code> function, that shows an extra <strong>label</strong>-column containing <em>value labels</em>, if the data is labelled. If the data has <em>no</em> value labels, this column is not shown in the output.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/" class="external-link">sjlabelled</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">sjmisc</a></span><span class="op">)</span> <span class="co"># for frq()-function</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org" class="external-link">rlang</a></span><span class="op">)</span>
-
-<span class="co"># unlabelled data</span>
-<span class="va">dummies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-  dummy2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-  dummy3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="co"># set labels for all variables in the data frame</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">dummies</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span>
-<span class="co">#&gt; low mid  hi </span>
-<span class="co">#&gt;   1   2   3</span>
-
-<span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span>, <span class="va">dummy1</span><span class="op">)</span>
-<span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.02 sd=0.89</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 15 | 37.50 |   37.50 |  37.50</span>
-<span class="co">#&gt;     2 |   mid |  9 | 22.50 |   22.50 |  60.00</span>
-<span class="co">#&gt;     3 |    hi | 16 | 40.00 |   40.00 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-
-<span class="co"># and set same value labels for two of three variables</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span>
-  <span class="va">dummies</span>, <span class="va">dummy1</span>, <span class="va">dummy2</span>,
-  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>
-<span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.02 sd=0.89</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 15 | 37.50 |   37.50 |  37.50</span>
-<span class="co">#&gt;     2 |   mid |  9 | 22.50 |   22.50 |  60.00</span>
-<span class="co">#&gt;     3 |    hi | 16 | 40.00 |   40.00 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; dummy2 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.27 sd=0.75</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low |  7 | 17.50 |   17.50 |  17.50</span>
-<span class="co">#&gt;     2 |   mid | 15 | 37.50 |   37.50 |  55.00</span>
-<span class="co">#&gt;     3 |    hi | 18 | 45.00 |   45.00 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; dummy3 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.10 sd=0.81</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 | 11 | 27.50 |   27.50 |  27.50</span>
-<span class="co">#&gt;     2 | 14 | 35.00 |   35.00 |  62.50</span>
-<span class="co">#&gt;     3 | 15 | 37.50 |   37.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/" class="external-link">sjlabelled</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">sjmisc</a></span><span class="op">)</span> <span class="co"># for frq()-function</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rlang.r-lib.org" class="external-link">rlang</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># unlabelled data</span></span>
+<span><span class="va">dummies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  dummy2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  dummy3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># set labels for all variables in the data frame</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">dummies</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; low mid  hi </span></span>
+<span><span class="co">#&gt;   1   2   3</span></span>
+<span></span>
+<span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span>, <span class="va">dummy1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; dummy1 &lt;integer&gt; </span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.98 sd=0.77</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
+<span><span class="co">#&gt; ---------------------------------------------</span></span>
+<span><span class="co">#&gt;     1 |   low | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 |   mid | 17 | 42.50 |   42.50 |  72.50</span></span>
+<span><span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
+<span></span>
+<span><span class="co"># and set same value labels for two of three variables</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span></span>
+<span>  <span class="va">dummies</span>, <span class="va">dummy1</span>, <span class="va">dummy2</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span></span>
+<span><span class="co">#&gt; dummy1 &lt;integer&gt; </span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.98 sd=0.77</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
+<span><span class="co">#&gt; ---------------------------------------------</span></span>
+<span><span class="co">#&gt;     1 |   low | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 |   mid | 17 | 42.50 |   42.50 |  72.50</span></span>
+<span><span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; dummy2 &lt;integer&gt; </span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.00 sd=0.82</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
+<span><span class="co">#&gt; ---------------------------------------------</span></span>
+<span><span class="co">#&gt;     1 |   low | 13 | 32.50 |   32.50 |  32.50</span></span>
+<span><span class="co">#&gt;     2 |   mid | 14 | 35.00 |   35.00 |  67.50</span></span>
+<span><span class="co">#&gt;     3 |    hi | 13 | 32.50 |   32.50 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; dummy3 &lt;integer&gt; </span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.98 sd=0.77</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span></span>
+<span><span class="co">#&gt; -------------------------------------</span></span>
+<span><span class="co">#&gt;     1 | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 | 17 | 42.50 |   42.50 |  72.50</span></span>
+<span><span class="co">#&gt;     3 | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div>
 <p><code><a href="../reference/set_labels.html">val_labels()</a></code> does the same job as <code><a href="../reference/set_labels.html">set_labels()</a></code>, but in a different way. While <code><a href="../reference/set_labels.html">set_labels()</a></code> requires variables to be specified in the <code>...</code>-argument, and labels in the <code>labels</code>-argument, <code><a href="../reference/set_labels.html">val_labels()</a></code> requires both to be specified in the <code>...</code>.</p>
 <p><code><a href="../reference/set_labels.html">val_labels()</a></code> requires <em>named</em> vectors as argument, with the <em>left-hand side</em> being the name of the variable that should be labelled, and the <em>right-hand side</em> containing the labels for the values.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span>
-<span class="co">#&gt; low mid  hi </span>
-<span class="co">#&gt;   1   2   3</span>
-
-<span class="co"># remaining variables are not labelled</span>
-<span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>
-<span class="co">#&gt; dummy1 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.02 sd=0.89</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; ---------------------------------------------</span>
-<span class="co">#&gt;     1 |   low | 15 | 37.50 |   37.50 |  37.50</span>
-<span class="co">#&gt;     2 |   mid |  9 | 22.50 |   22.50 |  60.00</span>
-<span class="co">#&gt;     3 |    hi | 16 | 40.00 |   40.00 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; dummy2 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.27 sd=0.75</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 |  7 | 17.50 |   17.50 |  17.50</span>
-<span class="co">#&gt;     2 | 15 | 37.50 |   37.50 |  55.00</span>
-<span class="co">#&gt;     3 | 18 | 45.00 |   45.00 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; dummy3 &lt;integer&gt; </span>
-<span class="co">#&gt; # total N=40 valid N=40 mean=2.10 sd=0.81</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span>
-<span class="co">#&gt; -------------------------------------</span>
-<span class="co">#&gt;     1 | 11 | 27.50 |   27.50 |  27.50</span>
-<span class="co">#&gt;     2 | 14 | 35.00 |   35.00 |  62.50</span>
-<span class="co">#&gt;     3 | 15 | 37.50 |   37.50 | 100.00</span>
-<span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; low mid  hi </span></span>
+<span><span class="co">#&gt;   1   2   3</span></span>
+<span></span>
+<span><span class="co"># remaining variables are not labelled</span></span>
+<span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span></span>
+<span><span class="co">#&gt; dummy1 &lt;integer&gt; </span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.98 sd=0.77</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
+<span><span class="co">#&gt; ---------------------------------------------</span></span>
+<span><span class="co">#&gt;     1 |   low | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 |   mid | 17 | 42.50 |   42.50 |  72.50</span></span>
+<span><span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; dummy2 &lt;integer&gt; </span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.00 sd=0.82</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span></span>
+<span><span class="co">#&gt; -------------------------------------</span></span>
+<span><span class="co">#&gt;     1 | 13 | 32.50 |   32.50 |  32.50</span></span>
+<span><span class="co">#&gt;     2 | 14 | 35.00 |   35.00 |  67.50</span></span>
+<span><span class="co">#&gt;     3 | 13 | 32.50 |   32.50 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; dummy3 &lt;integer&gt; </span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.98 sd=0.77</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span></span>
+<span><span class="co">#&gt; -------------------------------------</span></span>
+<span><span class="co">#&gt;     1 | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 | 17 | 42.50 |   42.50 |  72.50</span></span>
+<span><span class="co">#&gt;     3 | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div>
 <p>Unlike <code><a href="../reference/set_labels.html">set_labels()</a></code>, <code><a href="../reference/set_labels.html">val_labels()</a></code> allows the user to add <em>different</em> value labels to different variables in one function call. Another advantage, or difference, of <code><a href="../reference/set_labels.html">val_labels()</a></code> is it’s flexibility in defining variable names and value labels by using quasiquotation.</p>
 <div class="section level3">
 <h3 id="add-labels-that-are-stored-in-a-vector">Add labels that are stored in a vector<a class="anchor" aria-label="anchor" href="#add-labels-that-are-stored-in-a-vector"></a>
 </h3>
 <p>To use quasiquotation, we need the <strong>rlang</strong> package to be installed and loaded. Now we can have labels in a character vector, and use <code>!!</code> to unquote this vector.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low_quote"</span>, <span class="st">"mid_quote"</span>, <span class="st">"hi_quote"</span><span class="op">)</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, dummy1 <span class="op">=</span> <span class="op">!</span><span class="op">!</span> <span class="va">labels</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span>
-<span class="co">#&gt; low_quote mid_quote  hi_quote </span>
-<span class="co">#&gt;         1         2         3</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low_quote"</span>, <span class="st">"mid_quote"</span>, <span class="st">"hi_quote"</span><span class="op">)</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, dummy1 <span class="op">=</span> <span class="op">!</span><span class="op">!</span> <span class="va">labels</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; low_quote mid_quote  hi_quote </span></span>
+<span><span class="co">#&gt;         1         2         3</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="define-variable-names-that-are-stored-in-a-vector">Define variable names that are stored in a vector<a class="anchor" aria-label="anchor" href="#define-variable-names-that-are-stored-in-a-vector"></a>
 </h3>
 <p>The same can be done with the names of <em>variables</em> that should get new value labels. We then need <code>!!</code> to unquote the variable name and <code>:=</code> as assignment.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">variable</span> <span class="op">&lt;-</span> <span class="st">"dummy2"</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, <span class="op">!</span><span class="op">!</span> <span class="va">variable</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lo_var"</span>, <span class="st">"mid_var"</span>, <span class="st">"high_var"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># no value labels</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span>
-<span class="co">#&gt; NULL</span>
-
-<span class="co"># value labels</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy2</span>, <span class="st">"labels"</span><span class="op">)</span>
-<span class="co">#&gt;   lo_var  mid_var high_var </span>
-<span class="co">#&gt;        1        2        3</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">variable</span> <span class="op">&lt;-</span> <span class="st">"dummy2"</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, <span class="op">!</span><span class="op">!</span> <span class="va">variable</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lo_var"</span>, <span class="st">"mid_var"</span>, <span class="st">"high_var"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># no value labels</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span></span>
+<span><span class="co"># value labels</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy2</span>, <span class="st">"labels"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   lo_var  mid_var high_var </span></span>
+<span><span class="co">#&gt;        1        2        3</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="both-variable-names-and-value-labels-are-stored-in-a-vector">Both variable names and value labels are stored in a vector<a class="anchor" aria-label="anchor" href="#both-variable-names-and-value-labels-are-stored-in-a-vector"></a>
 </h3>
 <p>Finally, we can combine the above approaches to be flexible regarding both variable names and value labels.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">variable</span> <span class="op">&lt;-</span> <span class="st">"dummy3"</span>
-<span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, <span class="op">!</span><span class="op">!</span> <span class="va">variable</span> <span class="op">:=</span> <span class="op">!</span><span class="op">!</span> <span class="va">labels</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy3</span>, <span class="st">"labels"</span><span class="op">)</span>
-<span class="co">#&gt; low mid  hi </span>
-<span class="co">#&gt;   1   2   3</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">variable</span> <span class="op">&lt;-</span> <span class="st">"dummy3"</span></span>
+<span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, <span class="op">!</span><span class="op">!</span> <span class="va">variable</span> <span class="op">:=</span> <span class="op">!</span><span class="op">!</span> <span class="va">labels</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy3</span>, <span class="st">"labels"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; low mid  hi </span></span>
+<span><span class="co">#&gt;   1   2   3</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -263,55 +263,55 @@
 <p><code><a href="../reference/set_label.html">set_label()</a></code> is the equivalent to <code><a href="../reference/set_labels.html">set_labels()</a></code> to add variable labels to a variable. The equivalent to <code><a href="../reference/set_labels.html">val_labels()</a></code> is <code><a href="../reference/set_label.html">var_labels()</a></code>, which works in the same way as <code><a href="../reference/set_labels.html">val_labels()</a></code>. In case of <em>variable</em> labels, a <code>label</code>-attribute is added to a vector or factor (instead of a <code>labels</code>-attribute, which is used for <em>value</em> labels).</p>
 <p>The following examples show how to use <code><a href="../reference/set_label.html">var_labels()</a></code> to add variable labels to the data. We demonstrate this function without further explanation, because it is actually very similar to <code><a href="../reference/set_labels.html">val_labels()</a></code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-  c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="co"># simple usage</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, a <span class="op">=</span> <span class="st">"first variable"</span>, c <span class="op">=</span> <span class="st">"third variable"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "first variable"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "third variable"</span>
-
-<span class="co"># quasiquotation for labels</span>
-<span class="va">v1</span> <span class="op">&lt;-</span> <span class="st">"First variable"</span>
-<span class="va">v2</span> <span class="op">&lt;-</span> <span class="st">"Second variable"</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, a <span class="op">=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v1</span>, b <span class="op">=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v2</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "First variable"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Second variable"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; NULL</span>
-
-<span class="co"># quasiquotation for variable names</span>
-<span class="va">x1</span> <span class="op">&lt;-</span> <span class="st">"a"</span>
-<span class="va">x2</span> <span class="op">&lt;-</span> <span class="st">"c"</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x1</span> <span class="op">:=</span> <span class="st">"First"</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x2</span> <span class="op">:=</span> <span class="st">"Second"</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "First"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Second"</span>
-
-<span class="co"># quasiquotation for both variable names and labels</span>
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x1</span> <span class="op">:=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v1</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x2</span> <span class="op">:=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v2</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "First variable"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Second variable"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># simple usage</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, a <span class="op">=</span> <span class="st">"first variable"</span>, c <span class="op">=</span> <span class="st">"third variable"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "first variable"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "third variable"</span></span>
+<span></span>
+<span><span class="co"># quasiquotation for labels</span></span>
+<span><span class="va">v1</span> <span class="op">&lt;-</span> <span class="st">"First variable"</span></span>
+<span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="st">"Second variable"</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, a <span class="op">=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v1</span>, b <span class="op">=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "First variable"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Second variable"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span></span>
+<span><span class="co"># quasiquotation for variable names</span></span>
+<span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="st">"a"</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="st">"c"</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x1</span> <span class="op">:=</span> <span class="st">"First"</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x2</span> <span class="op">:=</span> <span class="st">"Second"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "First"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Second"</span></span>
+<span></span>
+<span><span class="co"># quasiquotation for both variable names and labels</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_label.html">var_labels</a></span><span class="op">(</span><span class="va">dummy</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x1</span> <span class="op">:=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v1</span>, <span class="op">!</span><span class="op">!</span> <span class="va">x2</span> <span class="op">:=</span> <span class="op">!</span><span class="op">!</span> <span class="va">v2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">a</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "First variable"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">b</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">c</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Second variable"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
@@ -337,7 +337,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

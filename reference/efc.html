@@ -72,11 +72,11 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Attach EFC-data</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Show structure</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Attach EFC-data</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Show structure</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	908 obs. of  26 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ c12hour : num  16 148 70 168 168 16 161 110 28 40 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "label")= chr "average number of hours of care per week"</span>
@@ -164,9 +164,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "label")= chr "Care level"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "labels")= Named chr [1:3] "1" "2" "3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "names")= chr [1:3] "Care Level 1" "Care Level 2" "Care Level 3/3+"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show first rows</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show first rows</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   c12hour e15relat e16sex e17age e42dep c82cop1 c83cop2 c84cop3 c85cop4 c86cop5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      16        2      2     83      3       3       2       2       2       1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     148        2      2     88      3       3       3       3       3       4</span>
@@ -188,18 +188,18 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4      10      15     12        2        0      3       3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5      12      15     19        2        1      2       2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6      19       9      8        1        3      2       2</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show variables</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjPlot/" class="external-link">sjPlot</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/view_df.html" class="external-link">view_df</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show variable labels</span></span>
-<span class="r-in"><span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># plot efc-data frame summary</span></span>
-<span class="r-in"><span class="fu">sjt.df</span><span class="op">(</span><span class="va">efc</span>, altr.row.col <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show variables</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjPlot/" class="external-link">sjPlot</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://strengejacke.github.io/sjPlot/reference/view_df.html" class="external-link">view_df</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show variable labels</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># plot efc-data frame summary</span></span></span>
+<span class="r-in"><span><span class="fu">sjt.df</span><span class="op">(</span><span class="va">efc</span>, altr.row.col <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -214,7 +214,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

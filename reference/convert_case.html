@@ -75,26 +75,35 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">convert_case</span><span class="op">(</span><span class="va">lab</span>, case <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convert_case</span><span class="op">(</span><span class="va">lab</span>, case <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>lab</dt>
 <dd><p>Character vector that should be case converted.</p></dd>
+
+
 <dt>case</dt>
 <dd><p>Desired target case. Labels will automatically converted into the
 specified character case. See <code><a href="https://rdrr.io/pkg/snakecase/man/to_any_case.html" class="external-link">to_any_case()</a></code> for
 more details on this argument.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Toggle warnings and messages on or off.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further arguments passed down to <code>to_any_case()</code>,
 like <code>sep_in</code> or <code>sep_out</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>lab</code>, with converted case.</p>
+    
+
+<p><code>lab</code>, with converted case.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -106,10 +115,10 @@ like <code>sep_in</code> or <code>sep_out</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">convert_case</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">convert_case</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </span>
-<span class="r-in"><span class="fu">convert_case</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, case <span class="op">=</span> <span class="st">"snake"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">convert_case</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, case <span class="op">=</span> <span class="st">"snake"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sepal length" "sepal width"  "petal length" "petal width"  "species"     </span>
 </code></pre></div>
     </div>
@@ -125,7 +134,7 @@ like <code>sep_in</code> or <code>sep_out</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

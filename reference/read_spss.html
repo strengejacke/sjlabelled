@@ -71,49 +71,51 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_spss</span><span class="op">(</span>
-  <span class="va">path</span>,
-  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  tag.na <span class="op">=</span> <span class="cn">FALSE</span>,
-  encoding <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
-  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
-<span class="op">)</span>
-
-<span class="fu">read_sas</span><span class="op">(</span>
-  <span class="va">path</span>,
-  path.cat <span class="op">=</span> <span class="cn">NULL</span>,
-  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  encoding <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
-  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
-<span class="op">)</span>
-
-<span class="fu">read_stata</span><span class="op">(</span>
-  <span class="va">path</span>,
-  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  encoding <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
-  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
-<span class="op">)</span>
-
-<span class="fu">read_data</span><span class="op">(</span>
-  <span class="va">path</span>,
-  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  encoding <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
-  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_spss</span><span class="op">(</span></span>
+<span>  <span class="va">path</span>,</span>
+<span>  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  tag.na <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  encoding <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">read_sas</span><span class="op">(</span></span>
+<span>  <span class="va">path</span>,</span>
+<span>  path.cat <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  encoding <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">read_stata</span><span class="op">(</span></span>
+<span>  <span class="va">path</span>,</span>
+<span>  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  encoding <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">read_data</span><span class="op">(</span></span>
+<span>  <span class="va">path</span>,</span>
+<span>  convert.factors <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop.labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  encoding <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  atomic.to.fac <span class="op">=</span> <span class="va">convert.factors</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>path</dt>
 <dd><p>File path to the data file.</p></dd>
+
+
 <dt>convert.factors</dt>
 <dd><p>Logical, if <code>TRUE</code>, categorical variables imported
 from the dataset (which are imported as <code>atomic</code>) will be
@@ -121,29 +123,45 @@ converted to factors. Variables are considered as categorical if they have
 at least the same number of value labels as unique values. This prevents
 that ranges of continuous variables, where - for instance - the minimum and
 maximum values are labelled only, will also be converted to factors.</p></dd>
+
+
 <dt>drop.labels</dt>
 <dd><p>Logical, if <code>TRUE</code>, unused value labels are removed. See
 <code><a href="zap_labels.html">drop_labels</a></code>.</p></dd>
+
+
 <dt>tag.na</dt>
 <dd><p>Logical, if <code>TRUE</code>, missing values are imported
 as <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></code> values; else, missing values are
 converted to regular <code>NA</code> (default behaviour).</p></dd>
+
+
 <dt>encoding</dt>
 <dd><p>The character encoding used for the file. This defaults to the encoding
 specified in the file, or UTF-8. Use this argument to override the default
 encoding stored in the file.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Logical, if <code>TRUE</code>, a progress bar is displayed that indicates
 the progress of converting the imported data.</p></dd>
+
+
 <dt>atomic.to.fac</dt>
 <dd><p>Deprecated, please use `convert.factors` instead.</p></dd>
+
+
 <dt>path.cat</dt>
 <dd><p>Optional, the file path to the SAS catalog file.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame containing the imported, labelled data. Retrieve value labels with
-<code><a href="get_labels.html">get_labels</a></code> and variable labels with <code><a href="get_label.html">get_label</a></code>.</p>
+    
+
+<p>A data frame containing the imported, labelled data. Retrieve value labels with</p>
+<p></p>
+<p><code><a href="get_labels.html">get_labels</a></code> and variable labels with <code><a href="get_label.html">get_label</a></code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -166,18 +184,18 @@ the progress of converting the imported data.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># import SPSS data set. uses haven's read function</span></span>
-<span class="r-in"><span class="va">mydat</span> <span class="op">&lt;-</span> <span class="fu">read_spss</span><span class="op">(</span><span class="st">"my_spss_data.sav"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># use haven's read function, convert atomic to factor</span></span>
-<span class="r-in"><span class="va">mydat</span> <span class="op">&lt;-</span> <span class="fu">read_spss</span><span class="op">(</span><span class="st">"my_spss_data.sav"</span>, convert.factors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># retrieve variable labels</span></span>
-<span class="r-in"><span class="va">mydat.var</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">mydat</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># retrieve value labels</span></span>
-<span class="r-in"><span class="va">mydat.val</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">mydat</span><span class="op">)</span><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># import SPSS data set. uses haven's read function</span></span></span>
+<span class="r-in"><span><span class="va">mydat</span> <span class="op">&lt;-</span> <span class="fu">read_spss</span><span class="op">(</span><span class="st">"my_spss_data.sav"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># use haven's read function, convert atomic to factor</span></span></span>
+<span class="r-in"><span><span class="va">mydat</span> <span class="op">&lt;-</span> <span class="fu">read_spss</span><span class="op">(</span><span class="st">"my_spss_data.sav"</span>, convert.factors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># retrieve variable labels</span></span></span>
+<span class="r-in"><span><span class="va">mydat.var</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">mydat</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># retrieve value labels</span></span></span>
+<span class="r-in"><span><span class="va">mydat.val</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">mydat</span><span class="op">)</span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -192,7 +210,7 @@ the progress of converting the imported data.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -69,19 +69,23 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">set_na</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, <span class="va">na</span>, drop.levels <span class="op">=</span> <span class="cn">TRUE</span>, as.tag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">set_na</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, <span class="va">na</span>, drop.levels <span class="op">=</span> <span class="cn">TRUE</span>, as.tag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector or data frame.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Optional, unquoted names of variables that should be selected for
 further processing. Required, if <code>x</code> is a data frame (and no
 vector) and only selected variables from <code>x</code> should be processed.
 You may also use functions like <code>:</code> or tidyselect's select-helpers.
 See 'Examples'.</p></dd>
+
+
 <dt>na</dt>
 <dd><p>Numeric vector with values that should be replaced with NA values,
 or a character vector if values of factors or character vectors should be
@@ -90,17 +94,24 @@ this case, the associated values for the value labels in each vector
 will be replaced with <code>NA</code>. <code>na</code> can also be a named vector.
 If <code>as.tag = FALSE</code>, values will be replaced only in those variables
 that are indicated by the value names (see 'Examples').</p></dd>
+
+
 <dt>drop.levels</dt>
 <dd><p>Logical, if <code>TRUE</code>, factor levels of values that have
 been replaced with <code>NA</code> are dropped. See 'Examples'.</p></dd>
+
+
 <dt>as.tag</dt>
 <dd><p>Logical, if <code>TRUE</code>, values in <code>x</code> will be replaced
 by <code>tagged_na</code>, else by usual <code>NA</code> values. Use a named
 vector to assign the value label to the tagged NA value (see 'Examples').</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>x</code>, with all values in <code>na</code> being replaced by <code>NA</code>.
+    
+
+<p><code>x</code>, with all values in <code>na</code> being replaced by <code>NA</code>.
   If <code>x</code> is a data frame, the complete data frame <code>x</code> will
   be returned, with NA's set for variables specified in <code>...</code>;
   if <code>...</code> is not specified, applies to all variables in the
@@ -139,97 +150,97 @@ vector to assign the value label to the tagged NA value (see 'Examples').</p></d
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://haven.tidyverse.org" class="external-link">"haven"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="co"># create random variable</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># show value distribution</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># set value 1 and 8 as missings</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># show value distribution, including missings</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">dummy</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># add named vector as further missing value</span></span>
-<span class="r-in">  <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># see different missing types</span></span>
-<span class="r-in">  <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># create sample data frame</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">                      var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">                      var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># set value 2 and 4 as missings</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_na</span><span class="op">(</span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_na</span><span class="op">(</span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="get_na.html">get_na</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_na</span><span class="op">(</span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="get_values.html">get_values</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">    var1 <span class="op">=</span> <span class="va">efc</span><span class="op">$</span><span class="va">c82cop1</span>,</span>
-<span class="r-in">    var2 <span class="op">=</span> <span class="va">efc</span><span class="op">$</span><span class="va">c83cop2</span>,</span>
-<span class="r-in">    var3 <span class="op">=</span> <span class="va">efc</span><span class="op">$</span><span class="va">c84cop3</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in">  <span class="co"># check original distribution of categories</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">dummy</span>, <span class="va">table</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># set 3 to NA for two variables</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, <span class="va">var1</span>, <span class="va">var3</span>, na <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, <span class="va">table</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># if 'na' is a named vector *and* 'as.tag = FALSE', different NA-values</span></span>
-<span class="r-in">  <span class="co"># can be specified for each variable</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">    var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">    var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">    var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in">  <span class="va">dummy</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># Replace "3" in var1 with NA, "5" in var2 and "6" in var3</span></span>
-<span class="r-in">  <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>var1 <span class="op">=</span> <span class="fl">3</span>, var2 <span class="op">=</span> <span class="fl">5</span>, var3 <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># if 'na' is a named list *and* 'as.tag = FALSE', for each</span></span>
-<span class="r-in">  <span class="co"># variable different multiple NA-values can be specified</span></span>
-<span class="r-in">  <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>var1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span>, var3 <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># drop unused factor levels when being set to NA</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in">  <span class="fu">set_na</span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="st">"b"</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">set_na</span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="st">"b"</span>, drop.levels <span class="op">=</span> <span class="cn">FALSE</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># set_na() can also remove a missing by defining the value label</span></span>
-<span class="r-in">  <span class="co"># of the value that should be replaced with NA. This is in particular</span></span>
-<span class="r-in">  <span class="co"># helpful if a certain category should be set as NA, however, this category</span></span>
-<span class="r-in">  <span class="co"># is assigned with different values accross variables</span></span>
-<span class="r-in">  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">x1</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">3</span>, <span class="st">"No answer"</span> <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">x2</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">6</span>, <span class="st">"No answer"</span> <span class="op">=</span> <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">tmp</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">tmp</span>, na <span class="op">=</span> <span class="st">"No answer"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">tmp</span>, na <span class="op">=</span> <span class="st">"No answer"</span><span class="op">)</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># show values</span></span>
-<span class="r-in">  <span class="va">tmp</span></span>
-<span class="r-in">  <span class="fu">set_na</span><span class="op">(</span><span class="va">tmp</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span>, <span class="st">"No answer"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]     7    NA     6     6     4     3    NA     4     7     2     2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13]    NA     4     3 NA(5)     2     7     4    NA NA(5)     4 NA(5)     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25]    NA    NA     2     7     4     7     7     4     2     2     3 NA(5)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] NA(5)     2    NA     6 NA(5)     7     4     2     2    NA     2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49]     4     6    NA     2     2     2     3 NA(5)     6     3     7     2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61]     2     3     2     2 NA(5)    NA     3 NA(5)     4    NA     4     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73]     3    NA    NA    NA NA(5)     3     2     2    NA     3     7    NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85]     2     2     6     6     6     4     3     4     7     7 NA(5)     3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] NA(5)     6     6     6</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://haven.tidyverse.org" class="external-link">"haven"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># create random variable</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># show value distribution</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># set value 1 and 8 as missings</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># show value distribution, including missings</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">dummy</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># add named vector as further missing value</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># see different missing types</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">print_tagged_na</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># create sample data frame</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                      var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                      var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># set value 2 and 4 as missings</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_na</span><span class="op">(</span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_na</span><span class="op">(</span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="get_na.html">get_na</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">set_na</span><span class="op">(</span>na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="get_values.html">get_values</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    var1 <span class="op">=</span> <span class="va">efc</span><span class="op">$</span><span class="va">c82cop1</span>,</span></span>
+<span class="r-in"><span>    var2 <span class="op">=</span> <span class="va">efc</span><span class="op">$</span><span class="va">c83cop2</span>,</span></span>
+<span class="r-in"><span>    var3 <span class="op">=</span> <span class="va">efc</span><span class="op">$</span><span class="va">c84cop3</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># check original distribution of categories</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">dummy</span>, <span class="va">table</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># set 3 to NA for two variables</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, <span class="va">var1</span>, <span class="va">var3</span>, na <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, <span class="va">table</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># if 'na' is a named vector *and* 'as.tag = FALSE', different NA-values</span></span></span>
+<span class="r-in"><span>  <span class="co"># can be specified for each variable</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Replace "3" in var1 with NA, "5" in var2 and "6" in var3</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>var1 <span class="op">=</span> <span class="fl">3</span>, var2 <span class="op">=</span> <span class="fl">5</span>, var3 <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># if 'na' is a named list *and* 'as.tag = FALSE', for each</span></span></span>
+<span class="r-in"><span>  <span class="co"># variable different multiple NA-values can be specified</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_na</span><span class="op">(</span><span class="va">dummy</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>var1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span>, var3 <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># drop unused factor levels when being set to NA</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_na</span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="st">"b"</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_na</span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="st">"b"</span>, drop.levels <span class="op">=</span> <span class="cn">FALSE</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># set_na() can also remove a missing by defining the value label</span></span></span>
+<span class="r-in"><span>  <span class="co"># of the value that should be replaced with NA. This is in particular</span></span></span>
+<span class="r-in"><span>  <span class="co"># helpful if a certain category should be set as NA, however, this category</span></span></span>
+<span class="r-in"><span>  <span class="co"># is assigned with different values accross variables</span></span></span>
+<span class="r-in"><span>  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">20</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">x1</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">3</span>, <span class="st">"No answer"</span> <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">x2</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span> <span class="op">=</span> <span class="fl">6</span>, <span class="st">"No answer"</span> <span class="op">=</span> <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">tmp</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">tmp</span>, na <span class="op">=</span> <span class="st">"No answer"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">set_na</span><span class="op">(</span><span class="va">tmp</span>, na <span class="op">=</span> <span class="st">"No answer"</span><span class="op">)</span>, useNA <span class="op">=</span> <span class="st">"always"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># show values</span></span></span>
+<span class="r-in"><span>  <span class="va">tmp</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_na</span><span class="op">(</span><span class="va">tmp</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span>, <span class="st">"No answer"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]     2     4     3 NA(5)    NA     3    NA    NA     7     6     2 NA(5)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13]     6     4    NA    NA     2     2     3     3    NA    NA    NA     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25]     6 NA(5)    NA     2     6    NA    NA    NA    NA    NA     2     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37]     3    NA     6     6     3     3 NA(5)     7     2 NA(5)     2     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49]     4    NA     7     6     6     3    NA     7    NA     3     4     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61]    NA     3 NA(5)     7    NA     6     6     6 NA(5)     3     2 NA(5)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73]     2     2    NA     7     2    NA     4 NA(5)    NA     2     2     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85]    NA    NA     4     3     4     2    NA    NA     7     3     4    NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97]     4     4    NA     6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    x1 x2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  NA  4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  NA  1</span>
@@ -265,7 +276,7 @@ vector to assign the value label to the tagged NA value (see 'Examples').</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

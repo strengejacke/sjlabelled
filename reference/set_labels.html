@@ -83,22 +83,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">set_labels</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">...</span>,
-  <span class="va">labels</span>,
-  force.labels <span class="op">=</span> <span class="cn">FALSE</span>,
-  force.values <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop.na <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="fu">val_labels</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, force.labels <span class="op">=</span> <span class="cn">FALSE</span>, force.values <span class="op">=</span> <span class="cn">TRUE</span>, drop.na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">set_labels</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  <span class="va">labels</span>,</span>
+<span>  force.labels <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  force.values <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop.na <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">val_labels</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, force.labels <span class="op">=</span> <span class="cn">FALSE</span>, force.values <span class="op">=</span> <span class="cn">TRUE</span>, drop.na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector or data frame.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>For <code>set_labels()</code>, Optional, unquoted names of variables that should be selected for
 further processing. Required, if <code>x</code> is a data frame (and no
@@ -108,6 +110,8 @@ select-helpers. <br><br> For <code>val_labels()</code>,
 pairs of named vectors, where the name equals the variable name, which
 should be labelled, and the value is the new variable label. <code>val_labels()</code>
 also supports quasi-quotation (see 'Examples').</p></dd>
+
+
 <dt>labels</dt>
 <dd><p>(Named) character vector of labels that will be added to <code>x</code> as
 <code>"labels"</code> or <code>"value.labels"</code> attribute.</p><ul><li><p>if <code>labels</code> is <strong>not</strong> a <em>named vector</em>, its length must equal the value range of <code>x</code>, i.e. if <code>x</code> has values from 1 to 3, <code>labels</code> should have a length of 3;</p></li>
@@ -117,26 +121,36 @@ also supports quasi-quotation (see 'Examples').</p></dd>
 <li><p>if <code>labels</code> is a <code>list</code>, it must have the same length as number of columns of <code>x</code>;</p></li>
 <li><p>if <code>labels</code> is a vector and <code>x</code> is a data frame, <code>labels</code> will be applied to each column of <code>x</code>.</p></li>
 </ul><p>Use <code>labels = ""</code> to remove labels-attribute from <code>x</code>.</p></dd>
+
+
 <dt>force.labels</dt>
 <dd><p>Logical; if <code>TRUE</code>, all <code>labels</code> are added as value label
 attribute, even if <code>x</code> has less unique values then length of <code>labels</code>
 or if <code>x</code> has a smaller range then length of <code>labels</code>. See 'Examples'.
 This parameter will be ignored, if <code>labels</code> is a named vector.</p></dd>
+
+
 <dt>force.values</dt>
 <dd><p>Logical, if <code>TRUE</code> (default) and <code>labels</code> has less
 elements than unique values of <code>x</code>, additional values not covered
 by <code>labels</code> will be added as label as well. See 'Examples'.
 This parameter will be ignored, if <code>labels</code> is a named vector.</p></dd>
+
+
 <dt>drop.na</dt>
 <dd><p>Logical, whether existing value labels of tagged NA values
 (see <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></code>) should be removed (<code>drop.na = TRUE</code>,
 the default) or preserved (<code>drop.na = FALSE</code>).
 See <code><a href="get_na.html">get_na</a></code> for more details on tagged NA values.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>x</code> with value label attributes; or with removed label-attributes if
-<code>labels = ""</code>. If <code>x</code> is a data frame, the complete data
+    
+
+<p><code>x</code> with value label attributes; or with removed label-attributes if</p>
+<p></p>
+<p><code>labels = ""</code>. If <code>x</code> is a data frame, the complete data
           frame <code>x</code> will be returned, with removed or added to variables
           specified in <code>...</code>; if <code>...</code> is not specified, applies
           to all variables in the data frame.</p>
@@ -160,46 +174,46 @@ See <code><a href="get_na.html">get_na</a></code> for more details on tagged NA 
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">dummy</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># assign labels with named vector</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">dummy</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"very low"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"very high"</span> <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># force using all labels, even if not all labels</span></span>
-<span class="r-in">  <span class="co"># have associated values in vector</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># only two value labels</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># all three value labels</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span>, force.labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># create vector</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="cn">NA</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># add less labels than values</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"maybe"</span>, <span class="st">"no"</span><span class="op">)</span>, force.values <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in">  <span class="co"># add all necessary labels</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"maybe"</span>, <span class="st">"no"</span><span class="op">)</span>, force.values <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># set labels and missings</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">9</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span>, <span class="st">"One"</span>, <span class="st">"Two"</span>, <span class="st">"Three"</span>, <span class="st">"Missing"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in">  <span class="fu"><a href="set_na.html">set_na</a></span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">dummy</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># assign labels with named vector</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">dummy</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"very low"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"very high"</span> <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">dummy</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># force using all labels, even if not all labels</span></span></span>
+<span class="r-in"><span>  <span class="co"># have associated values in vector</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># only two value labels</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># all three value labels</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span>, force.labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># create vector</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="cn">NA</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># add less labels than values</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"maybe"</span>, <span class="st">"no"</span><span class="op">)</span>, force.values <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span>  <span class="co"># add all necessary labels</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yes"</span>, <span class="st">"maybe"</span>, <span class="st">"no"</span><span class="op">)</span>, force.values <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># set labels and missings</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">9</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Refused"</span>, <span class="st">"One"</span>, <span class="st">"Two"</span>, <span class="st">"Three"</span>, <span class="st">"Missing"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="set_na.html">set_na</a></span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> More labels than values of "x". Using first 2 labels.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> "x" has more values than "labels", hence not all values are labelled.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> More values in "x" than length of "labels". Additional values were added to labels.</span>
@@ -207,62 +221,62 @@ See <code><a href="get_na.html">get_na</a></code> for more details on tagged NA 
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"labels")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   One   Two Three </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     1     2     3 </span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://haven.tidyverse.org" class="external-link">"haven"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"z"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agreement"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Disagreement"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"First"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,</span>
-<span class="r-in">      <span class="st">"Refused"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="st">"Not home"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in">  <span class="co"># get current NA values</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in">  <span class="fu"><a href="get_na.html">get_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># lose value labels from tagged NA by default, if not specified</span></span>
-<span class="r-in">  <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"New Three"</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># do not drop na</span></span>
-<span class="r-in">  <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"New Three"</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, drop.na <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># set labels via named vector,</span></span>
-<span class="r-in">  <span class="co"># not using all possible values</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span>,</span>
-<span class="r-in">    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`independent` <span class="op">=</span> <span class="fl">1</span>,</span>
-<span class="r-in">               `severe dependency` <span class="op">=</span> <span class="fl">2</span>,</span>
-<span class="r-in">               `missing value` <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">x</span>, values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">x</span>, values <span class="op">=</span> <span class="st">"p"</span>, non.labelled <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># labels can also be set for tagged NA value</span></span>
-<span class="r-in">  <span class="co"># create numeric vector</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in">  <span class="co"># set 2 and 3 as missing, which will automatically set as</span></span>
-<span class="r-in">  <span class="co"># tagged NA by 'set_na()'</span></span>
-<span class="r-in">  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_na.html">set_na</a></span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">x</span></span>
-<span class="r-in">  <span class="co"># set label via named vector just for tagged NA(3)</span></span>
-<span class="r-in">  <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`New Value` <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"3"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># setting same value labels to multiple vectors</span></span>
-<span class="r-in">  <span class="va">dummies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">    dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">    dummy2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">    dummy3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># and set same value labels for two of three variables</span></span>
-<span class="r-in">  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">dummies</span>, <span class="va">dummy1</span>, <span class="va">dummy2</span>,</span>
-<span class="r-in">    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in">  <span class="co"># see result...</span></span>
-<span class="r-in">  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://haven.tidyverse.org" class="external-link">"haven"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"z"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agreement"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Disagreement"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"First"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="st">"Refused"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="st">"Not home"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># get current NA values</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_na.html">get_na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># lose value labels from tagged NA by default, if not specified</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"New Three"</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># do not drop na</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"New Three"</span> <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, drop.na <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># set labels via named vector,</span></span></span>
+<span class="r-in"><span>  <span class="co"># not using all possible values</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span>,</span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`independent` <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>               `severe dependency` <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>               `missing value` <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">x</span>, values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">x</span>, values <span class="op">=</span> <span class="st">"p"</span>, non.labelled <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># labels can also be set for tagged NA value</span></span></span>
+<span class="r-in"><span>  <span class="co"># create numeric vector</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># set 2 and 3 as missing, which will automatically set as</span></span></span>
+<span class="r-in"><span>  <span class="co"># tagged NA by 'set_na()'</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="set_na.html">set_na</a></span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">x</span></span></span>
+<span class="r-in"><span>  <span class="co"># set label via named vector just for tagged NA(3)</span></span></span>
+<span class="r-in"><span>  <span class="fu">set_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`New Value` <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"3"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># setting same value labels to multiple vectors</span></span></span>
+<span class="r-in"><span>  <span class="va">dummies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    dummy2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    dummy3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># and set same value labels for two of three variables</span></span></span>
+<span class="r-in"><span>  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu">set_labels</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">dummies</span>, <span class="va">dummy1</span>, <span class="va">dummy2</span>,</span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># see result...</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dummy1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "very low" "low"      "mid"      "hi"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -272,33 +286,33 @@ See <code><a href="get_na.html">get_na</a></code> for more details on tagged NA 
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dummy3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># using quasi-quotation</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://rlang.r-lib.org" class="external-link">"rlang"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">dummies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">    dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">    dummy2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">    dummy3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="st">"dummy1"</span></span>
-<span class="r-in">  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"so low"</span>, <span class="st">"rather low"</span>, <span class="st">"mid"</span>, <span class="st">"very hi"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="va">dummies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu">val_labels</span><span class="op">(</span></span>
-<span class="r-in">      <span class="op">!</span><span class="op">!</span><span class="va">x1</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"really low"</span>, <span class="st">"low"</span>, <span class="st">"a bit mid"</span>, <span class="st">"hi"</span><span class="op">)</span>,</span>
-<span class="r-in">      dummy3 <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">x2</span></span>
-<span class="r-in">    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># ... and named vectors to explicitly set value labels</span></span>
-<span class="r-in">  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"so low"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"rather low"</span> <span class="op">=</span> <span class="fl">3</span>, <span class="st">"mid"</span> <span class="op">=</span> <span class="fl">2</span>, <span class="st">"very hi"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">dummies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu">val_labels</span><span class="op">(</span></span>
-<span class="r-in">      <span class="op">!</span><span class="op">!</span><span class="va">x1</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"really low"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"low"</span> <span class="op">=</span> <span class="fl">3</span>, <span class="st">"a bit mid"</span> <span class="op">=</span> <span class="fl">2</span>, <span class="st">"hi"</span> <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">      dummy3 <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">x2</span></span>
-<span class="r-in">    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># using quasi-quotation</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://rlang.r-lib.org" class="external-link">"rlang"</a></span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">dummies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    dummy2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    dummy3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">40</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="st">"dummy1"</span></span></span>
+<span class="r-in"><span>  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"so low"</span>, <span class="st">"rather low"</span>, <span class="st">"mid"</span>, <span class="st">"very hi"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">dummies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu">val_labels</span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="op">!</span><span class="op">!</span><span class="va">x1</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"really low"</span>, <span class="st">"low"</span>, <span class="st">"a bit mid"</span>, <span class="st">"hi"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      dummy3 <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">x2</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># ... and named vectors to explicitly set value labels</span></span></span>
+<span class="r-in"><span>  <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"so low"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"rather low"</span> <span class="op">=</span> <span class="fl">3</span>, <span class="st">"mid"</span> <span class="op">=</span> <span class="fl">2</span>, <span class="st">"very hi"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">dummies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu">val_labels</span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="op">!</span><span class="op">!</span><span class="va">x1</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"really low"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"low"</span> <span class="op">=</span> <span class="fl">3</span>, <span class="st">"a bit mid"</span> <span class="op">=</span> <span class="fl">2</span>, <span class="st">"hi"</span> <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      dummy3 <span class="op">=</span> <span class="op">!</span><span class="op">!</span><span class="va">x2</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dummy1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "[1] really low" "[2] a bit mid"  "[3] low"        "[4] hi"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -322,7 +336,7 @@ See <code><a href="get_na.html">get_na</a></code> for more details on tagged NA 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

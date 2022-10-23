@@ -69,23 +69,28 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">remove_label</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">remove_label</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector or data frame.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Optional, unquoted names of variables that should be selected for
 further processing. Required, if <code>x</code> is a data frame (and no
 vector) and only selected variables from <code>x</code> should be processed.
 You may also use functions like <code>:</code> or tidyselect's select-helpers.
 See 'Examples'.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>x</code> with removed variable labels</p>
+    
+
+<p><code>x</code> with removed variable labels</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -97,9 +102,9 @@ See 'Examples'.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">efc</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
-<span class="r-in"><span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">efc</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                    c12hour </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "average number of hours of care per week" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                   e15relat </span>
@@ -110,7 +115,7 @@ See 'Examples'.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               "elder' age" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                     e42dep </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       "elder's dependency" </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	908 obs. of  5 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ c12hour : num  16 148 70 168 168 16 161 110 28 40 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "label")= chr "average number of hours of care per week"</span>
@@ -128,12 +133,12 @@ See 'Examples'.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "label")= chr "elder's dependency"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "labels")= Named num [1:4] 1 2 3 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">remove_label</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">remove_label</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="get_label.html">get_label</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  c12hour e15relat   e16sex   e17age   e42dep </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       ""       ""       ""       ""       "" </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	908 obs. of  5 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ c12hour : num  16 148 70 168 168 16 161 110 28 40 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ e15relat: num  2 2 1 1 2 2 1 4 2 2 ...</span>
@@ -160,7 +165,7 @@ See 'Examples'.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

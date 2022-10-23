@@ -71,7 +71,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_na</span><span class="op">(</span><span class="va">x</span>, as.tag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_na</span><span class="op">(</span><span class="va">x</span>, as.tag <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -80,13 +80,18 @@
 <dd><p>Variable (vector) with value label attributes, including
 tagged missing values (see <code><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na()</a></code>);
 or a data frame or list with such variables.</p></dd>
+
+
 <dt>as.tag</dt>
 <dd><p>Logical, if <code>TRUE</code>, the returned values are not tagged NA's,
 but their string representative including the tag value. See 'Examples'.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The tagged missing values and their associated value labels from <code>x</code>,
+    
+
+<p>The tagged missing values and their associated value labels from <code>x</code>,
           or <code>NULL</code> if <code>x</code> has no tagged missing values.</p>
     </div>
     <div id="details">
@@ -108,12 +113,12 @@ but their string representative including the tag value. See 'Examples'.</p></dd
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org" class="external-link">haven</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"z"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span>
-<span class="r-in">              <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agreement"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Disagreement"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"First"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,</span>
-<span class="r-in">                <span class="st">"Refused"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="st">"Not home"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># get current NA values</span></span>
-<span class="r-in"><span class="va">x</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org" class="external-link">haven</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"z"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>              <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agreement"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Disagreement"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"First"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                <span class="st">"Refused"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>, <span class="st">"Not home"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"z"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># get current NA values</span></span></span>
+<span class="r-in"><span><span class="va">x</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;labelled&lt;double&gt;[10]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -124,24 +129,24 @@ but their string representative including the tag value. See 'Examples'.</p></dd
 <span class="r-out co"><span class="r-pr">#&gt;</span>  NA(c)        First</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  NA(a)      Refused</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  NA(z)     Not home</span>
-<span class="r-in"><span class="fu">get_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">get_na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    First  Refused Not home </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       NA       NA       NA </span>
-<span class="r-in"><span class="co"># which NA has which tag?</span></span>
-<span class="r-in"><span class="fu">get_na</span><span class="op">(</span><span class="va">x</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># which NA has which tag?</span></span></span>
+<span class="r-in"><span><span class="fu">get_na</span><span class="op">(</span><span class="va">x</span>, as.tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    First  Refused Not home </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  "NA(c)"  "NA(a)"  "NA(z)" </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># replace only the NA, which is tagged as NA(c)</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/replace_na.html" class="external-link">replace_na</a></span><span class="op">(</span><span class="va">x</span>, value <span class="op">=</span> <span class="fl">2</span>, tagged.na <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">get_na</span><span class="op">(</span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/replace_na.html" class="external-link">replace_na</a></span><span class="op">(</span><span class="va">x</span>, value <span class="op">=</span> <span class="fl">2</span>, tagged.na <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># data frame as input</span></span>
-<span class="r-in">  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">1</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"y"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span>
-<span class="r-in">                <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agreement"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Disagreement"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"Why"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"y"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">get_na</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># replace only the NA, which is tagged as NA(c)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">"sjmisc"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/replace_na.html" class="external-link">replace_na</a></span><span class="op">(</span><span class="va">x</span>, value <span class="op">=</span> <span class="fl">2</span>, tagged.na <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">get_na</span><span class="op">(</span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/replace_na.html" class="external-link">replace_na</a></span><span class="op">(</span><span class="va">x</span>, value <span class="op">=</span> <span class="fl">2</span>, tagged.na <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># data frame as input</span></span></span>
+<span class="r-in"><span>  <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/labelled.html" class="external-link">labelled</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">1</span>, <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"y"</span><span class="op">)</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agreement"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Disagreement"</span> <span class="op">=</span> <span class="fl">4</span>, <span class="st">"Why"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"y"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">get_na</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $x</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    First  Refused Not home </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       NA       NA       NA </span>
@@ -164,7 +169,7 @@ but their string representative including the tag value. See 'Examples'.</p></dd
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
