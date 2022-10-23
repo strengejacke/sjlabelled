@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">sjlabelled</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.0.3</span>
       </span>
     </div>
 
@@ -159,18 +159,6 @@ from specific NA values.</p></dd>
 <span class="r-in"><span>  <span class="co"># see data frame, with selected variables having new labels</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="get_labels.html">get_labels</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: dplyr</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘dplyr’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:sjlabelled’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     as_label</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     filter, lag</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $e42dep</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "independent"          "slightly dependent"   "moderately dependent"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "severely dependent"   "nothing"             </span>
@@ -211,12 +199,6 @@ from specific NA values.</p></dd>
 <span class="r-in"><span>  <span class="co"># replaced by "Second" now.</span></span></span>
 <span class="r-in"><span>  <span class="fu">replace_labels</span><span class="op">(</span><span class="va">x</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Second"</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/tagged_na.html" class="external-link">tagged_na</a></span><span class="op">(</span><span class="st">"c"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: haven</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘haven’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:sjlabelled’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     as_factor, read_sas, read_spss, read_stata, write_sas, zap_labels</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> tagged NA 'First' was replaced with new value label.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;labelled&lt;double&gt;[10]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1]     1     2     3 NA(a) NA(c) NA(z)     4     3     2     1</span>
