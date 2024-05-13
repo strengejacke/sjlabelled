@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -92,9 +92,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Working with Labelled Data</h1>
-                        <h4 data-toc-skip class="author">Daniel Lüdecke</h4>
+                        <h4 data-toc-skip class="author">Daniel
+Lüdecke</h4>
             
-            <h4 data-toc-skip class="date">2022-10-23</h4>
+            <h4 data-toc-skip class="date">2024-05-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/HEAD/vignettes/labelleddata.Rmd" class="external-link"><code>vignettes/labelleddata.Rmd</code></a></small>
       <div class="hidden name"><code>labelleddata.Rmd</code></div>
@@ -103,16 +104,24 @@
 
     
     
-<p>This vignette shows a small example how functions to work with labelled data can be implemented in a typical data visualization workflow.</p>
+<p>This vignette shows a small example how functions to work with
+labelled data can be implemented in a typical data visualization
+workflow.</p>
 <div class="section level2">
 <h2 id="labelled-data">Labelled Data<a class="anchor" aria-label="anchor" href="#labelled-data"></a>
 </h2>
-<p>In software like SPSS, it is common to have value and variable labels as variable attributes. Variable values, even if categorical, are mostly numeric. In R, however, you may use labels as values directly:</p>
+<p>In software like SPSS, it is common to have value and variable labels
+as variable attributes. Variable values, even if categorical, are mostly
+numeric. In R, however, you may use labels as values directly:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"mid"</span>, <span class="st">"high"</span>, <span class="st">"low"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] low  high mid  high low </span></span>
 <span><span class="co">#&gt; Levels: high low mid</span></span></code></pre></div>
-<p>Reading SPSS-data with <strong>haven</strong> or <strong>sjlabelled</strong> keeps the numeric values for variables and adds the value and variable labels as attributes. See following example from the sample-dataset efc, which is part of the <strong>sjlabelled</strong>-package:</p>
+<p>Reading SPSS-data with <strong>haven</strong> or
+<strong>sjlabelled</strong> keeps the numeric values for variables and
+adds the value and variable labels as attributes. See following example
+from the sample-dataset efc, which is part of the
+<strong>sjlabelled</strong>-package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/" class="external-link">sjlabelled</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
@@ -121,7 +130,9 @@
 <span><span class="co">#&gt;  - attr(*, "label")= chr "elder's dependency"</span></span>
 <span><span class="co">#&gt;  - attr(*, "labels")= Named num [1:4] 1 2 3 4</span></span>
 <span><span class="co">#&gt;   ..- attr(*, "names")= chr [1:4] "independent" "slightly dependent" "moderately dependent" "severely dependent"</span></span></code></pre></div>
-<p>While all plotting and table functions of the <a href="https://cran.r-project.org/package=sjPlot" class="external-link">sjPlot-package</a> make use of these attributes, many packages and/or functions do not consider these attributes, e.g. R base graphics:</p>
+<p>While all plotting and table functions of the <a href="https://cran.r-project.org/package=sjPlot" class="external-link">sjPlot-package</a> make
+use of these attributes, many packages and/or functions do not consider
+these attributes, e.g. R base graphics:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/" class="external-link">sjlabelled</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">efc</span><span class="op">)</span></span>
@@ -131,12 +142,16 @@
 <span>  legend.text <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="labelleddata_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
-<p>As you can see in the above figure, the plot has neither axis nor legend labels.</p>
+<p>As you can see in the above figure, the plot has neither axis nor
+legend labels.</p>
 </div>
 <div class="section level2">
 <h2 id="adding-value-labels-as-factor-values">Adding value labels as factor values<a class="anchor" aria-label="anchor" href="#adding-value-labels-as-factor-values"></a>
 </h2>
-<p><code><a href="../reference/as_label.html">as_label()</a></code> is a sjlabelled-function that converts a numeric variable into a factor and sets attribute-value-labels as factor levels. When using factors with valued levels, the bar plot will be labelled.</p>
+<p><code><a href="../reference/as_label.html">as_label()</a></code> is a sjlabelled-function that converts a
+numeric variable into a factor and sets attribute-value-labels as factor
+levels. When using factors with valued levels, the bar plot will be
+labelled.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_label.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>,</span>
@@ -149,18 +164,22 @@
 <div class="section level2">
 <h2 id="getting-and-setting-value-and-variable-labels">Getting and setting value and variable labels<a class="anchor" aria-label="anchor" href="#getting-and-setting-value-and-variable-labels"></a>
 </h2>
-<p>There are four functions that let you easily set or get value and variable labels of either a single vector or a complete data frame:</p>
+<p>There are four functions that let you easily set or get value and
+variable labels of either a single vector or a complete data frame:</p>
 <ul>
 <li>
 <code><a href="../reference/get_label.html">get_label()</a></code> to get variable labels</li>
 <li>
 <code><a href="../reference/get_labels.html">get_labels()</a></code> to get value labels</li>
 <li>
-<code><a href="../reference/set_label.html">set_label()</a></code> to set variable labels (add them as vector attribute)</li>
+<code><a href="../reference/set_label.html">set_label()</a></code> to set variable labels (add them as vector
+attribute)</li>
 <li>
-<code><a href="../reference/set_labels.html">set_labels()</a></code> to set value labels (add them as vector attribute)</li>
+<code><a href="../reference/set_labels.html">set_labels()</a></code> to set value labels (add them as vector
+attribute)</li>
 </ul>
-<p>With this function, you can easily add titles to plots dynamically, i.e. depending on the variable that is plotted.</p>
+<p>With this function, you can easily add titles to plots dynamically,
+i.e. depending on the variable that is plotted.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu">sjlabelled</span><span class="fu">::</span><span class="fu"><a href="../reference/as_label.html">as_label</a></span><span class="op">(</span><span class="va">efc</span><span class="op">$</span><span class="va">e42dep</span><span class="op">)</span>,</span>
@@ -174,8 +193,13 @@
 <div class="section level2">
 <h2 id="restore-labels-from-subsetted-data">Restore labels from subsetted data<a class="anchor" aria-label="anchor" href="#restore-labels-from-subsetted-data"></a>
 </h2>
-<p>The base <code><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset()</a></code> function drops label attributes (or vector attributes in general) when subsetting data. In the sjlabelled-package, there are handy functions to deal with this problem: <code><a href="../reference/copy_labels.html">copy_labels()</a></code> and <code><a href="../reference/add_labels.html">remove_labels()</a></code>.</p>
-<p><code><a href="../reference/copy_labels.html">copy_labels()</a></code> adds back labels to a subsetted data frame based on the original data frame. And <code><a href="../reference/add_labels.html">remove_labels()</a></code> removes all label attributes.</p>
+<p>The base <code><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset()</a></code> function drops label attributes (or
+vector attributes in general) when subsetting data. In the
+sjlabelled-package, there are handy functions to deal with this problem:
+<code><a href="../reference/copy_labels.html">copy_labels()</a></code> and <code><a href="../reference/add_labels.html">remove_labels()</a></code>.</p>
+<p><code><a href="../reference/copy_labels.html">copy_labels()</a></code> adds back labels to a subsetted data frame
+based on the original data frame. And <code><a href="../reference/add_labels.html">remove_labels()</a></code>
+removes all label attributes.</p>
 <div class="section level3">
 <h3 id="losing-labels-during-subset">Losing labels during subset<a class="anchor" aria-label="anchor" href="#losing-labels-during-subset"></a>
 </h3>
@@ -219,7 +243,10 @@
 <div class="section level2">
 <h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h2>
-<p>When working with labelled data, especially when working with data sets imported from other software packages, it comes very handy to make use of the label attributes. The <strong>sjlabelled</strong>-package supports this feature and offers useful functions for these tasks.</p>
+<p>When working with labelled data, especially when working with data
+sets imported from other software packages, it comes very handy to make
+use of the label attributes. The <strong>sjlabelled</strong>-package
+supports this feature and offers useful functions for these tasks.</p>
 </div>
   </div>
 
@@ -240,7 +267,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>

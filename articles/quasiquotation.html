@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -91,10 +91,12 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Using quasiquotation to add variable and value labels</h1>
-                        <h4 data-toc-skip class="author">Daniel Lüdecke</h4>
+      <h1 data-toc-skip>Using quasiquotation to add variable and value
+labels</h1>
+                        <h4 data-toc-skip class="author">Daniel
+Lüdecke</h4>
             
-            <h4 data-toc-skip class="date">2022-10-23</h4>
+            <h4 data-toc-skip class="date">2024-05-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/strengejacke/sjlabelled/blob/HEAD/vignettes/quasiquotation.Rmd" class="external-link"><code>vignettes/quasiquotation.Rmd</code></a></small>
       <div class="hidden name"><code>quasiquotation.Rmd</code></div>
@@ -103,13 +105,25 @@
 
     
     
-<p>Labelling data is typically a task for end-users and is applied in own scripts or functions rather than in packages. However, sometimes it can be useful for both end-users and package developers to have a flexible way to add variable and value labels to their data. In such cases, <a href="https://adv-r.hadley.nz/quasiquotation.html" class="external-link">quasiquotation</a> is helpful.</p>
-<p>This vignette demonstrate how to use quasiquotation in <em>sjlabelled</em> to label your data.</p>
+<p>Labelling data is typically a task for end-users and is applied in
+own scripts or functions rather than in packages. However, sometimes it
+can be useful for both end-users and package developers to have a
+flexible way to add variable and value labels to their data. In such
+cases, <a href="https://adv-r.hadley.nz/quasiquotation.html" class="external-link">quasiquotation</a> is
+helpful.</p>
+<p>This vignette demonstrate how to use quasiquotation in
+<em>sjlabelled</em> to label your data.</p>
 <div class="section level2">
 <h2 id="adding-value-labels-to-variables-using-quasiquotation">Adding value labels to variables using quasiquotation<a class="anchor" aria-label="anchor" href="#adding-value-labels-to-variables-using-quasiquotation"></a>
 </h2>
-<p>Usually, <code><a href="../reference/set_labels.html">set_labels()</a></code> can be used to add value labels to variables. The syntax of this function is easy to use, and <code><a href="../reference/set_labels.html">set_labels()</a></code> allows to add value labels to multiple variables at once, if these variables share the same value labels.</p>
-<p>In the following examples, we will use the <code><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq()</a></code> function, that shows an extra <strong>label</strong>-column containing <em>value labels</em>, if the data is labelled. If the data has <em>no</em> value labels, this column is not shown in the output.</p>
+<p>Usually, <code><a href="../reference/set_labels.html">set_labels()</a></code> can be used to add value labels to
+variables. The syntax of this function is easy to use, and
+<code><a href="../reference/set_labels.html">set_labels()</a></code> allows to add value labels to multiple
+variables at once, if these variables share the same value labels.</p>
+<p>In the following examples, we will use the <code><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq()</a></code>
+function, that shows an extra <strong>label</strong>-column containing
+<em>value labels</em>, if the data is labelled. If the data has
+<em>no</em> value labels, this column is not shown in the output.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjlabelled/" class="external-link">sjlabelled</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://strengejacke.github.io/sjmisc/" class="external-link">sjmisc</a></span><span class="op">)</span> <span class="co"># for frq()-function</span></span>
@@ -131,13 +145,13 @@
 <span></span>
 <span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span>, <span class="va">dummy1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; dummy1 &lt;integer&gt; </span></span>
-<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.90 sd=0.81</span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.08 sd=0.83</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
 <span><span class="co">#&gt; ---------------------------------------------</span></span>
-<span><span class="co">#&gt;     1 |   low | 15 | 37.50 |   37.50 |  37.50</span></span>
-<span><span class="co">#&gt;     2 |   mid | 14 | 35.00 |   35.00 |  72.50</span></span>
-<span><span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;     1 |   low | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 |   mid | 13 | 32.50 |   32.50 |  62.50</span></span>
+<span><span class="co">#&gt;     3 |    hi | 15 | 37.50 |   37.50 | 100.00</span></span>
 <span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
 <span></span>
 <span><span class="co"># and set same value labels for two of three variables</span></span>
@@ -148,36 +162,44 @@
 <span></span>
 <span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span></span>
 <span><span class="co">#&gt; dummy1 &lt;integer&gt; </span></span>
-<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.90 sd=0.81</span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.08 sd=0.83</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
 <span><span class="co">#&gt; ---------------------------------------------</span></span>
-<span><span class="co">#&gt;     1 |   low | 15 | 37.50 |   37.50 |  37.50</span></span>
-<span><span class="co">#&gt;     2 |   mid | 14 | 35.00 |   35.00 |  72.50</span></span>
-<span><span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;     1 |   low | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 |   mid | 13 | 32.50 |   32.50 |  62.50</span></span>
+<span><span class="co">#&gt;     3 |    hi | 15 | 37.50 |   37.50 | 100.00</span></span>
 <span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; dummy2 &lt;integer&gt; </span></span>
-<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.10 sd=0.84</span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.02 sd=0.77</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
 <span><span class="co">#&gt; ---------------------------------------------</span></span>
-<span><span class="co">#&gt;     1 |   low | 12 |    30 |      30 |     30</span></span>
-<span><span class="co">#&gt;     2 |   mid | 12 |    30 |      30 |     60</span></span>
-<span><span class="co">#&gt;     3 |    hi | 16 |    40 |      40 |    100</span></span>
-<span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     1 |   low | 11 | 27.50 |   27.50 |  27.50</span></span>
+<span><span class="co">#&gt;     2 |   mid | 17 | 42.50 |   42.50 |  70.00</span></span>
+<span><span class="co">#&gt;     3 |    hi | 12 | 30.00 |   30.00 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; dummy3 &lt;integer&gt; </span></span>
-<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.02 sd=0.83</span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.80 sd=0.85</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span></span>
 <span><span class="co">#&gt; -------------------------------------</span></span>
-<span><span class="co">#&gt;     1 | 13 | 32.50 |   32.50 |  32.50</span></span>
-<span><span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  65.00</span></span>
-<span><span class="co">#&gt;     3 | 14 | 35.00 |   35.00 | 100.00</span></span>
+<span><span class="co">#&gt;     1 | 19 | 47.50 |   47.50 |  47.50</span></span>
+<span><span class="co">#&gt;     2 | 10 | 25.00 |   25.00 |  72.50</span></span>
+<span><span class="co">#&gt;     3 | 11 | 27.50 |   27.50 | 100.00</span></span>
 <span><span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div>
-<p><code><a href="../reference/set_labels.html">val_labels()</a></code> does the same job as <code><a href="../reference/set_labels.html">set_labels()</a></code>, but in a different way. While <code><a href="../reference/set_labels.html">set_labels()</a></code> requires variables to be specified in the <code>...</code>-argument, and labels in the <code>labels</code>-argument, <code><a href="../reference/set_labels.html">val_labels()</a></code> requires both to be specified in the <code>...</code>.</p>
-<p><code><a href="../reference/set_labels.html">val_labels()</a></code> requires <em>named</em> vectors as argument, with the <em>left-hand side</em> being the name of the variable that should be labelled, and the <em>right-hand side</em> containing the labels for the values.</p>
+<p><code><a href="../reference/set_labels.html">val_labels()</a></code> does the same job as
+<code><a href="../reference/set_labels.html">set_labels()</a></code>, but in a different way. While
+<code><a href="../reference/set_labels.html">set_labels()</a></code> requires variables to be specified in the
+<code>...</code>-argument, and labels in the
+<code>labels</code>-argument, <code><a href="../reference/set_labels.html">val_labels()</a></code> requires both to
+be specified in the <code>...</code>.</p>
+<p><code><a href="../reference/set_labels.html">val_labels()</a></code> requires <em>named</em> vectors as
+argument, with the <em>left-hand side</em> being the name of the
+variable that should be labelled, and the <em>right-hand side</em>
+containing the labels for the values.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, dummy1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">dummy1</span>, <span class="st">"labels"</span><span class="op">)</span></span>
@@ -187,39 +209,45 @@
 <span><span class="co"># remaining variables are not labelled</span></span>
 <span><span class="fu"><a href="https://strengejacke.github.io/sjmisc/reference/frq.html" class="external-link">frq</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span></span>
 <span><span class="co">#&gt; dummy1 &lt;integer&gt; </span></span>
-<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.90 sd=0.81</span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.08 sd=0.83</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Value | Label |  N | Raw % | Valid % | Cum. %</span></span>
 <span><span class="co">#&gt; ---------------------------------------------</span></span>
-<span><span class="co">#&gt;     1 |   low | 15 | 37.50 |   37.50 |  37.50</span></span>
-<span><span class="co">#&gt;     2 |   mid | 14 | 35.00 |   35.00 |  72.50</span></span>
-<span><span class="co">#&gt;     3 |    hi | 11 | 27.50 |   27.50 | 100.00</span></span>
+<span><span class="co">#&gt;     1 |   low | 12 | 30.00 |   30.00 |  30.00</span></span>
+<span><span class="co">#&gt;     2 |   mid | 13 | 32.50 |   32.50 |  62.50</span></span>
+<span><span class="co">#&gt;     3 |    hi | 15 | 37.50 |   37.50 | 100.00</span></span>
 <span><span class="co">#&gt;  &lt;NA&gt; |  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; dummy2 &lt;integer&gt; </span></span>
-<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.10 sd=0.84</span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.02 sd=0.77</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span></span>
 <span><span class="co">#&gt; -------------------------------------</span></span>
-<span><span class="co">#&gt;     1 | 12 |    30 |      30 |     30</span></span>
-<span><span class="co">#&gt;     2 | 12 |    30 |      30 |     60</span></span>
-<span><span class="co">#&gt;     3 | 16 |    40 |      40 |    100</span></span>
-<span><span class="co">#&gt;  &lt;NA&gt; |  0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;     1 | 11 | 27.50 |   27.50 |  27.50</span></span>
+<span><span class="co">#&gt;     2 | 17 | 42.50 |   42.50 |  70.00</span></span>
+<span><span class="co">#&gt;     3 | 12 | 30.00 |   30.00 | 100.00</span></span>
+<span><span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; dummy3 &lt;integer&gt; </span></span>
-<span><span class="co">#&gt; # total N=40 valid N=40 mean=2.02 sd=0.83</span></span>
+<span><span class="co">#&gt; # total N=40 valid N=40 mean=1.80 sd=0.85</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Value |  N | Raw % | Valid % | Cum. %</span></span>
 <span><span class="co">#&gt; -------------------------------------</span></span>
-<span><span class="co">#&gt;     1 | 13 | 32.50 |   32.50 |  32.50</span></span>
-<span><span class="co">#&gt;     2 | 13 | 32.50 |   32.50 |  65.00</span></span>
-<span><span class="co">#&gt;     3 | 14 | 35.00 |   35.00 | 100.00</span></span>
+<span><span class="co">#&gt;     1 | 19 | 47.50 |   47.50 |  47.50</span></span>
+<span><span class="co">#&gt;     2 | 10 | 25.00 |   25.00 |  72.50</span></span>
+<span><span class="co">#&gt;     3 | 11 | 27.50 |   27.50 | 100.00</span></span>
 <span><span class="co">#&gt;  &lt;NA&gt; |  0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code></pre></div>
-<p>Unlike <code><a href="../reference/set_labels.html">set_labels()</a></code>, <code><a href="../reference/set_labels.html">val_labels()</a></code> allows the user to add <em>different</em> value labels to different variables in one function call. Another advantage, or difference, of <code><a href="../reference/set_labels.html">val_labels()</a></code> is it’s flexibility in defining variable names and value labels by using quasiquotation.</p>
+<p>Unlike <code><a href="../reference/set_labels.html">set_labels()</a></code>, <code><a href="../reference/set_labels.html">val_labels()</a></code> allows
+the user to add <em>different</em> value labels to different variables
+in one function call. Another advantage, or difference, of
+<code><a href="../reference/set_labels.html">val_labels()</a></code> is it’s flexibility in defining variable names
+and value labels by using quasiquotation.</p>
 <div class="section level3">
 <h3 id="add-labels-that-are-stored-in-a-vector">Add labels that are stored in a vector<a class="anchor" aria-label="anchor" href="#add-labels-that-are-stored-in-a-vector"></a>
 </h3>
-<p>To use quasiquotation, we need the <strong>rlang</strong> package to be installed and loaded. Now we can have labels in a character vector, and use <code>!!</code> to unquote this vector.</p>
+<p>To use quasiquotation, we need the <strong>rlang</strong> package to
+be installed and loaded. Now we can have labels in a character vector,
+and use <code>!!</code> to unquote this vector.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low_quote"</span>, <span class="st">"mid_quote"</span>, <span class="st">"hi_quote"</span><span class="op">)</span></span>
 <span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, dummy1 <span class="op">=</span> <span class="op">!</span><span class="op">!</span> <span class="va">labels</span><span class="op">)</span></span>
@@ -230,7 +258,9 @@
 <div class="section level3">
 <h3 id="define-variable-names-that-are-stored-in-a-vector">Define variable names that are stored in a vector<a class="anchor" aria-label="anchor" href="#define-variable-names-that-are-stored-in-a-vector"></a>
 </h3>
-<p>The same can be done with the names of <em>variables</em> that should get new value labels. We then need <code>!!</code> to unquote the variable name and <code>:=</code> as assignment.</p>
+<p>The same can be done with the names of <em>variables</em> that should
+get new value labels. We then need <code>!!</code> to unquote the
+variable name and <code>:=</code> as assignment.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variable</span> <span class="op">&lt;-</span> <span class="st">"dummy2"</span></span>
 <span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">val_labels</a></span><span class="op">(</span><span class="va">dummies</span>, <span class="op">!</span><span class="op">!</span> <span class="va">variable</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lo_var"</span>, <span class="st">"mid_var"</span>, <span class="st">"high_var"</span><span class="op">)</span><span class="op">)</span></span>
@@ -247,7 +277,8 @@
 <div class="section level3">
 <h3 id="both-variable-names-and-value-labels-are-stored-in-a-vector">Both variable names and value labels are stored in a vector<a class="anchor" aria-label="anchor" href="#both-variable-names-and-value-labels-are-stored-in-a-vector"></a>
 </h3>
-<p>Finally, we can combine the above approaches to be flexible regarding both variable names and value labels.</p>
+<p>Finally, we can combine the above approaches to be flexible regarding
+both variable names and value labels.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variable</span> <span class="op">&lt;-</span> <span class="st">"dummy3"</span></span>
 <span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"mid"</span>, <span class="st">"hi"</span><span class="op">)</span></span>
@@ -260,8 +291,17 @@
 <div class="section level2">
 <h2 id="adding-variable-labels-using-quasiquotation">Adding variable labels using quasiquotation<a class="anchor" aria-label="anchor" href="#adding-variable-labels-using-quasiquotation"></a>
 </h2>
-<p><code><a href="../reference/set_label.html">set_label()</a></code> is the equivalent to <code><a href="../reference/set_labels.html">set_labels()</a></code> to add variable labels to a variable. The equivalent to <code><a href="../reference/set_labels.html">val_labels()</a></code> is <code><a href="../reference/set_label.html">var_labels()</a></code>, which works in the same way as <code><a href="../reference/set_labels.html">val_labels()</a></code>. In case of <em>variable</em> labels, a <code>label</code>-attribute is added to a vector or factor (instead of a <code>labels</code>-attribute, which is used for <em>value</em> labels).</p>
-<p>The following examples show how to use <code><a href="../reference/set_label.html">var_labels()</a></code> to add variable labels to the data. We demonstrate this function without further explanation, because it is actually very similar to <code><a href="../reference/set_labels.html">val_labels()</a></code>.</p>
+<p><code><a href="../reference/set_label.html">set_label()</a></code> is the equivalent to
+<code><a href="../reference/set_labels.html">set_labels()</a></code> to add variable labels to a variable. The
+equivalent to <code><a href="../reference/set_labels.html">val_labels()</a></code> is <code><a href="../reference/set_label.html">var_labels()</a></code>,
+which works in the same way as <code><a href="../reference/set_labels.html">val_labels()</a></code>. In case of
+<em>variable</em> labels, a <code>label</code>-attribute is added to a
+vector or factor (instead of a <code>labels</code>-attribute, which is
+used for <em>value</em> labels).</p>
+<p>The following examples show how to use <code><a href="../reference/set_label.html">var_labels()</a></code> to
+add variable labels to the data. We demonstrate this function without
+further explanation, because it is actually very similar to
+<code><a href="../reference/set_labels.html">val_labels()</a></code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -316,7 +356,11 @@
 <div class="section level2">
 <h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h2>
-<p>As we have demonstrated, <code><a href="../reference/set_label.html">var_labels()</a></code> and <code><a href="../reference/set_labels.html">val_labels()</a></code> are one of the most flexible and easy-to-use ways to add value and variable labels to our data. Another advantage is the consistent design of all functions in <strong>sjlabelled</strong>, which allows seamless integration into pipe-workflows.</p>
+<p>As we have demonstrated, <code><a href="../reference/set_label.html">var_labels()</a></code> and
+<code><a href="../reference/set_labels.html">val_labels()</a></code> are one of the most flexible and easy-to-use
+ways to add value and variable labels to our data. Another advantage is
+the consistent design of all functions in <strong>sjlabelled</strong>,
+which allows seamless integration into pipe-workflows.</p>
 </div>
   </div>
 
@@ -337,7 +381,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>
