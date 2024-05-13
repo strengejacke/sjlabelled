@@ -41,7 +41,7 @@
 #'
 #' @details See 'Details' in \code{\link{get_na}}.
 #'
-#' @examples
+#' @examplesIf require("haven")
 #' data(efc)
 #' print(get_labels(efc)['c161sex'])
 #' head(efc$c161sex)

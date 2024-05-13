@@ -96,6 +96,7 @@ Value label attributes (see \code{\link{get_labels}})
       will be removed when converting variables to factors.
 }
 \examples{
+\dontshow{if (require("haven")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 data(efc)
 print(get_labels(efc)['c161sex'])
 head(efc$c161sex)
@@ -200,4 +201,5 @@ as_numeric(as_label(x, keep.labels = TRUE), use.labels = TRUE)
 # easily coerce specific variables in a data frame to factor
 # and keep other variables, with their class preserved
 as_label(efc, e42dep, e16sex, c172code)
+\dontshow{\}) # examplesIf}
 }
