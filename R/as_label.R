@@ -251,10 +251,23 @@ as_label_helper <- function(x, add.non.labelled, prefix, var.label, drop.na, dro
 
     # replace values with labels
     if (is.factor(x)) {
-      # more levels than labels?
-      remain_labels <- levels(x)[!levels(x) %in% vn]
-      # set new levels
-      levels(x) <- c(vl, remain_labels)
+      # Get current factor levels
+      current_levels <- levels(x)
+      # Try numeric matching (for factors with numeric levels from as_factor)
+      current_values <- suppressWarnings(as.numeric(current_levels))
+      if (!anyNA(current_values)) {
+        # Numeric levels: match by value
+        present_idx <- vn %in% current_values
+        vl_present <- vl[present_idx]
+        remain_labels <- current_levels[!current_values %in% vn[present_idx]]
+      } else {
+        # Character levels: match by label string
+        present_idx <- vl %in% current_levels
+        vl_present <- vl[present_idx]
+        remain_labels <- current_levels[!current_levels %in% vl_present]
+      }
+      # Set new levels using only present labels
+      levels(x) <- c(vl_present, remain_labels)
       # remove attributes
       x <- remove_all_labels(x)
     } else {
