@@ -28,7 +28,7 @@
 #'           of \code{def.value} will be returned (which is by default \code{NULL}).
 #'
 #' @note \code{\link{var_labels}} is an alternative way to set variable labels,
-#'       which follows the philosophy of tidyvers API design (data as first argument,
+#'       which follows the philosophy of tidyverse API design (data as first argument,
 #'       dots as value pairs indicating variables)
 #'
 #' @examples
@@ -43,7 +43,7 @@
 #'
 #' data(efc)
 #'
-#' # get variable lable
+#' # get variable label
 #' get_label(efc$e42dep)
 #'
 #' # alternative way
@@ -108,7 +108,21 @@ get_label.data.frame <- function(x, ..., def.value = NULL, case = NULL) {
 
 #' @export
 get_label.list <- function(x, ..., def.value = NULL, case = NULL) {
-  convert_case(unlist(lapply(x, attr, "label", exact = TRUE)), case)
+  labels <- lapply(seq_along(x), function(i) {
+    label <- attr(x[[i]], "label", exact = TRUE)
+    if (is.null(label)) {
+      if (!is.null(def.value)) {
+        if (i <= length(def.value))
+          label <- def.value[i]
+        else
+          label <- def.value
+      } else {
+        label <- ""
+      }
+    }
+    label
+  })
+  convert_case(unlist(labels), case)
 }
 
 
