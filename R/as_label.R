@@ -112,7 +112,7 @@
 #'   dummy,
 #'   labels = c(`M` = "Male", `F` = "Female", `X` = "Refused")
 #' )
-#' get_labels(dummy,, "p")
+#' get_labels(dummy, values = "p")
 #' as_label(dummy)
 #'
 #' # drop unused factor levels, but preserve variable label
