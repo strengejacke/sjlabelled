@@ -13,6 +13,8 @@
 #' @param compress Logical, if \code{TRUE} and a SPSS-file should be created,
 #'   saves \code{x} in \code{zsav} (i.e. compressed SPSS) format.
 #'
+#' @return \code{x}, invisibly.
+#'
 #' @export
 write_spss <- function(x, path, drop.na = FALSE, compress = FALSE) {
   .write_data(x = x, path = path, type = "spss", version = 14, drop.na = drop.na, compress = compress)

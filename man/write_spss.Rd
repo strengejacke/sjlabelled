@@ -26,6 +26,9 @@ saves \code{x} in \code{zsav} (i.e. compressed SPSS) format.}
 
 \item{version}{File version to use. Supports versions 8-14.}
 }
+\value{
+\code{x}, invisibly.
+}
 \description{
 These functions write the content of a data frame to an SPSS, SAS or
                Stata-file.
