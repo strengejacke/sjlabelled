@@ -238,6 +238,14 @@ set_labels <- function(x, ...,
 }
 
 
+not_all_tagged_na <- function(labels) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    return(TRUE)
+  }
+  !all(haven::is_tagged_na(labels))
+}
+
+
 #' @importFrom stats na.omit
 set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, var.name) {
   # any valid labels? if not, return vector
@@ -310,15 +318,12 @@ set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, va
         # check if we have named vector. in this
         # case, just add these values
       } else if (!is.null(names(labels))) {
-        if (!requireNamespace("haven", quietly = TRUE)) {
-          stop("Package 'haven' required for this function. Please install it.")
-        }
         # check names and value attributes. value labels
         # and values might be reversed
         if (!anyNA(suppressWarnings(as.numeric(names(labels)))) &&
             anyNA(suppressWarnings(as.numeric(labels))) &&
             !anyNA(suppressWarnings(as.numeric(values))) &&
-            !all(haven::is_tagged_na(labels))) {
+            not_all_tagged_na(labels)) {
           dummy.lab.values <- as.numeric(names((labels)))
           dummy.lab.labels <- as.character(labels)
           labels <- dummy.lab.values
