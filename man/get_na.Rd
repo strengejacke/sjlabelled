@@ -38,6 +38,7 @@ Other statistical software packages (like 'SPSS' or 'SAS') allow to define
            Furthermore, see 'Details' in \code{\link{get_values}}.
 }
 \examples{
+\dontshow{if (require("haven")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(haven)
 x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
               c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
@@ -58,4 +59,5 @@ if (require("sjmisc")) {
                 c("Agreement" = 1, "Disagreement" = 4, "Why" = tagged_na("y")))
   get_na(data.frame(x, y))
 }
+\dontshow{\}) # examplesIf}
 }

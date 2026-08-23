@@ -40,6 +40,7 @@ str(efc$e42dep)
 get_values(efc$e42dep)
 get_labels(efc$e42dep)
 
+\dontshow{if (require("haven")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(haven)
 x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
               c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
@@ -53,7 +54,7 @@ get_values(x, drop.na = TRUE)
 y <- labelled(c(2:3, 3:1, tagged_na("y"), 4:1),
               c("Agreement" = 1, "Disagreement" = 4, "Why" = tagged_na("y")))
 get_values(data.frame(x, y))
-
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link{get_labels}} for getting value labels and \code{\link{get_na}}

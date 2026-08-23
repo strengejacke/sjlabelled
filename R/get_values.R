@@ -32,6 +32,7 @@
 #' get_values(efc$e42dep)
 #' get_labels(efc$e42dep)
 #'
+#' @examplesIf require("haven")
 #' library(haven)
 #' x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
 #'               c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),

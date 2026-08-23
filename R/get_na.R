@@ -26,7 +26,7 @@
 #'            \cr \cr
 #'            Furthermore, see 'Details' in \code{\link{get_values}}.
 #'
-#' @examples
+#' @examplesIf require("haven")
 #' library(haven)
 #' x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
 #'               c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),
@@ -74,9 +74,8 @@ get_na_helper <- function(x, as.tag) {
   # any labelled?
   if (is.null(values)) return(NULL)
 
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    stop("Package 'haven' required for this function. Please install it.")
-  }
+  # without `haven`, there are no tagged NA values
+  if (!requireNamespace("haven", quietly = TRUE)) return(NULL)
 
   # get NA
   nas <- values[haven::is_tagged_na(values)]
