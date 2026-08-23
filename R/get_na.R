@@ -26,7 +26,7 @@
 #'            \cr \cr
 #'            Furthermore, see 'Details' in \code{\link{get_values}}.
 #'
-#' @examples
+#' @examplesIf require("haven")
 #' library(haven)
 #' x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
 #'               c("Agreement" = 1, "Disagreement" = 4, "First" = tagged_na("c"),

@@ -108,6 +108,7 @@ get_labels(x)
 get_labels(x, non.labelled = TRUE)
 
 
+\dontshow{if (require("haven")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # get labels, including tagged NA values
 library(haven)
 x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
@@ -116,6 +117,7 @@ x <- labelled(c(1:3, tagged_na("a", "c", "z"), 4:1),
 # get current NA values
 x
 get_labels(x, values = "n", drop.na = FALSE)
+\dontshow{\}) # examplesIf}
 
 
 # create vector with unused labels
