@@ -14,6 +14,30 @@ dot_names <- function(dots) unname(unlist(lapply(dots, as.character)))
 is_float <- function(x) is.numeric(x) && !all(x %% 1 == 0, na.rm = TRUE)
 
 
+# tagged NA values can only exist if `haven` is installed, so all these
+# helpers fall back to the "no tagged NA" answer when it is not
+
+all_tagged_na <- function(x) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    return(FALSE)
+  }
+  all(haven::is_tagged_na(x))
+}
+
+
+not_all_tagged_na <- function(x) {
+  !all_tagged_na(x)
+}
+
+
+drop_tagged_na <- function(x) {
+  if (!requireNamespace("haven", quietly = TRUE)) {
+    return(x)
+  }
+  x[!haven::is_tagged_na(x)]
+}
+
+
 is.num.fac <- function(x) {
   # check if we have numeric levels
   !anyNA(suppressWarnings(as.numeric(levels(x))))

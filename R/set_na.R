@@ -176,8 +176,9 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
   # check if values has only NA's
   if (sum(is.na(x)) == length(x)) return(x)
 
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    stop("Package 'haven' required for this function. Please install it.")
+  # tagged NA values can only be created by `haven`
+  if (as.tag && !requireNamespace("haven", quietly = TRUE)) {
+    stop("Package 'haven' required for `as.tag = TRUE`. Please install it.")
   }
   if (!requireNamespace("sjmisc", quietly = TRUE)) {
     stop("Package 'sjmisc' required for this function. Please install it.")
@@ -199,7 +200,7 @@ set_na_helper <- function(x, value, drop.levels, as.tag, var.name) {
 
   # get value labels
   val.lab <- attr(x, "labels", exact = TRUE)
-  val.lab <- val.lab[!haven::is_tagged_na(val.lab)]
+  val.lab <- drop_tagged_na(val.lab)
 
   # if value is a character vector, user may have defined a value label.
   # find value of associated label then

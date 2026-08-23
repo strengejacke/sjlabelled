@@ -74,9 +74,8 @@ get_na_helper <- function(x, as.tag) {
   # any labelled?
   if (is.null(values)) return(NULL)
 
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    stop("Package 'haven' required for this function. Please install it.")
-  }
+  # without `haven`, there are no tagged NA values
+  if (!requireNamespace("haven", quietly = TRUE)) return(NULL)
 
   # get NA
   nas <- values[haven::is_tagged_na(values)]

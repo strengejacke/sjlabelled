@@ -238,14 +238,6 @@ set_labels <- function(x, ...,
 }
 
 
-not_all_tagged_na <- function(labels) {
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    return(TRUE)
-  }
-  !all(haven::is_tagged_na(labels))
-}
-
-
 #' @importFrom stats na.omit
 set_labels_helper <- function(x, labels, force.labels, force.values, drop.na, var.name) {
   # any valid labels? if not, return vector

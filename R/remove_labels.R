@@ -7,10 +7,7 @@ remove_labels <- function(x, ..., labels) {
   # if value is NA, it must be tagged
   na.labels <- labels[is.na(labels)]
   if (length(na.labels)) {
-    if (!requireNamespace("haven", quietly = TRUE)) {
-      stop("Package 'haven' required for this function. Please install it.")
-    }
-    if (!all(haven::is_tagged_na(na.labels))) stop("`labels` must be a tagged NA.", call. = FALSE)
+    if (!all_tagged_na(na.labels)) stop("`labels` must be a tagged NA.", call. = FALSE)
   }
 
   # evaluate arguments, generate data
@@ -46,12 +43,8 @@ remove_labels_helper <- function(x, labels) {
     return(x)
   }
 
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    stop("Package 'haven' required for this function. Please install it.")
-  }
-
   # remove by index?
-  if (haven::is_tagged_na(labels[1])) {
+  if (all_tagged_na(labels[1])) {
     current.na <- current.na[haven::na_tag(current.na) != haven::na_tag(labels)]
   } else if (is.numeric(labels)) {
     current.labels <- current.labels[-labels]

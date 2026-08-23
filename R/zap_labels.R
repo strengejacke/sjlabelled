@@ -221,10 +221,6 @@ zap_unlabelled_helper <- function(x) {
 }
 
 zap_na_tags_helper <- function(x) {
-  if (!requireNamespace("haven", quietly = TRUE)) {
-    stop("Package 'haven' required for this function. Please install it.")
-  }
-
   # check if values has only NA's
   if (sum(is.na(x)) == length(x)) return(x)
   # convert all NA, including tagged NA, into regular NA
@@ -233,7 +229,7 @@ zap_na_tags_helper <- function(x) {
   # get labels, w/o labelled NA
   # retrieve named labels
   labs <- attr(x, "labels", exact = TRUE)
-  labs <- labs[!haven::is_tagged_na(labs)]
+  labs <- drop_tagged_na(labs)
 
   attr(x, "na_values") <- NULL
   attr(x, "na.values") <- NULL
